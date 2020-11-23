@@ -34,6 +34,7 @@ public class DatasetReader {
                 JSONObject obj2 = (JSONObject) jsonArrayForInstances.get(i); //declare obj2 to i'th element of JSON classlabelsarray
                 long instanceId = (long) obj2.get("id"); //obj2 is now the element of the array
                 String instance = (String) obj2.get("instance");
+                //String instance = (String) obj2.escape((String) obj2.get("instance")); This line of code returns a string with the escape characters. But still it's not how it's supposed to be.
                 instances[i] = new Instance(instanceId, instance);
             }
 
