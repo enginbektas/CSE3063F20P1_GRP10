@@ -9,7 +9,7 @@ public class DatasetReader {
         JSONParser parser = new JSONParser(); // create JSON parser
         try {
 
-            Object obj = parser.parse(new FileReader("C:\\Users\\engin\\Desktop\\CES3063F20_LabelingProject_Input-1.json"));
+            Object obj = parser.parse(new FileReader("C:\\Users\\Hasan\\IdeaProjects\\CSE3063F20P1_GRP10\\Inputs\\CES3063F20_LabelingProject_Input-1.json"));
             JSONObject jsonObject = (JSONObject) obj; //assign the parsed version of our file to a JSONObject
 
             long id = (long) jsonObject.get("dataset id");
@@ -38,31 +38,50 @@ public class DatasetReader {
                 instances[i] = new Instance(instanceId, instance);
             }
 
-            System.out.println(instances[1].instance);
+            System.out.println(instances[1].getInstance());
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-}
-class Label {
-    public long id;
-    public String text;
-    public Label(long id, String text) {
-        this.id = id;
-        this.text = text;
-    }
 
+    }
 }
+
+
+
 class Instance {
-    public long id;
-    public String instance;
+    private long id;
+    private String instance;
+    private Label[] labels;
 
     public Instance(long id, String instance) {
         this.id = id;
         this.instance = instance;
     }
 
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setInstance(String instance) {
+        this.instance = instance;
+    }
+
+    public void setLabels(Label[] labels) {
+        this.labels = labels;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public Label[] getLabels() {
+        return labels;
+    }
+
+    public String getInstance() {
+        return instance;
+    }
 }
 
 
