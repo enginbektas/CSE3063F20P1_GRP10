@@ -1,3 +1,4 @@
+
 class Label {
     private long id;
     private String text;
