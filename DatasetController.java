@@ -9,14 +9,20 @@ import org.json.simple.parser.*;
 //C:\Users\engin\Desktop\CES3063F20_LabelingProject_Input-1
 public class DatasetController {
     public static void main(String[] args) {
+
+
+    }
+    public Dataset reader(File file) {
+        Dataset dataset = new Dataset();
         JSONParser parser = new JSONParser(); // create JSON parser
         try {
 
-            Object obj = parser.parse(new FileReader("C:\\Users\\Hasan\\IdeaProjects\\CSE3063F20P1_GRP10\\Inputs\\CES3063F20_LabelingProject_Input-1.json"));
+            Object obj = parser.parse(new FileReader(file));
             JSONObject jsonObject = (JSONObject) obj; //assign the parsed version of our file to a JSONObject
 
-            long id = (long) jsonObject.get("dataset id");
-            Dataset dataset = new Dataset((int)id);
+            long id = (long) jsonObject.get("dataset id"); // setting dataset id
+            dataset.setId((int) id);
+
             dataset.setName((String) jsonObject.get("dataset name"));
             dataset.setMaxNumOfLabelsPerInstance((int)
                     (long) jsonObject.get("maximum number of labels per instance"));
@@ -33,7 +39,6 @@ public class DatasetController {
             }
             dataset.setLabels(Arrays.asList(labels));
             //System.out.println(labels[2].text);
-
             //this block gets the info of instances from the input and assigns it to an array of instances
             JSONArray jsonArrayForInstances = (JSONArray) jsonObject.get("instances");
             Instance[] instances = new Instance[jsonArrayForInstances.size()];
@@ -45,13 +50,11 @@ public class DatasetController {
                 instances[i] = new Instance(instanceId, instance);
             }
             dataset.setInstances(Arrays.asList(instances));
-
             System.out.println(instances[1].getInstance());
-
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        return dataset;
     }
     //TODO
     /*public Dataset createDataset(){

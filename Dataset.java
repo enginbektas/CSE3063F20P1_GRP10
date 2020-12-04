@@ -8,8 +8,7 @@ public class Dataset {
     private List<Label> labels;
     private List<Instance> instances;
 
-    public Dataset(int id){
-        setId(id);
+    public Dataset(){
     }
 
     public List<Label> getLabels() {
