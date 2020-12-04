@@ -4,7 +4,7 @@ class Label {
 
     public Label(long id, String text) {
         this.id = id;
-        this.text = text;
+        this.text = text;//asdasdasd
     }
 
     public long getId() {
