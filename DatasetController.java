@@ -1,17 +1,50 @@
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.*;
 
-//C:\Users\engin\Desktop\CES3063F20_LabelingProject_Input-1
+
 public class DatasetController {
     public static void main(String[] args) {
 
-
     }
+
+    public List<User> userReader(File file) {
+        List<User> users = new ArrayList<User>();
+        JSONParser parser = new JSONParser(); // create JSON parser
+        try {
+
+            Object obj = parser.parse(new FileReader(file));
+            JSONObject jsonObject = (JSONObject) obj; //assign the parsed version of our file to a JSONObject
+
+            JSONArray jsonArrayForUsers = (JSONArray) jsonObject.get("users");
+            Instance[] instances = new Instance[jsonArrayForUsers.size()];
+            for (int i=0; i<jsonArrayForUsers.size(); i++) { //assigns the given instances in the input to the instances array
+                JSONObject obj2 = (JSONObject) jsonArrayForUsers.get(i); //declare obj2 to i'th element of JSON classlabelsarray
+                long userId = (long) obj2.get("user id"); //obj2 is now the element of the array
+                String userName = (String) obj2.get("user name");
+                String userType = (String) obj2.get("user type");
+                //String instance = (String) obj2.escape((String) obj2.get("instance")); This line of code returns a string with the escape characters. But still it's not how it's supposed to be.
+                users.add(new User((int)userId, userName, userType));
+            }
+            //this block gets the info of labels from the input and assigns it to an array of labels
+            //System.out.println(labels[2].text);
+            //this block gets the info of instances from the input and assigns it to an array of instances
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return users;
+    }
+
+
     public Dataset reader(File file) {
         Dataset dataset = new Dataset();
         JSONParser parser = new JSONParser(); // create JSON parser
@@ -58,63 +91,21 @@ public class DatasetController {
     }
 
     public void writeDataset(Dataset dataset, List<LabelAssignment> assignments, List<User> users){
-        JSONObject datasetObject = new JSONObject();
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String json = gson.toJson(dataset);
+        StringBuilder sb = new StringBuilder(json);
+        sb.append("\nclass label assignments:" + gson.toJson(assignments));
+        sb.append("\nusers:" + gson.toJson(users));
 
-        datasetObject.put("dataset id", dataset.getId());
-        datasetObject.put("dataset name", dataset.getName());
-        datasetObject.put("maximum number of labels per instance", dataset.getMaxNumOfLabelsPerInstance());
+        //System.out.println(sb);
 
-        JSONArray labels = new JSONArray();
-        for (int i = 0; i < dataset.getLabels().size(); i++){
-            JSONObject labelObject = new JSONObject();
-            labelObject.put("label id",dataset.getLabels().get(i).getId());
-            labelObject.put("label text",dataset.getLabels().get(i).getText());
-            labels.add(labelObject);
-        }
-        datasetObject.put("class labels", labels);
-
-        JSONArray instances = new JSONArray();
-        for (int i = 0; i < dataset.getInstances().size(); i++){
-            JSONObject instanceObject = new JSONObject();
-            instanceObject.put("label id",dataset.getInstances().get(i).getId());
-            instanceObject.put("label text",dataset.getInstances().get(i).getInstance());
-            instances.add(instanceObject);
-        }
-        datasetObject.put("instances", instances);
-
-        JSONArray assignmentsArray = new JSONArray();
-        for (int i = 0; i < assignments.size(); i++){
-            JSONObject assignmentObject = new JSONObject();
-            assignmentObject.put("user id", assignments.get(i).userID);
-            assignmentObject.put("instance id", assignments.get(i).instanceToAssignLabel.getId());
-            assignmentObject.put("datetime", assignments.get(i).dateTime);
-            JSONArray classLabelIDs = new JSONArray();
-            for (int j = 0; j < assignments.get(i).assignedLabels.size(); j++){
-                classLabelIDs.add(assignments.get(i).assignedLabels.get(j).getId());
-            }
-            assignmentObject.put("class label ids", classLabelIDs);
-            assignmentsArray.add(assignmentObject);
-        }
-        datasetObject.put("class label assignments", assignmentsArray);
-
-        JSONArray usersArray = new JSONArray();
-        for (int i = 0; i < users.size(); i++){
-            JSONObject userObject = new JSONObject();
-            userObject.put("user id", users.get(i).getId());
-            userObject.put("user name", users.get(i).getUserName());
-            userObject.put("user type", users.get(i).getUserType());
-            usersArray.add(userObject);
-        }
-        datasetObject.put("users", usersArray);
-
-        System.out.println(datasetObject);
-        /*try (FileWriter file = new FileWriter("testOutput.json")) {
-            file.write(datasetObject.toJSONString());
+        try (FileWriter file = new FileWriter("testOutput.json")) {
+            file.write(sb.toString());
             file.flush();
 
         } catch (IOException e) {
             e.printStackTrace();
-        }*/
+        }
     }
     //TODO
     /*public Dataset createDataset(){

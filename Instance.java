@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 class Instance {
@@ -8,6 +9,7 @@ class Instance {
     public Instance(long id, String instance) {
         this.id = id;
         this.instance = instance;
+        this.labels = new ArrayList<Label>();
     }
 
     public void setId(long id) {
