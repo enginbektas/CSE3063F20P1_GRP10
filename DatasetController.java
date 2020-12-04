@@ -57,7 +57,7 @@ public class DatasetController {
         return dataset;
     }
 
-    public void writeDataset(Dataset dataset, List<LabelAssignment> assignments, List<User> users){
+    public void writer(Dataset dataset, List<LabelAssignment> assignments, List<User> users){
         JSONObject datasetObject = new JSONObject();
 
         datasetObject.put("dataset id", dataset.getId());
