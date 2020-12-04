@@ -24,7 +24,7 @@ public class HelloWorld {
             for (int j = 0; j < dataset.getInstances().size(); j++) {
                 Assigment tempAssigment = randomLabelingMechanism.mechanism(dataset, dataset.getInstances().get(j), user.getId());
                 if (tempAssigment != null){
-                    newLog.write(user.getId() + " has labeled instance " + dataset.getInstances().get(j).getId());
+                    newLog.write("User id = " + user.getId() + " has labeled instance " + dataset.getInstances().get(j).getId());
                     assignments.add(tempAssigment);
                 }
             }

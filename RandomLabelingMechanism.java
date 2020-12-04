@@ -37,9 +37,11 @@ public class RandomLabelingMechanism extends Mechanism{
             while(flag){
 
                 int k = (int) (Math.random() * (dataset.getLabels().size() - 1));
-                if (! (instance.getLabels().contains(dataset.getLabels().get(k)) && labelsToUse.contains(dataset.getLabels().get(k)))){
+
+                if ( !instance.getLabels().contains(dataset.getLabels().get(k)) && !labelsToUse.contains(dataset.getLabels().get(k))){
                     labelsToUse.add(dataset.getLabels().get(k));
                     flag = false;
+
                 }
             }
 
