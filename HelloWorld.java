@@ -7,8 +7,8 @@ public class HelloWorld {
         Log newLog = new Log();
         DatasetController datasetController = new DatasetController();
 
-        File inputFile = new File("inputs\CES3063F20_LabelingProject_Input-1.json");
-        File userFile = new File("inputs/config.json");
+        File inputFile = new File("inputs\\CES3063F20_LabelingProject_Input-1.json");
+        File userFile = new File("inputs\\config.json");
 
         Dataset dataset = datasetController.reader(inputFile);
         List<User> userList = datasetController.userReader(userFile);
