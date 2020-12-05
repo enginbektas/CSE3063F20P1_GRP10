@@ -37,10 +37,10 @@ public class RandomLabelingMechanism extends Mechanism{
     //returns a list of labels to assign to an instance
     private List<Label> labelsToUse(Dataset dataset, Instance instance, int numberOfLabelsToAssign){
         List<Label> labelsToUse = new ArrayList<Label>();
-        for (int i = 0; i < numberOfLabelsToAssign; i++){
+        for (int i = 0; i < numberOfLabelsToAssign; i++){//Loop for chosing labels to use
             while(true){
-                int k = (int) (Math.random() * (dataset.getLabels().size() - 1));
-                if ( !instance.getLabels().contains(dataset.getLabels().get(k)) && !labelsToUse.contains(dataset.getLabels().get(k))){
+                int k = (int) (Math.random() * (dataset.getLabels().size() - 1));//Get a random int value for choosing label from label list
+                if ( !instance.getLabels().contains(dataset.getLabels().get(k)) && !labelsToUse.contains(dataset.getLabels().get(k))){//Checks if instance has that label or labels to use has it
                     labelsToUse.add(dataset.getLabels().get(k));
                     break;
                 }
@@ -49,6 +49,8 @@ public class RandomLabelingMechanism extends Mechanism{
         return labelsToUse;
     }
 
+
+    //Geters Setters
     public String getMechanismName() {
         return mechanismName;
     }

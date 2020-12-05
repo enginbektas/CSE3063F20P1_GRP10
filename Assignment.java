@@ -7,7 +7,7 @@ public class Assignment {
     private List<Integer> classLabelIds;
     private int userId;
     private String date;
-    private transient Mechanism mechanism;
+    private transient Mechanism mechanism;//Which mechanism made this assigment
 
 
 
@@ -47,7 +47,7 @@ public class Assignment {
         this.date = date;
     }
 
-    public void setLabels(List<Label> labels) {
+    public void setLabels(List<Label> labels) {//Only gets labels id's
         int i = 0;
         for (Label label : labels) {
             classLabelIds.add((int) labels.get(i).getId());
