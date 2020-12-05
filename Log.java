@@ -6,9 +6,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Log {
-    private File file;
-    private FileWriter fileWriter;
-
     public Log(){
 
     }

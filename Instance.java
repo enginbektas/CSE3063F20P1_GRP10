@@ -4,7 +4,7 @@ import java.util.List;
 class Instance {
     private long id;
     private String instance;
-    private List<Label> labels;
+    private transient List<Label> labels;
 
     public Instance(long id, String instance) {
         this.id = id;
