@@ -8,9 +8,12 @@ import java.util.List;
 public class RandomLabelingMechanism extends Mechanism{
     private String mechanismName;
     private transient List<Assignment> assignments;
+    private Log log;
+
     public RandomLabelingMechanism(String mechanismName){
         this.mechanismName=mechanismName;
         this.assignments = new ArrayList<Assignment>();
+        this.log = new Log();
     }
 
     public Assignment randomMechanism(Dataset dataset, Instance instance, int userId){
@@ -38,14 +41,13 @@ public class RandomLabelingMechanism extends Mechanism{
     //returns a list of labels to assign to an instance
     private List<Label> labelsToUse(Dataset dataset, Instance instance, int numberOfLabelsToAssign, int userId){
         List<Label> labelsToUse = new ArrayList<Label>();
-        Log newLog = new Log();
         for (int i = 0; i < numberOfLabelsToAssign; i++){//Loop for chosing labels to use
             while(true){
                 int k = (int) (Math.random() * (dataset.getLabels().size() - 1));//Get a random int value for choosing label from label list
                 if ( !instance.getLabels().contains(dataset.getLabels().get(k)) ){//Checks if instance has that label or labels to use has it
                     //labelsToUse.add(dataset.getLabels().get(k));
                     instance.getLabels().add(dataset.getLabels().get(k));
-                    newLog.write("User " + userId + " labeled instance " + instance.getId() + " by label " + dataset.getLabels().get(k).getId() + ".");
+                    log.write("User " + userId + " labeled instance " + instance.getId() + " by label " + dataset.getLabels().get(k).getId() + ".");
                     break;
                 }
             }
