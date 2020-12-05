@@ -84,7 +84,6 @@ public class DatasetController {
                 instances[i] = new Instance(instanceId, instance);
             }
             dataset.setInstances(Arrays.asList(instances));
-            System.out.println(instances[1].getInstance());
         } catch (Exception e) {
             e.printStackTrace();
         }

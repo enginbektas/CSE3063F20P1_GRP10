@@ -21,9 +21,10 @@ public class RandomLabelingMechanism extends Mechanism{
         //how many labels to assign, randomly created
         int numberOfLabelsToAssign = (int) ((Math.random() * (labelNumberLeft - 1 )) + 1);
         //creates a list that holds the labels that are going to be assigned to the instance
-        List<Label> labelsToUse = labelsToUse(dataset, instance, numberOfLabelsToAssign);
+        List<Label> labelsToUse = labelsToUse(dataset, instance, numberOfLabelsToAssign, userId);
         //adds the new labels to the instances label list
-        instance.getLabels().addAll(labelsToUse);
+
+        //instance.getLabels().addAll(labelsToUse);
         //creating date formatter
         SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss ");
         //s holds the current time
@@ -35,16 +36,20 @@ public class RandomLabelingMechanism extends Mechanism{
         return assignment;
     }
     //returns a list of labels to assign to an instance
-    private List<Label> labelsToUse(Dataset dataset, Instance instance, int numberOfLabelsToAssign){
+    private List<Label> labelsToUse(Dataset dataset, Instance instance, int numberOfLabelsToAssign, int userId){
         List<Label> labelsToUse = new ArrayList<Label>();
+        Log newLog = new Log();
         for (int i = 0; i < numberOfLabelsToAssign; i++){//Loop for chosing labels to use
             while(true){
                 int k = (int) (Math.random() * (dataset.getLabels().size() - 1));//Get a random int value for choosing label from label list
-                if ( !instance.getLabels().contains(dataset.getLabels().get(k)) && !labelsToUse.contains(dataset.getLabels().get(k))){//Checks if instance has that label or labels to use has it
-                    labelsToUse.add(dataset.getLabels().get(k));
+                if ( !instance.getLabels().contains(dataset.getLabels().get(k)) ){//Checks if instance has that label or labels to use has it
+                    //labelsToUse.add(dataset.getLabels().get(k));
+                    instance.getLabels().add(dataset.getLabels().get(k));
+                    newLog.write("User " + userId + " labeled instance " + instance.getId() + " by label " + dataset.getLabels().get(k).getId() + ".");
                     break;
                 }
             }
+
         }
         return labelsToUse;
     }
