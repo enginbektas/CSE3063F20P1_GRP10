@@ -8,8 +8,8 @@ public class HelloWorld {
         Log newLog = new Log();
         DatasetController datasetController = new DatasetController();
 
-        File inputFile = new File("inputs\\CES3063F20_LabelingProject_Input-2.json");
-        File userFile = new File("inputs\\config.json");
+        File inputFile = new File("inputs\CES3063F20_LabelingProject_Input-2.json");
+        File userFile = new File("inputs\config.json");
 
         Dataset dataset = datasetController.reader(inputFile);
         storage.setDataset(dataset);
@@ -22,7 +22,7 @@ public class HelloWorld {
         for (User user : userList) {
             newLog.write("User id = " + user.getId() + " has logged in.");
             for (int j = 0; j < dataset.getInstances().size(); j++) {
-                Assigment tempAssigment = randomLabelingMechanism.mechanism(dataset, dataset.getInstances().get(j), user.getId());
+                Assigment tempAssigment = randomLabelingMechanism.randomMechanism(dataset, dataset.getInstances().get(j), user.getId());
                 if (tempAssigment != null){
                     newLog.write("User id = " + user.getId() + " has labeled instance " + dataset.getInstances().get(j).getId());
                     assignments.add(tempAssigment);

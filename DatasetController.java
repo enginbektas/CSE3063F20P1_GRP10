@@ -11,7 +11,8 @@ import org.json.simple.parser.*;
 
 
 public class DatasetController {
-    public static void main(String[] args) {
+
+    public DatasetController() {
 
     }
 
@@ -94,7 +95,7 @@ public class DatasetController {
         Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
         String json = gson.toJson(dataset);
         StringBuilder sb = new StringBuilder(json);
-        sb.append("\nclass label assignments:" + gson.toJson(assignments));
+        sb.append("\n\"class label assignments\":" + gson.toJson(assignments));
         sb.append("\nusers:" + gson.toJson(users));
 
         //System.out.println(sb);

@@ -1,16 +1,56 @@
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class Assigment {
-    private Instance instance;
+    private int instanceId;
+    private List<Integer> classLabelIds;
     private int userId;
     private String date;
-    private List<Label> labels;
+
+
+
 
     public Assigment(Instance instance, int userId, String date, List<Label> labels){
-        this.date = date;
-        this.instance = instance;
+        this.instanceId = (int)instance.getId();
+        this.classLabelIds = new ArrayList<Integer>();
+        setLabels(labels);
         this.userId = userId;
-        this.labels = labels;
+        this.date = date;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+    public int getInstance() {
+        return instanceId;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public List<Integer> getLabels() {
+        return classLabelIds;
+    }
+
+    public void setInstance(Instance instance) {
+        this.instanceId = (int)instance.getId();
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public void setLabels(List<Label> labels) {
+        int i = 0;
+        for (Label label : labels) {
+            classLabelIds.add((int) labels.get(i).getId());
+            i++;
+        }
     }
 }
