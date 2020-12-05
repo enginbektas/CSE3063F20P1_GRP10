@@ -8,6 +8,9 @@ public class Dataset {
     private List<Label> labels;
     private List<Instance> instances;
 
+    public Dataset(){
+    }
+
     public List<Label> getLabels() {
         return labels;
     }

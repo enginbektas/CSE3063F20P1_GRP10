@@ -1,13 +1,14 @@
+
 class Label {
-    private long id;
+    private int id;
     private String text;
 
     public Label(long id, String text) {
-        this.id = id;
-        this.text = text;
+        this.id = (int)id;
+        this.text = text;//asdasdasd
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
@@ -15,7 +16,7 @@ class Label {
         return text;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
