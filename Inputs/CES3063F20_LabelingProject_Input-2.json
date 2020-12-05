@@ -1,6 +1,5 @@
 {
 "dataset id":2,
-  "dataset id":1,
 "dataset name":"Multilabel Topic Classification Dataset",
 "maximum number of labels per instance":10,
 "class labels":[ 

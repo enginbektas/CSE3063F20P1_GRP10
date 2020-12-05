@@ -1,18 +1,19 @@
+
 import java.util.ArrayList;
 import java.util.List;
 
 class Instance {
-    private long id;
+    private int id;
     private String instance;
     private transient List<Label> labels;
 
     public Instance(long id, String instance) {
-        this.id = id;
+        this.id = (int)id;
         this.instance = instance;
         this.labels = new ArrayList<Label>();
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -24,7 +25,7 @@ class Instance {
         this.labels = labels;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 

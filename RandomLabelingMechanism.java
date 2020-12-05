@@ -3,13 +3,17 @@ import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
 public class RandomLabelingMechanism extends Mechanism{
     private String mechanismName;
+    private transient List<Assignment> assignments;
     public RandomLabelingMechanism(String mechanismName){
         this.mechanismName=mechanismName;
+        this.assignments = new ArrayList<Assignment>();
     }
 
-    public Assigment randomMechanism(Dataset dataset, Instance instance, int userId){
+    public Assignment randomMechanism(Dataset dataset, Instance instance, int userId){
         //number of empty labels in the instance
         int labelNumberLeft = dataset.getMaxNumOfLabelsPerInstance() - instance.getLabels().size();
         if (labelNumberLeft == 0)
@@ -26,9 +30,9 @@ public class RandomLabelingMechanism extends Mechanism{
         Date date = new Date(System.currentTimeMillis());
         String s =  formatter.format(date);
         //Labels are assigned. Now creating an assignment object
-        Assigment assigment = new Assigment(instance, userId, s, labelsToUse);
-
-        return assigment;
+        Assignment assignment = new Assignment(instance, userId, s, labelsToUse, this);
+        assignments.add(assignment);
+        return assignment;
     }
     //returns a list of labels to assign to an instance
     private List<Label> labelsToUse(Dataset dataset, Instance instance, int numberOfLabelsToAssign){
@@ -43,5 +47,21 @@ public class RandomLabelingMechanism extends Mechanism{
             }
         }
         return labelsToUse;
+    }
+
+    public String getMechanismName() {
+        return mechanismName;
+    }
+
+    public List<Assignment> getAssignments() {
+        return assignments;
+    }
+
+    public void setMechanismName(String mechanismName) {
+        this.mechanismName = mechanismName;
+    }
+
+    public void setAssignments(List<Assignment> assignments) {
+        this.assignments = assignments;
     }
 }

@@ -2,21 +2,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Assigment {
+public class Assignment {
     private int instanceId;
     private List<Integer> classLabelIds;
     private int userId;
     private String date;
+    private transient Mechanism mechanism;
 
 
 
-
-    public Assigment(Instance instance, int userId, String date, List<Label> labels){
+    public Assignment(Instance instance, int userId, String date, List<Label> labels, Mechanism mechanism){
         this.instanceId = (int)instance.getId();
         this.classLabelIds = new ArrayList<Integer>();
         setLabels(labels);
         this.userId = userId;
         this.date = date;
+        this.mechanism = mechanism;
     }
 
     public int getUserId() {

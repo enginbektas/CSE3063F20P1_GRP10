@@ -2,7 +2,7 @@ import java.util.List;
 
 public class Storage {
     private Dataset dataset;
-    private List<Assigment> assigments;
+    private List<Assignment> assignments;
     private List<User> users;
 
 
@@ -10,8 +10,8 @@ public class Storage {
 
     }
 
-    public void setAssigments(List<Assigment> assigments) {
-        this.assigments = assigments;
+    public void setAssigments(List<Assignment> assignments) {
+        this.assignments = assignments;
     }
 
     public void setDataset(Dataset dataset) {
@@ -26,8 +26,8 @@ public class Storage {
         return dataset;
     }
 
-    public List<Assigment> getAssigments() {
-        return assigments;
+    public List<Assignment> getAssigments() {
+        return assignments;
     }
 
     public List<User> getUsers() {

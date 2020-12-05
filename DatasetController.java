@@ -91,7 +91,7 @@ public class DatasetController {
         return dataset;
     }
 
-    public void writeDataset(Dataset dataset, List<Assigment> assignments, List<User> users){
+    public void writeDataset(Dataset dataset, List<Assignment> assignments, List<User> users){
         Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
         String json = gson.toJson(dataset);
         StringBuilder sb = new StringBuilder(json);
