@@ -34,10 +34,6 @@ public class DatasetController {
                 //String instance = (String) obj2.escape((String) obj2.get("instance")); This line of code returns a string with the escape characters. But still it's not how it's supposed to be.
                 users.add(new User((int)userId, userName, userType));
             }
-            //this block gets the info of labels from the input and assigns it to an array of labels
-            //System.out.println(labels[2].text);
-            //this block gets the info of instances from the input and assigns it to an array of instances
-
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -72,7 +68,7 @@ public class DatasetController {
                 labels[i] = new Label(labelId, labelText);
             }
             dataset.setLabels(Arrays.asList(labels));
-            //System.out.println(labels[2].text);
+
             //this block gets the info of instances from the input and assigns it to an array of instances
             JSONArray jsonArrayForInstances = (JSONArray) jsonObject.get("instances");
             Instance[] instances = new Instance[jsonArrayForInstances.size()];
@@ -80,7 +76,6 @@ public class DatasetController {
                 JSONObject obj2 = (JSONObject) jsonArrayForInstances.get(i); //declare obj2 to i'th element of JSON classlabelsarray
                 long instanceId = (long) obj2.get("id"); //obj2 is now the element of the array
                 String instance = (String) obj2.get("instance");
-                //String instance = (String) obj2.escape((String) obj2.get("instance")); This line of code returns a string with the escape characters. But still it's not how it's supposed to be.
                 instances[i] = new Instance(instanceId, instance);
             }
             dataset.setInstances(Arrays.asList(instances));
@@ -90,14 +85,10 @@ public class DatasetController {
         return dataset;
     }
 
-    public void writeDataset(Dataset dataset, List<Assignment> assignments, List<User> users){
+    public void writeDataset(Storage storage){
         Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
-        String json = gson.toJson(dataset);
+        String json = gson.toJson(storage);
         StringBuilder sb = new StringBuilder(json);
-        sb.append("\n\"class label assignments\":" + gson.toJson(assignments));
-        sb.append("\nusers:" + gson.toJson(users));
-
-        //System.out.println(sb);
 
         try (FileWriter file = new FileWriter("testOutput.json")) {
             file.write(sb.toString());

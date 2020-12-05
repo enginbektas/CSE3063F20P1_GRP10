@@ -4,9 +4,10 @@ import java.util.List;
 
 public class UnitTest {
     public static void main(String[] args) {
+
         Storage storage = new Storage();//Creating Storage
         Log newLog = new Log();//Creating log
-
+        newLog.editLog();
         DatasetController datasetController = new DatasetController();//Creating controller
 
         File inputFile = new File("inputs\\CES3063F20_LabelingProject_Input-2.json");
@@ -32,6 +33,6 @@ public class UnitTest {
                 }
             }
         }
-        datasetController.writeDataset(storage.getDataset(), storage.getAssigments(), storage.getUsers());//Printing output files
+        datasetController.writeDataset(storage);//Printing output files
     }
 }
