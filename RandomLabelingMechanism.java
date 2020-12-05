@@ -13,10 +13,10 @@ public class RandomLabelingMechanism extends Mechanism{
     public RandomLabelingMechanism(String mechanismName){
         this.mechanismName=mechanismName;
         this.assignments = new ArrayList<Assignment>();
-        this.log = new Log();
+        this.log = log;
     }
 
-    public Assignment randomMechanism(Dataset dataset, Instance instance, int userId){
+    public Assignment randomMechanism(Dataset dataset, Instance instance, User user){
         //number of empty labels in the instance
         int labelNumberLeft = dataset.getMaxNumOfLabelsPerInstance() - instance.getLabels().size();
         if (labelNumberLeft == 0)
@@ -24,7 +24,7 @@ public class RandomLabelingMechanism extends Mechanism{
         //how many labels to assign, randomly created
         int numberOfLabelsToAssign = (int) ((Math.random() * (labelNumberLeft - 1 )) + 1);
         //creates a list that holds the labels that are going to be assigned to the instance
-        List<Label> labelsToUse = labelsToUse(dataset, instance, numberOfLabelsToAssign, userId);
+        List<Label> labelsToUse = labelsToUse(dataset, instance, numberOfLabelsToAssign, user);
         //adds the new labels to the instances label list
 
         //instance.getLabels().addAll(labelsToUse);
@@ -34,20 +34,21 @@ public class RandomLabelingMechanism extends Mechanism{
         Date date = new Date(System.currentTimeMillis());
         String s =  formatter.format(date);
         //Labels are assigned. Now creating an assignment object
-        Assignment assignment = new Assignment(instance, userId, s, labelsToUse, this);
+        Assignment assignment = new Assignment(instance, user.getId(), s, labelsToUse, this);
         assignments.add(assignment);
         return assignment;
     }
     //returns a list of labels to assign to an instance
-    private List<Label> labelsToUse(Dataset dataset, Instance instance, int numberOfLabelsToAssign, int userId){
+    private List<Label> labelsToUse(Dataset dataset, Instance instance, int numberOfLabelsToAssign, User user){
         List<Label> labelsToUse = new ArrayList<Label>();
+        log = new Log();
         for (int i = 0; i < numberOfLabelsToAssign; i++){//Loop for chosing labels to use
             while(true){
                 int k = (int) (Math.random() * (dataset.getLabels().size() - 1));//Get a random int value for choosing label from label list
                 if ( !instance.getLabels().contains(dataset.getLabels().get(k)) ){//Checks if instance has that label or labels to use has it
-                    //labelsToUse.add(dataset.getLabels().get(k));
+                    labelsToUse.add(dataset.getLabels().get(k));
                     instance.getLabels().add(dataset.getLabels().get(k));
-                    log.write("User " + userId + " labeled instance " + instance.getId() + " by label " + dataset.getLabels().get(k).getId() + ".");
+                    log.write("User " + user.getId() + " labeled instance " + instance.getId() + " by label " + dataset.getLabels().get(k).getId() + ".");
                     break;
                 }
             }

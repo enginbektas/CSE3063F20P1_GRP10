@@ -25,7 +25,7 @@ public class UnitTest {
         for (User user : userList) {//Loop for every user to label every instance
             newLog.write("**********User id = " + user.getId() + " has logged in.**********");//Logging user logins
             for (int j = 0; j < dataset.getInstances().size(); j++) {//Loop for labeling every instance
-                Assignment tempAssignment = randomLabelingMechanism.randomMechanism(dataset, dataset.getInstances().get(j), user.getId());
+                Assignment tempAssignment = randomLabelingMechanism.randomMechanism(dataset, dataset.getInstances().get(j), user);
                 if (tempAssignment != null){//returns null if there is no space for any further label
                     newLog.write("*****User " + user.getId() + " has labeled instance " + dataset.getInstances().get(j).getId() + ".*****");//logging
                     assignments.add(tempAssignment);
