@@ -50,7 +50,7 @@ public class Assignment {
     public void setLabels(List<Label> labels) {//Only gets labels id's
         int i = 0;
         for (Label label : labels) {
-            classLabelIds.add((int) labels.get(i).getId());
+            classLabelIds.add(labels.get(i).getId());
             i++;
         }
     }
