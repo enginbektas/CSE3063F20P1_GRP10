@@ -1,13 +1,11 @@
 import java.util.List;
-
+//#methods =13
 public class Storage {
     private Dataset dataset;
     private List<Assignment> assignments;
     private List<User> users;
 
-
     public Storage(){
-
     }
 
     public void setAssigments(List<Assignment> assignments) {

@@ -31,7 +31,6 @@ public class DatasetController {
                 long userId = (long) obj2.get("user id"); //obj2 is now the element of the array
                 String userName = (String) obj2.get("user name");
                 String userType = (String) obj2.get("user type");
-                //String instance = (String) obj2.escape((String) obj2.get("instance")); This line of code returns a string with the escape characters. But still it's not how it's supposed to be.
                 users.add(new User((int)userId, userName, userType));
             }
 

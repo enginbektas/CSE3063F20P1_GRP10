@@ -13,7 +13,7 @@ public class RandomLabelingMechanism extends Mechanism{
     public RandomLabelingMechanism(String mechanismName){
         this.mechanismName=mechanismName;
         this.assignments = new ArrayList<Assignment>();
-        this.log = log;
+        this.log = new Log();
     }
 
     public Assignment randomMechanism(Dataset dataset, Instance instance, User user){
@@ -41,7 +41,6 @@ public class RandomLabelingMechanism extends Mechanism{
     //returns a list of labels to assign to an instance
     private List<Label> labelsToUse(Dataset dataset, Instance instance, int numberOfLabelsToAssign, User user){
         List<Label> labelsToUse = new ArrayList<Label>();
-        log = new Log();
         for (int i = 0; i < numberOfLabelsToAssign; i++){//Loop for chosing labels to use
             while(true){
                 int k = (int) (Math.random() * (dataset.getLabels().size() - 1));//Get a random int value for choosing label from label list
