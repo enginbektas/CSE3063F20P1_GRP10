@@ -34,7 +34,7 @@ public class RandomLabelingMechanism extends Mechanism{
         Date date = new Date(System.currentTimeMillis());
         String s =  formatter.format(date);
         //Labels are assigned. Now creating an assignment object
-        Assignment assignment = new Assignment(instance, user.getId(), s, labelsToUse, this);
+        Assignment assignment = new Assignment(dataset, instance, user, s, labelsToUse, this);
         assignments.add(assignment);
         return assignment;
     }
