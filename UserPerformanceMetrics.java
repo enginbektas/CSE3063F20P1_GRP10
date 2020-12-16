@@ -5,6 +5,7 @@ public class UserPerformanceMetrics {
 
     private User user;
     private int datasetAssigned;
+
     private ArrayList<Percentage> datasetCompleteness;
     private int numberOfInstancesLabeled;
     private int numberOfUniqueInstancesLabeled;
@@ -16,6 +17,7 @@ public class UserPerformanceMetrics {
     private ArrayList<Instance> instancesLabeled;
 
     public UserPerformanceMetrics(User user) {
+        this.user = user;
         setDatasetAssigned(user);
        // setDatasetCompleteness(dataset);
     }

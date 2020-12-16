@@ -6,8 +6,6 @@ public class User {
     private int id;
     private String userName;
     private String userType;
-
-
     private UserPerformanceMetrics userPerformanceMetrics;
 
     public User(int id, String userName, String userType){
