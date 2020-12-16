@@ -7,6 +7,7 @@ public class Dataset {
     private int maxNumOfLabelsPerInstance;
     private List<Label> labels;
     private List<Instance> instances;
+    private List<User> users;
 
     public Dataset(){
     }
@@ -59,5 +60,11 @@ public class Dataset {
         this.maxNumOfLabelsPerInstance = maxNumOfLabelsPerInstance;
     }
 
+    public List<User> getUsers() {
+        return users;
+    }
 
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
 }
