@@ -15,6 +15,7 @@ public class DatasetPerformanceMetric {
 
         this.usersCompleteness = new ArrayList<>();
         this.consistencyPercentageOfUsers = new ArrayList<>();
+        calculateCompleteness();
     }
 
     private void calculateCompleteness(){
@@ -78,6 +79,17 @@ public class DatasetPerformanceMetric {
         }
     }
 
+    public void setDataset(Dataset dataset) {
+        this.dataset = dataset;
+    }
+
+    public Dataset getDataset() {
+        return dataset;
+    }
+
+    public double getCompletenessPercentage() {
+        return completenessPercentage;
+    }
 }
 
 
