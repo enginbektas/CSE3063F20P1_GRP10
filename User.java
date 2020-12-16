@@ -6,12 +6,15 @@ public class User {
     private int id;
     private String userName;
     private String userType;
-    private ArrayList<Dataset> datasetsAssigned;
+
+
+    private UserPerformanceMetrics userPerformanceMetrics;
 
     public User(int id, String userName, String userType){
         setId(id);
         setUserName(userName);
         setUserType(userType);
+        userPerformanceMetrics = new UserPerformanceMetrics(this);
     }
 
 
@@ -40,11 +43,11 @@ public class User {
         this.userType = userType;
     }
 
-    public ArrayList<Dataset> getDatasetsAssigned() {
-        return datasetsAssigned;
+    public UserPerformanceMetrics getUserPerformanceMetrics() {
+        return userPerformanceMetrics;
     }
 
-    public void setDatasetsAssigned(ArrayList<Dataset> datasetsAssigned) {
-        this.datasetsAssigned = datasetsAssigned;
+    public void setUserPerformanceMetrics(UserPerformanceMetrics userPerformanceMetrics) {
+        this.userPerformanceMetrics = userPerformanceMetrics;
     }
 }

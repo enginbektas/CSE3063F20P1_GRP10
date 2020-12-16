@@ -18,8 +18,11 @@ public class Assignment {
         this.user = user;
         this.date = date;
         this.mechanism = mechanism;
-        if (!user.getDatasetsAssigned().contains(dataset))
-            user.getDatasetsAssigned().add(dataset);
+        if (!user.getUserPerformanceMetrics().getDatasetsAssigned().contains(dataset))
+            user.getUserPerformanceMetrics().getDatasetsAssigned().add(dataset);
+        if (!user.getUserPerformanceMetrics().getInstancesLabeled().contains(dataset))
+            user.getUserPerformanceMetrics().getInstancesLabeled().add(instance);
+
     }
 
     public int getUserId() {
