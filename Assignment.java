@@ -20,7 +20,8 @@ public class Assignment {
         this.mechanism = mechanism;
         if (!user.getUserPerformanceMetrics().getDatasetsAssigned().contains(dataset))
             user.getUserPerformanceMetrics().getDatasetsAssigned().add(dataset);
-        if (!user.getUserPerformanceMetrics().getInstancesLabeled().contains(dataset))
+        if (!user.getUserPerformanceMetrics().getUniqueInstancesLabeled().contains(dataset))
+            user.getUserPerformanceMetrics().getUniqueInstancesLabeled().add(instance);
             user.getUserPerformanceMetrics().getInstancesLabeled().add(instance);
 
     }
