@@ -18,6 +18,7 @@ public class Assignment {
         this.userId = userId;
         this.date = date;
         this.mechanism = mechanism;
+
     }
 
     public int getUserId() {
@@ -51,6 +52,7 @@ public class Assignment {
         int i = 0;
         for (Label label : labels) {
             classLabelIds.add(labels.get(i).getId());
+            labels.get(i).incrementNumberOfUses();
             i++;
         }
     }

@@ -13,9 +13,9 @@
 {"label id":8,"label text":"konu "}, 
 {"label id":9,"label text":"firma "}, 
 {"label id":10,"label text":"cihaz"}, 
-{"label id":11,"label text":"hat "}, 
-{"label id":12,"label text":"borç "}, 
-{"label id":13,"label text":"fatura "}, 
+{"label id":11,"label text":"hat "},
+{"label id":12,"label text":"borç "},
+{"label id":13,"label text":"fatura "},
 {"label id":14,"label text":"taraf"}, 
 {"label id":15,"label text":"borç "}, 
 {"label id":16,"label text":"paket"} 
