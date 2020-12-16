@@ -4,24 +4,25 @@ public class UserPerformanceMetrics {
 
 
     private User user;
+    private ArrayList<Assignment> assignments;
+    private ArrayList<Dataset> datasetsAssigned;
+    private ArrayList<Instance> instancesLabeled;
+    private ArrayList<Instance> uniqueInstancesLabeled;
+
+
     private int datasetAssigned;
     private ArrayList<Percentage> datasetCompleteness;
     private int numberOfInstancesLabeled;
     private int numberOfUniqueInstancesLabeled;
 
-    private double consistencyPercentage;
+    private Percentage consistencyPercentage;
     private double averageTimeSpentLabeling;
     private double stdDevOfTimeSpentLabelingInstances;
 
-    private ArrayList<Dataset> datasetsAssigned;
-    private ArrayList<Instance> instancesLabeled;
-    //private ArrayList<Dataset> uniqueDatasetsAssigned;
-    private ArrayList<Instance> uniqueInstancesLabeled;
 
     public UserPerformanceMetrics(User user) {
         this.user = user;
         setDatasetAssigned(user);
-       // setDatasetCompleteness(dataset);
     }
 
     public ArrayList<Dataset> getDatasetsAssigned() {
@@ -78,6 +79,14 @@ public class UserPerformanceMetrics {
 
     public void setNumberOfUniqueInstancesLabeled(int numberOfUniqueInstancesLabeled) {
         this.numberOfUniqueInstancesLabeled = uniqueInstancesLabeled.size();
+    }
+
+    public ArrayList<Assignment> getAssignments() {
+        return assignments;
+    }
+
+    public void setAssignments(ArrayList<Assignment> assignments) {
+        this.assignments = assignments;
     }
 }
 

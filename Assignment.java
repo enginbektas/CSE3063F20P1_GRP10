@@ -23,7 +23,7 @@ public class Assignment {
         if (!user.getUserPerformanceMetrics().getUniqueInstancesLabeled().contains(dataset))
             user.getUserPerformanceMetrics().getUniqueInstancesLabeled().add(instance);
             user.getUserPerformanceMetrics().getInstancesLabeled().add(instance);
-
+        user.getUserPerformanceMetrics().getAssignments().add(this);
     }
 
     public int getUserId() {
