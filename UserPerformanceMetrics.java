@@ -16,7 +16,8 @@ public class UserPerformanceMetrics {
     private ArrayList<Instance> instancesLabeled;
 
     public UserPerformanceMetrics(User user) {
-        setDatasetAssigned(user);
+        setDatasetAssigned(user);//NULL dönüyor
+        
        // setDatasetCompleteness(dataset);
     }
 
@@ -32,7 +33,7 @@ public class UserPerformanceMetrics {
         return datasetAssigned;
     }
 
-    public void setDatasetAssigned(User user) {
+    public void setDatasetAssigned(User user) {// Burada user kullanılmıyor.
         this.datasetAssigned = getDatasetsAssigned().size();
     }
 
