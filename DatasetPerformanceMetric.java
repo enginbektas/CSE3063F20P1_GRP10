@@ -5,10 +5,10 @@ public class DatasetPerformanceMetric {
     private Dataset dataset;
     private double completenessPercentage;
     private ArrayList<Percentage> labelDistributionPercentage;
-    private int numberUniqueInstancesForEachLabel;
+    private ArrayList<Percentage> numberUniqueInstancesForEachLabel;
     private int numberOfUsers;
-    private ArrayList<User> usersCompleteness;
-    private ArrayList<User> consistencyPercentageOfUsers;
+    private ArrayList<Percentage> usersCompleteness;
+    private ArrayList<Percentage> consistencyPercentageOfUsers;
 
     public DatasetPerformanceMetric(Dataset dataset) {
         this.dataset = dataset;
@@ -43,10 +43,40 @@ public class DatasetPerformanceMetric {
         }
 
         for (Label label: dataset.getLabels()) {
-            this.labelDistributionPercentage.add(new Percentage(label.getText(), label.getNumberOfUses()  / (totalUsage * 1.0));
+            this.labelDistributionPercentage.add(new Percentage(label.getText(), label.getNumberOfUses()  / (totalUsage * 1.0)));
         }
     }
 
+    private void calculateNumberUniqueInstancesForEachLabel(){
+        this.numberUniqueInstancesForEachLabel = new ArrayList<>();
+        for (Label label: dataset.getLabels()) {
+            int numberOfUniqueInstances = 0;
+            for (Instance instance: dataset.getInstances()) {
+                if(instance.getLabels().contains(label)){
+                    numberOfUniqueInstances++;
+                }
+            }
+            this.numberUniqueInstancesForEachLabel.add(new Percentage(label.getText(), numberOfUniqueInstances));
+        }
+    }
+
+    private void calculateNumberOfUsers(){
+        numberOfUsers = dataset.getUsers().size();
+    }
+
+
+    //TODO User Metric Required
+    private void calculateUsersCompleteness(){
+        for (User use: dataset.getUsers()) {
+
+        }
+    }
+    //TODO User Metric Required
+    private void calculateConsistencyPercentageOfUsers(){
+        for (User use: dataset.getUsers()) {
+
+        }
+    }
 
 }
 
