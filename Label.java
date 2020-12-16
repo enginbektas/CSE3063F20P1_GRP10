@@ -2,6 +2,7 @@
 class Label {
     private int id;
     private String text;
+    private int numberOfUses;
 
     public Label(long id, String text) {
         this.id = (int)id;
@@ -22,5 +23,18 @@ class Label {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public void setNumberOfUses(int numberOfUses) {
+        this.numberOfUses = numberOfUses;
+    }
+
+
+    public void incrementNumberOfUses() {
+        this.numberOfUses++;
+    }
+
+    public int getNumberOfUses() {
+        return numberOfUses;
     }
 }
