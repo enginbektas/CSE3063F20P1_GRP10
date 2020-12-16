@@ -3,28 +3,39 @@ import java.util.List;
 
 
 public class Assignment {
+    private Dataset dataset;
     private int instanceId;
     private List<Integer> classLabelIds;
-    private int userId;
+    private User user;
     private String date;
     private transient Mechanism mechanism;//Which mechanism made this assigment
 
-
-
-    public Assignment(Instance instance, int userId, String date, List<Label> labels, Mechanism mechanism){
+    public Assignment(Dataset dataset, Instance instance, User user, String date, List<Label> labels, Mechanism mechanism){
+        this.dataset = dataset;
         this.instanceId = (int)instance.getId();
         this.classLabelIds = new ArrayList<Integer>();
         setLabels(labels);
-        this.userId = userId;
+        this.user = user;
         this.date = date;
         this.mechanism = mechanism;
+        if (!user.getDatasetsAssigned().contains(dataset))
+            user.getDatasetsAssigned().add(dataset);
     }
 
     public int getUserId() {
-        return userId;
+        return user.getId();
     }
+
     public int getInstance() {
         return instanceId;
+    }
+
+    public void setDataset(Dataset dataset) {
+        this.dataset = dataset;
+    }
+
+    public Dataset getDataset() {
+        return dataset;
     }
 
     public String getDate() {
@@ -39,8 +50,8 @@ public class Assignment {
         this.instanceId = (int)instance.getId();
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public void setDate(String date) {
