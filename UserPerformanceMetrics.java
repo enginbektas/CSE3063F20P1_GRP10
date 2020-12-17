@@ -2,11 +2,11 @@ import java.util.ArrayList;
 
 public class UserPerformanceMetrics {
     private User user;
-    private ArrayList<Assignment> assignments = new ArrayList<>();
-    private ArrayList<Dataset> datasetsAssigned = new ArrayList<>();
-    private ArrayList<Instance> instancesLabeled = new ArrayList<>();
-    private ArrayList<Instance> uniqueInstancesLabeled = new ArrayList<>();
-    private ArrayList<Dataset> allDatasets = new ArrayList<>();
+    private ArrayList<Assignment> assignments;
+    private ArrayList<Dataset> datasetsAssigned;
+    private ArrayList<Instance> instancesLabeled;
+    private ArrayList<Instance> uniqueInstancesLabeled;
+    private ArrayList<Dataset> allDatasets;
 
     private int datasetAssigned;
     private int numberOfInstancesLabeled;
@@ -22,10 +22,17 @@ public class UserPerformanceMetrics {
 
     public UserPerformanceMetrics(User user) {
         this.user = user;
+        this.assignments = new ArrayList<>();
+        this.datasetsAssigned = new ArrayList<>();
+        this.instancesLabeled = new ArrayList<>();
+        this.uniqueInstancesLabeled = new ArrayList<>();
+        this.allDatasets = new ArrayList<>();
 
-        this.numberOfInstancesLabeled = instancesLabeled.size();
-        this.numberOfUniqueInstancesLabeled = uniqueInstancesLabeled.size();
-        for (Dataset dataset : datasetsAssigned) {
+
+
+        this.numberOfInstancesLabeled = this.instancesLabeled.size();
+        this.numberOfUniqueInstancesLabeled = this.uniqueInstancesLabeled.size();
+        for (Dataset dataset : this.datasetsAssigned) {
             this.datasetsCompletenessPercentage.add(new Percentage(dataset.getName(), dataset.getDatasetPerformanceMetric().getCompletenessPercentage()));
         }
 
