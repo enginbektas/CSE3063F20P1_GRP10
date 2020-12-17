@@ -2,11 +2,11 @@ import java.util.ArrayList;
 
 public class UserPerformanceMetrics {
     private User user;
-    private ArrayList<Assignment> assignments;
-    private ArrayList<Dataset> datasetsAssigned;
-    private ArrayList<Instance> instancesLabeled;
-    private ArrayList<Instance> uniqueInstancesLabeled;
-    private ArrayList<Dataset> allDatasets;
+    private ArrayList<Assignment> assignments = new ArrayList<>();
+    private ArrayList<Dataset> datasetsAssigned = new ArrayList<>();
+    private ArrayList<Instance> instancesLabeled = new ArrayList<>();
+    private ArrayList<Instance> uniqueInstancesLabeled = new ArrayList<>();
+    private ArrayList<Dataset> allDatasets = new ArrayList<>();
 
     private int datasetAssigned;
     private int numberOfInstancesLabeled;
@@ -22,6 +22,7 @@ public class UserPerformanceMetrics {
 
     public UserPerformanceMetrics(User user) {
         this.user = user;
+
         this.numberOfInstancesLabeled = instancesLabeled.size();
         this.numberOfUniqueInstancesLabeled = uniqueInstancesLabeled.size();
         for (Dataset dataset : datasetsAssigned) {
