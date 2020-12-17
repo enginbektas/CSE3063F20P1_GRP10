@@ -10,7 +10,7 @@ public class Assignment {
     private String date;
     private transient Mechanism mechanism;//Which mechanism made this assigment
 
-    public Assignment(Dataset dataset, Instance instance, User user, String date, List<Label> labels, Mechanism mechanism){
+    public Assignment(List<User> userList, Dataset dataset, Instance instance, User user, String date, List<Label> labels, Mechanism mechanism){
         this.dataset = dataset;
         this.instanceId = (int)instance.getId();
         this.classLabelIds = new ArrayList<Integer>();
@@ -25,6 +25,11 @@ public class Assignment {
             user.getUserPerformanceMetrics().getUniqueInstancesLabeled().add(instance);
             user.getUserPerformanceMetrics().getInstancesLabeled().add(instance); //adds assignment's instance to user's userperformancemetrics
         user.getUserPerformanceMetrics().getAssignments().add(this);
+
+        for (User userIter: userList) {
+            if (!userIter.getUserPerformanceMetrics().getAllDatasets().contains(dataset))
+                userIter.getUserPerformanceMetrics().getAllDatasets().add(dataset);
+        }
     }
 
     public int getUserId() {
