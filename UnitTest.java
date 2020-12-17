@@ -6,6 +6,7 @@ import java.util.List;
 //#lines 28
 public class UnitTest {
     public static void main(String[] args) {
+        /*
         Log newLog = new Log();//Creating log
         newLog.editLog();
 
@@ -29,51 +30,18 @@ public class UnitTest {
         //TODO assign labels to current  dataset
         for (User user: users) {
             for (int i = 0; i < user.getDatasetIds().size(); i++) {
-                if (user.getDatasetIds().get(i) == currentDatasetId)
+                if (user.getDatasetIds().get(i) == currentDatasetId);
                     //TODO assign loop
 
                     //TODO after every assign update json files
             }
         }
 
+*/
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        /*Storage storage = new Storage();//Creating Storage
+        Storage storage = new Storage();//Creating Storage
         Log newLog = new Log();//Creating log
         newLog.editLog();
         DatasetController datasetController = new DatasetController();//Creating controller
@@ -92,13 +60,8 @@ public class UnitTest {
 
         for(User user :userList){
             UserPerformanceMetrics a = new UserPerformanceMetrics(user);
-            
-
 
         }
-
-
-
         RandomLabelingMechanism randomLabelingMechanism = new RandomLabelingMechanism("RandomMechanism");//Creating mechanism
 
         for (User user : userList) {//Loop for every user to label every instance
@@ -114,7 +77,7 @@ public class UnitTest {
             newLog.write("***User " + user.getId() + " has logged out.***");
             long logoutDate = System.currentTimeMillis();
             long onlineTime = logoutDate - loginDate;
-            onlineTime = onlineTime / 60; // seconds
+            onlineTime = onlineTime / 100; // seconds
             user.getUserPerformanceMetrics().setAverageTimeSpentLabeling((float)onlineTime);
 
         }

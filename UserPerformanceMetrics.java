@@ -14,14 +14,16 @@ public class UserPerformanceMetrics {
     private ArrayList<Percentage> datasetsCompletenessPercentage;
 
     private Percentage consistencyPercentage;
+
+    private double totalTimeSpentLabeling;
     private double averageTimeSpentLabeling;
     private double stdDevOfTimeSpentLabelingInstances;
 
 
     public UserPerformanceMetrics(User user) {
         this.user = user;
-        this.numberOfInstancesLabeled = getInstancesLabeled().size();
-        this.numberOfUniqueInstancesLabeled = getUniqueInstancesLabeled().size();
+        this.numberOfInstancesLabeled = instancesLabeled.size();
+        this.numberOfUniqueInstancesLabeled = uniqueInstancesLabeled.size();
         for (Dataset dataset : datasetsAssigned) {
             this.datasetsCompletenessPercentage.add(new Percentage(dataset.getName(), dataset.getDatasetPerformanceMetric().getCompletenessPercentage()));
         }
