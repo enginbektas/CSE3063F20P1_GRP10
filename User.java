@@ -6,8 +6,8 @@ public class User {
     private int id;
     private String userName;
     private String userType;
-    private UserPerformanceMetrics userPerformanceMetrics;
-    private ArrayList<Integer> datasetIds;
+    private transient UserPerformanceMetrics userPerformanceMetrics;
+    private transient ArrayList<Integer> datasetIds;
     public User(int id, String userName, String userType){
         setId(id);
         setUserName(userName);

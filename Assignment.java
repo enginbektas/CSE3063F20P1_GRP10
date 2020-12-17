@@ -3,13 +3,13 @@ import java.util.List;
 
 
 public class Assignment {
-    private Dataset dataset;
+    private transient Dataset dataset;
     private int instanceId;
     private List<Integer> classLabelIds;
-    private User user;
+    private transient User user;
     private String date;
     private transient Mechanism mechanism;//Which mechanism made this assigment
-    private double timeSpent;
+    private transient double timeSpent;
 
     public Assignment(List<User> userList, Dataset dataset, Instance instance, User user, String date, List<Label> labels, Mechanism mechanism){
         this.dataset = dataset;

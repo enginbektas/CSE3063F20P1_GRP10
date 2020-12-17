@@ -77,7 +77,7 @@ public class UnitTest {
                 }
                 long labelingTimeEnd = System.currentTimeMillis();
                 long labelingTime = labelingTimeEnd - labelingTimeStart;
-                tempAssignment.setTimeSpent(labelingTime);
+                assignments.get(assignments.size()-1).setTimeSpent(labelingTime);
             } // labeling ends
 
             newLog.write("***User " + user.getId() + " has logged out.***");
@@ -87,5 +87,7 @@ public class UnitTest {
             user.getUserPerformanceMetrics().setAverageTimeSpentLabeling();
         }
         datasetController.writeDataset(storage);//Printing output files*/
+
+
     }
 }

@@ -2,20 +2,20 @@ import java.util.ArrayList;
 
 public class UserPerformanceMetrics {
     private User user;
-    private ArrayList<Assignment> assignments;
-    private ArrayList<Dataset> datasetsAssigned;
-    private ArrayList<Instance> instancesLabeled;
-    private ArrayList<Instance> uniqueInstancesLabeled;
-    private ArrayList<Dataset> allDatasets;
+    private transient ArrayList<Assignment> assignments;
+    private transient ArrayList<Dataset> datasetsAssigned;
+    private transient ArrayList<Instance> instancesLabeled;
+    private transient ArrayList<Instance> uniqueInstancesLabeled;
+    private transient ArrayList<Dataset> allDatasets;
 
     private int datasetAssigned;
     private int numberOfInstancesLabeled;
     private int numberOfUniqueInstancesLabeled;
     private ArrayList<Percentage> datasetsCompletenessPercentage;
-
     private Percentage consistencyPercentage;
 
-    private double totalTimeSpentLabeling; //
+    private transient double totalTimeSpentLabeling; //
+
     private double averageTimeSpentLabeling;
     private double stdDevOfTimeSpentLabelingInstances;
 
