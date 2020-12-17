@@ -2,20 +2,20 @@ import java.util.ArrayList;
 
 public class UserPerformanceMetrics {
     private User user;
-    private ArrayList<Assignment> assignments;
-    private ArrayList<Dataset> datasetsAssigned;
-    private ArrayList<Instance> instancesLabeled;
-    private ArrayList<Instance> uniqueInstancesLabeled;
-    private ArrayList<Dataset> allDatasets;
+    private transient ArrayList<Assignment> assignments;
+    private transient ArrayList<Dataset> datasetsAssigned;
+    private transient ArrayList<Instance> instancesLabeled;
+    private transient ArrayList<Instance> uniqueInstancesLabeled;
+    private transient ArrayList<Dataset> allDatasets;
 
     private int datasetAssigned;
     private int numberOfInstancesLabeled;
     private int numberOfUniqueInstancesLabeled;
     private ArrayList<Percentage> datasetsCompletenessPercentage;
-
     private Percentage consistencyPercentage;
+    private transient ArrayList<Percentage> usersCompleteness;
+    private transient double totalTimeSpentLabeling; //
 
-    private double totalTimeSpentLabeling; //
     private double averageTimeSpentLabeling;
     private double stdDevOfTimeSpentLabelingInstances;
 
@@ -28,7 +28,32 @@ public class UserPerformanceMetrics {
         this.uniqueInstancesLabeled = new ArrayList<>();
         this.allDatasets = new ArrayList<>();
         this.datasetsCompletenessPercentage = new ArrayList<>();
+        this.usersCompleteness = new ArrayList<>();
 
+    }
+
+
+    private void datasetcopm(){
+
+        for (Instance instance: uniqueInstancesLabeled) {
+            for (Assignment assignment: assignments) {
+                if (instance.equals(assignment.getInstance())){
+                    for (int i = 0; i < usersCompleteness.size(); i++) {
+                        if (usersCompleteness.get(i).getName().equals(assignment.getDataset().getId())){
+                            usersCompleteness.get(i).setPercentage(usersCompleteness.get(i).getPercentage() + 1 / assignment.getDataset().getInstances().size() * 100.0);
+                        }
+                        else{
+                            usersCompleteness.add(new Percentage(assignment.getDataset().getId() + "", 1 / assignment.getDataset().getInstances().size() * 100.0));
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
+    public ArrayList<Percentage> getUsersCompleteness() {
+        return usersCompleteness;
     }
 
     public Percentage getConsistencyPercentage() {

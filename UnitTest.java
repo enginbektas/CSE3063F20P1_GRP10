@@ -58,10 +58,13 @@ public class UnitTest {
         storage.setAssigments(assignments);
         // aynı listeyi userPerformanceList içineki assigment'a eşitle
 
+<<<<<<< HEAD
         // for(User user :userList){
         //     UserPerformanceMetrics a = new UserPerformanceMetrics(user);
 
         // }
+=======
+>>>>>>> 48b05b0d55360802bea467fc4fc927a046a8d06c
         RandomLabelingMechanism randomLabelingMechanism = new RandomLabelingMechanism("RandomMechanism");//Creating mechanism
 
 
@@ -77,7 +80,7 @@ public class UnitTest {
                 }
                 long labelingTimeEnd = System.currentTimeMillis();
                 long labelingTime = labelingTimeEnd - labelingTimeStart;
-                tempAssignment.setTimeSpent(labelingTime);
+                assignments.get(assignments.size()-1).setTimeSpent(labelingTime);
             } // labeling ends
 
             newLog.write("***User " + user.getId() + " has logged out.***");
@@ -87,5 +90,7 @@ public class UnitTest {
             user.getUserPerformanceMetrics().setAverageTimeSpentLabeling();
         }
         datasetController.writeDataset(storage);//Printing output files*/
+
+
     }
 }

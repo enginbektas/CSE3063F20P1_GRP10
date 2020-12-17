@@ -8,8 +8,8 @@ public class Dataset {
     private int maxNumOfLabelsPerInstance;
     private List<Label> labels;
     private List<Instance> instances;
-    private List<User> users;
-    private DatasetPerformanceMetric datasetPerformanceMetric;
+    private transient List<User> users;
+    private transient DatasetPerformanceMetric datasetPerformanceMetric;
 
     public Dataset(){
         datasetPerformanceMetric = new DatasetPerformanceMetric(this);
