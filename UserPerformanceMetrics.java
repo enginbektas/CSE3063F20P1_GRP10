@@ -20,10 +20,12 @@ public class UserPerformanceMetrics {
 
     public UserPerformanceMetrics(User user) {
         this.user = user;
+        this.numberOfInstancesLabeled = getInstancesLabeled().size();
+        this.numberOfUniqueInstancesLabeled = getUniqueInstancesLabeled().size();
+        for (Dataset dataset : datasetsAssigned) {
+            this.datasetsCompletenessPercentage.add(new Percentage(dataset.getName(), dataset.getDatasetPerformanceMetric().getCompletenessPercentage()));
+        }
 
-        // setNumberOfInstancesLabeled();
-        // setNumberOfUniqueInstancesLabeled();
-        // setDatasetsCompletenessPercentage();
     }
 
     public Percentage getConsistencyPercentage() {
@@ -107,7 +109,8 @@ public class UserPerformanceMetrics {
         return numberOfInstancesLabeled;
     }
 
-    public void setNumberOfInstancesLabeled() {
+    public void setNumberOfInstancesLabeled(int numberOfInstancesLabeled) {
+        this.numberOfInstancesLabeled = numberOfInstancesLabeled;
         this.numberOfInstancesLabeled = instancesLabeled.size();
     }
 
