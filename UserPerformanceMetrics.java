@@ -49,14 +49,6 @@ public class UserPerformanceMetrics {
         this.datasetAssigned = getDatasetsAssigned().size();
     }
 
-    public void setDatasetCompleteness(ArrayList<Dataset> datasetArrayList) {
-        for (Dataset dataset: datasetArrayList) {
-            DatasetPerformanceMetric datasetPerformanceMetric = new DatasetPerformanceMetric(dataset);
-            Percentage percentage = new Percentage(datasetPerformanceMetric.getDataset().getName(), datasetPerformanceMetric.getCompletenessPercentage());
-            datasetCompleteness.add(percentage);
-        }
-    }
-
     public ArrayList<Instance> getInstancesLabeled() {
         return instancesLabeled;
     }
