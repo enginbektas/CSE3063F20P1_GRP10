@@ -27,11 +27,13 @@ public class UserPerformanceMetrics {
         this.instancesLabeled = new ArrayList<>();
         this.uniqueInstancesLabeled = new ArrayList<>();
         this.allDatasets = new ArrayList<>();
+        this.datasetsCompletenessPercentage = new ArrayList<>();
 
 
 
         this.numberOfInstancesLabeled = this.instancesLabeled.size();
         this.numberOfUniqueInstancesLabeled = this.uniqueInstancesLabeled.size();
+
         for (Dataset dataset : this.datasetsAssigned) {
             this.datasetsCompletenessPercentage.add(new Percentage(dataset.getName(), dataset.getDatasetPerformanceMetric().getCompletenessPercentage()));
         }
