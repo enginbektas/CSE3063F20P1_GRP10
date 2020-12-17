@@ -63,6 +63,13 @@ public class Dataset {
         this.maxNumOfLabelsPerInstance = maxNumOfLabelsPerInstance;
     }
 
+    public Label getLabelWithId(int labelId){
+        for (Label label: labels) {
+            if (labelId == label.getId())
+                return label;
+        }
+    }
+
     public List<User> getUsers() {
         return users;
     }

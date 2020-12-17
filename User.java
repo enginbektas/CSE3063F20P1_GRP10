@@ -7,7 +7,7 @@ public class User {
     private String userName;
     private String userType;
     private UserPerformanceMetrics userPerformanceMetrics;
-
+    private ArrayList<Integer> datasetIds;
     public User(int id, String userName, String userType){
         setId(id);
         setUserName(userName);
@@ -47,5 +47,9 @@ public class User {
 
     public void setUserPerformanceMetrics(UserPerformanceMetrics userPerformanceMetrics) {
         this.userPerformanceMetrics = userPerformanceMetrics;
+    }
+
+    public ArrayList<Integer> getDatasetIds() {
+        return datasetIds;
     }
 }

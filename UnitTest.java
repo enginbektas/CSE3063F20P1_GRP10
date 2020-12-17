@@ -5,8 +5,74 @@ import java.util.List;
 //#lines 28
 public class UnitTest {
     public static void main(String[] args) {
+        Log newLog = new Log();//Creating log
+        newLog.editLog();
 
-        Storage storage = new Storage();//Creating Storage
+
+        // TODO read config (
+        File file = new File("");
+        DatasetController datasetController = new DatasetController();//Creating controller
+        //TODO choose current dataset
+        Dataset currentDataset = new Dataset();
+
+        //TODO create users
+        ArrayList<User> users = new ArrayList<>();
+        //TODO if output exists create dataset from output and assignments
+        ArrayList<Storage> storages = new ArrayList<>();
+
+
+        ArrayList<Assignment> assignments
+        //else from config
+
+
+        //TODO assign labels to current  dataset
+        for (User user: users) {
+            for (int i = 0; i < user.getDatasetIds().size(); i++) {
+                if (user.getDatasetIds().get(i) == currentDatasetId)
+                    //TODO assign loop
+
+                    //TODO after every assign update json files
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /*Storage storage = new Storage();//Creating Storage
         Log newLog = new Log();//Creating log
         newLog.editLog();
         DatasetController datasetController = new DatasetController();//Creating controller
@@ -35,6 +101,6 @@ public class UnitTest {
             }
             newLog.write("***User " + user.getId() + " has logged out.***");
         }
-        datasetController.writeDataset(storage);//Printing output files
+        datasetController.writeDataset(storage);//Printing output files*/
     }
 }

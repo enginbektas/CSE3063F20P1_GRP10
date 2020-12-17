@@ -18,6 +18,7 @@ public class Assignment {
         this.user = user;
         this.date = date;
         this.mechanism = mechanism;
+
         if (!user.getUserPerformanceMetrics().getDatasetsAssigned().contains(dataset)) //adds assignment's dataset to user's userperformancemetrics
             user.getUserPerformanceMetrics().getDatasetsAssigned().add(dataset);
         if (!user.getUserPerformanceMetrics().getUniqueInstancesLabeled().contains(dataset)) //adds assignment's unique instance to user's userperformancemetrics
