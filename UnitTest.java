@@ -64,25 +64,27 @@ public class UnitTest {
         // }
         RandomLabelingMechanism randomLabelingMechanism = new RandomLabelingMechanism("RandomMechanism");//Creating mechanism
 
+
         for (User user : userList) {//Loop for every user to label every instance
             newLog.write("***User id = " + user.getId() + " has logged in.***");//Logging user logins
             long loginDate = System.currentTimeMillis();
             for (int j = 0; j < dataset.getInstances().size(); j++) {//Loop for labeling every instance
                 long labelingTimeStart = System.currentTimeMillis();
                 Assignment tempAssignment = randomLabelingMechanism.randomMechanism(userList, dataset, dataset.getInstances().get(j), user);
-                if (tempAssignment != null){//returns null if there is no space for any further label
+                if (tempAssignment != null){ //returns null if there is no space for any further label
                     newLog.write("*User " + user.getId() + " has labeled instance " + dataset.getInstances().get(j).getId() + ".*");//logging
                     assignments.add(tempAssignment);
                 }
                 long labelingTimeEnd = System.currentTimeMillis();
                 long labelingTime = labelingTimeEnd - labelingTimeStart;
-            }
+                tempAssignment.setTimeSpent(labelingTime);
+            } // labeling ends
+
             newLog.write("***User " + user.getId() + " has logged out.***");
             long logoutDate = System.currentTimeMillis();
             long onlineTime = ( logoutDate - loginDate ) / 100;
-
             user.getUserPerformanceMetrics().setTotalTimeSpentLabeling((float)onlineTime);
-
+            user.getUserPerformanceMetrics().setAverageTimeSpentLabeling();
         }
         datasetController.writeDataset(storage);//Printing output files*/
     }

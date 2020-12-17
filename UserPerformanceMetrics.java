@@ -154,8 +154,8 @@ public class UserPerformanceMetrics {
         return averageTimeSpentLabeling;
     }
 
-    public void setAverageTimeSpentLabeling(double averageTimeSpentLabeling) {
-        this.averageTimeSpentLabeling = totalTimeSpentLabeling;
+    public void setAverageTimeSpentLabeling() {
+        this.averageTimeSpentLabeling = totalTimeSpentLabeling / assignments.size();
     }
 
     public double getTotalTimeSpentLabeling() {

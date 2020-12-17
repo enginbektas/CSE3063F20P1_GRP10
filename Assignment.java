@@ -9,6 +9,7 @@ public class Assignment {
     private User user;
     private String date;
     private transient Mechanism mechanism;//Which mechanism made this assigment
+    private double timeSpent;
 
     public Assignment(List<User> userList, Dataset dataset, Instance instance, User user, String date, List<Label> labels, Mechanism mechanism){
         this.dataset = dataset;
@@ -74,5 +75,13 @@ public class Assignment {
             classLabelIds.add(labels.get(i).getId());
             i++;
         }
+    }
+
+    public double getTimeSpent() {
+        return timeSpent;
+    }
+
+    public void setTimeSpent(double timeSpent) {
+        this.timeSpent = timeSpent;
     }
 }
