@@ -64,10 +64,12 @@ public class Dataset {
     }
 
     public Label getLabelWithId(int labelId){
+        Label label2 = new Label(0, "s");
         for (Label label: labels) {
             if (labelId == label.getId())
                 return label;
         }
+        return label2;
     }
 
     public List<User> getUsers() {
