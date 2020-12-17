@@ -1,20 +1,17 @@
 import java.util.ArrayList;
 
 public class UserPerformanceMetrics {
-
-
     private User user;
     private ArrayList<Assignment> assignments;
     private ArrayList<Dataset> datasetsAssigned;
     private ArrayList<Instance> instancesLabeled;
     private ArrayList<Instance> uniqueInstancesLabeled;
-
+    private ArrayList<Dataset> allDatasets;
 
     private int datasetAssigned;
-    private ArrayList<Percentage> datasetCompleteness;
     private int numberOfInstancesLabeled;
     private int numberOfUniqueInstancesLabeled;
-
+    private Percentage datasetCompletenessPercentage;
     private Percentage consistencyPercentage;
     private double averageTimeSpentLabeling;
     private double stdDevOfTimeSpentLabelingInstances;
@@ -22,11 +19,21 @@ public class UserPerformanceMetrics {
 
     public UserPerformanceMetrics(User user) {
         this.user = user;
-        setDatasetAssigned(user);
+        setDatasetAssigned();
+        setNumberOfInstancesLabeled();
+        setNumberOfUniqueInstancesLabeled();
     }
 
     public ArrayList<Dataset> getDatasetsAssigned() {
         return datasetsAssigned;
+    }
+
+    public ArrayList<Assignment> getAssignments() {
+        return assignments;
+    }
+
+    public void setAssignments(ArrayList<Assignment> assignments) {
+        this.assignments = assignments;
     }
 
     public void setDatasetsAssigned(ArrayList<Dataset> datasetsAssigned) {
@@ -37,7 +44,7 @@ public class UserPerformanceMetrics {
         return datasetAssigned;
     }
 
-    public void setDatasetAssigned(User user) {
+    public void setDatasetAssigned() {
         this.datasetAssigned = getDatasetsAssigned().size();
     }
 
@@ -77,16 +84,10 @@ public class UserPerformanceMetrics {
         return numberOfUniqueInstancesLabeled;
     }
 
-    public void setNumberOfUniqueInstancesLabeled(int numberOfUniqueInstancesLabeled) {
+    public void setNumberOfUniqueInstancesLabeled() {
         this.numberOfUniqueInstancesLabeled = uniqueInstancesLabeled.size();
     }
 
-    public ArrayList<Assignment> getAssignments() {
-        return assignments;
-    }
 
-    public void setAssignments(ArrayList<Assignment> assignments) {
-        this.assignments = assignments;
-    }
 }
 

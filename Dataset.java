@@ -1,6 +1,7 @@
 import java.util.List;
 //#m//#lines 24
 public class Dataset {
+
     private int id;
     private String name;
     private String instanceType;
@@ -8,8 +9,10 @@ public class Dataset {
     private List<Label> labels;
     private List<Instance> instances;
     private List<User> users;
+    private DatasetPerformanceMetric datasetPerformanceMetric;
 
     public Dataset(){
+        datasetPerformanceMetric = new DatasetPerformanceMetric(this);
     }
 
     public List<Label> getLabels() {
