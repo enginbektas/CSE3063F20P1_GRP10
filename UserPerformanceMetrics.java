@@ -11,8 +11,8 @@ public class UserPerformanceMetrics {
     private int datasetAssigned;
     private int numberOfInstancesLabeled;
     private int numberOfUniqueInstancesLabeled;
-    private Percentage datasetCompletenessPercentage;
-    private Percentage consistencyPercentage;
+    private ArrayList<Percentage> datasetsCompletenessPercentage;
+    private ArrayList<Percentage> consistencyPercentage;
     private double averageTimeSpentLabeling;
     private double stdDevOfTimeSpentLabelingInstances;
 
@@ -22,6 +22,7 @@ public class UserPerformanceMetrics {
         setDatasetAssigned();
         setNumberOfInstancesLabeled();
         setNumberOfUniqueInstancesLabeled();
+        setDatasetsCompletenessPercentage();
     }
 
     public ArrayList<Dataset> getDatasetsAssigned() {
@@ -88,6 +89,22 @@ public class UserPerformanceMetrics {
         this.numberOfUniqueInstancesLabeled = uniqueInstancesLabeled.size();
     }
 
+    public ArrayList<Dataset> getAllDatasets() {
+        return allDatasets;
+    }
 
+    public void setAllDatasets(ArrayList<Dataset> allDatasets) {
+        this.allDatasets = allDatasets;
+    }
+
+    public ArrayList<Percentage> getDatasetsCompletenessPercentage() {
+        return datasetsCompletenessPercentage;
+    }
+
+    public void setDatasetsCompletenessPercentage() {
+        for (Dataset dataset : allDatasets) {
+            datasetsCompletenessPercentage.add(new Percentage(dataset.getName(), dataset.getDatasetPerformanceMetric().getCompletenessPercentage()));
+        }
+    }
 }
 

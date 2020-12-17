@@ -70,4 +70,12 @@ public class Dataset {
     public void setUsers(List<User> users) {
         this.users = users;
     }
+
+    public DatasetPerformanceMetric getDatasetPerformanceMetric() {
+        return datasetPerformanceMetric;
+    }
+
+    public void setDatasetPerformanceMetric(DatasetPerformanceMetric datasetPerformanceMetric) {
+        this.datasetPerformanceMetric = datasetPerformanceMetric;
+    }
 }
