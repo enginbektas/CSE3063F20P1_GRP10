@@ -15,7 +15,7 @@ public class UserPerformanceMetrics {
 
     private Percentage consistencyPercentage;
 
-    private double totalTimeSpentLabeling;
+    private double totalTimeSpentLabeling; //
     private double averageTimeSpentLabeling;
     private double stdDevOfTimeSpentLabelingInstances;
 
@@ -27,14 +27,7 @@ public class UserPerformanceMetrics {
         this.instancesLabeled = new ArrayList<>();
         this.uniqueInstancesLabeled = new ArrayList<>();
         this.allDatasets = new ArrayList<>();
-
-
-
-        this.numberOfInstancesLabeled = this.instancesLabeled.size();
-        this.numberOfUniqueInstancesLabeled = this.uniqueInstancesLabeled.size();
-        for (Dataset dataset : this.datasetsAssigned) {
-            this.datasetsCompletenessPercentage.add(new Percentage(dataset.getName(), dataset.getDatasetPerformanceMetric().getCompletenessPercentage()));
-        }
+        this.datasetsCompletenessPercentage = new ArrayList<>();
 
     }
 
@@ -120,8 +113,7 @@ public class UserPerformanceMetrics {
     }
 
     public void setNumberOfInstancesLabeled(int numberOfInstancesLabeled) {
-        this.numberOfInstancesLabeled = numberOfInstancesLabeled;
-        this.numberOfInstancesLabeled = instancesLabeled.size();
+        this.numberOfInstancesLabeled = this.instancesLabeled.size();
     }
 
     public ArrayList<Instance> getUniqueInstancesLabeled() {
@@ -137,7 +129,7 @@ public class UserPerformanceMetrics {
     }
 
     public void setNumberOfUniqueInstancesLabeled() {
-        this.numberOfUniqueInstancesLabeled = uniqueInstancesLabeled.size();
+        this.numberOfUniqueInstancesLabeled = this.uniqueInstancesLabeled.size();
     }
 
     public ArrayList<Dataset> getAllDatasets() {
@@ -153,7 +145,7 @@ public class UserPerformanceMetrics {
     }
 
     public void setDatasetsCompletenessPercentage() {
-        for (Dataset dataset : allDatasets) {
+        for (Dataset dataset : this.allDatasets) {
             this.datasetsCompletenessPercentage.add(new Percentage(dataset.getName(), dataset.getDatasetPerformanceMetric().getCompletenessPercentage()));
         }
     }
@@ -163,7 +155,15 @@ public class UserPerformanceMetrics {
     }
 
     public void setAverageTimeSpentLabeling(double averageTimeSpentLabeling) {
-        this.averageTimeSpentLabeling = averageTimeSpentLabeling;
+        this.averageTimeSpentLabeling = totalTimeSpentLabeling;
+    }
+
+    public double getTotalTimeSpentLabeling() {
+        return totalTimeSpentLabeling;
+    }
+
+    public void setTotalTimeSpentLabeling(double totalTimeSpentLabeling) {
+        this.totalTimeSpentLabeling = totalTimeSpentLabeling;
     }
 }
 

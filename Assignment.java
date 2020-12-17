@@ -23,12 +23,12 @@ public class Assignment {
             user.getUserPerformanceMetrics().getDatasetsAssigned().add(dataset);
         if (!user.getUserPerformanceMetrics().getUniqueInstancesLabeled().contains(dataset)) //adds assignment's unique instance to user's userperformancemetrics
             user.getUserPerformanceMetrics().getUniqueInstancesLabeled().add(instance);
-            user.getUserPerformanceMetrics().getInstancesLabeled().add(instance); //adds assignment's instance to user's userperformancemetrics
-        user.getUserPerformanceMetrics().getAssignments().add(this);
+        user.getUserPerformanceMetrics().getInstancesLabeled().add(instance); //adds assignment's instance to user's userperformancemetrics
+        user.getUserPerformanceMetrics().getAssignments().add(this); //adds assignment to the assignments in users usermetric
 
         for (User userIter: userList) {
             if (!userIter.getUserPerformanceMetrics().getAllDatasets().contains(dataset))
-                userIter.getUserPerformanceMetrics().getAllDatasets().add(dataset);
+                userIter.getUserPerformanceMetrics().getAllDatasets().add(dataset); //add every dataset to alldatasets in usermetrics
         }
     }
 
