@@ -21,9 +21,9 @@ public class UserPerformanceMetrics {
     public UserPerformanceMetrics(User user) {
         this.user = user;
 
-        setNumberOfInstancesLabeled();
-        setNumberOfUniqueInstancesLabeled();
-        setDatasetsCompletenessPercentage();
+        // setNumberOfInstancesLabeled();
+        // setNumberOfUniqueInstancesLabeled();
+        // setDatasetsCompletenessPercentage();
     }
 
     public Percentage getConsistencyPercentage() {
