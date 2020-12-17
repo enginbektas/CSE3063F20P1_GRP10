@@ -1,6 +1,7 @@
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 //#lines 28
 public class UnitTest {
@@ -26,6 +27,7 @@ public class UnitTest {
 
         for (User user : userList) {//Loop for every user to label every instance
             newLog.write("***User id = " + user.getId() + " has logged in.***");//Logging user logins
+            long loginDate = System.currentTimeMillis();
             for (int j = 0; j < dataset.getInstances().size(); j++) {//Loop for labeling every instance
                 Assignment tempAssignment = randomLabelingMechanism.randomMechanism(userList, dataset, dataset.getInstances().get(j), user);
                 if (tempAssignment != null){//returns null if there is no space for any further label
@@ -34,6 +36,11 @@ public class UnitTest {
                 }
             }
             newLog.write("***User " + user.getId() + " has logged out.***");
+            long logoutDate = System.currentTimeMillis();
+            long onlineTime = logoutDate - loginDate;
+            onlineTime = onlineTime / 60; // seconds
+            user.getUserPerformanceMetrics().setAverageTimeSpentLabeling((float)onlineTime);
+
         }
         datasetController.writeDataset(storage);//Printing output files
     }
