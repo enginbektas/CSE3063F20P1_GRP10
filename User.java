@@ -7,11 +7,12 @@ public class User {
     private String userName;
     private String userType;
     private transient UserPerformanceMetrics userPerformanceMetrics;
-    private transient ArrayList<Integer> datasetIds;
-    public User(int id, String userName, String userType){
-        setId(id);
-        setUserName(userName);
-        setUserType(userType);
+    private transient ArrayList<Object> datasetIds;
+    public User(int id, String userName, String userType,ArrayList<Object> datasetIds){
+        this.id=id;
+        this.userName=userName;
+        this.userType=userType;
+        this.datasetIds=datasetIds;
         userPerformanceMetrics = new UserPerformanceMetrics(this);
     }
 
