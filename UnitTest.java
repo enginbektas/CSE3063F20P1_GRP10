@@ -58,13 +58,6 @@ public class UnitTest {
         storage.setAssigments(assignments);
         // aynı listeyi userPerformanceList içineki assigment'a eşitle
 
-<<<<<<< HEAD
-        // for(User user :userList){
-        //     UserPerformanceMetrics a = new UserPerformanceMetrics(user);
-
-        // }
-=======
->>>>>>> 48b05b0d55360802bea467fc4fc927a046a8d06c
         RandomLabelingMechanism randomLabelingMechanism = new RandomLabelingMechanism("RandomMechanism");//Creating mechanism
 
 
