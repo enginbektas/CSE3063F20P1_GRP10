@@ -7,12 +7,17 @@ public class User {
     private String userName;
     private String userType;
     private UserPerformanceMetrics userPerformanceMetrics;
-    private ArrayList<Integer> datasetIds;
-    public User(int id, String userName, String userType){
-        setId(id);
-        setUserName(userName);
-        setUserType(userType);
-        userPerformanceMetrics = new UserPerformanceMetrics(this);
+    private ArrayList<Object> datasetIds = new ArrayList<Object>();
+    public User(int id, String userName, String userType,ArrayList<Object> datasetIds){
+        // setId(id);
+        // setUserName(userName);
+        // setUserType(userType);
+        this.id=id;
+        this.userName = userName;
+        this.userType = userType;
+        this.datasetIds=datasetIds;
+        this.userPerformanceMetrics = new UserPerformanceMetrics(this);
+
     }
 
 
@@ -49,7 +54,7 @@ public class User {
         this.userPerformanceMetrics = userPerformanceMetrics;
     }
 
-    public ArrayList<Integer> getDatasetIds() {
+    public ArrayList<Object> getDatasetIds() {
         return datasetIds;
     }
 }

@@ -31,8 +31,23 @@ public class DatasetController {
                 long userId = (long) obj2.get("user id"); //obj2 is now the element of the array
                 String userName = (String) obj2.get("user name");
                 String userType = (String) obj2.get("user type");
-                users.add(new User((int)userId, userName, userType));
+                ArrayList <Object> list =  new ArrayList<Object>();
+                JSONArray  jsonDatasetIds = (JSONArray) obj2.get("dataset ids");
+                
+                // JSONArray obj3 = (JSONArray) jsonArrayForUsers.get(i);
+                // JSONArray  jsonDatasetIds2 = (JSONArray) obj3.getJSONArray("dataset ids");
+                for(int a = 0; a<jsonDatasetIds.size();a++){
+                     list.add(jsonDatasetIds.get(a));
+                    
+                  
+                    
+
+                }
+                users.add(new User((int)userId, userName, userType,list));
             }
+            // Here also  JSONArray jsonArrayForUsers = (JSONArray) jsonObject.get("  "datasets""); will be here
+
+
 
         } catch (Exception e) {
             e.printStackTrace();
