@@ -39,7 +39,7 @@ public class DatasetController {
         }
         return users;
     }
-    public ArrayList<Assignment> assignmentsReader(Dataset dataset, File file) {
+    public ArrayList<Assignment> assignmentsReader(Dataset dataset, File file, ArrayList<User> users) {
 
         JSONParser parser = new JSONParser(); // create JSON parser
         try {
@@ -54,7 +54,13 @@ public class DatasetController {
             dataset.setMaxNumOfLabelsPerInstance((int)
                     (long) jsonObject.get("maximum number of labels per instance"));
 
-            //this block gets the info of labels from the input and assigns it to an array of labels
+            //TODO dataset.getInstance()
+            //  ArrayList<Label> labels = new ArrayList<>();
+            //   labels.add(dataset.getLabel())
+            //  new
+
+            // this block gets the info of labels from the input and assigns it to an array of labels
+
             JSONArray jsonArrayForClassLabels = (JSONArray) jsonObject.get("class labels");
             Label[] labels = new Label[jsonArrayForClassLabels.size()]; // create labels array
 

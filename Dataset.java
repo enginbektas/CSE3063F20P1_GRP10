@@ -87,4 +87,18 @@ public class Dataset {
     public void setDatasetPerformanceMetric(DatasetPerformanceMetric datasetPerformanceMetric) {
         this.datasetPerformanceMetric = datasetPerformanceMetric;
     }
+
+    public Label getLabel(int id){
+        for (Label label : labels) {
+            if (label.getId() == id)
+                return label;
+        }
+    }
+
+    public Instance getIntance(int id){
+        for (Instance instance: instances) {
+            if (instance.getId() == id)
+                return instance;
+        }
+    }
 }
