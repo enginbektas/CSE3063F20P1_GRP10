@@ -56,6 +56,8 @@ public class UserPerformanceMetrics {
         return usersCompleteness;
     }
 
+
+
     public Percentage getConsistencyPercentage() {
         return consistencyPercentage;
     }

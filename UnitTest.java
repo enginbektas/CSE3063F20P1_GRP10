@@ -6,21 +6,44 @@ import java.util.List;
 //#lines 28
 public class UnitTest {
     public static void main(String[] args) {
-        /*
-        Log newLog = new Log();//Creating log
+
+
+        Storage storage = new Storage; //Creating storage
+        Dataset dataset = new Dataset(); //Creating dataset
+        Log newLog = new Log(); //Creating log
         newLog.editLog();
+
 
 
         // TODO read config (
         File file = new File("");
         DatasetController datasetController = new DatasetController();//Creating controller
-        //TODO choose current dataset
-        Dataset currentDataset = new Dataset();
+
+        //TODO create and read config
+        Config config = datasetController.configReader(configFile);
 
         //TODO create users
-        ArrayList<User> users = new ArrayList<>();
+        List<User> users = config.getUsers();
+        //TODO create storage list if at least one exists
+        List<Storage> storages = config.getStorages();
+        //TODO create a list of datasets
+        List<Dataset> datasets = config.getDatasets();
+        for (Storage storageIter : storages)
+            if (storageIter.getDataset().getId() == config.getCurrentDatasetId())
+                dataset = storageIter.getDataset();
+
+        //TODO choose current dataset
+        if (dataset == null)
+        for (Dataset datasetIter : datasets)
+            if (datasetIter.getId() == config.getCurrentDatasetId())
+                dataset = datasetIter;
+
+
+
+
         //TODO if output exists create dataset from output and assignments
         ArrayList<Storage> storages = new ArrayList<>();
+
 
 
         ArrayList<Assignment> assignments
@@ -36,10 +59,6 @@ public class UnitTest {
                     //TODO after every assign update json files
             }
         }
-
-*/
-
-
 
         Storage storage = new Storage();//Creating Storage
         Log newLog = new Log();//Creating log
