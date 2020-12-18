@@ -8,58 +8,58 @@ public class UnitTest {
     public static void main(String[] args) {
 
 
-        Storage storage = new Storage; //Creating storage
+        Storage storage = new Storage(); //Creating storage
         Dataset dataset = new Dataset(); //Creating dataset
         Log newLog = new Log(); //Creating log
         newLog.editLog();
 
 
+
         // TODO read config (
-        File file = new File("");
+        File file = new File("inputs\\config.json");
         DatasetController datasetController = new DatasetController();//Creating controller
 
         //TODO create and read config
-        Config config = datasetController.configReader(configFile); //configReader function has to be implemented
-
-        //TODO create storage list if at least one exists
-        List<Storage> storages = datasetController.storageReader();
+        Config config = datasetController.configReader(configFile);
 
         //TODO create users
         List<User> users = config.getUsers();
-
+        //TODO create storage list if at least one exists
+        List<Storage> storages = config.getStorages();
         //TODO create a list of datasets
         List<Dataset> datasets = config.getDatasets();
-
-        //TODO assign dataset to its matching output if exists
         for (Storage storageIter : storages)
             if (storageIter.getDataset().getId() == config.getCurrentDatasetId())
                 dataset = storageIter.getDataset();
 
-        //TODO assign new dataset if there is no matching output
+        //TODO choose current dataset
         if (dataset == null)
-            for (Dataset datasetIter : datasets)
-                if (datasetIter.getId() == config.getCurrentDatasetId())
-                    dataset = datasetIter;
+        for (Dataset datasetIter : datasets)
+            if (datasetIter.getId() == config.getCurrentDatasetId())
+                dataset = datasetIter;
 
-        //TODO remove illegal users from the list
-        for (User user : users)
-            if (!user.getDatasetIds().contains(config.getCurrentDatasetId()))
-                users.remove(user);
 
-        List<Assignment> assignments = new ArrayList<>();
-        storage.setDataset(dataset);
-        storage.setUsers(users);
-        storage.setAssigments(assignments);
+
+
+        //TODO if output exists create dataset from output and assignments
+        ArrayList<Storage> storages = new ArrayList<>();
+
+
+
+        ArrayList<Assignment> assignments
+        //else from config
+
 
         //TODO assign labels to current  dataset
-        for (User user : users) {
-            //TODO assign loop
+        for (User user: users) {
+            for (int i = 0; i < user.getDatasetIds().size(); i++) {
+                if (user.getDatasetIds().get(i) == currentDatasetId);
+                    //TODO assign loop
 
-            //TODO after every assign update json files
+                    //TODO after every assign update json files
+            }
         }
-    }
-}
-        /*
+
         Storage storage = new Storage();//Creating Storage
         Log newLog = new Log();//Creating log
         newLog.editLog();
@@ -101,8 +101,8 @@ public class UnitTest {
             user.getUserPerformanceMetrics().setTotalTimeSpentLabeling((float)onlineTime);
             user.getUserPerformanceMetrics().setAverageTimeSpentLabeling();
         }
-        datasetController.writeDataset(storage);//Printing output files
-
-        */
+        datasetController.writeDataset(storage);//Printing output files*/
 
 
+    }
+}
