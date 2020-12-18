@@ -4,14 +4,12 @@ import java.util.List;
 public class Config {
     private ArrayList<Dataset> datasets;
     private ArrayList<User> users;
-    private ArrayList<Storage> storages;
     private int currentDatasetId;
 
-    public Config(ArrayList<Dataset> datasets, ArrayList<User> users, ArrayList<Storage> storages,int currentDatasetId){
+    public Config(ArrayList<Dataset> datasets, ArrayList<User> users,int currentDatasetId){
         this.datasets = datasets;
         this.users = users;
         this.currentDatasetId = currentDatasetId;
-        this.storages = storages;
     }
 
     public ArrayList<Dataset> getDatasets() {
@@ -38,11 +36,7 @@ public class Config {
         this.currentDatasetId = currentDatasetId;
     }
 
-    public ArrayList<Storage> getStorages() {
-        return storages;
-    }
+    
 
-    public void setStorages(ArrayList<Storage> storages) {
-        this.storages = storages;
-    }
+    
 }
