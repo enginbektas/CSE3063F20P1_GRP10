@@ -3,10 +3,11 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-//#lines 28
+
 public class UnitTest {
     public static void main(String[] args) {
-
+        //TODO datasetController class needs to be updated.
+        //TODO configReader, outputReader, datasetReader methods are required.
 
         Storage storage = new Storage; //Creating storage
         Dataset dataset = new Dataset(); //Creating dataset
@@ -14,34 +15,35 @@ public class UnitTest {
         newLog.editLog();
 
 
-        // TODO read config (
+        // read config (
         File file = new File("");
         DatasetController datasetController = new DatasetController();//Creating controller
 
-        //TODO create and read config
+        // create and read config
         File configFile = new File("");
         Config config = datasetController.configReader(configFile); //configReader function has to be implemented
 
         // create storage list if at least one exists
         // List<Storage> storages = datasetController.storageReader();
 
-        //TODO create users
+        // create users
         List<User> users = config.getUsers();
 
-        //TODO create a list of dataset pointers
+        // create a list of dataset pointers
         List<DatasetPointer> datasetPointers = config.getDatasetPointers();
 
-        //TODO assign dataset to its matching output if exists
+        // assign dataset to its matching output, if exists
         File outputFile = new File("Output" + config.getCurrentDatasetId());
         if(outputFile.exists()) {
             storage = datasetController.outputReader(outputFile);
             dataset = storage.getDataset();
+            // TODO assign previous labels from storage to current dataset. Some classes may need updates.
             for (Assignment assignment : storage.getAssigments())
-                for ()
+
         }
 
 
-        //TODO assign new dataset if there is no matching output
+        //assign new dataset if there is no matching output
         if (dataset == null) {
             for (DatasetPointer datasetPointerIter : datasetPointers) {
                 if (datasetPointerIter.getId() == config.getCurrentDatasetId()) {
@@ -52,7 +54,7 @@ public class UnitTest {
             }
         }
 
-        //TODO remove illegal users from the list
+        // remove illegal users from the list
         for (User user : users)
             if (!user.getDatasetIds().contains(config.getCurrentDatasetId()))
                 users.remove(user);
