@@ -2,24 +2,22 @@ import java.util.ArrayList;
 import java.util.List;
 //#methods =13
 public class Config {
-    private ArrayList<Dataset> datasets;
     private ArrayList<User> users;
-    private ArrayList<Storage> storages;
+    private ArrayList<DatasetPointer> datasetPointers;
     private int currentDatasetId;
 
-    public Config(ArrayList<Dataset> datasets, ArrayList<User> users, ArrayList<Storage> storages,int currentDatasetId){
-        this.datasets = datasets;
+    public Config(ArrayList<DatasetPointer> datasetPointers, ArrayList<User> users,int currentDatasetId){
+        this.datasetPointers = datasetPointers;
         this.users = users;
         this.currentDatasetId = currentDatasetId;
-        this.storages = storages;
     }
 
-    public ArrayList<Dataset> getDatasets() {
-        return datasets;
+    public ArrayList<DatasetPointer> getDatasetPointers() {
+        return datasetPointers;
     }
 
-    public void setDatasets(ArrayList<Dataset> datasets) {
-        this.datasets = datasets;
+    public void setDatasets(ArrayList<DatasetPointer> datasetPointers) {
+        this.datasetPointers = datasetPointers;
     }
 
     public ArrayList<User> getUsers() {
@@ -38,11 +36,4 @@ public class Config {
         this.currentDatasetId = currentDatasetId;
     }
 
-    public ArrayList<Storage> getStorages() {
-        return storages;
-    }
-
-    public void setStorages(ArrayList<Storage> storages) {
-        this.storages = storages;
-    }
 }

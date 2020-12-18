@@ -19,27 +19,38 @@ public class UnitTest {
         DatasetController datasetController = new DatasetController();//Creating controller
 
         //TODO create and read config
+        File configFile = new File("");
         Config config = datasetController.configReader(configFile); //configReader function has to be implemented
 
-        //TODO create storage list if at least one exists
-        List<Storage> storages = datasetController.storageReader();
+        // create storage list if at least one exists
+        // List<Storage> storages = datasetController.storageReader();
 
         //TODO create users
         List<User> users = config.getUsers();
 
-        //TODO create a list of datasets
-        List<Dataset> datasets = config.getDatasets();
+        //TODO create a list of dataset pointers
+        List<DatasetPointer> datasetPointers = config.getDatasetPointers();
 
         //TODO assign dataset to its matching output if exists
-        for (Storage storageIter : storages)
-            if (storageIter.getDataset().getId() == config.getCurrentDatasetId())
-                dataset = storageIter.getDataset();
+        File outputFile = new File("Output" + config.getCurrentDatasetId());
+        if(outputFile.exists()) {
+            storage = datasetController.outputReader(outputFile);
+            dataset = storage.getDataset();
+            for (Assignment assignment : storage.getAssigments())
+                for ()
+        }
+
 
         //TODO assign new dataset if there is no matching output
-        if (dataset == null)
-            for (Dataset datasetIter : datasets)
-                if (datasetIter.getId() == config.getCurrentDatasetId())
-                    dataset = datasetIter;
+        if (dataset == null) {
+            for (DatasetPointer datasetPointerIter : datasetPointers) {
+                if (datasetPointerIter.getId() == config.getCurrentDatasetId()) {
+                    File datasetFile = new File(datasetPointerIter.getPath());
+                    dataset = datasetController.reader(datasetFile);
+                    break;
+                }
+            }
+        }
 
         //TODO remove illegal users from the list
         for (User user : users)
