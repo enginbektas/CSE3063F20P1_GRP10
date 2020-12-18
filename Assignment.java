@@ -12,6 +12,7 @@ public class Assignment {
     private transient double timeSpent;
 
     public Assignment(List<User> userList, Dataset dataset, Instance instance, User user, String date, List<Label> labels, Mechanism mechanism){
+        instance.getLabels().addAll(labels);
         this.dataset = dataset;
         this.instanceId = (int)instance.getId();
         this.classLabelIds = new ArrayList<Integer>();

@@ -39,6 +39,49 @@ public class DatasetController {
         }
         return users;
     }
+    public ArrayList<Assignment> assignmentsReader(Dataset dataset, File file) {
+
+        JSONParser parser = new JSONParser(); // create JSON parser
+        try {
+
+            Object obj = parser.parse(new FileReader(file));
+            JSONObject jsonObject = (JSONObject) obj; //assign the parsed version of our file to a JSONObject
+
+            long id = (long) jsonObject.get("instance id"); // setting dataset id
+            dataset.setId((int) id);
+
+            dataset.setName((String) jsonObject.get("dataset name"));
+            dataset.setMaxNumOfLabelsPerInstance((int)
+                    (long) jsonObject.get("maximum number of labels per instance"));
+
+            //this block gets the info of labels from the input and assigns it to an array of labels
+            JSONArray jsonArrayForClassLabels = (JSONArray) jsonObject.get("class labels");
+            Label[] labels = new Label[jsonArrayForClassLabels.size()]; // create labels array
+
+            for (int i=0; i<jsonArrayForClassLabels.size(); i++) { //assigns the given labels in the input to the labels array
+                JSONObject obj2 = (JSONObject) jsonArrayForClassLabels.get(i); //declare obj2 to i'th element of JSON classlabelsarray
+                long labelId = (long) obj2.get("label id"); //obj2 is now the element of the array
+                String labelText = (String) obj2.get("label text");
+                labels[i] = new Label(labelId, labelText);
+            }
+            dataset.setLabels(Arrays.asList(labels));
+
+            //this block gets the info of instances from the input and assigns it to an array of instances
+            JSONArray jsonArrayForInstances = (JSONArray) jsonObject.get("instances");
+            Instance[] instances = new Instance[jsonArrayForInstances.size()];
+            for (int i=0; i<jsonArrayForInstances.size(); i++) { //assigns the given instances in the input to the instances array
+                JSONObject obj2 = (JSONObject) jsonArrayForInstances.get(i); //declare obj2 to i'th element of JSON classlabelsarray
+                long instanceId = (long) obj2.get("id"); //obj2 is now the element of the array
+                String instance = (String) obj2.get("instance");
+                instances[i] = new Instance(instanceId, instance);
+            }
+            dataset.setInstances(Arrays.asList(instances));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return dataset;
+    }
+
     public Config configReader(File file) {
         Config config ;
         List<User> users = new ArrayList<User>();

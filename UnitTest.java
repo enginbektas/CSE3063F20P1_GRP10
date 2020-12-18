@@ -8,12 +8,11 @@ public class UnitTest {
     public static void main(String[] args) {
         //TODO datasetController class needs to be updated.
         //TODO configReader, outputReader, datasetReader methods are required.
-
-        Storage storage = new Storage; //Creating storage
-        Dataset dataset = new Dataset(); //Creating dataset
+        ArrayList<Storage> storageList = new ArrayList<>();
+        ArrayList<Dataset> datasetList = new ArrayList<>();
+        Dataset currentDataset;
         Log newLog = new Log(); //Creating log
         newLog.editLog();
-
 
         // read config (
         File file = new File("");
@@ -23,14 +22,17 @@ public class UnitTest {
         File configFile = new File("");
         Config config = datasetController.configReader(configFile); //configReader function has to be implemented
 
-        // create storage list if at least one exists
-        // List<Storage> storages = datasetController.storageReader();
-
         // create users
         List<User> users = config.getUsers();
 
         // create a list of dataset pointers
         List<DatasetPointer> datasetPointers = config.getDatasetPointers();
+
+        for (DatasetPointer datasetPointer: datasetPointers) {
+            datasetList.add(datasetController.reader(new File(datasetPointer.getPath())));
+            if (datasetPointer.getId() == config.getCurrentDatasetId())
+                currentDataset = datasetList.get(datasetList.size());
+        }
 
         // assign dataset to its matching output, if exists
         File outputFile = new File("Output" + config.getCurrentDatasetId());

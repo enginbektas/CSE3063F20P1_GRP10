@@ -46,7 +46,6 @@ public class RandomLabelingMechanism extends Mechanism{
                 int k = (int) (Math.random() * (dataset.getLabels().size() - 1));//Get a random int value for choosing label from label list
                 if ( !instance.getLabels().contains(dataset.getLabels().get(k)) ){//Checks if instance has that label or labels to use has it
                     labelsToUse.add(dataset.getLabels().get(k));
-                    instance.getLabels().add(dataset.getLabels().get(k));
                     log.write("User " + user.getId() + " labeled instance " + instance.getId() + " by label " + dataset.getLabels().get(k).getId() + ".");
                     break;
                 }
