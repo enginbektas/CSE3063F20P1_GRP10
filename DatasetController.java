@@ -76,22 +76,9 @@ public class DatasetController {
                     if (outputFile.exists()) {
                         storage = storageReader(outputFile);
                         //TODO assign assignments to dataset
-                        for (Instance instance : storage.getDataset().getInstances()) {
-                            for (Assignment assignment : storage.getAssigments()) {
-                                if (instance.getId() == assignment.getInstanceId()) {
-                                    //TODO create a list of labels from assignments label ids, check them with datasets label ids and reach to instance itself
-                                    ArrayList<Label> labels = new ArrayList<>();
-                                    for (Integer labelId : assignment.getLabels())
-                                        for (Label label : storage.getDataset().getLabels())
-                                            if (labelId == label.getId())
-                                                labels.add(label);
-                                    Assignment newAssignment = new Assignment(instance, assignment.getUserId(), assignment.getDate(), labels);
-                                }
-                            }
-                        }
+                        assigner(storage);
                     }
-                    else //if no output, read input
-                        storage.setDataset(reader(new File(path)));
+                    else //if no output, read inputstorage.setDataset(reader(new File(path)));
                     storageList.add(storage);
             }
         } catch (Exception e) {
@@ -185,6 +172,22 @@ public class DatasetController {
         }
 
         return storage;
+    }
+
+    public void assigner(Storage storage) {
+        for (Instance instance : storage.getDataset().getInstances()) {
+            for (Assignment assignment : storage.getAssigments()) {
+                if (instance.getId() == assignment.getInstanceId()) {
+                    //TODO create a list of labels from assignments label ids, check them with datasets label ids and reach to instance itself
+                    ArrayList<Label> labels = new ArrayList<>();
+                    for (Integer labelId : assignment.getLabels())
+                        for (Label label : storage.getDataset().getLabels())
+                            if (labelId == label.getId())
+                                labels.add(label);
+                    Assignment newAssignment = new Assignment(instance, assignment.getUserId(), assignment.getDate(), labels);
+                }
+            }
+        }
     }
 
     public void writeDataset(Storage storage){
