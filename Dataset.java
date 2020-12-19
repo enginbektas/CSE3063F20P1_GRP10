@@ -7,6 +7,7 @@ public class Dataset {
     private int maxNumOfLabelsPerInstance;
     private List<Label> labels;
     private List<Instance> instances;
+    private transient Storage storage;
 
     public Dataset(){
     }
@@ -59,5 +60,11 @@ public class Dataset {
         this.maxNumOfLabelsPerInstance = maxNumOfLabelsPerInstance;
     }
 
+    public Storage getStorage() {
+        return storage;
+    }
 
+    public void setStorage(Storage storage) {
+        this.storage = storage;
+    }
 }

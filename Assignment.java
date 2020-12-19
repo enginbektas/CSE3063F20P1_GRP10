@@ -21,6 +21,13 @@ public class Assignment {
         instance.getLabels().addAll(labels);
     }
 
+    public Assignment(int instanceId, int userId, String date, List<Integer> labels){ //for reading
+        this.instanceId = (int)instanceId;
+        this.classLabelIds = labels;
+        this.userId = userId;
+        this.date = date;
+    }
+
     public int getUserId() {
         return userId;
     }

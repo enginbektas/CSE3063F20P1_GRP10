@@ -1,7 +1,7 @@
 {
 "users":[
-{"user id":1,"user name":"RandomLabelingMechanism1","user type":"RandomBot"},
-{"user id":2,"user name":"RandomLabelingMechanism2","user type":"RandomBot"},
-{"user id":3,"user name":"MachineLearningLabelingMechanism","user type":"MachineLearningBot"}
+{"user id":1,"user name":"RandomLabelingMechanism1","user type":"RandomBot", "datasetIds": [1,2,3]},
+{"user id":2,"user name":"RandomLabelingMechanism2","user type":"RandomBot", "datasetIds": [4,5,6]},
+{"user id":3,"user name":"MachineLearningLabelingMechanism","user type":"MachineLearningBot", "datasetIds": [7,8,9]}
 ]
 }
