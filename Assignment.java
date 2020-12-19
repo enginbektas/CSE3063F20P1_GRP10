@@ -52,6 +52,7 @@ public class Assignment {
         for (Label label : labels) {
             classLabelIds.add(labels.get(i).getId());
             i++;
-        }//
+
+        }////
     }
 }
