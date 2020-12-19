@@ -6,6 +6,15 @@ import java.util.List;
 public class UnitTest {
     public static void main(String[] args) {
 
+        //TODO
+        // all datasets in the config file should be created as a list of storages in the unitTest
+        // if a dataset's output exists, dataset should be created from the output and neccessary assignments must be made.
+        //     configReader is responsible for these operations
+        //     configReader reads outputs via storageReader and assigns previous assignments via assigner method.
+        //     if output does not exist, configReader reads dataset via datasetReader method.
+        //     finally adds them all to a list and returns the storage list.
+        // why storage list instead of dataset list? -> we should have the assignment information for each dataset, via storage
+
         Storage storage = new Storage();//Creating Storage
         Log newLog = new Log();//Creating log
         newLog.editLog();

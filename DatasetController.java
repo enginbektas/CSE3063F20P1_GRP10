@@ -48,14 +48,41 @@ public class DatasetController {
         return users;
     }
 
-    public ArrayList<Dataset> configController(File file) {
+    public ArrayList<Storage> configController(File file) {
         //TODO iterate through configs datasets, check if they have output, if so read output with storageReader
         //  hold dataset and assignments and users, call assigner and set assignments to dataset,
         //  set dataset.getStorage.setDataset, dataset.getStorage.setAssignments, dataset.getStorage.setUsers
         // if not read dataset with datasetReader
         // add the dataset to the list, iterate for the next dataset
         // return the list of datasets
+        ArrayList<DatasetPointer> datasetPointers = new ArrayList<DatasetPointer>();
+        JSONParser parser = new JSONParser(); // create JSON parser
+        try {
+            Object obj = parser.parse(new FileReader(file));
+            JSONObject jsonObject = (JSONObject) obj; //assign the parsed version of our file to a JSONObject
 
+            JSONArray jsonArrayForUsers = (JSONArray) jsonObject.get("users");
+            Instance[] instances = new Instance[jsonArrayForUsers.size()];
+
+            for (int i=0; i<jsonArrayForUsers.size(); i++) { //assigns the given instances in the input to the instances array
+                JSONObject obj2 = (JSONObject) jsonArrayForUsers.get(i); //declare obj2 to i'th element of JSON classlabelsarray
+                long userId = (long) obj2.get("user id"); //obj2 is now the element of the array
+                String userName = (String) obj2.get("user name");
+                String userType = (String) obj2.get("user type");
+
+                JSONArray jsonArrayForDatasetIds = (JSONArray) obj2.get("datasetIds");
+                ArrayList<Integer> datasetIds = new ArrayList<>(); //set dataset ids to user
+                for (int j=0; j<jsonArrayForDatasetIds.size(); j++) { // iterate size times
+                    long datasetId = (long) jsonArrayForDatasetIds.get(j); //
+                    datasetIds.add((int)datasetId); //
+                }
+                users.add(new User((int)userId, userName, userType, datasetIds));
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return users;
     }
 
     public Dataset reader(File file) {
@@ -174,7 +201,6 @@ public class DatasetController {
 
         return storage;
     }
-
 
     public void writeDataset(Storage storage){
         Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();

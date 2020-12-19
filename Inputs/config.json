@@ -5,3 +5,24 @@
 {"user id":3,"user name":"MachineLearningLabelingMechanism","user type":"MachineLearningBot", "datasetIds": [7,8,9]}
 ]
 }
+
+/*
+  {
+  "users":[
+  {"user id":1,"user name":"RandomLabelingMechanism1","user type":"RandomBot", "dataset ids": [1 ,2]},
+  {"user id":2,"user name":"RandomLabelingMechanism2","user type":"RandomBot","dataset ids": [1 ,2]},
+  {"user id":3,"user name":"MachineLearningLabelingMechanism","user type":"MachineLearningBot","dataset ids": [2 ,3]}
+  ],
+
+  "datasets":[
+    {"dataset id":1,"dataset name":"dataset1","path":"RandomBot"},
+    {"dataset id":2,"dataset name":"dataset2","path":"RandomBot"},
+    {"dataset id":3,"dataset name":"dataset3","path":"MachineLearningBot"}
+  ],
+
+    "current dataset id": 1
+}
+
+
+
+*/
