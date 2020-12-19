@@ -56,7 +56,7 @@ public class DatasetController {
         // add the dataset to the list, iterate for the next dataset
         // return the list of datasets
         ArrayList<Storage> storageList = new ArrayList<Storage>();
-        Storage storage = new Storage();
+
         Dataset dataset = new Dataset();
         JSONParser parser = new JSONParser(); // create JSON parser
         try {
@@ -66,6 +66,7 @@ public class DatasetController {
             JSONArray jsonArrayForDatasetPointers = (JSONArray) jsonObject.get("datasets");
 
             for (int i=0; i<jsonArrayForDatasetPointers.size(); i++) {
+                Storage storage = new Storage();
                 JSONObject obj2 = (JSONObject) jsonArrayForDatasetPointers.get(i); //declare obj2 to i'th element of JSON classlabelsarray
                 long datasetId = (long) obj2.get("dataset id"); //obj2 is now the element of the array
                 String path = (String) obj2.get("path");
@@ -73,7 +74,6 @@ public class DatasetController {
                     File inputFile = new File(path);
                     if (outputFile.exists()) {
                         storage = storageReader(outputFile);
-                        //TODO assign assignments to dataset
                         assigner(storage);
                     }
                     else {//if no output, read inputstorage.setDataset(reader(new File(path)));

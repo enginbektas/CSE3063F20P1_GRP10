@@ -13,14 +13,21 @@ public class UnitTest {
         //     configReader reads outputs via storageReader and assigns previous assignments via assigner method.
         //     if output does not exist, configReader reads dataset via datasetReader method.
         //     finally adds them all to a list and returns the storage list.
-        // why storage list instead of dataset list? -> we should have the assignment information for each dataset, via storage
+        //     why storage list instead of dataset list? -> we should have the assignment information for each dataset, via storage
+
+
+
+
+
 
         Storage storage = new Storage();//Creating Storage
         Log newLog = new Log();//Creating log
         newLog.editLog();
         DatasetController datasetController = new DatasetController();//Creating controller
 
-        File inputFile = new File("inputs\\CES3063F20_LabelingProject_Input-2.json");
+        ArrayList<Storage> storageList = datasetController.configController(new File("Inputs\\config.json"));
+
+                File inputFile = new File("inputs\\CES3063F20_LabelingProject_Input-2.json");
         File userFile = new File("inputs\\config.json");
 
         Dataset dataset = datasetController.reader(inputFile);//Reading dataset from json file
@@ -45,8 +52,6 @@ public class UnitTest {
             newLog.write("***User " + user.getId() + " has logged out.***");
         }
         datasetController.writeDataset(storage);//Printing output files
-
         ArrayList<Storage> storageList = datasetController.configController(new File("Inputs\\config.json"));
-        System.out.println("THIS IS A TEST" + storageList.get(0).getDataset().getId());
     }
 }
