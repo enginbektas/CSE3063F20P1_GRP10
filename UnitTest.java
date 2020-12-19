@@ -1,8 +1,5 @@
 
-import java.io.File;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 public class UnitTest {
     public static void main(String[] args) {
@@ -13,7 +10,7 @@ public class UnitTest {
         Dataset currentDataset;
         Log newLog = new Log(); //Creating log
         newLog.editLog();
-
+        /*
         // read config (
         File file = new File("");
         DatasetController datasetController = new DatasetController();//Creating controller
@@ -71,7 +68,7 @@ public class UnitTest {
             //TODO assign loop
 
             //TODO after every assign update json files
-        }
+        }        */
     }
 }
         /*
