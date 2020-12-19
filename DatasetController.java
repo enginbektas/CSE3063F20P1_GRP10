@@ -16,7 +16,7 @@ public class DatasetController {
 
     }
 
-    public ArrayList<User> userReader(File file) {
+    public ArrayList<User> userReader(File file)  {
         ArrayList<User> users = new ArrayList<User>();
         JSONParser parser = new JSONParser(); // create JSON parser
         try {
@@ -67,18 +67,32 @@ public class DatasetController {
             JSONArray jsonArrayForDatasetPointers = (JSONArray) jsonObject.get("datasets");
             DatasetPointer[] datasetPointersArray = new DatasetPointer[jsonArrayForDatasetPointers.size()];
 
-            for (int i=0; i<jsonArrayForDatasetPointers.size(); i++) { //assigns the given instances in the input to the instances array
+            for (int i=0; i<jsonArrayForDatasetPointers.size(); i++) {
                 JSONObject obj2 = (JSONObject) jsonArrayForDatasetPointers.get(i); //declare obj2 to i'th element of JSON classlabelsarray
                 long datasetId = (long) obj2.get("dataset id"); //obj2 is now the element of the array
                 String datasetName = (String) obj2.get("dataset name");
                 String path = (String) obj2.get("path");
                     File outputFile = new File("Output"+datasetId);
-                    if (outputFile.exists())
+                    if (outputFile.exists()) {
                         storage = storageReader(outputFile);
-                    else
+                        //TODO assign assignments to dataset
+                        for (Instance instance : storage.getDataset().getInstances()) {
+                            for (Assignment assignment : storage.getAssigments()) {
+                                if (instance.getId() == assignment.getInstanceId()) {
+                                    //TODO create a list of labels from assignments label ids, check them with datasets label ids and reach to instance itself
+                                    ArrayList<Label> labels = new ArrayList<>();
+                                    for (Integer labelId : assignment.getLabels())
+                                        for (Label label : storage.getDataset().getLabels())
+                                            if (labelId == label.getId())
+                                                labels.add(label);
+                                    Assignment newAssignment = new Assignment(instance, assignment.getUserId(), assignment.getDate(), labels);
+                                }
+                            }
+                        }
+                    }
+                    else //if no output, read input
                         storage.setDataset(reader(new File(path)));
                     storageList.add(storage);
-                datasetPointers.add(new DatasetPointer((int)datasetId, datasetName, path));
             }
         } catch (Exception e) {
             e.printStackTrace();

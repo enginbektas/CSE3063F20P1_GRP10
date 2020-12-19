@@ -28,10 +28,20 @@ public class Assignment {
         this.date = date;
     }
 
+    public Assignment(Instance instance, int userId, String date, List<Label> labels){ //assigning in controller
+        this.instanceId = (int)instance.getId();
+        this.classLabelIds = new ArrayList<Integer>();
+        setLabels(labels);
+        this.userId = userId;
+        this.date = date;
+        instance.getLabels().addAll(labels);
+
+    }
+
     public int getUserId() {
         return userId;
     }
-    public int getInstance() {
+    public int getInstanceId() {
         return instanceId;
     }
 
