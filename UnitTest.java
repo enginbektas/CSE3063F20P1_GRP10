@@ -45,5 +45,8 @@ public class UnitTest {
             newLog.write("***User " + user.getId() + " has logged out.***");
         }
         datasetController.writeDataset(storage);//Printing output files
+
+        ArrayList<Storage> storageList = datasetController.configController(new File("Inputs\\config.json"));
+        System.out.println("THIS IS A TEST" + storageList.get(0).getDataset().getId());
     }
 }

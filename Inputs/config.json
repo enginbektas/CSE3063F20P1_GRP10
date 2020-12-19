@@ -6,9 +6,8 @@
   ],
 
   "datasets":[
-    {"dataset id":1,"dataset name":"dataset1","path":"RandomBot"},
-    {"dataset id":2,"dataset name":"dataset2","path":"RandomBot"},
-    {"dataset id":3,"dataset name":"dataset3","path":"MachineLearningBot"}
+    {"dataset id":1,"dataset name":"dataset1","path":"Inputs\\CES3063F20_LabelingProject_Input-1.json"},
+    {"dataset id":2,"dataset name":"dataset2","path":"Inputs\\CES3063F20_LabelingProject_Input-2.json"},
   ],
 
     "current dataset id": 1

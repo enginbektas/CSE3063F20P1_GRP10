@@ -33,7 +33,7 @@ public class DatasetController {
                 String userName = (String) obj2.get("user name");
                 String userType = (String) obj2.get("user type");
 
-                JSONArray jsonArrayForDatasetIds = (JSONArray) obj2.get("datasetIds");
+                JSONArray jsonArrayForDatasetIds = (JSONArray) obj2.get("dataset ids");
                 ArrayList<Integer> datasetIds = new ArrayList<>(); //set dataset ids to user
                 for (int j=0; j<jsonArrayForDatasetIds.size(); j++) { // iterate size times
                     long datasetId = (long) jsonArrayForDatasetIds.get(j); //
