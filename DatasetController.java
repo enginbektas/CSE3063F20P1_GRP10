@@ -56,30 +56,31 @@ public class DatasetController {
         // add the dataset to the list, iterate for the next dataset
         // return the list of datasets
         ArrayList<Storage> storageList = new ArrayList<Storage>();
-        ArrayList<DatasetPointer> datasetPointers = new ArrayList<DatasetPointer>();
         Storage storage = new Storage();
+        Dataset dataset = new Dataset();
         JSONParser parser = new JSONParser(); // create JSON parser
         try {
 
             Object obj = parser.parse(new FileReader(file));
             JSONObject jsonObject = (JSONObject) obj; //assign the parsed version of our file to a JSONObject
-
             JSONArray jsonArrayForDatasetPointers = (JSONArray) jsonObject.get("datasets");
-            DatasetPointer[] datasetPointersArray = new DatasetPointer[jsonArrayForDatasetPointers.size()];
 
             for (int i=0; i<jsonArrayForDatasetPointers.size(); i++) {
                 JSONObject obj2 = (JSONObject) jsonArrayForDatasetPointers.get(i); //declare obj2 to i'th element of JSON classlabelsarray
                 long datasetId = (long) obj2.get("dataset id"); //obj2 is now the element of the array
-                String datasetName = (String) obj2.get("dataset name");
                 String path = (String) obj2.get("path");
                     File outputFile = new File("Output"+datasetId);
+                    File inputFile = new File(path);
                     if (outputFile.exists()) {
                         storage = storageReader(outputFile);
                         //TODO assign assignments to dataset
                         assigner(storage);
                     }
-                    else //if no output, read inputstorage.setDataset(reader(new File(path)));
-                    storageList.add(storage);
+                    else {//if no output, read inputstorage.setDataset(reader(new File(path)));
+                        dataset = reader(inputFile);
+                        storage.setDataset(dataset);
+                    }
+                 storageList.add(storage);
             }
         } catch (Exception e) {
             e.printStackTrace();
