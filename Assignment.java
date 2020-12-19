@@ -18,6 +18,7 @@ public class Assignment {
         this.userId = userId;
         this.date = date;
         this.mechanism = mechanism;
+        instance.getLabels().addAll(labels);
     }
 
     public int getUserId() {
