@@ -32,9 +32,9 @@ public class RandomLabelingMechanism extends Mechanism{
         SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss ");
         //s holds the current time
         Date date = new Date(System.currentTimeMillis());
-        String s =  formatter.format(date);
+        String dateString =  formatter.format(date);
         //Labels are assigned. Now creating an assignment object
-        Assignment assignment = new Assignment(userList, dataset, instance, user, s, labelsToUse, this);
+        Assignment assignment = new Assignment(dataset, userList, instance, user, dateString, labelsToUse);
         assignments.add(assignment);
         return assignment;
     }

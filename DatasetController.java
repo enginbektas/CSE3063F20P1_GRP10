@@ -10,6 +10,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 
 public class DatasetController {
@@ -58,6 +59,7 @@ public class DatasetController {
         // add the dataset to the list, iterate for the next dataset
         // return the list of datasets
         ArrayList<Storage> storageList = new ArrayList<Storage>();
+        List<User> userList = userReader(file);
 
         Dataset dataset = new Dataset();
         JSONParser parser = new JSONParser(); // create JSON parser
@@ -76,12 +78,13 @@ public class DatasetController {
                 File inputFile = new File(path);
                 if (outputFile.exists()) {
                     storage = storageReader(outputFile);
-                    assigner(storage);
+                    assigner(storage, userList);
                 }
                 else {//if no output, read inputstorage.setDataset(reader(new File(path)));
                     dataset = reader(inputFile);
                     storage.setDataset(dataset);
                 }
+                storage.getDataset().setStorage(storage);
                 storageList.add(storage);
             }
         } catch (Exception e) {
@@ -170,6 +173,13 @@ public class DatasetController {
             storage.setAssigments(Arrays.asList(assignments));
             storage.setUsers(userList);
 
+            for (Assignment assignmentIter : storage.getAssigments()) {
+                assignmentIter.setDataset(dataset); // Set dataset
+                assignmentIter.setUserList(userList);  // Set userList
+                assignmentIter.setUser(); // Set user
+                assignmentIter.setInstance();
+                }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -177,7 +187,7 @@ public class DatasetController {
         return storage;
     }
 
-    public void assigner(Storage storage) {
+    public void assigner(Storage storage, List<User> userList) {
         for (Instance instance : storage.getDataset().getInstances()) {
             for (Assignment assignment : storage.getAssigments()) {
                 if (instance.getId() == assignment.getInstanceId()) {
@@ -187,7 +197,9 @@ public class DatasetController {
                         for (Label label : storage.getDataset().getLabels())
                             if (labelId == label.getId())
                                 labels.add(label);
-                    Assignment newAssignment = new Assignment(instance, assignment.getUserId(), assignment.getDate(), labels);
+                    Assignment newAssignment = new Assignment(storage.getDataset(), userList, instance, assignment.getUser(), assignment.getDate(), labels);
+                    // TODO Assignment(Dataset dataset, List<User> userList,
+                    //  Instance instance, User user, String date, List<Label> labels, Mechanism mechanism)
                 }
             }
         }
