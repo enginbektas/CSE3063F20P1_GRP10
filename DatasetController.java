@@ -80,7 +80,7 @@ public class DatasetController {
                     storage = storageReader(outputFile);
                     assigner(storage, userList);
                 }
-                else {//if no output, read inputstorage.setDataset(reader(new File(path)));
+                else {//if no output, read input
                     dataset = reader(inputFile);
                     storage.setDataset(dataset);
                 }

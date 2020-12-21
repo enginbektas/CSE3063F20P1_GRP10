@@ -1,15 +1,19 @@
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class UnitTest {
     public static void main(String[] args) {
         //TODO datasetController class needs to be updated.
         //TODO configReader, outputReader, datasetReader methods are required.
+        DatasetController datasetController = new DatasetController();//Creating controller
         ArrayList<Storage> storageList = new ArrayList<>();
         ArrayList<Dataset> datasetList = new ArrayList<>();
+
         Dataset currentDataset;
         Log newLog = new Log(); //Creating log
         newLog.editLog();
+        storageList = datasetController.configController(new File("Inputs\\config.json"));
         /*
         // read config (
         File file = new File("");
