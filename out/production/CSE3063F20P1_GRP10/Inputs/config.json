@@ -7,7 +7,7 @@
 
   "datasets":[
     {"dataset id":1,"dataset name":"dataset1","path":"Inputs/CES3063F20_LabelingProject_Input-1.json"},
-    {"dataset id":2,"dataset name":"dataset2","path":"Inputs/CES3063F20_LabelingProject_Input-2.json"},
+    {"dataset id":2,"dataset name":"dataset2","path":"Inputs/CES3063F20_LabelingProject_Input-2.json"}
   ],
 
     "current dataset id": 1

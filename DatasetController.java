@@ -192,6 +192,21 @@ public class DatasetController {
 
         return storage;
     }
+
+    public int getCurrentDatasetId(File file) {
+        long currentDatasetId = 0;
+        JSONParser parser = new JSONParser(); // create JSON parser
+        try {
+            Object obj = parser.parse(new FileReader(file));
+            JSONObject jsonObject = (JSONObject) obj; //assign the parsed version of our file to a JSONObject
+            currentDatasetId = (long) jsonObject.get("current dataset id");
+        } catch (Exception e) {
+        e.printStackTrace();
+    }
+
+        return (int)currentDatasetId;
+    }
+
 /*
     public void assigner(Storage storage, List<User> userList) {
         for (Instance instance : storage.getDataset().getInstances()) {
