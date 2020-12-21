@@ -1,3 +1,4 @@
+import javax.swing.plaf.basic.BasicDesktopIconUI;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,22 +30,6 @@ public class Assignment {
         instance.getLabels().addAll(labels);
     }
 
-    public Assignment(int instanceId, int userId, String date, List<Integer> labels){ //for reading
-        this.instanceId = (int)instanceId;
-        this.classLabelIds = labels;
-        this.userId = userId;
-        this.date = date;
-    }
-
-    public Assignment(Instance instance, int userId, String date, List<Label> labels){ //assigning in controller
-        this.instanceId = (int)instance.getId();
-        this.classLabelIds = new ArrayList<Integer>();
-        setLabels(labels);
-        this.userId = userId;
-        this.date = date;
-        instance.getLabels().addAll(labels);
-
-    }
 
     public int getUserId() {
         return userId;

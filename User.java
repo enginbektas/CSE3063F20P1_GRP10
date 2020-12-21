@@ -9,6 +9,9 @@ public class User {
     private transient UserPerformanceMetrics userPerformanceMetrics;
     private transient ArrayList<Integer> datasetIds;
 
+    public User(){
+    }
+
     public User(int id, String userName, String userType,ArrayList<Integer> datasetIds){
         this.id=id;
         this.userName=userName;

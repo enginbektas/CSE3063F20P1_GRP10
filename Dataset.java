@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 //#m//#lines 24
 public class Dataset {
@@ -14,6 +15,15 @@ public class Dataset {
 
     public Dataset(){
         datasetPerformanceMetric = new DatasetPerformanceMetric(this);
+    }
+
+    public List<Label> getLabelListFromId(List<Integer> classLabelIds) {
+        List<Label> labels = new ArrayList<>();
+        for (int classLabelId : classLabelIds)
+            for (Label labelj : labels)
+                if (labelj.getId() == classLabelId)
+                    labels.add(labelj);
+                return labels;
     }
 
     public List<Label> getLabels() {

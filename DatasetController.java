@@ -78,7 +78,6 @@ public class DatasetController {
                 File inputFile = new File(path);
                 if (outputFile.exists()) {
                     storage = storageReader(outputFile);
-                    assigner(storage, userList);
                 }
                 else {//if no output, read input
                     dataset = reader(inputFile);
@@ -142,7 +141,8 @@ public class DatasetController {
         Dataset dataset = new Dataset();
         JSONParser parser = new JSONParser(); // create JSON parser
         try {
-
+            //TODO USERS
+            ArrayList<User> userList = userReader(file);
             Object obj = parser.parse(new FileReader(file));
             JSONObject jsonObject = (JSONObject) obj; //assign the parsed version of our file to a JSONObject
             //TODO DATASET
@@ -163,11 +163,17 @@ public class DatasetController {
 
                 long userId = (long) obj2.get("userId");
                 String date = (String) obj2.get("date");
-                assignments[i] = new Assignment((int)instanceId, (int)userId, date, classLabelIds);
+                Instance instance = storage.getDataset().getInstance((int)instanceId);
+                User user = new User();
+                List<Label> labels = dataset.getLabelListFromId(classLabelIds);
+                for (User userj : userList)
+                    if(userj.getId() == userId)
+                        user = userj;
+                assignments[i] = new Assignment(dataset, userList, instance, user, date, labels);
+
             }
-            ArrayList<User> userList = new ArrayList<>();
-            //TODO USERS
-            userList = userReader(file);
+
+
 
             storage.setDataset(dataset);
             storage.setAssigments(Arrays.asList(assignments));
@@ -178,7 +184,7 @@ public class DatasetController {
                 assignmentIter.setUserList(userList);  // Set userList
                 assignmentIter.setUser(); // Set user
                 assignmentIter.setInstance();
-                }
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -186,7 +192,7 @@ public class DatasetController {
 
         return storage;
     }
-
+/*
     public void assigner(Storage storage, List<User> userList) {
         for (Instance instance : storage.getDataset().getInstances()) {
             for (Assignment assignment : storage.getAssigments()) {
@@ -197,13 +203,15 @@ public class DatasetController {
                         for (Label label : storage.getDataset().getLabels())
                             if (labelId == label.getId())
                                 labels.add(label);
-                    Assignment newAssignment = new Assignment(storage.getDataset(), userList, instance, assignment.getUser(), assignment.getDate(), labels);
+                    new Assignment(storage.getDataset(), userList, instance, assignment.getUser(), assignment.getDate(), labels);
                     // TODO Assignment(Dataset dataset, List<User> userList,
                     //  Instance instance, User user, String date, List<Label> labels, Mechanism mechanism)
                 }
             }
         }
     }
+
+ */
 
     public void writeDataset(Storage storage){
         Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
