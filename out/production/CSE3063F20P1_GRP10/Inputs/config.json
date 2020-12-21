@@ -6,9 +6,9 @@
   ],
 
   "datasets":[
-    {"dataset id":1,"dataset name":"RandomLabelingMechanism1","path":"RandomBot"},
-    {"dataset id":2,"dataset name":"RandomLabelingMechanism2","path":"RandomBot"},
-    {"dataset id":3,"dataset name":"MachineLearningLabelingMechanism","path":"MachineLearningBot"}
+    {"dataset id":1,"dataset name":"dataset1","path":"RandomBot"},
+    {"dataset id":2,"dataset name":"dataset2","path":"RandomBot"},
+    {"dataset id":3,"dataset name":"dataset3","path":"MachineLearningBot"}
   ],
 
     "current dataset id": 1
