@@ -1,8 +1,13 @@
 //#lines 16
 
+import com.google.gson.annotations.SerializedName;
+
 public class User {
+    @SerializedName("user id")
     private int id;
+    @SerializedName("user name")
     private String userName;
+    @SerializedName("user type")
     private String userType;
 
     public User(int id, String userName, String userType){
