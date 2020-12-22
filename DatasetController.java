@@ -172,7 +172,7 @@ public class DatasetController {
                         user = userj;
                 assignments[i] = new Assignment(dataset, userList, instance, user, date, labels);
             }
-            //storage.setDataset(dataset);
+            ////storage.setDataset(dataset);
             storage.setAssigments(Arrays.asList(assignments));
             storage.setUsers(userList);
 
