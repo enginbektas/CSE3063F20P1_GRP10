@@ -12,7 +12,8 @@ public class User {
     @SerializedName("user type")
     private String userType;
     private transient UserPerformanceMetrics userPerformanceMetrics;
-    private transient ArrayList<Integer> datasetIds;
+    @SerializedName("dataset ids")
+    private ArrayList<Integer> datasetIds;
 
     public User(){
     }

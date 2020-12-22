@@ -245,17 +245,20 @@
     {
       "user id": 1,
       "user name": "RandomLabelingMechanism1",
-      "user type": "RandomBot"
+      "user type": "RandomBot",
+      "dataset ids": [1 ,2]
     },
     {
       "user id": 2,
       "user name": "RandomLabelingMechanism2",
-      "user type": "RandomBot"
+      "user type": "RandomBot",
+      "dataset ids": [1 ,2]
     },
     {
       "user id": 3,
       "user name": "MachineLearningLabelingMechanism",
-      "user type": "MachineLearningBot"
+      "user type": "MachineLearningBot",
+      "dataset ids": [2 ,3]
     }
   ]
 }
