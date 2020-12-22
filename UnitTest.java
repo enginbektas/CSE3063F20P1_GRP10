@@ -10,6 +10,7 @@ public class UnitTest {
         File file = new File("Inputs\\config.json");
         DatasetController datasetController = new DatasetController();//Creating controller
         ArrayList<Storage> storageList = new ArrayList<>();
+        ArrayList<User> userList = datasetController.userReader(file);
 
         int currentDatasetId = datasetController.getCurrentDatasetId(file);
 
@@ -18,10 +19,9 @@ public class UnitTest {
         storageList = datasetController.configController(file);
         Storage currentStorage = null;
 
-
         Writer writer = new Writer();
 
-        ArrayList<Assignment> assignments = null;
+        List<Assignment> assignments = new ArrayList<>();
 
         for (Storage storage: storageList) {
             if (storage.getDataset().getId() == currentDatasetId){
@@ -29,9 +29,15 @@ public class UnitTest {
             }
         }
 
-        List userList = currentStorage.getUsers();
+        ArrayList<User> currentUserList = new ArrayList<>();
+        for (User user : userList) //create currentUserList so that only restricted users can access the dataset
+            if (user.getDatasetIds().contains(currentDatasetId))
+                currentUserList.add(user);
+
+
+
         Dataset dataset = currentStorage.getDataset();
-        assignments = (ArrayList<Assignment>) currentStorage.getAssigments();
+        assignments = currentStorage.getAssigments();
 
 
         RandomLabelingMechanism randomLabelingMechanism = new RandomLabelingMechanism("RandomMechanism");//Creating mechanism

@@ -1,5 +1,6 @@
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
 import java.util.List;
 //#methods =13
 public class Storage {
@@ -37,6 +38,9 @@ public class Storage {
         this.maxNumOfLabelsPerInstance = dataset.getMaxNumOfLabelsPerInstance();
         this.labels = dataset.getLabels();
         this.instances = dataset.getInstances();
+        this.assignments = new ArrayList<>();
+        this.users = new ArrayList<>();
+
     }
 
     public void setUsers(List<User> users) {
