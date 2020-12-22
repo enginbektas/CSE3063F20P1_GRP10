@@ -133,4 +133,7 @@ public class Assignment {
     public Instance getInstance() {
         return instance;
     }
+
+    public void setTimeSpent(long labelingTime) {
+    }
 }

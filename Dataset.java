@@ -16,7 +16,7 @@ public class Dataset {
     private List<Instance> instances;
     private transient List<User> users;
     private transient DatasetPerformanceMetric datasetPerformanceMetric;
-    private transient Storage storage;
+
 
     public Dataset(){
         datasetPerformanceMetric = new DatasetPerformanceMetric(this);
@@ -24,11 +24,16 @@ public class Dataset {
 
     public List<Label> getLabelListFromId(List<Integer> classLabelIds) {
         List<Label> labels = new ArrayList<>();
-        for (int classLabelId : classLabelIds)
-            for (Label labelj : labels)
-                if (labelj.getId() == classLabelId)
+        for (int classLabelId : classLabelIds){
+            for (Label labelj : this.labels){
+                if (labelj.getId() == classLabelId){
                     labels.add(labelj);
-                return labels;
+                    break;
+                }
+            }
+        }
+        return labels;
+
     }
 
     public List<Label> getLabels() {
@@ -120,13 +125,5 @@ public class Dataset {
                 instance = instancej;
         }
         return instance;
-    }
-
-    public Storage getStorage() {
-        return storage;
-    }
-
-    public void setStorage(Storage storage) {
-        this.storage = storage;
     }
 }

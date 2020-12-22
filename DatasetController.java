@@ -52,7 +52,7 @@ public class DatasetController {
     }
 
     public ArrayList<Storage> configController(File file) {
-        //TODO iterate through configs datasets, check if they have output, if so read output with storageReader
+        // iterate through configs datasets, check if they have output, if so read output with storageReader
         //  hold dataset and assignments and users, call assigner and set assignments to dataset,
         //  set dataset.getStorage.setDataset, dataset.getStorage.setAssignments, dataset.getStorage.setUsers
         // if not read dataset with datasetReader
@@ -83,7 +83,6 @@ public class DatasetController {
                     dataset = reader(inputFile);
                     storage.setDataset(dataset);
                 }
-                storage.getDataset().setStorage(storage);
                 storageList.add(storage);
             }
         } catch (Exception e) {
@@ -141,14 +140,14 @@ public class DatasetController {
         Dataset dataset = new Dataset();
         JSONParser parser = new JSONParser(); // create JSON parser
         try {
-            //TODO USERS
+            // USERS
             ArrayList<User> userList = userReader(file);
             Object obj = parser.parse(new FileReader(file));
             JSONObject jsonObject = (JSONObject) obj; //assign the parsed version of our file to a JSONObject
-            //TODO DATASET
+            //DATASET
             dataset = reader(file);
             storage.setDataset(dataset);
-            //TODO ASSIGNMENTS
+            // ASSIGNMENTS
             JSONArray jsonArrayForAssignments = (JSONArray) jsonObject.get("class label assignments");
             Assignment[] assignments = new Assignment[jsonArrayForAssignments.size()];
             for (int i=0; i<jsonArrayForAssignments.size(); i++) { //assigns the given instances in the input to the instances array
@@ -165,6 +164,7 @@ public class DatasetController {
                 long userId = (long) obj2.get("user id");
                 String date = (String) obj2.get("datetime");
                 Instance instance = storage.getDataset().getInstance((int)instanceId);
+
                 User user = new User();
                 List<Label> labels = dataset.getLabelListFromId(classLabelIds);
                 for (User userj : userList)
