@@ -17,6 +17,10 @@ public class UnitTest {//
         newLog.editLog();
         storageList = datasetController.configController(file);
         Dataset currentDataset;
+        Writer writer = new Writer();
+        for (Storage storage : storageList) {
+           writer.writeDataset(storage, "storage1", true);
+        }
         /*
         // read config (
         File file = new File("");

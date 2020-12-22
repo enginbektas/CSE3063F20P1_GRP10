@@ -2,7 +2,7 @@
 class Label {
     private int id;
     private String text;
-    private int numberOfUses;
+    private transient int numberOfUses;
 
     public Label(long id, String text) {
         this.id = (int)id;

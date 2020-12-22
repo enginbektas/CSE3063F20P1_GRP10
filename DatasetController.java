@@ -74,8 +74,9 @@ public class DatasetController {
                 JSONObject obj2 = (JSONObject) jsonArrayForDatasetPointers.get(i); //declare obj2 to i'th element of JSON classlabelsarray
                 long datasetId = (long) obj2.get("dataset id"); //obj2 is now the element of the array
                 String path = (String) obj2.get("path");
-                File outputFile = new File("Output"+datasetId);
+                File outputFile = new File("Outputs\\Output" + datasetId + ".json");
                 File inputFile = new File(path);
+                dataset = reader(inputFile);
                 if (outputFile.exists()) {
                     storage = storageReader(outputFile);
                 }
@@ -135,14 +136,16 @@ public class DatasetController {
         return dataset;
     }
 
-    public Storage storageReader(File file) {
+    public List<Assignment> storageReader(File file) {
         //TODO read storage, return storage
         Storage storage = new Storage();
         Dataset dataset = new Dataset();
         JSONParser parser = new JSONParser(); // create JSON parser
         try {
             //TODO USERS
-            ArrayList<User> userList = userReader(file);
+            File configFile = new File("Inputs\\config.json");
+            ArrayList<User> userList = userReader(configFile);
+
             Object obj = parser.parse(new FileReader(file));
             JSONObject jsonObject = (JSONObject) obj; //assign the parsed version of our file to a JSONObject
             //TODO DATASET
@@ -207,40 +210,6 @@ public class DatasetController {
         return (int)currentDatasetId;
     }
 
-/*
-    public void assigner(Storage storage, List<User> userList) {
-        for (Instance instance : storage.getDataset().getInstances()) {
-            for (Assignment assignment : storage.getAssigments()) {
-                if (instance.getId() == assignment.getInstanceId()) {
-                    //TODO create a list of labels from assignments label ids, check them with datasets label ids and reach to instance itself
-                    ArrayList<Label> labels = new ArrayList<>();
-                    for (Integer labelId : assignment.getLabels())
-                        for (Label label : storage.getDataset().getLabels())
-                            if (labelId == label.getId())
-                                labels.add(label);
-                    new Assignment(storage.getDataset(), userList, instance, assignment.getUser(), assignment.getDate(), labels);
-                    // TODO Assignment(Dataset dataset, List<User> userList,
-                    //  Instance instance, User user, String date, List<Label> labels, Mechanism mechanism)
-                }
-            }
-        }
-    }
-
- */
-
-    public void writeDataset(Storage storage){
-        Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
-        String json = gson.toJson(storage);
-        StringBuilder sb = new StringBuilder(json);
-
-        try (FileWriter file = new FileWriter("testOutput.json")) {
-            file.write(sb.toString());
-            file.flush();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 }
 
 
