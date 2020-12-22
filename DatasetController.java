@@ -74,7 +74,7 @@ public class DatasetController {
                 JSONObject obj2 = (JSONObject) jsonArrayForDatasetPointers.get(i); //declare obj2 to i'th element of JSON classlabelsarray
                 long datasetId = (long) obj2.get("dataset id"); //obj2 is now the element of the array
                 String path = (String) obj2.get("path");
-                File outputFile = new File("Output"+datasetId);
+                File outputFile = new File("Outputs\\Output"+datasetId+".json");
                 File inputFile = new File(path);
                 if (outputFile.exists()) {
                     storage = storageReader(outputFile);
