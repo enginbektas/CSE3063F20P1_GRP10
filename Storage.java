@@ -22,12 +22,7 @@ public class Storage {
 
     public Storage(){
 
-        this.id = dataset.getId();
-        this.name = dataset.getName();
-        this.instanceType = dataset.getInstanceType();
-        this.maxNumOfLabelsPerInstance = dataset.getMaxNumOfLabelsPerInstance();
-        this.labels = dataset.getLabels();
-        this.instances = dataset.getInstances();
+
     }
 
     public void setAssigments(List<Assignment> assignments) {
@@ -36,6 +31,12 @@ public class Storage {
 
     public void setDataset(Dataset dataset) {
         this.dataset = dataset;
+        this.id = dataset.getId();
+        this.name = dataset.getName();
+        this.instanceType = dataset.getInstanceType();
+        this.maxNumOfLabelsPerInstance = dataset.getMaxNumOfLabelsPerInstance();
+        this.labels = dataset.getLabels();
+        this.instances = dataset.getInstances();
     }
 
     public void setUsers(List<User> users) {
