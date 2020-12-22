@@ -4,11 +4,28 @@ import java.util.List;
 //#methods =13
 public class Storage {
     private Dataset dataset;
+    @SerializedName("dataset id")
+    private int id;
+    @SerializedName("dataset name")
+    private String name;
+    private String instanceType;
+    @SerializedName("maximum number of labels per instance")
+    private int maxNumOfLabelsPerInstance;
+    @SerializedName("class labels")
+    private List<Label> labels;
+    private List<Instance> instances;
     @SerializedName("class label assignments")
+
     private List<Assignment> assignments;
     private List<User> users;
 
     public Storage(){
+        this.id = dataset.getId();
+        this.name = dataset.getName();
+        this.instanceType = dataset.getInstanceType();
+        this.maxNumOfLabelsPerInstance = dataset.getMaxNumOfLabelsPerInstance();
+        this.labels = dataset.getLabels();
+        this.instances = dataset.getInstances();
     }
 
     public void setAssigments(List<Assignment> assignments) {
