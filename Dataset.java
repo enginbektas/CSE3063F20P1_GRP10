@@ -12,9 +12,9 @@ public class Dataset {
     @SerializedName("maximum number of labels per instance")
     private int maxNumOfLabelsPerInstance;
     @SerializedName("class labels")
-    private List<Label> labels;
-    private List<Instance> instances;
-    private transient List<User> users;
+    private ArrayList<Label> labels;
+    private ArrayList<Instance> instances;
+    private transient ArrayList<User> users;
     private transient DatasetPerformanceMetric datasetPerformanceMetric;
 
 
@@ -22,8 +22,8 @@ public class Dataset {
         datasetPerformanceMetric = new DatasetPerformanceMetric(this);
     }
 
-    public List<Label> getLabelListFromId(List<Integer> classLabelIds) {
-        List<Label> labels = new ArrayList<>();
+    public ArrayList<Label> getLabelListFromId(ArrayList<Integer> classLabelIds) {
+        ArrayList<Label> labels = new ArrayList<>();
         for (int classLabelId : classLabelIds){
             for (Label labelj : this.labels){
                 if (labelj.getId() == classLabelId){
@@ -36,19 +36,19 @@ public class Dataset {
 
     }
 
-    public List<Label> getLabels() {
+    public ArrayList<Label> getLabels() {
         return labels;
     }
 
-    public void setLabels(List<Label> labels) {
+    public void setLabels(ArrayList<Label> labels) {
         this.labels = labels;
     }
 
-    public List<Instance> getInstances() {
+    public ArrayList<Instance> getInstances() {
         return instances;
     }
 
-    public void setInstances(List<Instance> instances) {
+    public void setInstances(ArrayList<Instance> instances) {
         this.instances = instances;
     }
 
@@ -93,11 +93,11 @@ public class Dataset {
         return label2;
     }
 
-    public List<User> getUsers() {
+    public ArrayList<User> getUsers() {
         return users;
     }
 
-    public void setUsers(List<User> users) {
+    public void setUsers(ArrayList<User> users) {
         this.users = users;
     }
 

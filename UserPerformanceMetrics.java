@@ -14,6 +14,7 @@ public class UserPerformanceMetrics {
     private ArrayList<Percentage> datasetsCompletenessPercentage;
     private Percentage consistencyPercentage;
     private transient ArrayList<Percentage> usersCompleteness;
+
     private transient double totalTimeSpentLabeling; //
 
     private double averageTimeSpentLabeling;
@@ -32,8 +33,30 @@ public class UserPerformanceMetrics {
 
     }
 
+    public void update(Assignment assignment, Dataset dataset, Instance instance) {
 
-    private void datasetcopm(){
+        this.assignments.add(assignment);
+
+
+        if (!datasetsAssigned.contains(dataset))
+        this.datasetsAssigned.add(dataset);
+        this.datasetAssigned = datasetsAssigned.size();
+
+        this.instancesLabeled.add(instance);
+        this.numberOfInstancesLabeled = instancesLabeled.size();
+
+        if (!instancesLabeled.contains(instance))
+        this.uniqueInstancesLabeled.add(instance);
+        this.numberOfUniqueInstancesLabeled = uniqueInstancesLabeled.size();
+
+        setConsistencyPercentage();
+
+        //alldatasets
+
+
+    }
+
+    private void calculateDatasetCompletenessPercentage(){
 
         for (Instance instance: uniqueInstancesLabeled) {
             for (Assignment assignment: assignments) {
@@ -62,9 +85,7 @@ public class UserPerformanceMetrics {
         return consistencyPercentage;
     }
 
-    public void setConsistencyPercentage(Percentage consistencyPercentage) {
-        consistencyPercentage.setName(user.getUserName());
-
+    public void setConsistencyPercentage() {
         ArrayList<Integer> allLabelIds = null;
         ArrayList<Integer> duplicateLabelIds = null;
         int duplicateLabelNumber = 0;
@@ -189,8 +210,9 @@ public class UserPerformanceMetrics {
         return totalTimeSpentLabeling;
     }
 
-    public void setTotalTimeSpentLabeling(double totalTimeSpentLabeling) {
-        this.totalTimeSpentLabeling = totalTimeSpentLabeling;
+    public void setTotalTimeSpentLabeling(double timeSpent) {
+
+            totalTimeSpentLabeling = timeSpent;
     }
 }
 

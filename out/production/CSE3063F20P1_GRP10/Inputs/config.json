@@ -2,7 +2,7 @@
   "users":[
   {"user id":1,"user name":"RandomLabelingMechanism1","user type":"RandomBot", "dataset ids": [1 ,2]},
   {"user id":2,"user name":"RandomLabelingMechanism2","user type":"RandomBot","dataset ids": [1 ,2]},
-  {"user id":3,"user name":"MachineLearningLabelingMechanism","user type":"MachineLearningBot","dataset ids": [2 ,3]}
+  {"user id":3,"user name":"MachineLearningLabelingMechanism","user type":"MachineLearningBot","dataset ids": [4 ,3]}
   ],
 
   "datasets":[
@@ -10,7 +10,7 @@
     {"dataset id":2,"dataset name":"dataset2","path":"Inputs/CES3063F20_LabelingProject_Input-2.json"}
   ],
 
-    "current dataset id": 1
+    "current dataset id": 2
 }
 
 
