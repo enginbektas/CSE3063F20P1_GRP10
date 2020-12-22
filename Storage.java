@@ -3,7 +3,8 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 //#methods =13
 public class Storage {
-    private Dataset dataset;
+
+    private Dataset dataset = new Dataset();
     @SerializedName("dataset id")
     private int id;
     @SerializedName("dataset name")
@@ -20,6 +21,7 @@ public class Storage {
     private List<User> users;
 
     public Storage(){
+
         this.id = dataset.getId();
         this.name = dataset.getName();
         this.instanceType = dataset.getInstanceType();
