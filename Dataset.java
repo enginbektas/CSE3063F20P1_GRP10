@@ -1,12 +1,17 @@
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 import java.util.List;
 //#m//#lines 24
 public class Dataset {
-
+    @SerializedName("dataset id")
     private int id;
+    @SerializedName("dataset name")
     private String name;
     private String instanceType;
+    @SerializedName("maximum number of labels per instance")
     private int maxNumOfLabelsPerInstance;
+    @SerializedName("class labels")
     private List<Label> labels;
     private List<Instance> instances;
     private transient List<User> users;
