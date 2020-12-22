@@ -147,6 +147,7 @@ public class DatasetController {
             JSONObject jsonObject = (JSONObject) obj; //assign the parsed version of our file to a JSONObject
             //TODO DATASET
             dataset = reader(file);
+            storage.setDataset(dataset);
             //TODO ASSIGNMENTS
             JSONArray jsonArrayForAssignments = (JSONArray) jsonObject.get("class label assignments");
             Assignment[] assignments = new Assignment[jsonArrayForAssignments.size()];
@@ -170,12 +171,8 @@ public class DatasetController {
                     if(userj.getId() == userId)
                         user = userj;
                 assignments[i] = new Assignment(dataset, userList, instance, user, date, labels);
-
             }
-
-
-
-            storage.setDataset(dataset);
+            //storage.setDataset(dataset);
             storage.setAssigments(Arrays.asList(assignments));
             storage.setUsers(userList);
 

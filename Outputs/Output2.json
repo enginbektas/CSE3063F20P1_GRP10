@@ -1,5 +1,5 @@
 {
-  "dataset": {
+
     "dataset id": 2,
     "dataset name": "Multilabel Topic Classification Dataset",
     "maximum number of labels per instance": 10,
@@ -90,9 +90,9 @@
         "id": 5,
         "instance": "turkcell bana sormadan paket tanımlanmış! turkcell internet paketim bitince bana sormadan otomatik olarak 1 gb internet tanımlamış ve 10 tl yansıtmış, ayrıca fatura kesim tarihim 1 gün kala bu paketi tanımlamış ve fatura kesim tarihi yani 1 gün sonrasında bu paketi iptal etmiş ve ücreti iptal etmemiştir."
       }
-    ]
-  },
-  "assignments": [
+    ],
+
+  "class label assignments": [
     {
       "instance id": 1,
       "class label ids": [
