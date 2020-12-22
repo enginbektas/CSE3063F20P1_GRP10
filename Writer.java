@@ -20,7 +20,7 @@ public class Writer {
     public Writer() {
 
     }
-    public void writeDataset(Object obj, String outputName, boolean consolePrint){
+    public void writeDataset(Object obj, String outputName, boolean consolePrint, boolean append){
 
         Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
         String json = gson.toJson(obj);
@@ -30,7 +30,7 @@ public class Writer {
             System.out.println(sb);
         }
 
-        try (FileWriter file = new FileWriter(outputName)) {
+        try (FileWriter file = new FileWriter(outputName, append)) {
             file.write(sb.toString());
             file.flush();
 
