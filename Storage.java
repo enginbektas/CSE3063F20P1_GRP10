@@ -4,7 +4,7 @@ import java.util.List;
 //#methods =13
 public class Storage {
 
-    private Dataset dataset = new Dataset();
+    private transient Dataset dataset = new Dataset();
     @SerializedName("dataset id")
     private int id;
     @SerializedName("dataset name")
