@@ -1,10 +1,15 @@
 //#lines 16
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 
 public class User {
+    @SerializedName("user id")
     private int id;
+    @SerializedName("user name")
     private String userName;
+    @SerializedName("user type")
     private String userType;
     private transient UserPerformanceMetrics userPerformanceMetrics;
     private transient ArrayList<Integer> datasetIds;

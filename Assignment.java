@@ -1,12 +1,18 @@
+import com.google.gson.annotations.SerializedName;
+
 import javax.swing.plaf.basic.BasicDesktopIconUI;
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class Assignment {
+    @SerializedName("instance id")
     private int instanceId;
+    @SerializedName("class label ids")
     private List<Integer> classLabelIds;
+    @SerializedName("user id")
     private int userId;
+    @SerializedName("datetime")
     private String date;
     //private transient Mechanism mechanism;//Which mechanism made this assigment
     private transient List<User> userList;

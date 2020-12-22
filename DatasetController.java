@@ -148,21 +148,21 @@ public class DatasetController {
             //TODO DATASET
             dataset = reader(file);
             //TODO ASSIGNMENTS
-            JSONArray jsonArrayForAssignments = (JSONArray) jsonObject.get("assignments");
+            JSONArray jsonArrayForAssignments = (JSONArray) jsonObject.get("class label assignments");
             Assignment[] assignments = new Assignment[jsonArrayForAssignments.size()];
             for (int i=0; i<jsonArrayForAssignments.size(); i++) { //assigns the given instances in the input to the instances array
                 JSONObject obj2 = (JSONObject) jsonArrayForAssignments.get(i); //declare obj2 to i'th element of JSON classlabelsarray
-                long instanceId = (long) obj2.get("instanceId"); //obj2 is now the element of the array
+                long instanceId = (long) obj2.get("instance id"); //obj2 is now the element of the array
 
-                JSONArray jsonArrayForClassLabelIds = (JSONArray) obj2.get("ClassLabelIds");
+                JSONArray jsonArrayForClassLabelIds = (JSONArray) obj2.get("class label ids");
                 ArrayList<Integer> classLabelIds = new ArrayList<>();
                 for (int j=0; j<jsonArrayForClassLabelIds.size(); j++) { // iterate size times
                     long classLabelId = (long) jsonArrayForClassLabelIds.get(j); //
                     classLabelIds.add((int)classLabelId); //
                 }
 
-                long userId = (long) obj2.get("userId");
-                String date = (String) obj2.get("date");
+                long userId = (long) obj2.get("user id");
+                String date = (String) obj2.get("datetime");
                 Instance instance = storage.getDataset().getInstance((int)instanceId);
                 User user = new User();
                 List<Label> labels = dataset.getLabelListFromId(classLabelIds);

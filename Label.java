@@ -1,6 +1,9 @@
+import com.google.gson.annotations.SerializedName;
 
 class Label {
+    @SerializedName("label id")
     private int id;
+    @SerializedName("label text")
     private String text;
     private int numberOfUses;
 
