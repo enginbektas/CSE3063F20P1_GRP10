@@ -1,7 +1,10 @@
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 //#methods =13
 public class Storage {
     private Dataset dataset;
+    @SerializedName("class label assignments")
     private List<Assignment> assignments;
     private List<User> users;
 
