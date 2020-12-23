@@ -161,27 +161,30 @@ public class DatasetController {
         Dataset dataset = new Dataset();
         JSONParser parser = new JSONParser(); // create JSON parser
         try {
-            // TAKING USERS FROM THE FILE
+            // Taking users from the file
             ArrayList<User> userList = userReader(outputJson);
             Object obj = parser.parse(new FileReader(outputJson));
             JSONObject jsonObject = (JSONObject) obj; // assign the parsed version of our file to a JSONObject
-            // TAKING DATASET FROM THE FILE
+            // Taking dataset from the file
             dataset = reader(outputJson);
             storage.setDataset(dataset);
-            // TAKING ASSIGNMENTS FROM THE FILE
+            // Taking assignments from the file
             JSONArray jsonArrayForAssignments = (JSONArray) jsonObject.get("class label assignments");
             Assignment[] assignments = new Assignment[jsonArrayForAssignments.size()];
-            for (int i = 0; i < jsonArrayForAssignments.size(); i++) { // assigns the given instances in the input to
-                                                                       // the instances array
+            for (int i = 0; i < jsonArrayForAssignments.size(); i++) { 
+                /* 
+                assigns the given instances in the input to
+                  the instances array
+                */ 
                 JSONObject obj2 = (JSONObject) jsonArrayForAssignments.get(i); // declare obj2 to i'th element of JSON
-                                                                               // classlabelsarray
+                
                 long instanceId = (long) obj2.get("instance id"); // obj2 is now the element of the array
 
                 JSONArray jsonArrayForClassLabelIds = (JSONArray) obj2.get("class label ids");
                 ArrayList<Integer> classLabelIds = new ArrayList<>();
                 for (int j = 0; j < jsonArrayForClassLabelIds.size(); j++) { // iterate size times
                     long classLabelId = (long) jsonArrayForClassLabelIds.get(j); //
-                    classLabelIds.add((int) classLabelId); //
+                    classLabelIds.add((int) classLabelId); 
                 }
 
                 long userId = (long) obj2.get("user id");
@@ -195,7 +198,7 @@ public class DatasetController {
                         user = userj;
                 assignments[i] = new Assignment(dataset, userList, instance, user, date, labels);
             }
-            //// storage.setDataset(dataset);
+           
             ArrayList<Assignment> assignmentList = new ArrayList<>();
             for (int i = 0; i < assignments.length; i++)
                 assignmentList.add(assignments[i]);
