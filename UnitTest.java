@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UnitTest {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         //TODO datasetController class needs to be updated.
         //TODO configReader, outputReader, datasetReader methods are required.
 

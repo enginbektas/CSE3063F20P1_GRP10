@@ -27,6 +27,7 @@ public class User {
         this.userType=userType;
         this.datasetIds=datasetIds;
         userPerformanceMetrics = new UserPerformanceMetrics(this);
+        user_instances = new ArrayList<>();
     }
 
     public int getId() {

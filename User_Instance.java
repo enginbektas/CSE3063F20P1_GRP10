@@ -5,13 +5,15 @@ public class User_Instance {
     private User user;
     private Instance instance;
     private double time;
-    public User_Instance(User user, Instance instance, ArrayList<Label> labels){
+    public User_Instance(User user, Instance instance, ArrayList<Label> newLabels){
         labels = new ArrayList<>();
-        addLabels(labels);
+        addLabels(newLabels);
+        this.user = user;
+        this.instance = instance;
 
     }
-    public void addLabels(ArrayList<Label> labels){
-        labels.addAll(labels);
+    public void addLabels(ArrayList<Label> newLabels){
+        labels.addAll(newLabels);
     }
 
     public Instance getInstance() {
