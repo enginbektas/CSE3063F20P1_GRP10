@@ -14,19 +14,19 @@ public class Storage {
     @SerializedName("maximum number of labels per instance")
     private int maxNumOfLabelsPerInstance;
     @SerializedName("class labels")
-    private List<Label> labels;
-    private List<Instance> instances;
+    private ArrayList<Label> labels;
+    private ArrayList<Instance> instances;
     @SerializedName("class label assignments")
 
-    private List<Assignment> assignments;
-    private List<User> users;
+    private ArrayList<Assignment> assignments;
+    private ArrayList<User> users;
 
     public Storage(){
 
 
     }
 
-    public void setAssigments(List<Assignment> assignments) {
+    public void setAssigments(ArrayList<Assignment> assignments) {
         this.assignments = assignments;
     }
 
@@ -43,7 +43,7 @@ public class Storage {
 
     }
 
-    public void setUsers(List<User> users) {
+    public void setUsers(ArrayList<User> users) {
         this.users = users;
     }
 
@@ -51,11 +51,11 @@ public class Storage {
         return dataset;
     }
 
-    public List<Assignment> getAssigments() {
+    public ArrayList<Assignment> getAssigments() {
         return assignments;
     }
 
-    public List<User> getUsers() {
+    public ArrayList<User> getUsers() {
         return users;
     }
 

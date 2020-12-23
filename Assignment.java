@@ -9,20 +9,21 @@ public class Assignment {
     @SerializedName("instance id")
     private int instanceId;
     @SerializedName("class label ids")
-    private List<Integer> classLabelIds;
+    private ArrayList<Integer> classLabelIds;
     @SerializedName("user id")
     private int userId;
     @SerializedName("datetime")
     private String date;
     //private transient Mechanism mechanism;//Which mechanism made this assigment
-    private transient List<User> userList;
+    private transient ArrayList<User> userList;
     private transient Dataset dataset;
     private transient User user;
     private transient Instance instance;
 
 
 
-    public Assignment(Dataset dataset, List<User> userList, Instance instance, User user, String date, List<Label> labels){
+
+    public Assignment(Dataset dataset, ArrayList<User> userList, Instance instance, User user, String date, ArrayList<Label> labels){
         this.instanceId = instance.getId();
         this.classLabelIds = new ArrayList<>();
         setLabels(labels);
@@ -34,6 +35,10 @@ public class Assignment {
         this.userId = user.getId();
 
         instance.getLabels().addAll(labels);
+
+        user.getUserPerformanceMetrics().update(this, dataset, instance);
+
+
     }
 
 
@@ -48,7 +53,7 @@ public class Assignment {
         return date;
     }
 
-    public List<Integer> getLabels() {
+    public ArrayList<Integer> getLabels() {
         return classLabelIds;
     }
 
@@ -69,24 +74,25 @@ public class Assignment {
         this.date = date;
     }
 
-    public void setLabels(List<Label> labels) {//Only gets labels id's
+    public void setLabels(ArrayList<Label> labels) {//Only gets labels id's
         int i = 0;
         for (Label label : labels) {
             classLabelIds.add(labels.get(i).getId());
             i++;
-
+            label.incrementNumberOfUses();
         }
+
     }
 
     public void setInstanceId(int instanceId) {
         this.instanceId = instanceId;
     }
 
-    public List<Integer> getClassLabelIds() {
+    public ArrayList<Integer> getClassLabelIds() {
         return classLabelIds;
     }
 
-    public void setClassLabelIds(List<Integer> classLabelIds) {
+    public void setClassLabelIds(ArrayList<Integer> classLabelIds) {
         this.classLabelIds = classLabelIds;
     }
 /*
@@ -100,11 +106,11 @@ public class Assignment {
 
  */
 
-    public List<User> getUserList() {
+    public ArrayList<User> getUserList() {
         return userList;
     }
 
-    public void setUserList(List<User> userList) {
+    public void setUserList(ArrayList<User> userList) {
         this.userList = userList;
     }
 
@@ -134,6 +140,5 @@ public class Assignment {
         return instance;
     }
 
-    public void setTimeSpent(long labelingTime) {
-    }
+
 }

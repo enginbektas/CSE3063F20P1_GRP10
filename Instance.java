@@ -5,7 +5,7 @@ import java.util.List;
 class Instance {
     private int id;
     private String instance;
-    private transient List<Label> labels;
+    private transient ArrayList<Label> labels;
 
     public Instance(long id, String instance) {
         this.id = (int)id;
@@ -21,7 +21,7 @@ class Instance {
         this.instance = instance;
     }
 
-    public void setLabels(List<Label>  labels) {
+    public void setLabels(ArrayList<Label>  labels) {
         this.labels = labels;
     }
 
@@ -29,7 +29,7 @@ class Instance {
         return id;
     }
 
-    public List<Label> getLabels() {
+    public ArrayList<Label> getLabels() {
         return labels;
     }
 

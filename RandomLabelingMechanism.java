@@ -7,7 +7,7 @@ import java.util.List;
 
 public class RandomLabelingMechanism extends Mechanism{
     private String mechanismName;
-    private transient List<Assignment> assignments;
+    private transient ArrayList<Assignment> assignments;
     private Log log;
 
     public RandomLabelingMechanism(String mechanismName){
@@ -16,7 +16,7 @@ public class RandomLabelingMechanism extends Mechanism{
         this.log = new Log();
     }
 
-    public Assignment randomMechanism(List<User> userList, Dataset dataset, Instance instance, User user){
+    public Assignment randomMechanism(ArrayList<User> userList, Dataset dataset, Instance instance, User user){
         //number of empty labels in the instance
         int labelNumberLeft = dataset.getMaxNumOfLabelsPerInstance() - instance.getLabels().size();
         if (labelNumberLeft == 0)
@@ -24,7 +24,7 @@ public class RandomLabelingMechanism extends Mechanism{
         //how many labels to assign, randomly created
         int numberOfLabelsToAssign = (int) ((Math.random() * (labelNumberLeft - 1 )) + 1);
         //creates a list that holds the labels that are going to be assigned to the instance
-        List<Label> labelsToUse = labelsToUse(dataset, instance, numberOfLabelsToAssign, user);
+        ArrayList<Label> labelsToUse = labelsToUse(dataset, instance, numberOfLabelsToAssign, user);
         //adds the new labels to the instances label list
 
         //instance.getLabels().addAll(labelsToUse);
@@ -39,8 +39,8 @@ public class RandomLabelingMechanism extends Mechanism{
         return assignment;
     }
     //returns a list of labels to assign to an instance
-    private List<Label> labelsToUse(Dataset dataset, Instance instance, int numberOfLabelsToAssign, User user){
-        List<Label> labelsToUse = new ArrayList<Label>();
+    private ArrayList<Label> labelsToUse(Dataset dataset, Instance instance, int numberOfLabelsToAssign, User user){
+        ArrayList<Label> labelsToUse = new ArrayList<Label>();
         for (int i = 0; i < numberOfLabelsToAssign; i++){//Loop for chosing labels to use
             while(true){
                 int k = (int) (Math.random() * (dataset.getLabels().size() - 1));//Get a random int value for choosing label from label list
@@ -61,7 +61,7 @@ public class RandomLabelingMechanism extends Mechanism{
         return mechanismName;
     }
 
-    public List<Assignment> getAssignments() {
+    public ArrayList<Assignment> getAssignments() {
         return assignments;
     }
 
@@ -69,7 +69,7 @@ public class RandomLabelingMechanism extends Mechanism{
         this.mechanismName = mechanismName;
     }
 
-    public void setAssignments(List<Assignment> assignments) {
+    public void setAssignments(ArrayList<Assignment> assignments) {
         this.assignments = assignments;
     }
 }
