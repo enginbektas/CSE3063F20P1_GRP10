@@ -17,7 +17,7 @@ public class RandomLabelingMechanism extends Mechanism{
     }
 
     public Assignment randomMechanism(ArrayList<User> userList, Dataset dataset, Instance instance, User user) throws InterruptedException {
-        float labelingTimeStart = System.currentTimeMillis();
+        double labelingTimeStart = System.currentTimeMillis();
         //number of empty labels in the instance
         int labelNumberLeft = dataset.getMaxNumOfLabelsPerInstance() - instance.getLabels().size();
         if (labelNumberLeft == 0)
@@ -35,9 +35,9 @@ public class RandomLabelingMechanism extends Mechanism{
         Date date = new Date(System.currentTimeMillis());
         String dateString =  formatter.format(date);
         //Labels are assigned. Now creating an assignment object
-        wait(10);
-        float labelingTimeEnd = System.currentTimeMillis();
-        float labelingTime = labelingTimeEnd - labelingTimeStart;
+        Thread.sleep((long) (Math.random() * 100));
+        double labelingTimeEnd = System.currentTimeMillis();
+        double labelingTime = labelingTimeEnd - labelingTimeStart;
         Assignment assignment = new Assignment(dataset, userList, instance, user, dateString, labelsToUse, labelingTime);
         assignments.add(assignment);
         return assignment;

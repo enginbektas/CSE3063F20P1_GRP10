@@ -41,6 +41,13 @@ public class UserPerformanceMetrics {
 
         this.assignments.add(assignment);
 
+        if (!instancesLabeled.contains(instance)){
+            this.uniqueInstancesLabeled.add(instance);
+        }
+        else {
+            this.instancesLabeledMoreThanOnce.add(instance);
+        }
+
 
         if (!datasetsAssigned.contains(dataset))
             this.datasetsAssigned.add(dataset);
@@ -51,13 +58,13 @@ public class UserPerformanceMetrics {
 
         this.numberOfInstancesLabeled = instancesLabeled.size();
 
-        if (!instancesLabeled.contains(instance))
-            this.uniqueInstancesLabeled.add(instance);
-        else
-            this.instancesLabeledMoreThanOnce.add(instance);
+        System.out.println(instance.getId());
+
+
 
         this.numberOfUniqueInstancesLabeled = uniqueInstancesLabeled.size();
 
+        calculateDatasetCompletenessPercentage();
         setConsistencyPercentage();
         calculateStd();
 
@@ -68,21 +75,27 @@ public class UserPerformanceMetrics {
 
     private void calculateDatasetCompletenessPercentage(){
 
+
         for (Instance instance: uniqueInstancesLabeled) {
             for (Assignment assignment: assignments) {
                 if (instance.equals(assignment.getInstance())){
-                    for (int i = 0; i < usersCompleteness.size(); i++) {
-                        if (usersCompleteness.get(i).getName().equals(assignment.getDataset().getId())){
-                            usersCompleteness.get(i).setPercentage(usersCompleteness.get(i).getPercentage() + 1 / assignment.getDataset().getInstances().size() * 100.0);
-                        }
-                        else{
-                            usersCompleteness.add(new Percentage(assignment.getDataset().getId() + "", 1 / assignment.getDataset().getInstances().size() * 100.0));
+                    if ( usersCompleteness.size() == 0){
+                        usersCompleteness.add(new Percentage(assignment.getDataset().getId() + "", (1.0 / assignment.getDataset().getInstances().size()) * 100.0));
+                    }
+                    else{
+                        for (int i = 0; i < usersCompleteness.size(); i++) {
+                            if (usersCompleteness.get(i).getName().equals(assignment.getDataset().getId() + "")){
+                                usersCompleteness.get(i).setPercentage(usersCompleteness.get(i).getPercentage() + (1.0 / assignment.getDataset().getInstances().size()) * 100.0);
+                            }
+                            else{
+                                usersCompleteness.add(new Percentage(assignment.getDataset().getId() + "", (1.0 / assignment.getDataset().getInstances().size()) * 100.0));
+                                break;
+                            }
                         }
                     }
                 }
             }
         }
-
     }
 
     public ArrayList<Percentage> getUsersCompleteness() {

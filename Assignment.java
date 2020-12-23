@@ -19,11 +19,11 @@ public class Assignment {
     private transient Dataset dataset;
     private transient User user;
     private transient Instance instance;
-    private float time;
+    private double time;
 
 
 
-    public Assignment(Dataset dataset, ArrayList<User> userList, Instance instance, User user, String date, ArrayList<Label> labels, float labelingTime){
+    public Assignment(Dataset dataset, ArrayList<User> userList, Instance instance, User user, String date, ArrayList<Label> labels, double labelingTime){
         this.instanceId = instance.getId();
         this.classLabelIds = new ArrayList<>();
         setLabels(labels);
@@ -33,21 +33,26 @@ public class Assignment {
         this.userList = userList;
         this.user = user;
         this.userId = user.getId();
-
+        this.time = labelingTime;
         instance.getLabels().addAll(labels);
+
+
         if (instance.getUser_instances().size() == 0){
             User_Instance userInstance  = new User_Instance(user, instance, labels);
             instance.getUser_instances().add(userInstance);
             user.getUser_instances().add(userInstance);
-            userInstance.setTime(userInstance.getTime() + time);
+            userInstance.setTime(userInstance.getTime() + labelingTime);
         }
         else{
+
             boolean flag = true;
             for (User_Instance userInstance: instance.getUser_instances()) {//if they have intersection
-                if (userInstance.getUser().equals(user)){
+                if (userInstance.getUser().getId() == user.getId()){
+
                     userInstance.addLabels(labels);
-                    userInstance.setTime(userInstance.getTime() + time);
+                    userInstance.setTime(userInstance.getTime() + labelingTime);
                     flag = false;
+
                 }
 
             }
@@ -55,7 +60,7 @@ public class Assignment {
                 User_Instance userInstance  = new User_Instance(user, instance, labels);
                 instance.getUser_instances().add(userInstance);
                 user.getUser_instances().add(userInstance);
-                userInstance.setTime(userInstance.getTime() + time);
+                userInstance.setTime(userInstance.getTime() + labelingTime);
             }
         }
 
@@ -165,7 +170,7 @@ public class Assignment {
         return instance;
     }
 
-    public float getTime() {
+    public double getTime() {
         return time;
     }
 }

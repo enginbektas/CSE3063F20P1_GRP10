@@ -5,6 +5,7 @@ public class User_Instance {
     private User user;
     private Instance instance;
     private double time;
+
     public User_Instance(User user, Instance instance, ArrayList<Label> newLabels){
         labels = new ArrayList<>();
         addLabels(newLabels);

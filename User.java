@@ -15,7 +15,7 @@ public class User {
     @SerializedName("dataset ids")
     private ArrayList<Integer> datasetIds;
 
-    private ArrayList<User_Instance> user_instances;
+    private transient ArrayList<User_Instance> user_instances;
 
     public User(){
         userPerformanceMetrics = new UserPerformanceMetrics(this);

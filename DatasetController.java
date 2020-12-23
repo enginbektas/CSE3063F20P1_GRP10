@@ -52,7 +52,7 @@ public class DatasetController {
         return users;
     }
 
-    public ArrayList<Storage> configController(File configJson) {
+    public ArrayList<Storage> configController(File configJson, ArrayList<User> userList) {
         // iterate through configs datasets, check if they have output, if so read
         // output with storageReader
         // hold dataset and assignments and users, call assigner and set assignments to
@@ -71,7 +71,7 @@ public class DatasetController {
             Object obj = parser.parse(new FileReader(configJson));
             JSONObject jsonObject = (JSONObject) obj; // assign the parsed version of our file to a JSONObject
             JSONArray jsonArrayForDatasetPointers = (JSONArray) jsonObject.get("datasets");
-            ArrayList<User> userList = userReader(configJson);
+
             for (int i = 0; i < jsonArrayForDatasetPointers.size(); i++) {
 
                 Storage storage = new Storage();
@@ -82,10 +82,12 @@ public class DatasetController {
                 File outputFile = new File("Outputs\\Output" + datasetId + ".json");
                 File inputFile = new File(path);
                 if (outputFile.exists()) {
-                    storage = storageReader(outputFile);
-                } else { // if no output, read input
+                    storage = storageReader(outputFile, userList);
+                }
+                else { // if no output, read input
                     dataset = reader(inputFile);
                     storage.setDataset(dataset);
+
                 }
                 for (User user : userList) {
                     if (user.getDatasetIds().contains(storage.getDataset().getId())
@@ -156,13 +158,13 @@ public class DatasetController {
         return dataset;
     }
 
-    private Storage storageReader(File outputJson) {
+    private Storage storageReader(File outputJson, ArrayList<User> userList) {
         Storage storage = new Storage();
         Dataset dataset = new Dataset();
         JSONParser parser = new JSONParser(); // create JSON parser
         try {
             // Taking users from the file
-            ArrayList<User> userList = userReader(outputJson);
+
             Object obj = parser.parse(new FileReader(outputJson));
             JSONObject jsonObject = (JSONObject) obj; // assign the parsed version of our file to a JSONObject
             // Taking dataset from the file
@@ -189,14 +191,15 @@ public class DatasetController {
 
                 long userId = (long) obj2.get("user id");
                 String date = (String) obj2.get("datetime");
-                float time = (float) obj2.get("time");
+                double time = (double) obj2.get("time");
                 Instance instance = storage.getDataset().getInstance((int) instanceId);
 
                 User user = new User();
                 ArrayList<Label> labels = dataset.getLabelListFromId(classLabelIds);
-                for (User userj : userList)
+                for (User userj : userList){
                     if (userj.getId() == userId)
                         user = userj;
+                }
                 assignments[i] = new Assignment(dataset, userList, instance, user, date, labels, time);
             }
            

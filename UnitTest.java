@@ -18,7 +18,7 @@ public class UnitTest {
 
         int currentDatasetId = datasetController.getCurrentDatasetId(file);
 
-        storageList = datasetController.configController(file);
+        storageList = datasetController.configController(file, userList);
         Storage currentStorage = null;
 
         Writer writer = new Writer();

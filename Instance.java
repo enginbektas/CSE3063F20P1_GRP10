@@ -6,7 +6,7 @@ class Instance {
     private int id;
     private String instance;
     private transient ArrayList<Label> labels;
-    private ArrayList<User_Instance> user_instances;
+    private transient ArrayList<User_Instance> user_instances;
 
     public Instance(long id, String instance) {
         this.id = (int)id;
