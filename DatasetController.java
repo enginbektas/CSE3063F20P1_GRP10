@@ -12,37 +12,38 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-
 public class DatasetController {
 
     public DatasetController() {
 
     }
 
-    public ArrayList<User> userReader(File file)  {
+    public ArrayList<User> userReader(File configJson) {
         ArrayList<User> users = new ArrayList<User>();
         JSONParser parser = new JSONParser(); // create JSON parser
         try {
 
-            Object obj = parser.parse(new FileReader(file));
-            JSONObject jsonObject = (JSONObject) obj; //assign the parsed version of our file to a JSONObject
+            Object obj = parser.parse(new FileReader(configJson));
+            JSONObject jsonObject = (JSONObject) obj; // assign the parsed version of our file to a JSONObject
 
             JSONArray jsonArrayForUsers = (JSONArray) jsonObject.get("users");
             Instance[] instances = new Instance[jsonArrayForUsers.size()];
 
-            for (int i=0; i<jsonArrayForUsers.size(); i++) { //assigns the given instances in the input to the instances array
-                JSONObject obj2 = (JSONObject) jsonArrayForUsers.get(i); //declare obj2 to i'th element of JSON classlabelsarray
-                long userId = (long) obj2.get("user id"); //obj2 is now the element of the array
+            for (int i = 0; i < jsonArrayForUsers.size(); i++) { // assigns the given instances in the input to the
+                                                                 // instances array
+                JSONObject obj2 = (JSONObject) jsonArrayForUsers.get(i); // declare obj2 to i'th element of JSON
+                                                                         // classlabelsarray
+                long userId = (long) obj2.get("user id"); // obj2 is now the element of the array
                 String userName = (String) obj2.get("user name");
                 String userType = (String) obj2.get("user type");
 
                 JSONArray jsonArrayForDatasetIds = (JSONArray) obj2.get("dataset ids");
-                ArrayList<Integer> datasetIds = new ArrayList<>(); //set dataset ids to user
-                for (int j=0; j<jsonArrayForDatasetIds.size(); j++) { // iterate size times
+                ArrayList<Integer> datasetIds = new ArrayList<>(); // set dataset ids to user
+                for (int j = 0; j < jsonArrayForDatasetIds.size(); j++) { // iterate size times
                     long datasetId = (long) jsonArrayForDatasetIds.get(j); //
-                    datasetIds.add((int)datasetId); //
+                    datasetIds.add((int) datasetId); //
                 }
-                users.add(new User((int)userId, userName, userType, datasetIds));
+                users.add(new User((int) userId, userName, userType, datasetIds));
             }
 
         } catch (Exception e) {
@@ -51,44 +52,44 @@ public class DatasetController {
         return users;
     }
 
-    public ArrayList<Storage> configController(File file) {
-        // iterate through configs datasets, check if they have output, if so read output with storageReader
-        //  hold dataset and assignments and users, call assigner and set assignments to dataset,
-        //  set dataset.getStorage.setDataset, dataset.getStorage.setAssignments, dataset.getStorage.setUsers
+    public ArrayList<Storage> configController(File configJson) {
+        // iterate through configs datasets, check if they have output, if so read
+        // output with storageReader
+        // hold dataset and assignments and users, call assigner and set assignments to
+        // dataset,
+        // set dataset.getStorage.setDataset, dataset.getStorage.setAssignments,
+        // dataset.getStorage.setUsers
         // if not read dataset with datasetReader
         // add the dataset to the list, iterate for the next dataset
         // return the list of datasets
         ArrayList<Storage> storageList = new ArrayList<Storage>();
-<<<<<<< HEAD
-        List<User> userList = userReader(file); // Takes 'users' from JSON file.
-=======
->>>>>>> 7b31006854b0bc4ad33e6601f8da01d76d5074ac
 
         Dataset dataset;
         JSONParser parser = new JSONParser(); // create JSON parser
         try {
 
-            Object obj = parser.parse(new FileReader(file));
-            JSONObject jsonObject = (JSONObject) obj; //assign the parsed version of our file to a JSONObject
+            Object obj = parser.parse(new FileReader(configJson));
+            JSONObject jsonObject = (JSONObject) obj; // assign the parsed version of our file to a JSONObject
             JSONArray jsonArrayForDatasetPointers = (JSONArray) jsonObject.get("datasets");
-            ArrayList<User> userList = userReader(file);
-            for (int i=0; i<jsonArrayForDatasetPointers.size(); i++) {
+            ArrayList<User> userList = userReader(configJson);
+            for (int i = 0; i < jsonArrayForDatasetPointers.size(); i++) {
 
                 Storage storage = new Storage();
-                JSONObject obj2 = (JSONObject) jsonArrayForDatasetPointers.get(i); //declare obj2 to i'th element of JSON classlabelsarray
-                long datasetId = (long) obj2.get("dataset id"); //obj2 is now the element of the array
+                JSONObject obj2 = (JSONObject) jsonArrayForDatasetPointers.get(i); // declare obj2 to i'th element of
+                                                                                   // JSON classlabelsarray
+                long datasetId = (long) obj2.get("dataset id"); // obj2 is now the element of the array
                 String path = (String) obj2.get("path");
-                File outputFile = new File("Outputs\\Output"+datasetId+".json");
+                File outputFile = new File("Outputs\\Output" + datasetId + ".json");
                 File inputFile = new File(path);
                 if (outputFile.exists()) {
                     storage = storageReader(outputFile);
-                }
-                else { //if no output, read input
+                } else { // if no output, read input
                     dataset = reader(inputFile);
                     storage.setDataset(dataset);
                 }
                 for (User user : userList) {
-                    if (user.getDatasetIds().contains(storage.getDataset().getId()) && !(storage.getUsers().contains(user)))
+                    if (user.getDatasetIds().contains(storage.getDataset().getId())
+                            && !(storage.getUsers().contains(user)))
                         storage.getUsers().add(user);
                 }
 
@@ -100,33 +101,30 @@ public class DatasetController {
         return storageList;
     }
 
-<<<<<<< HEAD
-    public Dataset reader(File file) {
-        // 
-=======
-    private Dataset reader(File file) {
->>>>>>> 7b31006854b0bc4ad33e6601f8da01d76d5074ac
+    private Dataset reader(File inputJson) {
         Dataset dataset = new Dataset();
         JSONParser parser = new JSONParser(); // create JSON parser
         try {
 
-            Object obj = parser.parse(new FileReader(file));
-            JSONObject jsonObject = (JSONObject) obj; //assign the parsed version of our file to a JSONObject
+            Object obj = parser.parse(new FileReader(inputJson));
+            JSONObject jsonObject = (JSONObject) obj; // assign the parsed version of our file to a JSONObject
 
             long id = (long) jsonObject.get("dataset id"); // setting dataset id
             dataset.setId((int) id);
 
             dataset.setName((String) jsonObject.get("dataset name"));
-            dataset.setMaxNumOfLabelsPerInstance((int)
-                    (long) jsonObject.get("maximum number of labels per instance"));
+            dataset.setMaxNumOfLabelsPerInstance((int) (long) jsonObject.get("maximum number of labels per instance"));
 
-            //this block gets the info of labels from the input and assigns it to an array of labels
+            // this block gets the info of labels from the input and assigns it to an array
+            // of labels
             JSONArray jsonArrayForClassLabels = (JSONArray) jsonObject.get("class labels");
             Label[] labels = new Label[jsonArrayForClassLabels.size()]; // create labels array
 
-            for (int i=0; i<jsonArrayForClassLabels.size(); i++) { //assigns the given labels in the input to the labels array
-                JSONObject obj2 = (JSONObject) jsonArrayForClassLabels.get(i); //declare obj2 to i'th element of JSON classlabelsarray
-                long labelId = (long) obj2.get("label id"); //obj2 is now the element of the array
+            for (int i = 0; i < jsonArrayForClassLabels.size(); i++) { // assigns the given labels in the input to the
+                                                                       // labels array
+                JSONObject obj2 = (JSONObject) jsonArrayForClassLabels.get(i); // declare obj2 to i'th element of JSON
+                                                                               // classlabelsarray
+                long labelId = (long) obj2.get("label id"); // obj2 is now the element of the array
                 String labelText = (String) obj2.get("label text");
                 labels[i] = new Label(labelId, labelText);
             }
@@ -135,12 +133,15 @@ public class DatasetController {
                 labelList.add(labels[i]);
             dataset.setLabels(labelList);
 
-            //this block gets the info of instances from the input and assigns it to an array of instances
+            // this block gets the info of instances from the input and assigns it to an
+            // array of instances
             JSONArray jsonArrayForInstances = (JSONArray) jsonObject.get("instances");
             Instance[] instances = new Instance[jsonArrayForInstances.size()];
-            for (int i=0; i<jsonArrayForInstances.size(); i++) { //assigns the given instances in the input to the instances array
-                JSONObject obj2 = (JSONObject) jsonArrayForInstances.get(i); //declare obj2 to i'th element of JSON classlabelsarray
-                long instanceId = (long) obj2.get("id"); //obj2 is now the element of the array
+            for (int i = 0; i < jsonArrayForInstances.size(); i++) { // assigns the given instances in the input to the
+                                                                     // instances array
+                JSONObject obj2 = (JSONObject) jsonArrayForInstances.get(i); // declare obj2 to i'th element of JSON
+                                                                             // classlabelsarray
+                long instanceId = (long) obj2.get("id"); // obj2 is now the element of the array
                 String instance = (String) obj2.get("instance");
                 instances[i] = new Instance(instanceId, instance);
             }
@@ -155,44 +156,46 @@ public class DatasetController {
         return dataset;
     }
 
-    private Storage storageReader(File file) {
+    private Storage storageReader(File outputJson) {
         Storage storage = new Storage();
         Dataset dataset = new Dataset();
         JSONParser parser = new JSONParser(); // create JSON parser
         try {
-            //TAKING USERS FROM THE FILE
-            ArrayList<User> userList = userReader(file);
-            Object obj = parser.parse(new FileReader(file));
-            JSONObject jsonObject = (JSONObject) obj; //assign the parsed version of our file to a JSONObject
-            //TAKING DATASET FROM THE FILE
-            dataset = reader(file);
+            // TAKING USERS FROM THE FILE
+            ArrayList<User> userList = userReader(outputJson);
+            Object obj = parser.parse(new FileReader(outputJson));
+            JSONObject jsonObject = (JSONObject) obj; // assign the parsed version of our file to a JSONObject
+            // TAKING DATASET FROM THE FILE
+            dataset = reader(outputJson);
             storage.setDataset(dataset);
             // TAKING ASSIGNMENTS FROM THE FILE
             JSONArray jsonArrayForAssignments = (JSONArray) jsonObject.get("class label assignments");
             Assignment[] assignments = new Assignment[jsonArrayForAssignments.size()];
-            for (int i=0; i<jsonArrayForAssignments.size(); i++) { //assigns the given instances in the input to the instances array
-                JSONObject obj2 = (JSONObject) jsonArrayForAssignments.get(i); //declare obj2 to i'th element of JSON classlabelsarray
-                long instanceId = (long) obj2.get("instance id"); //obj2 is now the element of the array
+            for (int i = 0; i < jsonArrayForAssignments.size(); i++) { // assigns the given instances in the input to
+                                                                       // the instances array
+                JSONObject obj2 = (JSONObject) jsonArrayForAssignments.get(i); // declare obj2 to i'th element of JSON
+                                                                               // classlabelsarray
+                long instanceId = (long) obj2.get("instance id"); // obj2 is now the element of the array
 
                 JSONArray jsonArrayForClassLabelIds = (JSONArray) obj2.get("class label ids");
                 ArrayList<Integer> classLabelIds = new ArrayList<>();
-                for (int j=0; j<jsonArrayForClassLabelIds.size(); j++) { // iterate size times
+                for (int j = 0; j < jsonArrayForClassLabelIds.size(); j++) { // iterate size times
                     long classLabelId = (long) jsonArrayForClassLabelIds.get(j); //
-                    classLabelIds.add((int)classLabelId); //
+                    classLabelIds.add((int) classLabelId); //
                 }
 
                 long userId = (long) obj2.get("user id");
                 String date = (String) obj2.get("datetime");
-                Instance instance = storage.getDataset().getInstance((int)instanceId);
+                Instance instance = storage.getDataset().getInstance((int) instanceId);
 
                 User user = new User();
                 ArrayList<Label> labels = dataset.getLabelListFromId(classLabelIds);
                 for (User userj : userList)
-                    if(userj.getId() == userId)
+                    if (userj.getId() == userId)
                         user = userj;
                 assignments[i] = new Assignment(dataset, userList, instance, user, date, labels);
             }
-            ////storage.setDataset(dataset);
+            //// storage.setDataset(dataset);
             ArrayList<Assignment> assignmentList = new ArrayList<>();
             for (int i = 0; i < assignments.length; i++)
                 assignmentList.add(assignments[i]);
@@ -201,7 +204,7 @@ public class DatasetController {
 
             for (Assignment assignmentIter : storage.getAssigments()) {
                 assignmentIter.setDataset(dataset); // Set dataset
-                assignmentIter.setUserList(userList);  // Set userList
+                assignmentIter.setUserList(userList); // Set userList
                 assignmentIter.setUser(); // Set user
                 assignmentIter.setInstance();
             }
@@ -218,37 +221,32 @@ public class DatasetController {
         JSONParser parser = new JSONParser(); // create JSON parser
         try {
             Object obj = parser.parse(new FileReader(file));
-            JSONObject jsonObject = (JSONObject) obj; //assign the parsed version of our file to a JSONObject
+            JSONObject jsonObject = (JSONObject) obj; // assign the parsed version of our file to a JSONObject
             currentDatasetId = (long) jsonObject.get("current dataset id");
         } catch (Exception e) {
-        e.printStackTrace();
-    }
-
-        return (int)currentDatasetId;
-    }
-
-/*
-    public void assigner(Storage storage, List<User> userList) {
-        for (Instance instance : storage.getDataset().getInstances()) {
-            for (Assignment assignment : storage.getAssigments()) {
-                if (instance.getId() == assignment.getInstanceId()) {
-                    //TODO create a list of labels from assignments label ids, check them with datasets label ids and reach to instance itself
-                    ArrayList<Label> labels = new ArrayList<>();
-                    for (Integer labelId : assignment.getLabels())
-                        for (Label label : storage.getDataset().getLabels())
-                            if (labelId == label.getId())
-                                labels.add(label);
-                    new Assignment(storage.getDataset(), userList, instance, assignment.getUser(), assignment.getDate(), labels);
-                    // TODO Assignment(Dataset dataset, List<User> userList,
-                    //  Instance instance, User user, String date, List<Label> labels, Mechanism mechanism)
-                }
-            }
+            e.printStackTrace();
         }
+
+        return (int) currentDatasetId;
     }
 
- */
+    /*
+     * public void assigner(Storage storage, List<User> userList) { for (Instance
+     * instance : storage.getDataset().getInstances()) { for (Assignment assignment
+     * : storage.getAssigments()) { if (instance.getId() ==
+     * assignment.getInstanceId()) { //TODO create a list of labels from assignments
+     * label ids, check them with datasets label ids and reach to instance itself
+     * ArrayList<Label> labels = new ArrayList<>(); for (Integer labelId :
+     * assignment.getLabels()) for (Label label : storage.getDataset().getLabels())
+     * if (labelId == label.getId()) labels.add(label); new
+     * Assignment(storage.getDataset(), userList, instance, assignment.getUser(),
+     * assignment.getDate(), labels); // TODO Assignment(Dataset dataset, List<User>
+     * userList, // Instance instance, User user, String date, List<Label> labels,
+     * Mechanism mechanism) } } } }
+     * 
+     */
 
-    public void writeDataset(Storage storage){
+    public void writeDataset(Storage storage) {
         Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
         String json = gson.toJson(storage);
         StringBuilder sb = new StringBuilder(json);
@@ -262,10 +260,3 @@ public class DatasetController {
         }
     }
 }
-
-
-
-
-
-
-

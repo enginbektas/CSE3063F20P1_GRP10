@@ -36,7 +36,7 @@ public class Assignment {
 
         instance.getLabels().addAll(labels);
 
-        user.getUserPerformanceMetrics().update(this, dataset, instance);
+        //user.getUserPerformanceMetrics().update(this, dataset, instance);
 
 
     }
