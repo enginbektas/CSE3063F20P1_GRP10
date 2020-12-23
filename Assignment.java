@@ -19,11 +19,11 @@ public class Assignment {
     private transient Dataset dataset;
     private transient User user;
     private transient Instance instance;
+    private float time;
 
 
 
-
-    public Assignment(Dataset dataset, ArrayList<User> userList, Instance instance, User user, String date, ArrayList<Label> labels){
+    public Assignment(Dataset dataset, ArrayList<User> userList, Instance instance, User user, String date, ArrayList<Label> labels, float labelingTime){
         this.instanceId = instance.getId();
         this.classLabelIds = new ArrayList<>();
         setLabels(labels);
@@ -35,8 +35,33 @@ public class Assignment {
         this.userId = user.getId();
 
         instance.getLabels().addAll(labels);
+        if (instance.getUser_instances().size() == 0){
+            User_Instance userInstance  = new User_Instance(user, instance, labels);
+            instance.getUser_instances().add(userInstance);
+            user.getUser_instances().add(userInstance);
+            userInstance.setTime(userInstance.getTime() + time);
+        }
+        else{
+            boolean flag = true;
+            for (User_Instance userInstance: instance.getUser_instances()) {//if they have intersection
+                if (userInstance.getUser().equals(user)){
+                    userInstance.addLabels(labels);
+                    userInstance.setTime(userInstance.getTime() + time);
+                    flag = false;
+                }
 
-        //user.getUserPerformanceMetrics().update(this, dataset, instance);
+            }
+            if (flag){
+                User_Instance userInstance  = new User_Instance(user, instance, labels);
+                instance.getUser_instances().add(userInstance);
+                user.getUser_instances().add(userInstance);
+                userInstance.setTime(userInstance.getTime() + time);
+            }
+        }
+
+        user.getUserPerformanceMetrics().update(this, dataset, instance);
+
+
 
 
     }
@@ -140,5 +165,7 @@ public class Assignment {
         return instance;
     }
 
-
+    public float getTime() {
+        return time;
+    }
 }

@@ -15,7 +15,10 @@ public class User {
     @SerializedName("dataset ids")
     private ArrayList<Integer> datasetIds;
 
+    private ArrayList<User_Instance> user_instances;
+
     public User(){
+        userPerformanceMetrics = new UserPerformanceMetrics(this);
     }
 
     public User(int id, String userName, String userType,ArrayList<Integer> datasetIds){
@@ -60,5 +63,9 @@ public class User {
 
     public ArrayList<Integer> getDatasetIds() {
         return datasetIds;
+    }
+
+    public ArrayList<User_Instance> getUser_instances() {
+        return user_instances;
     }
 }

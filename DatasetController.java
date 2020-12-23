@@ -189,6 +189,7 @@ public class DatasetController {
 
                 long userId = (long) obj2.get("user id");
                 String date = (String) obj2.get("datetime");
+                float time = (float) obj2.get("time");
                 Instance instance = storage.getDataset().getInstance((int) instanceId);
 
                 User user = new User();
@@ -196,7 +197,7 @@ public class DatasetController {
                 for (User userj : userList)
                     if (userj.getId() == userId)
                         user = userj;
-                assignments[i] = new Assignment(dataset, userList, instance, user, date, labels);
+                assignments[i] = new Assignment(dataset, userList, instance, user, date, labels, time);
             }
            
             ArrayList<Assignment> assignmentList = new ArrayList<>();

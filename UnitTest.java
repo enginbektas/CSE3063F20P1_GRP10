@@ -47,14 +47,14 @@ public class UnitTest {
             newLog.write("***User id = " + user.getId() + " has logged in.***");//Logging user logins
 
             for (int j = 0; j < dataset.getInstances().size(); j++) {//Loop for labeling every instance
-                float labelingTimeStart = System.currentTimeMillis();
+                float labelingTime = 0;
                 Assignment tempAssignment = randomLabelingMechanism.randomMechanism(userList, dataset, dataset.getInstances().get(j), (User) user);
                 if (tempAssignment != null){ //returns null if there is no space for any further label
                     newLog.write("*User " + user.getId() + " has labeled instance " + dataset.getInstances().get(j).getId() + ".*");//logging
                     assignments.add(tempAssignment);
+                    labelingTime += tempAssignment.getTime();
                 }
-                float labelingTimeEnd = System.currentTimeMillis();
-                float labelingTime = labelingTimeEnd - labelingTimeStart;
+
                 user.getUserPerformanceMetrics().setTotalTimeSpentLabeling(user.getUserPerformanceMetrics().getTotalTimeSpentLabeling() + labelingTime);
                 user.getUserPerformanceMetrics().setAverageTimeSpentLabeling();
             } // labeling ends

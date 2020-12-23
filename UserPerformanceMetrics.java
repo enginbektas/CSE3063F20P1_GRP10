@@ -7,6 +7,7 @@ public class UserPerformanceMetrics {
     private transient ArrayList<Instance> instancesLabeled;
     private transient ArrayList<Instance> uniqueInstancesLabeled;
     private transient ArrayList<Dataset> allDatasets;
+    private transient ArrayList<Instance> instancesLabeledMoreThanOnce;
 
     private int datasetAssigned;
     private int numberOfInstancesLabeled;
@@ -16,6 +17,7 @@ public class UserPerformanceMetrics {
     private transient ArrayList<Percentage> usersCompleteness;
 
     private transient double totalTimeSpentLabeling; //
+//Her bbir insace harcağdığı labellama süresi bunn standart sapması heasaplacakak ör: i1;5sn, i2:3sn, i3:7sn std= hesapla
 
     private double averageTimeSpentLabeling;
     private double stdDevOfTimeSpentLabelingInstances;
@@ -31,6 +33,7 @@ public class UserPerformanceMetrics {
         this.allDatasets = new ArrayList<>();
         this.datasetsCompletenessPercentage = new ArrayList<>();
         this.usersCompleteness = new ArrayList<>();
+        this.instancesLabeledMoreThanOnce = new ArrayList<>();
 
     }
 
@@ -40,17 +43,23 @@ public class UserPerformanceMetrics {
 
 
         if (!datasetsAssigned.contains(dataset))
-        this.datasetsAssigned.add(dataset);
+            this.datasetsAssigned.add(dataset);
+
         this.datasetAssigned = datasetsAssigned.size();
 
         this.instancesLabeled.add(instance);
+
         this.numberOfInstancesLabeled = instancesLabeled.size();
 
         if (!instancesLabeled.contains(instance))
-        this.uniqueInstancesLabeled.add(instance);
+            this.uniqueInstancesLabeled.add(instance);
+        else
+            this.instancesLabeledMoreThanOnce.add(instance);
+
         this.numberOfUniqueInstancesLabeled = uniqueInstancesLabeled.size();
 
         setConsistencyPercentage();
+        calculateStd();
 
         //alldatasets
 
@@ -87,7 +96,33 @@ public class UserPerformanceMetrics {
     }
 
     public void setConsistencyPercentage() {
-        ArrayList<Integer> allLabelIds = null;
+        /*int totalLabelUsage = 0;
+        int maxNumber = 0;
+        for (Instance instace: instancesLabeledMoreThanOnce) {
+
+        }
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       /* ArrayList<Integer> allLabelIds = null;
         ArrayList<Integer> duplicateLabelIds = null;
         int duplicateLabelNumber = 0;
         int allLabelNumber = 0;
@@ -122,8 +157,44 @@ public class UserPerformanceMetrics {
         }
         consistencyP = duplicateLabelNumber / allLabelNumber;
         Percentage percentage = new Percentage(user.getUserName(), consistencyP);
-        this.consistencyPercentage = percentage;
+        this.consistencyPercentage = percentage;*/
     }
+
+    private void calculateStd(){
+
+    double sum = 0.0;
+    double standardDeviation = 0.0;
+    double mean = 0.0;
+    double res = 0.0;
+    double sq = 0.0;
+    double[] arr = new double[user.getUser_instances().size()];
+    int n = arr.length;
+    int j = 0;
+        for (User_Instance userInstance: user.getUser_instances()) {
+            arr[j] = userInstance.getTime();
+            j++;
+        }
+
+        for (int i = 0; i < n; i++) {
+            sum = sum + arr[i];
+        }
+
+        mean = sum / (n);
+
+        for (int i = 0; i < n; i++) {
+
+            standardDeviation
+                = standardDeviation + Math.pow((arr[i] - mean), 2);
+
+        }
+
+        sq = standardDeviation / n;
+        res = Math.sqrt(sq);
+        this.stdDevOfTimeSpentLabelingInstances = res;
+    }
+
+
+
 
     public ArrayList<Dataset> getDatasetsAssigned() {
         return datasetsAssigned;

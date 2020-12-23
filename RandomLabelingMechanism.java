@@ -17,6 +17,7 @@ public class RandomLabelingMechanism extends Mechanism{
     }
 
     public Assignment randomMechanism(ArrayList<User> userList, Dataset dataset, Instance instance, User user){
+        float labelingTimeStart = System.currentTimeMillis();
         //number of empty labels in the instance
         int labelNumberLeft = dataset.getMaxNumOfLabelsPerInstance() - instance.getLabels().size();
         if (labelNumberLeft == 0)
@@ -34,7 +35,9 @@ public class RandomLabelingMechanism extends Mechanism{
         Date date = new Date(System.currentTimeMillis());
         String dateString =  formatter.format(date);
         //Labels are assigned. Now creating an assignment object
-        Assignment assignment = new Assignment(dataset, userList, instance, user, dateString, labelsToUse);
+        float labelingTimeEnd = System.currentTimeMillis();
+        float labelingTime = labelingTimeEnd - labelingTimeStart;
+        Assignment assignment = new Assignment(dataset, userList, instance, user, dateString, labelsToUse, labelingTime);
         assignments.add(assignment);
         return assignment;
     }
@@ -44,7 +47,7 @@ public class RandomLabelingMechanism extends Mechanism{
         for (int i = 0; i < numberOfLabelsToAssign; i++){//Loop for chosing labels to use
             while(true){
                 int k = (int) (Math.random() * (dataset.getLabels().size() - 1));//Get a random int value for choosing label from label list
-                if ( !instance.getLabels().contains(dataset.getLabels().get(k)) ){//Checks if instance has that label or labels to use has it
+                if ( true ){//Checks if instance has that label or labels to use has it
                     labelsToUse.add(dataset.getLabels().get(k));
                     log.write("User " + user.getId() + " labeled instance " + instance.getId() + " by label " + dataset.getLabels().get(k).getId() + ".");
                     break;

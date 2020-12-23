@@ -6,11 +6,13 @@ class Instance {
     private int id;
     private String instance;
     private transient ArrayList<Label> labels;
+    private ArrayList<User_Instance> user_instances;
 
     public Instance(long id, String instance) {
         this.id = (int)id;
         this.instance = instance;
         this.labels = new ArrayList<Label>();
+        user_instances = new ArrayList<>();
     }
 
     public void setId(int id) {
@@ -35,5 +37,9 @@ class Instance {
 
     public String getInstance() {
         return instance;
+    }
+
+    public ArrayList<User_Instance> getUser_instances() {
+        return user_instances;
     }
 }
