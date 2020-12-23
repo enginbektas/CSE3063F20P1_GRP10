@@ -19,6 +19,7 @@ public class Assignment {
     private transient Dataset dataset;
     private transient User user;
     private transient Instance instance;
+    private transient ArrayList<Label> labels;
     private double time;
 
 
@@ -35,6 +36,7 @@ public class Assignment {
         this.user = user;
         this.userId = user.getId();
         this.time = labelingTime;
+        this.labels = labels;
         instance.getLabels().addAll(labels);
 
 
@@ -71,7 +73,9 @@ public class Assignment {
 
 
     }
-
+    public ArrayList<Label> getLabelList() {
+        return this.labels;
+    }
 
     public int getUserId() {
         return userId;

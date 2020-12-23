@@ -47,6 +47,7 @@ public class UserPerformanceMetrics {
             this.uniqueInstancesLabeled.add(instance);
         }
         else {
+            if (!this.instancesLabeledMoreThanOnce.contains(instance))
             this.instancesLabeledMoreThanOnce.add(instance);
         }
 
@@ -77,6 +78,9 @@ public class UserPerformanceMetrics {
 
     private void calculateDatasetCompletenessPercentage(){
 
+        for (int i = 0; i < usersCompleteness.size(); i++) {
+            usersCompleteness.get(i).setPercentage(0);
+        }
         boolean flag = true;
         for (Instance instance: uniqueInstancesLabeled) { //  2 3
             flag = true;
@@ -95,7 +99,7 @@ public class UserPerformanceMetrics {
                                 flag = false;
                                 usersCompleteness.get(i).setPercentage(usersCompleteness.get(i).getPercentage() + (1.0 / assignment.getDataset().getInstances().size()) * 100.0);
                                 if (usersCompleteness.get(i).getPercentage() > 100)
-                                    usersCompleteness.get(i).setPercentage(100);
+                                //    usersCompleteness.get(i).setPercentage(100);
                                 break;
                             }
                             else{
@@ -121,31 +125,27 @@ public class UserPerformanceMetrics {
     }
 
     public void setConsistencyPercentage() {
+
+        for (Instance instance1 : instancesLabeledMoreThanOnce) {
+            ArrayList<Label> reoccuringLabels = new ArrayList<>();
+            ArrayList<Label> allLabels = new ArrayList<>();
+            for (Assignment assignment : assignments) {
+                allLabels.addAll(assignment.getLabelList());
+                if (assignment.getInstance().equals(instance1)) {
+                    for (Label label : assignment.getLabelList()) {
+                        if (allLabels.contains(label)){
+                            reoccuringLabels.add(label);
+                        }
+                    }
+                }
+            }
+        }
         /*int totalLabelUsage = 0;
         int maxNumber = 0;
         for (Instance instace: instancesLabeledMoreThanOnce) {
 
         }
 */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
        /* ArrayList<Integer> allLabelIds = null;
         ArrayList<Integer> recurrentLabelList = null;
@@ -221,9 +221,6 @@ public class UserPerformanceMetrics {
         res = Math.sqrt(sq);
         this.stdDevOfTimeSpentLabelingInstances = res;
     }
-
-
-
 
     public ArrayList<Dataset> getDatasetsAssigned() {
         return datasetsAssigned;
