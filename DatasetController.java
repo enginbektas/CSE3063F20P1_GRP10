@@ -36,6 +36,8 @@ public class DatasetController {
                 long userId = (long) obj2.get("user id"); // obj2 is now the element of the array
                 String userName = (String) obj2.get("user name");
                 String userType = (String) obj2.get("user type");
+                double consistencyCheckProbability = (double) obj2.get("consistency check probability");
+
 
                 JSONArray jsonArrayForDatasetIds = (JSONArray) obj2.get("dataset ids");
                 ArrayList<Integer> datasetIds = new ArrayList<>(); // set dataset ids to user
@@ -43,7 +45,7 @@ public class DatasetController {
                     long datasetId = (long) jsonArrayForDatasetIds.get(j); //
                     datasetIds.add((int) datasetId); //
                 }
-                users.add(new User((int) userId, userName, userType, datasetIds));
+                users.add(new User((int) userId, userName, userType, datasetIds, consistencyCheckProbability));
             }
 
         } catch (Exception e) {

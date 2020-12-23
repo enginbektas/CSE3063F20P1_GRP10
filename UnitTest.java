@@ -33,9 +33,6 @@ public class UnitTest {
 
         ArrayList<User> currentUserList = currentStorage.getUsers();
 
-
-
-
         Dataset dataset = currentStorage.getDataset();
         assignments = (ArrayList<Assignment>) currentStorage.getAssigments();
 
@@ -67,6 +64,8 @@ public class UnitTest {
         }
     }
 }
+
+
 
 
 

@@ -1,8 +1,8 @@
   {
   "users":[
-  {"user id":1,"user name":"RandomLabelingMechanism1","user type":"RandomBot", "dataset ids": [1 ,2]},
-  {"user id":2,"user name":"RandomLabelingMechanism2","user type":"RandomBot","dataset ids": [1 ,2]},
-  {"user id":3,"user name":"MachineLearningLabelingMechanism","user type":"MachineLearningBot","dataset ids": [4 ,3]}
+  {"user id":1,"user name":"RandomLabelingMechanism1","user type":"RandomBot", "dataset ids": [1 ,2], "consistency check probability" : 0.1},
+  {"user id":2,"user name":"RandomLabelingMechanism2","user type":"RandomBot","dataset ids": [1 ,2], "consistency check probability" : 0.1},
+  {"user id":3,"user name":"MachineLearningLabelingMechanism","user type":"MachineLearningBot","dataset ids": [4 ,3], "consistency check probability" : 0.1}
   ],
 
   "datasets":[
@@ -11,6 +11,7 @@
   ],
 
     "current dataset id": 2
+
 }
 
 
