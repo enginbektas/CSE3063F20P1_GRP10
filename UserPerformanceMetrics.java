@@ -21,6 +21,7 @@ public class UserPerformanceMetrics {
 
 
     public UserPerformanceMetrics(User user) {
+        
         this.user = user;
         this.assignments = new ArrayList<>();
         this.datasetsAssigned = new ArrayList<>();

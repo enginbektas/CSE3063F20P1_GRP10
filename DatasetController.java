@@ -59,7 +59,7 @@ public class DatasetController {
         // add the dataset to the list, iterate for the next dataset
         // return the list of datasets
         ArrayList<Storage> storageList = new ArrayList<Storage>();
-        List<User> userList = userReader(file);
+        List<User> userList = userReader(file); // Takes 'users' from JSON file.
 
         Dataset dataset = new Dataset();
         JSONParser parser = new JSONParser(); // create JSON parser
@@ -92,6 +92,7 @@ public class DatasetController {
     }
 
     public Dataset reader(File file) {
+        // 
         Dataset dataset = new Dataset();
         JSONParser parser = new JSONParser(); // create JSON parser
         try {
@@ -140,14 +141,14 @@ public class DatasetController {
         Dataset dataset = new Dataset();
         JSONParser parser = new JSONParser(); // create JSON parser
         try {
-            // USERS
+            //TAKING USERS FROM THE FILE
             ArrayList<User> userList = userReader(file);
             Object obj = parser.parse(new FileReader(file));
             JSONObject jsonObject = (JSONObject) obj; //assign the parsed version of our file to a JSONObject
-            //DATASET
+            //TAKING DATASET FROM THE FILE
             dataset = reader(file);
             storage.setDataset(dataset);
-            // ASSIGNMENTS
+            // TAKING ASSIGNMENTS FROM THE FILE
             JSONArray jsonArrayForAssignments = (JSONArray) jsonObject.get("class label assignments");
             Assignment[] assignments = new Assignment[jsonArrayForAssignments.size()];
             for (int i=0; i<jsonArrayForAssignments.size(); i++) { //assigns the given instances in the input to the instances array
