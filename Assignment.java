@@ -25,6 +25,7 @@ public class Assignment {
 
     public Assignment(Dataset dataset, ArrayList<User> userList, Instance instance, User user, String date, ArrayList<Label> labels, double labelingTime){
         this.instanceId = instance.getId();
+        this.instance = instance;
         this.classLabelIds = new ArrayList<>();
         setLabels(labels);
         this.date = date;

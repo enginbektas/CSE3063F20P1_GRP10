@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class UserPerformanceMetrics {
     private User user;
@@ -75,34 +77,44 @@ public class UserPerformanceMetrics {
 
     private void calculateDatasetCompletenessPercentage(){
 
-
-        for (Instance instance: uniqueInstancesLabeled) {
-            for (Assignment assignment: assignments) {
+        boolean flag = true;
+        for (Instance instance: uniqueInstancesLabeled) { //  2 3
+            flag = true;
+            for (Assignment assignment: assignments) { // 2 3 2 3 2 3
+                if (!flag)
+                    break;
                 if (instance.equals(assignment.getInstance())){
                     if ( usersCompleteness.size() == 0){
+                        flag = false;
                         usersCompleteness.add(new Percentage(assignment.getDataset().getId() + "", (1.0 / assignment.getDataset().getInstances().size()) * 100.0));
+                        break;
                     }
                     else{
                         for (int i = 0; i < usersCompleteness.size(); i++) {
                             if (usersCompleteness.get(i).getName().equals(assignment.getDataset().getId() + "")){
+                                flag = false;
                                 usersCompleteness.get(i).setPercentage(usersCompleteness.get(i).getPercentage() + (1.0 / assignment.getDataset().getInstances().size()) * 100.0);
+                                if (usersCompleteness.get(i).getPercentage() > 100)
+                                    usersCompleteness.get(i).setPercentage(100);
+                                break;
                             }
                             else{
+                                flag = false;
                                 usersCompleteness.add(new Percentage(assignment.getDataset().getId() + "", (1.0 / assignment.getDataset().getInstances().size()) * 100.0));
                                 break;
                             }
                         }
                     }
+                    break;
                 }
             }
         }
+
     }
 
     public ArrayList<Percentage> getUsersCompleteness() {
         return usersCompleteness;
     }
-
-
 
     public Percentage getConsistencyPercentage() {
         return consistencyPercentage;
@@ -136,18 +148,22 @@ public class UserPerformanceMetrics {
 
 
        /* ArrayList<Integer> allLabelIds = null;
-        ArrayList<Integer> duplicateLabelIds = null;
-        int duplicateLabelNumber = 0;
-        int allLabelNumber = 0;
+        ArrayList<Integer> recurrentLabelList = null;
+        int sameLabels = 0;
+        int allInstances = 0;
         double consistencyP = 0;
+
+        Set<Integer> set = new HashSet<>(allLabelIds);
+        recurrentLabelList.addAll(set);
 
         for (Assignment assignment : assignments) { // iterates and compares every element of assignment list
             for (Assignment assignment2 : assignments) {    // with each other
+                allLabelIds.clear();
+                recurrentLabelList.clear();
                 if (assignment != assignment2) { // avoids comparing the same element
                     if (assignment.getInstance() == assignment2.getInstance()) { // if same instances detected
+                        allInstances++;
 
-                        duplicateLabelIds.clear(); //clears lists
-                        allLabelIds.clear(); //clears lists
 
                         for (Integer labelId : assignment.getLabels()) { // compare ins1's labels vs ins2's labels
                             for (Integer labelId2 : assignment2.getLabels()) {
