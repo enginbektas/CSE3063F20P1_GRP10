@@ -2,6 +2,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 import java.util.List;
+
 //#methods =13
 public class Storage {
 
@@ -21,13 +22,8 @@ public class Storage {
     private ArrayList<Assignment> assignments;
     private ArrayList<User> users;
 
-    public Storage(){
+    public Storage() {
 
-
-    }
-
-    public void setAssigments(ArrayList<Assignment> assignments) {
-        this.assignments = assignments;
     }
 
     public void setDataset(Dataset dataset) {
@@ -43,21 +39,24 @@ public class Storage {
 
     }
 
-    public void setUsers(ArrayList<User> users) {
-        this.users = users;
-    }
-
     public Dataset getDataset() {
         return dataset;
+    }
+
+    public void setAssigments(ArrayList<Assignment> assignments) {
+        this.assignments = assignments;
     }
 
     public ArrayList<Assignment> getAssigments() {
         return assignments;
     }
 
+    public void setUsers(ArrayList<User> users) {
+        this.users = users;
+    }
+
     public ArrayList<User> getUsers() {
         return users;
     }
-
 
 }
