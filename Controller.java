@@ -234,21 +234,6 @@ public class Controller {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return (int) currentDatasetId;
-    }
-
-    public void writeDataset(Storage storage) {
-        Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
-        String json = gson.toJson(storage);
-        StringBuilder sb = new StringBuilder(json);
-
-        try (FileWriter file = new FileWriter("testOutput.json")) {
-            file.write(sb.toString());
-            file.flush();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 }
