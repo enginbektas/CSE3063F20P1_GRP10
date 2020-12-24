@@ -81,39 +81,28 @@ public class UserPerformanceMetrics {
         for (int i = 0; i < usersCompleteness.size(); i++) {
             usersCompleteness.get(i).setPercentage(0);
         }
-        boolean flag = true;
-        for (Instance instance: uniqueInstancesLabeled) { //  2 3
-            flag = true;
-            for (Assignment assignment: assignments) { // 2 3 2 3 2 3
-                if (!flag)
-                    break;
+        for (Instance instance: uniqueInstancesLabeled) {
+            for (Assignment assignment: assignments) {
                 if (instance.equals(assignment.getInstance())){
                     if ( usersCompleteness.size() == 0){
-                        flag = false;
                         usersCompleteness.add(new Percentage(assignment.getDataset().getId() + "", (1.0 / assignment.getDataset().getInstances().size()) * 100.0));
                         break;
                     }
                     else{
                         for (int i = 0; i < usersCompleteness.size(); i++) {
                             if (usersCompleteness.get(i).getName().equals(assignment.getDataset().getId() + "")){
-                                flag = false;
                                 usersCompleteness.get(i).setPercentage(usersCompleteness.get(i).getPercentage() + (1.0 / assignment.getDataset().getInstances().size()) * 100.0);
-                                if (usersCompleteness.get(i).getPercentage() > 100)
-                                //    usersCompleteness.get(i).setPercentage(100);
                                 break;
                             }
-                            else{
-                                flag = false;
+                            if(i == usersCompleteness.size() - 1){
                                 usersCompleteness.add(new Percentage(assignment.getDataset().getId() + "", (1.0 / assignment.getDataset().getInstances().size()) * 100.0));
                                 break;
                             }
                         }
                     }
-                    break;
                 }
             }
         }
-
     }
 
     public ArrayList<Percentage> getUsersCompleteness() {
