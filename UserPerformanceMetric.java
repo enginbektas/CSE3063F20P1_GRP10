@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 
-
 public class UserPerformanceMetric {
     private User user;
     private transient ArrayList<Assignment> assignments;
@@ -102,8 +101,7 @@ public class UserPerformanceMetric {
         return consistencyPercentage;
     }
 
-    //TODO FIX
-    public void setConsistencyPercentage() { /////////////////////
+    public void setConsistencyPercentage() {
         int consistentLabelings =0;
         for (Instance instance1 : instancesLabeledMoreThanOnce) {
             ArrayList<Label> reoccuringLabels = new ArrayList<>();

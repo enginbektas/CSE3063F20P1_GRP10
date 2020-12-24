@@ -1,6 +1,5 @@
 
 import java.util.ArrayList;
-import java.util.List;
 
 class Instance {
     private int id;

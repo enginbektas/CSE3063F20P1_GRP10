@@ -1,19 +1,10 @@
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-
-import java.io.File;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class Writer {
-    
+
     public Writer() {
 
     }
