@@ -43,11 +43,39 @@ public class UnitTest {
         for (User user : currentUserList) {//Loop for every user to label every instance
             newLog.write("***User id = " + user.getId() + " has logged in.***");//Logging user logins
 
-            for (int j = 0; j < dataset.getInstances().size(); j++) {//Loop for labeling every instance
+            ArrayList<Instance> tempInstances = new ArrayList<>();
+            ArrayList<Instance> nonLabeledInstances = (ArrayList<Instance>) dataset.getInstances().clone();
+
+            if ( tempInstances.size() > 0)
+            tempInstances.get( (int) (Math.random() * tempInstances.size() ));
+
+            while (nonLabeledInstances.size() > 0) {//Loop for labeling every instance
+                double randomNumber = Math.random() * 100;
+                if ( randomNumber < user.getConsistencyCheckProbability() * 100) {
+                    tempInstances = (ArrayList<Instance>) user.getUserPerformanceMetrics().getUniqueInstancesLabeled().clone();
+                } else {
+                    tempInstances = nonLabeledInstances;
+                }
+                Instance tempInstance = null;
+                if(tempInstances.size() > 0)
+                    tempInstance = tempInstances.get((int) Math.random() * ( tempInstances.size() - 1));
+
+                if (nonLabeledInstances.contains(tempInstance)) {
+                    nonLabeledInstances.remove(tempInstance);
+                    System.out.println("s");
+                }
+
                 float labelingTime = 0;
-                Assignment tempAssignment = randomLabelingMechanism.randomMechanism(userList, dataset, dataset.getInstances().get(j), (User) user);
+                for (Instance instance1 : dataset.getInstances()) {
+                    if (instance1.getId() == tempInstance.getId()) {
+                        tempInstance = instance1;
+                    }
+                }
+
+
+                Assignment tempAssignment = randomLabelingMechanism.randomMechanism(userList, dataset, tempInstance, user);
                 if (tempAssignment != null){ //returns null if there is no space for any further label
-                    newLog.write("*User " + user.getId() + " has labeled instance " + dataset.getInstances().get(j).getId() + ".*");//logging
+                    newLog.write("*User " + user.getId() + " has labeled instance " + tempInstance.getId() + ".*");//logging
                     assignments.add(tempAssignment);
                     labelingTime += tempAssignment.getTime();
                 }

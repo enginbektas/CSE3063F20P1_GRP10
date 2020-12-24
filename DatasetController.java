@@ -37,6 +37,7 @@ public class DatasetController {
                 String userName = (String) obj2.get("user name");
                 String userType = (String) obj2.get("user type");
                 double consistencyCheckProbability = (double) obj2.get("consistency check probability");
+                String password = (String) obj2.get("password");
 
 
                 JSONArray jsonArrayForDatasetIds = (JSONArray) obj2.get("dataset ids");
@@ -45,7 +46,7 @@ public class DatasetController {
                     long datasetId = (long) jsonArrayForDatasetIds.get(j); //
                     datasetIds.add((int) datasetId); //
                 }
-                users.add(new User((int) userId, userName, userType, datasetIds, consistencyCheckProbability));
+                users.add(new User((int) userId, userName, userType, datasetIds, consistencyCheckProbability, password));
             }
 
         } catch (Exception e) {
@@ -92,9 +93,11 @@ public class DatasetController {
 
                 }
                 for (User user : userList) {
-                    if (user.getDatasetIds().contains(storage.getDataset().getId())
-                            && !(storage.getUsers().contains(user)))
+                    if (user.getDatasetIds().contains(storage.getDataset().getId()) && !(storage.getUsers().contains(user))) {
                         storage.getUsers().add(user);
+                        storage.getDataset().getUsers().add(user);
+                    }
+
                 }
 
                 storageList.add(storage);

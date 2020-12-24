@@ -17,6 +17,16 @@ public class DatasetPerformanceMetric {
         this.consistencyPercentageOfUsers = new ArrayList<>();
     }
 
+    public void update(){
+        this.calculateCompleteness();
+        this.calculateConsistencyPercentageOfUsers();
+        this.calculateLabelDistribution();
+        this.calculateNumberOfUsers();
+        this.calculateNumberUniqueInstancesForEachLabel();
+        this.calculateUsersCompleteness();
+
+    }
+
     private void calculateCompleteness(){
         this.completenessPercentage = 0;
         for (Instance instance: dataset.getInstances() ) {

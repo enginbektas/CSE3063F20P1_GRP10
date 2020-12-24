@@ -54,13 +54,12 @@ public class RandomLabelingMechanism extends Mechanism{
                     break;
                 }
             }
-
         }
         return labelsToUse;
     }
 
 
-    //Geters Setters
+    //Getters Setters
     public String getMechanismName() {
         return mechanismName;
     }

@@ -20,6 +20,7 @@ public class Dataset {
 
     public Dataset(){
         datasetPerformanceMetric = new DatasetPerformanceMetric(this);
+        this.users = new ArrayList<>();
     }
 
     public ArrayList<Label> getLabelListFromId(ArrayList<Integer> classLabelIds) {

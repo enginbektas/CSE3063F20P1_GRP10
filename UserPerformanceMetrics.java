@@ -15,7 +15,7 @@ public class UserPerformanceMetrics {
     private int numberOfInstancesLabeled;
     private int numberOfUniqueInstancesLabeled;
     private ArrayList<Percentage> datasetsCompletenessPercentage;
-    private Percentage consistencyPercentage;
+    private Percentage consistencyPercentage = new Percentage("kk", 1);
     private transient ArrayList<Percentage> usersCompleteness;
 
     private transient double totalTimeSpentLabeling; //
@@ -77,13 +77,14 @@ public class UserPerformanceMetrics {
     }
 
     private void calculateDatasetCompletenessPercentage(){
+        //usersCompleteness = new ArrayList<>();
 
         for (int i = 0; i < usersCompleteness.size(); i++) {
             usersCompleteness.get(i).setPercentage(0);
         }
         for (Instance instance: uniqueInstancesLabeled) {
             for (Assignment assignment: assignments) {
-                if (instance.equals(assignment.getInstance())){
+                if (instance.equals(assignment.getInstance()) && assignment.getUserId() == user.getId()){
                     if ( usersCompleteness.size() == 0){
                         usersCompleteness.add(new Percentage(assignment.getDataset().getId() + "", (1.0 / assignment.getDataset().getInstances().size()) * 100.0));
                         break;
@@ -100,6 +101,7 @@ public class UserPerformanceMetrics {
                             }
                         }
                     }
+                    break;
                 }
             }
         }
