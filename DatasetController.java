@@ -205,6 +205,10 @@ public class DatasetController {
                     if (userj.getId() == userId)
                         user = userj;
                 }
+                if (!dataset.getUsers().contains(user)) {
+                    dataset.getUsers().add(user);
+                }
+
                 assignments[i] = new Assignment(dataset, userList, instance, user, date, labels, time);
             }
            

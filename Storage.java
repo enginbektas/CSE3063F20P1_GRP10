@@ -21,6 +21,12 @@ public class Storage {
 
     private ArrayList<Assignment> assignments;
     private ArrayList<User> users;
+    /*
+    private ArrayList<InstancePerformanceMetric> instancePerformanceMetrics;
+    private ArrayList<UserPerformanceMetric> userPerformanceMetrics;
+    private DatasetPerformanceMetric datasetPerformanceMetric;
+
+     */
 
     public Storage() {
 

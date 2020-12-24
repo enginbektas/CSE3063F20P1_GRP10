@@ -1,22 +1,27 @@
 import java.util.ArrayList;
 
 public class InstancePerformanceMetric {
-    private Instance instance;
-    private int TotalNumberOfLabel;
+    private transient Instance instance;
+    private int instanceId;
+    private int totalNumberOfLabel;
     private int numberOfUniqueLabelAssignment;
     private int numberOfUniqueUsers;
-    private double entropy;
-    private ArrayList<User> userList;
-    private ArrayList<PLabel> labelsPercentages;
     private ArrayList<PLabel> mostFrequentLabel;
+    private ArrayList<PLabel> labelsPercentages;
+    private double entropy;
+    private transient ArrayList<User> userList;
+    private transient Label finalLabel;
+
+
 
     public InstancePerformanceMetric(Instance instance){
         this.instance=instance;
-        this.TotalNumberOfLabel=0;
+        this.totalNumberOfLabel =0;
         this.numberOfUniqueLabelAssignment=0;
         this.numberOfUniqueUsers=0;
         this.entropy=0;
         this.userList = new ArrayList<>();
+        this.instanceId = instance.getId();
     }
 
     public void update(User user) {
@@ -30,11 +35,17 @@ public class InstancePerformanceMetric {
         setLabelsPercentages();
         setMostFrequentLabel();
         setEntropy();
+        updateFinalLabel();
 
     }
 
+    private void updateFinalLabel() {
+        this.finalLabel = mostFrequentLabel.get(0).getLabel();
+        this.instance.setFinalLabel(finalLabel);
+    }
+
     public void setTotalNumberOfLabel() {
-        TotalNumberOfLabel=instance.getLabels().size();
+        totalNumberOfLabel =instance.getLabels().size();
     }
 
     public void setUniqueLabels() {
@@ -63,19 +74,19 @@ public class InstancePerformanceMetric {
 
         labelsPercentages = new ArrayList<PLabel>();
         PLabel tplabel = new PLabel(instance.getLabels().get(0),1);
-        tplabel.setPercentage(TotalNumberOfLabel);
+        tplabel.setPercentage(totalNumberOfLabel);
         labelsPercentages.add(tplabel);
         for(i=1;i<instance.getLabels().size();i++){
             for (j=0;j<labelsPercentages.size();j++){
                 if(labelsPercentages.get(j).getLabel()==instance.getLabels().get(i)) {
                     labelsPercentages.get(j).incNum();
-                    labelsPercentages.get(j).setPercentage(TotalNumberOfLabel);
+                    labelsPercentages.get(j).setPercentage(totalNumberOfLabel);
                     break;
                 }
             }
             if(j==labelsPercentages.size()){
                 tplabel= new PLabel(instance.getLabels().get(i),1);
-                tplabel.setPercentage(TotalNumberOfLabel);
+                tplabel.setPercentage(totalNumberOfLabel);
                 labelsPercentages.add(tplabel);
             }
         }
@@ -108,7 +119,7 @@ public class InstancePerformanceMetric {
 
     }
 
-    public int getTotalNumberOfLabel(){ return TotalNumberOfLabel; }
+    public int getTotalNumberOfLabel(){ return totalNumberOfLabel; }
 
     public int getNumberOfUniqueLabelAssignment(){ return numberOfUniqueLabelAssignment; }
 
@@ -122,5 +133,9 @@ public class InstancePerformanceMetric {
 
     public ArrayList<User> getUserList() {
         return userList;
+    }
+
+    public Label getFinalLabel() {
+        return finalLabel;
     }
 }

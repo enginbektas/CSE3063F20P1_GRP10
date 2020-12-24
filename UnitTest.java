@@ -51,7 +51,7 @@ public class UnitTest {
 
             while (nonLabeledInstances.size() > 0) {//Loop for labeling every instance
                 double randomNumber = Math.random() * 100;
-                if ( randomNumber < user.getConsistencyCheckProbability() * 100) {
+                if ( randomNumber < user.getConsistencyCheckProbability() * 100 && user.getUserPerformanceMetrics().getUniqueInstancesLabeled().size() != 0) {
                     tempInstances = (ArrayList<Instance>) user.getUserPerformanceMetrics().getUniqueInstancesLabeled().clone();
                 } else {
                     tempInstances = nonLabeledInstances;
@@ -62,16 +62,15 @@ public class UnitTest {
 
                 if (nonLabeledInstances.contains(tempInstance)) {
                     nonLabeledInstances.remove(tempInstance);
-                    System.out.println("s");
                 }
 
                 float labelingTime = 0;
-                for (Instance instance1 : dataset.getInstances()) {
-                    if (instance1.getId() == tempInstance.getId()) {
-                        tempInstance = instance1;
-                    }
-                }
 
+                    for (Instance instance1 : dataset.getInstances()) {
+                        if (instance1.getId() == tempInstance.getId()) {
+                            tempInstance = instance1;
+                        }
+                    }
 
                 Assignment tempAssignment = randomLabelingMechanism.randomMechanism(userList, dataset, tempInstance, user);
                 if (tempAssignment != null){ //returns null if there is no space for any further label
@@ -82,14 +81,33 @@ public class UnitTest {
 
                 user.getUserPerformanceMetrics().setTotalTimeSpentLabeling(user.getUserPerformanceMetrics().getTotalTimeSpentLabeling() + labelingTime);
                 user.getUserPerformanceMetrics().setAverageTimeSpentLabeling();
-            } // labeling ends
 
+                ArrayList<DatasetPerformanceMetric> datasetPerformanceMetricsList = new ArrayList<>();
+                ArrayList<UserPerformanceMetric> userPerformanceMetricsList = new ArrayList<>();
+                ArrayList<ArrayList<InstancePerformanceMetric>> instancePerformanceMetricList = new ArrayList<>();
+
+                ArrayList<InstancePerformanceMetric> instancePerformanceMetricListTemp = new ArrayList<>();
+
+                for (User user1 : userList) {
+                    userPerformanceMetricsList.add(user1.getUserPerformanceMetrics());
+                }
+                for (Storage storage: storageList) {
+                    writer.writeDataset(storage, "Outputs//Output" + storage.getDataset().getId() + ".json", false, false);
+                    datasetPerformanceMetricsList.add(storage.getDataset().getDatasetPerformanceMetric());
+                    for (Instance instance : storage.getDataset().getInstances()) {
+                        instancePerformanceMetricListTemp.add(instance.getInstancePerformanceMetrics());
+                    }
+                    instancePerformanceMetricList.add(instancePerformanceMetricListTemp);
+                }
+
+                PerformanceMetrics performanceMetrics = new PerformanceMetrics(datasetPerformanceMetricsList, userPerformanceMetricsList, instancePerformanceMetricList);
+                newLog.editLog();
+                //writer.writeDataset(performanceMetrics, "Outputs//PerformanceMetrics" + ".json", false, false);
+
+            } // labeling ends
             newLog.write("***User " + user.getId() + " has logged out.***");
         }
 
-        for (Storage storage: storageList) {
-            writer.writeDataset(storage, "Output" + storage.getDataset().getId() + ".json", false, false);
-        }
     }
 }
 

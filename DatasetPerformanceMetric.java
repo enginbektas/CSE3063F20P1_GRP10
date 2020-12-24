@@ -2,9 +2,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DatasetPerformanceMetric {
-    private Dataset dataset;
-    private double completenessPercentage;
+    private transient Dataset dataset;
+    private int datasetId;
     private ArrayList<Percentage> labelDistributionPercentage;
+    private double completenessPercentage;
     private ArrayList<Percentage> numberUniqueInstancesForEachLabel;
     private int numberOfUsers;
     private ArrayList<Percentage> usersCompleteness;
@@ -12,19 +13,21 @@ public class DatasetPerformanceMetric {
 
     public DatasetPerformanceMetric(Dataset dataset) {
         this.dataset = dataset;
-
+        this.datasetId = dataset.getId();
         this.usersCompleteness = new ArrayList<>();
         this.consistencyPercentageOfUsers = new ArrayList<>();
+
     }
 
     public void update(){
+        this.datasetId = dataset.getId();
         this.calculateCompleteness();
         this.calculateConsistencyPercentageOfUsers();
         this.calculateLabelDistribution();
         this.calculateNumberOfUsers();
         this.calculateNumberUniqueInstancesForEachLabel();
         this.calculateUsersCompleteness();
-
+        this.numberOfUsers = dataset.getUsers().size();
     }
 
     private void calculateCompleteness(){
@@ -106,6 +109,10 @@ public class DatasetPerformanceMetric {
 
     public double getCompletenessPercentage() {
         return completenessPercentage;
+    }
+
+    public void setDatasetId(int datasetId) {
+        this.datasetId = datasetId;
     }
 }
 

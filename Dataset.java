@@ -20,6 +20,7 @@ public class Dataset {
 
     public Dataset(){
         datasetPerformanceMetric = new DatasetPerformanceMetric(this);
+
         this.users = new ArrayList<>();
     }
 
@@ -59,6 +60,7 @@ public class Dataset {
 
     public void setId(int id) {
         this.id = id;
+        this.datasetPerformanceMetric.setDatasetId(id);
     }
 
     public String getName() {

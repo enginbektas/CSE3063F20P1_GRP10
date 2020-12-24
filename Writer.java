@@ -30,7 +30,7 @@ public class Writer {
             System.out.println(sb);
         }
 
-        try (FileWriter file = new FileWriter("Outputs\\" + outputName, append)) {
+        try (FileWriter file = new FileWriter(outputName, append)) {
             file.write(sb.toString());
             file.flush();
 

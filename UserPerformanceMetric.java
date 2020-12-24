@@ -12,14 +12,13 @@ public class UserPerformanceMetric {
     private transient ArrayList<Instance> instancesLabeledMoreThanOnce;
 
     private int datasetAssigned;
+    private ArrayList<Percentage> datasetsCompletenessPercentage;
     private int numberOfInstancesLabeled;
     private int numberOfUniqueInstancesLabeled;
-    private ArrayList<Percentage> datasetsCompletenessPercentage;
-    private Percentage consistencyPercentage = new Percentage("kk", 1);
+    private Percentage consistencyPercentage = new Percentage("", 0);
     private transient ArrayList<Percentage> usersCompleteness;
 
     private transient double totalTimeSpentLabeling; //
-//Her bbir insace harcağdığı labellama süresi bunn standart sapması heasaplacakak ör: i1;5sn, i2:3sn, i3:7sn std= hesapla
 
     private double averageTimeSpentLabeling;
     private double stdDevOfTimeSpentLabelingInstances;
@@ -61,18 +60,11 @@ public class UserPerformanceMetric {
 
         this.numberOfInstancesLabeled = instancesLabeled.size();
 
-        System.out.println(instance.getId());
-
-
-
         this.numberOfUniqueInstancesLabeled = uniqueInstancesLabeled.size();
 
         calculateDatasetCompletenessPercentage();
         setConsistencyPercentage();
         calculateStd();
-
-        //alldatasets
-
 
     }
 
@@ -131,53 +123,6 @@ public class UserPerformanceMetric {
                 }
             }
         }
-        /*int totalLabelUsage = 0;
-        int maxNumber = 0;
-        for (Instance instace: instancesLabeledMoreThanOnce) {
-
-        }
-*/
-
-       /* ArrayList<Integer> allLabelIds = null;
-        ArrayList<Integer> recurrentLabelList = null;
-        int sameLabels = 0;
-        int allInstances = 0;
-        double consistencyP = 0;
-
-        Set<Integer> set = new HashSet<>(allLabelIds);
-        recurrentLabelList.addAll(set);
-
-        for (Assignment assignment : assignments) { // iterates and compares every element of assignment list
-            for (Assignment assignment2 : assignments) {    // with each other
-                allLabelIds.clear();
-                recurrentLabelList.clear();
-                if (assignment != assignment2) { // avoids comparing the same element
-                    if (assignment.getInstance() == assignment2.getInstance()) { // if same instances detected
-                        allInstances++;
-
-
-                        for (Integer labelId : assignment.getLabels()) { // compare ins1's labels vs ins2's labels
-                            for (Integer labelId2 : assignment2.getLabels()) {
-                                if (labelId == labelId2) {               //holds only the duplicate labels
-                                    duplicateLabelIds.add(labelId);
-                                }
-                                else {
-                                    if (!allLabelIds.contains(labelId))  //holds all the labels
-                                        allLabelIds.add(labelId);
-                                    if (!allLabelIds.contains(labelId2))
-                                        allLabelIds.add(labelId2);
-                                }
-                            }
-                        }
-                        duplicateLabelNumber += duplicateLabelIds.size(); // adds
-                        allLabelNumber += allLabelIds.size();   // adds
-                    }
-                }
-            }
-        }
-        consistencyP = duplicateLabelNumber / allLabelNumber;
-        Percentage percentage = new Percentage(user.getUserName(), consistencyP);
-        this.consistencyPercentage = percentage;*/
     }
 
     private void calculateStd(){
