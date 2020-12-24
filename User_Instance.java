@@ -11,7 +11,6 @@ public class User_Instance {
         addLabels(newLabels);
         this.user = user;
         this.instance = instance;
-
     }
     public void addLabels(ArrayList<Label> newLabels){
         labels.addAll(newLabels);

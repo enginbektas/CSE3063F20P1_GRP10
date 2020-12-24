@@ -21,12 +21,6 @@ public class Storage {
 
     private ArrayList<Assignment> assignments;
     private ArrayList<User> users;
-    /*
-    private ArrayList<InstancePerformanceMetric> instancePerformanceMetrics;
-    private ArrayList<UserPerformanceMetric> userPerformanceMetrics;
-    private DatasetPerformanceMetric datasetPerformanceMetric;
-
-     */
 
     public Storage() {
 
@@ -55,10 +49,6 @@ public class Storage {
 
     public ArrayList<Assignment> getAssigments() {
         return assignments;
-    }
-
-    public void setUsers(ArrayList<User> users) {
-        this.users = users;
     }
 
     public ArrayList<User> getUsers() {

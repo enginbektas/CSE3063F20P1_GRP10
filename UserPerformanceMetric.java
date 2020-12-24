@@ -1,6 +1,5 @@
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
+
 
 public class UserPerformanceMetric {
     private User user;
@@ -8,7 +7,6 @@ public class UserPerformanceMetric {
     private transient ArrayList<Dataset> datasetsAssigned;
     private transient ArrayList<Instance> instancesLabeled;
     private transient ArrayList<Instance> uniqueInstancesLabeled;
-    private transient ArrayList<Dataset> allDatasets;
     private transient ArrayList<Instance> instancesLabeledMoreThanOnce;
 
     private int datasetAssigned;
@@ -23,7 +21,6 @@ public class UserPerformanceMetric {
     private double averageTimeSpentLabeling;
     private double stdDevOfTimeSpentLabelingInstances;
 
-
     public UserPerformanceMetric(User user) {
         
         this.user = user;
@@ -31,7 +28,6 @@ public class UserPerformanceMetric {
         this.datasetsAssigned = new ArrayList<>();
         this.instancesLabeled = new ArrayList<>();
         this.uniqueInstancesLabeled = new ArrayList<>();
-        this.allDatasets = new ArrayList<>();
         this.datasetsCompletenessPercentage = new ArrayList<>();
         this.usersCompleteness = new ArrayList<>();
         this.instancesLabeledMoreThanOnce = new ArrayList<>();
@@ -158,10 +154,6 @@ public class UserPerformanceMetric {
         this.stdDevOfTimeSpentLabelingInstances = res;
     }
 
-    public ArrayList<Dataset> getDatasetsAssigned() {
-        return datasetsAssigned;
-    }
-
     public ArrayList<Assignment> getAssignments() {
         return assignments;
     }
@@ -170,70 +162,8 @@ public class UserPerformanceMetric {
         this.assignments = assignments;
     }
 
-    public void setDatasetsAssigned(ArrayList<Dataset> datasetsAssigned) {
-        this.datasetsAssigned = datasetsAssigned;
-    }
-
-    public int getDatasetAssigned() {
-        return datasetAssigned;
-    }
-
-    public void setDatasetAssigned() {
-        this.datasetAssigned = getDatasetsAssigned().size();
-    }
-
-    public ArrayList<Instance> getInstancesLabeled() {
-        return instancesLabeled;
-    }
-
-    public void setInstancesLabeled(ArrayList<Instance> instancesLabeled) {
-        this.instancesLabeled = instancesLabeled;
-    }
-
-    public int getNumberOfInstancesLabeled() {
-        return numberOfInstancesLabeled;
-    }
-
-    public void setNumberOfInstancesLabeled(int numberOfInstancesLabeled) {
-        this.numberOfInstancesLabeled = this.instancesLabeled.size();
-    }
-
     public ArrayList<Instance> getUniqueInstancesLabeled() {
         return uniqueInstancesLabeled;
-    }
-
-    public void setUniqueInstancesLabeled(ArrayList<Instance> uniqueInstancesLabeled) {
-        this.uniqueInstancesLabeled = uniqueInstancesLabeled;
-    }
-
-    public int getNumberOfUniqueInstancesLabeled() {
-        return numberOfUniqueInstancesLabeled;
-    }
-
-    public void setNumberOfUniqueInstancesLabeled() {
-        this.numberOfUniqueInstancesLabeled = this.uniqueInstancesLabeled.size();
-    }
-
-    public ArrayList<Dataset> getAllDatasets() {
-        return allDatasets;
-    }
-
-    public void setAllDatasets(ArrayList<Dataset> allDatasets) {
-        this.allDatasets = allDatasets;
-    }
-
-    public ArrayList<Percentage> getDatasetsCompletenessPercentage() {
-        return this.datasetsCompletenessPercentage;
-    }
-
-    public void setDatasetsCompletenessPercentage() {
-        for (Dataset dataset : this.allDatasets) {
-            this.datasetsCompletenessPercentage.add(new Percentage(dataset.getName(), dataset.getDatasetPerformanceMetric().getCompletenessPercentage()));
-        }
-    }
-
-    public double getAverageTimeSpentLabeling() {
-        return averageTimeSpentLabeling;
     }
 
     public void setAverageTimeSpentLabeling() {
@@ -245,7 +175,6 @@ public class UserPerformanceMetric {
     }
 
     public void setTotalTimeSpentLabeling(double timeSpent) {
-
             totalTimeSpentLabeling = timeSpent;
     }
 }

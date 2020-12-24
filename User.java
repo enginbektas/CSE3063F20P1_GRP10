@@ -1,5 +1,3 @@
-//#lines 16
-
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
@@ -43,28 +41,12 @@ public class User {
         return userName;
     }
 
-    public String getUserType() {
-        return userType;
-    }
-
     public void setId(int id) {
         this.id = id;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public void setUserType(String userType) {
-        this.userType = userType;
-    }
-
     public UserPerformanceMetric getUserPerformanceMetrics() {
         return userPerformanceMetrics;
-    }
-
-    public void setUserPerformanceMetrics(UserPerformanceMetric userPerformanceMetrics) {
-        this.userPerformanceMetrics = userPerformanceMetrics;
     }
 
     public ArrayList<Integer> getDatasetIds() {

@@ -17,10 +17,8 @@ public class Dataset {
     private transient ArrayList<User> users;
     private transient DatasetPerformanceMetric datasetPerformanceMetric;
 
-
     public Dataset(){
         datasetPerformanceMetric = new DatasetPerformanceMetric(this);
-
         this.users = new ArrayList<>();
     }
 
@@ -35,7 +33,6 @@ public class Dataset {
             }
         }
         return labels;
-
     }
 
     public ArrayList<Label> getLabels() {
@@ -75,10 +72,6 @@ public class Dataset {
         return instanceType;
     }
 
-    public void setInstanceType(String instanceType) {
-        this.instanceType = instanceType;
-    }
-
     public int getMaxNumOfLabelsPerInstance() {
         return maxNumOfLabelsPerInstance;
     }
@@ -87,38 +80,12 @@ public class Dataset {
         this.maxNumOfLabelsPerInstance = maxNumOfLabelsPerInstance;
     }
 
-    public Label getLabelWithId(int labelId){
-        Label label2 = new Label(0, "s");
-        for (Label label: labels) {
-            if (labelId == label.getId())
-                return label;
-        }
-        return label2;
-    }
-
     public ArrayList<User> getUsers() {
         return users;
     }
 
-    public void setUsers(ArrayList<User> users) {
-        this.users = users;
-    }
-
     public DatasetPerformanceMetric getDatasetPerformanceMetric() {
         return datasetPerformanceMetric;
-    }
-
-    public void setDatasetPerformanceMetric(DatasetPerformanceMetric datasetPerformanceMetric) {
-        this.datasetPerformanceMetric = datasetPerformanceMetric;
-    }
-
-    public Label getLabel(int id){
-        Label label = new Label(0,"");
-        for (Label labelj : labels) {
-            if (labelj.getId() == id)
-                label = labelj;
-        }
-        return label;
     }
 
     public Instance getInstance(int id){

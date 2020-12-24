@@ -3,8 +3,6 @@ import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
 public class RandomLabelingMechanism extends Mechanism{
     private String mechanismName;
     private transient ArrayList<Assignment> assignments;
@@ -59,18 +57,8 @@ public class RandomLabelingMechanism extends Mechanism{
         return labelsToUse;
     }
 
-
-    //Getters Setters
-    public String getMechanismName() {
-        return mechanismName;
-    }
-
     public ArrayList<Assignment> getAssignments() {
         return assignments;
-    }
-
-    public void setMechanismName(String mechanismName) {
-        this.mechanismName = mechanismName;
     }
 
     public void setAssignments(ArrayList<Assignment> assignments) {

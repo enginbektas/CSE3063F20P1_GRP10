@@ -28,11 +28,6 @@ class Label {
         this.text = text;
     }
 
-    public void setNumberOfUses(int numberOfUses) {
-        this.numberOfUses = numberOfUses;
-    }
-
-
     public void incrementNumberOfUses() {
         this.numberOfUses++;
     }

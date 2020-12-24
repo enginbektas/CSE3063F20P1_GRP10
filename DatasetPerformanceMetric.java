@@ -77,12 +77,9 @@ public class DatasetPerformanceMetric {
         numberOfUsers = dataset.getUsers().size();
     }
 
-
-    //TODO User Metric Required
     private void calculateUsersCompleteness(){
         this.usersCompleteness = new ArrayList<>();
         for (User user: dataset.getUsers()) {
-            double percentage = 0;
             for (int i = 0; i < user.getUserPerformanceMetrics().getUsersCompleteness().size(); i++) {
                 if (user.getUserPerformanceMetrics().getUsersCompleteness().get(i).getName().equals(dataset.getId() + "")){
                     this.usersCompleteness.add( new Percentage(user.getUserName(), user.getUserPerformanceMetrics().getUsersCompleteness().get(i).getPercentage()));
@@ -91,7 +88,7 @@ public class DatasetPerformanceMetric {
 
         }
     }
-    //TODO User Metric Required
+
     private void calculateConsistencyPercentageOfUsers(){
         consistencyPercentageOfUsers = new ArrayList<>();
         for (User use: dataset.getUsers()) {

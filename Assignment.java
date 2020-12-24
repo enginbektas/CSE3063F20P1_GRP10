@@ -27,7 +27,6 @@ public class Assignment {
         this.classLabelIds = new ArrayList<>();
         setLabels(labels);
         this.date = date;
-        //this.mechanism = mechanism;
         this.dataset = dataset;
         this.userList = userList;
         this.user = user;
@@ -36,8 +35,7 @@ public class Assignment {
         this.labels = labels;
         instance.getLabels().addAll(labels);
 
-
-        if (instance.getUser_instances().size() == 0){
+        if (instance.getUser_instances().size() == 0){ // setting time
             User_Instance userInstance  = new User_Instance(user, instance, labels);
             instance.getUser_instances().add(userInstance);
             user.getUser_instances().add(userInstance);
@@ -52,9 +50,7 @@ public class Assignment {
                     userInstance.addLabels(labels);
                     userInstance.setTime(userInstance.getTime() + labelingTime);
                     flag = false;
-
                 }
-
             }
             if (flag){
                 User_Instance userInstance  = new User_Instance(user, instance, labels);
@@ -76,13 +72,6 @@ public class Assignment {
     public int getUserId() {
         return userId;
     }
-    public int getInstanceId() {
-        return instanceId;
-    }
-
-    public String getDate() {
-        return date;
-    }
 
     public ArrayList<Integer> getLabels() {
         return classLabelIds;
@@ -97,14 +86,6 @@ public class Assignment {
                 this.instance = instance;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
     public void setLabels(ArrayList<Label> labels) {//Only gets labels id's
         int i = 0;
         for (Label label : labels) {
@@ -112,23 +93,6 @@ public class Assignment {
             i++;
             label.incrementNumberOfUses();
         }
-
-    }
-
-    public void setInstanceId(int instanceId) {
-        this.instanceId = instanceId;
-    }
-
-    public ArrayList<Integer> getClassLabelIds() {
-        return classLabelIds;
-    }
-
-    public void setClassLabelIds(ArrayList<Integer> classLabelIds) {
-        this.classLabelIds = classLabelIds;
-    }
-
-    public ArrayList<User> getUserList() {
-        return userList;
     }
 
     public void setUserList(ArrayList<User> userList) {

@@ -12,8 +12,6 @@ public class InstancePerformanceMetric {
     private transient ArrayList<User> userList;
     private transient Label finalLabel;
 
-
-
     public InstancePerformanceMetric(Instance instance){
         this.instance=instance;
         this.totalNumberOfLabel =0;
@@ -36,7 +34,6 @@ public class InstancePerformanceMetric {
         setMostFrequentLabel();
         setEntropy();
         updateFinalLabel();
-
     }
 
     private void updateFinalLabel() {
@@ -120,26 +117,5 @@ public class InstancePerformanceMetric {
                 entropy = Double.POSITIVE_INFINITY;
             }
         }
-
-    }
-
-    public int getTotalNumberOfLabel(){ return totalNumberOfLabel; }
-
-    public int getNumberOfUniqueLabelAssignment(){ return numberOfUniqueLabelAssignment; }
-
-    public int getNumberOfUniqueUsers(){ return numberOfUniqueUsers; }
-
-    public ArrayList<PLabel> getLabelsPercentages(){ return labelsPercentages; }
-
-    public ArrayList<PLabel> getMostFrequentLabel(){ return mostFrequentLabel; }
-
-    public double getEntropy(){ return entropy; }
-
-    public ArrayList<User> getUserList() {
-        return userList;
-    }
-
-    public Label getFinalLabel() {
-        return finalLabel;
     }
 }

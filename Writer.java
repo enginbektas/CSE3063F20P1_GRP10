@@ -12,16 +12,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-
 public class Writer {
-
-
-
+    
     public Writer() {
 
     }
     public void writeDataset(Object obj, String outputName, boolean consolePrint, boolean append){
-
 
         Gson gson = new GsonBuilder().serializeSpecialFloatingPointValues().setPrettyPrinting().disableHtmlEscaping().create();
         String json = gson.toJson(obj);
