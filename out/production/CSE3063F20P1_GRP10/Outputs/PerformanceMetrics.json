@@ -1,0 +1,1030 @@
+{
+  "datasetPerformanceMetrics": [
+    {
+      "datasetId": 1,
+      "labelDistributionPercentage": [
+        {
+          "name": "Positive",
+          "percentage": 0.42105263157894735
+        },
+        {
+          "name": "Negative",
+          "percentage": 0.5789473684210527
+        },
+        {
+          "name": "Notr",
+          "percentage": 0.0
+        }
+      ],
+      "completenessPercentage": 100.0,
+      "numberUniqueInstancesForEachLabel": [
+        {
+          "name": "Positive",
+          "percentage": 8.0
+        },
+        {
+          "name": "Negative",
+          "percentage": 10.0
+        },
+        {
+          "name": "Notr",
+          "percentage": 0.0
+        }
+      ],
+      "numberOfUsers": 2,
+      "usersCompleteness": [
+        {
+          "name": "RandomLabelingMechanism1",
+          "percentage": 100.0
+        },
+        {
+          "name": "RandomLabelingMechanism2",
+          "percentage": 100.0
+        }
+      ],
+      "consistencyPercentageOfUsers": [
+        {
+          "name": "RandomLabelingMechanism1",
+          "percentage": 0.0
+        },
+        {
+          "name": "RandomLabelingMechanism2",
+          "percentage": 0.0
+        }
+      ]
+    },
+    {
+      "datasetId": 2,
+      "completenessPercentage": 0.0,
+      "numberOfUsers": 0,
+      "usersCompleteness": [],
+      "consistencyPercentageOfUsers": []
+    }
+  ],
+  "userPerformanceMetrics": [
+    {
+      "user": {
+        "user id": 1,
+        "user name": "RandomLabelingMechanism1",
+        "user type": "RandomBot",
+        "dataset ids": [
+          1,
+          2
+        ],
+        "consistency check probability": 0.1,
+        "password": ""
+      },
+      "datasetAssigned": 1,
+      "datasetsCompletenessPercentage": [],
+      "numberOfInstancesLabeled": 11,
+      "numberOfUniqueInstancesLabeled": 10,
+      "consistencyPercentage": {
+        "name": "",
+        "percentage": 0.0
+      },
+      "averageTimeSpentLabeling": 53.09090909090909,
+      "stdDevOfTimeSpentLabelingInstances": 80.78638499153183
+    },
+    {
+      "user": {
+        "user id": 2,
+        "user name": "RandomLabelingMechanism2",
+        "user type": "RandomBot",
+        "dataset ids": [
+          1,
+          2
+        ],
+        "consistency check probability": 0.1,
+        "password": ""
+      },
+      "datasetAssigned": 1,
+      "datasetsCompletenessPercentage": [],
+      "numberOfInstancesLabeled": 10,
+      "numberOfUniqueInstancesLabeled": 10,
+      "consistencyPercentage": {
+        "name": "",
+        "percentage": 0.0
+      },
+      "averageTimeSpentLabeling": 14.3,
+      "stdDevOfTimeSpentLabelingInstances": 12.174152947946729
+    },
+    {
+      "user": {
+        "user id": 3,
+        "user name": "MachineLearningLabelingMechanism",
+        "user type": "MachineLearningBot",
+        "dataset ids": [
+          4,
+          3
+        ],
+        "consistency check probability": 0.1,
+        "password": ""
+      },
+      "datasetAssigned": 0,
+      "datasetsCompletenessPercentage": [],
+      "numberOfInstancesLabeled": 0,
+      "numberOfUniqueInstancesLabeled": 0,
+      "consistencyPercentage": {
+        "name": "",
+        "percentage": 0.0
+      },
+      "averageTimeSpentLabeling": 0.0,
+      "stdDevOfTimeSpentLabelingInstances": 0.0
+    },
+    {
+      "user": {
+        "user id": 4,
+        "user name": "engin",
+        "user type": "Human",
+        "dataset ids": [
+          4,
+          3
+        ],
+        "consistency check probability": 0.1,
+        "password": "engin"
+      },
+      "datasetAssigned": 0,
+      "datasetsCompletenessPercentage": [],
+      "numberOfInstancesLabeled": 0,
+      "numberOfUniqueInstancesLabeled": 0,
+      "consistencyPercentage": {
+        "name": "",
+        "percentage": 0.0
+      },
+      "averageTimeSpentLabeling": 0.0,
+      "stdDevOfTimeSpentLabelingInstances": 0.0
+    }
+  ],
+  "instancePerformanceMetrics": [
+    [
+      {
+        "instanceId": 1,
+        "totalNumberOfLabel": 5,
+        "numberOfUniqueLabelAssignment": 2,
+        "numberOfUniqueUsers": 2,
+        "mostFrequentLabel": [
+          {
+            "num": 3,
+            "label": {
+              "label id": 1,
+              "label text": "Positive",
+              "numberOfUses": 16
+            },
+            "percentage": 60.0
+          }
+        ],
+        "labelsPercentages": [
+          {
+            "num": 2,
+            "label": {
+              "label id": 2,
+              "label text": "Negative",
+              "numberOfUses": 22
+            },
+            "percentage": 40.0
+          },
+          {
+            "num": 3,
+            "label": {
+              "label id": 1,
+              "label text": "Positive",
+              "numberOfUses": 16
+            },
+            "percentage": 60.0
+          }
+        ],
+        "entropy": 0.9709505944546688
+      },
+      {
+        "instanceId": 2,
+        "totalNumberOfLabel": 2,
+        "numberOfUniqueLabelAssignment": 2,
+        "numberOfUniqueUsers": 2,
+        "mostFrequentLabel": [
+          {
+            "num": 1,
+            "label": {
+              "label id": 2,
+              "label text": "Negative",
+              "numberOfUses": 22
+            },
+            "percentage": 50.0
+          },
+          {
+            "num": 1,
+            "label": {
+              "label id": 1,
+              "label text": "Positive",
+              "numberOfUses": 16
+            },
+            "percentage": 50.0
+          }
+        ],
+        "labelsPercentages": [
+          {
+            "num": 1,
+            "label": {
+              "label id": 2,
+              "label text": "Negative",
+              "numberOfUses": 22
+            },
+            "percentage": 50.0
+          },
+          {
+            "num": 1,
+            "label": {
+              "label id": 1,
+              "label text": "Positive",
+              "numberOfUses": 16
+            },
+            "percentage": 50.0
+          }
+        ],
+        "entropy": 1.0
+      },
+      {
+        "instanceId": 3,
+        "totalNumberOfLabel": 4,
+        "numberOfUniqueLabelAssignment": 2,
+        "numberOfUniqueUsers": 2,
+        "mostFrequentLabel": [
+          {
+            "num": 2,
+            "label": {
+              "label id": 2,
+              "label text": "Negative",
+              "numberOfUses": 22
+            },
+            "percentage": 50.0
+          },
+          {
+            "num": 2,
+            "label": {
+              "label id": 1,
+              "label text": "Positive",
+              "numberOfUses": 16
+            },
+            "percentage": 50.0
+          }
+        ],
+        "labelsPercentages": [
+          {
+            "num": 2,
+            "label": {
+              "label id": 2,
+              "label text": "Negative",
+              "numberOfUses": 22
+            },
+            "percentage": 50.0
+          },
+          {
+            "num": 2,
+            "label": {
+              "label id": 1,
+              "label text": "Positive",
+              "numberOfUses": 16
+            },
+            "percentage": 50.0
+          }
+        ],
+        "entropy": 1.0
+      },
+      {
+        "instanceId": 4,
+        "totalNumberOfLabel": 4,
+        "numberOfUniqueLabelAssignment": 1,
+        "numberOfUniqueUsers": 2,
+        "mostFrequentLabel": [
+          {
+            "num": 4,
+            "label": {
+              "label id": 2,
+              "label text": "Negative",
+              "numberOfUses": 22
+            },
+            "percentage": 100.0
+          }
+        ],
+        "labelsPercentages": [
+          {
+            "num": 4,
+            "label": {
+              "label id": 2,
+              "label text": "Negative",
+              "numberOfUses": 22
+            },
+            "percentage": 100.0
+          }
+        ],
+        "entropy": Infinity
+      },
+      {
+        "instanceId": 5,
+        "totalNumberOfLabel": 4,
+        "numberOfUniqueLabelAssignment": 2,
+        "numberOfUniqueUsers": 2,
+        "mostFrequentLabel": [
+          {
+            "num": 3,
+            "label": {
+              "label id": 1,
+              "label text": "Positive",
+              "numberOfUses": 16
+            },
+            "percentage": 75.0
+          }
+        ],
+        "labelsPercentages": [
+          {
+            "num": 3,
+            "label": {
+              "label id": 1,
+              "label text": "Positive",
+              "numberOfUses": 16
+            },
+            "percentage": 75.0
+          },
+          {
+            "num": 1,
+            "label": {
+              "label id": 2,
+              "label text": "Negative",
+              "numberOfUses": 22
+            },
+            "percentage": 25.0
+          }
+        ],
+        "entropy": 0.8112781244591328
+      },
+      {
+        "instanceId": 6,
+        "totalNumberOfLabel": 4,
+        "numberOfUniqueLabelAssignment": 2,
+        "numberOfUniqueUsers": 2,
+        "mostFrequentLabel": [
+          {
+            "num": 2,
+            "label": {
+              "label id": 1,
+              "label text": "Positive",
+              "numberOfUses": 16
+            },
+            "percentage": 50.0
+          },
+          {
+            "num": 2,
+            "label": {
+              "label id": 2,
+              "label text": "Negative",
+              "numberOfUses": 22
+            },
+            "percentage": 50.0
+          }
+        ],
+        "labelsPercentages": [
+          {
+            "num": 2,
+            "label": {
+              "label id": 1,
+              "label text": "Positive",
+              "numberOfUses": 16
+            },
+            "percentage": 50.0
+          },
+          {
+            "num": 2,
+            "label": {
+              "label id": 2,
+              "label text": "Negative",
+              "numberOfUses": 22
+            },
+            "percentage": 50.0
+          }
+        ],
+        "entropy": 1.0
+      },
+      {
+        "instanceId": 7,
+        "totalNumberOfLabel": 5,
+        "numberOfUniqueLabelAssignment": 2,
+        "numberOfUniqueUsers": 2,
+        "mostFrequentLabel": [
+          {
+            "num": 3,
+            "label": {
+              "label id": 2,
+              "label text": "Negative",
+              "numberOfUses": 22
+            },
+            "percentage": 60.0
+          }
+        ],
+        "labelsPercentages": [
+          {
+            "num": 3,
+            "label": {
+              "label id": 2,
+              "label text": "Negative",
+              "numberOfUses": 22
+            },
+            "percentage": 60.0
+          },
+          {
+            "num": 2,
+            "label": {
+              "label id": 1,
+              "label text": "Positive",
+              "numberOfUses": 16
+            },
+            "percentage": 40.0
+          }
+        ],
+        "entropy": 0.9709505944546688
+      },
+      {
+        "instanceId": 8,
+        "totalNumberOfLabel": 4,
+        "numberOfUniqueLabelAssignment": 2,
+        "numberOfUniqueUsers": 2,
+        "mostFrequentLabel": [
+          {
+            "num": 2,
+            "label": {
+              "label id": 1,
+              "label text": "Positive",
+              "numberOfUses": 16
+            },
+            "percentage": 50.0
+          },
+          {
+            "num": 2,
+            "label": {
+              "label id": 2,
+              "label text": "Negative",
+              "numberOfUses": 22
+            },
+            "percentage": 50.0
+          }
+        ],
+        "labelsPercentages": [
+          {
+            "num": 2,
+            "label": {
+              "label id": 1,
+              "label text": "Positive",
+              "numberOfUses": 16
+            },
+            "percentage": 50.0
+          },
+          {
+            "num": 2,
+            "label": {
+              "label id": 2,
+              "label text": "Negative",
+              "numberOfUses": 22
+            },
+            "percentage": 50.0
+          }
+        ],
+        "entropy": 1.0
+      },
+      {
+        "instanceId": 9,
+        "totalNumberOfLabel": 4,
+        "numberOfUniqueLabelAssignment": 2,
+        "numberOfUniqueUsers": 2,
+        "mostFrequentLabel": [
+          {
+            "num": 3,
+            "label": {
+              "label id": 2,
+              "label text": "Negative",
+              "numberOfUses": 22
+            },
+            "percentage": 75.0
+          }
+        ],
+        "labelsPercentages": [
+          {
+            "num": 3,
+            "label": {
+              "label id": 2,
+              "label text": "Negative",
+              "numberOfUses": 22
+            },
+            "percentage": 75.0
+          },
+          {
+            "num": 1,
+            "label": {
+              "label id": 1,
+              "label text": "Positive",
+              "numberOfUses": 16
+            },
+            "percentage": 25.0
+          }
+        ],
+        "entropy": 0.8112781244591328
+      },
+      {
+        "instanceId": 10,
+        "totalNumberOfLabel": 2,
+        "numberOfUniqueLabelAssignment": 1,
+        "numberOfUniqueUsers": 2,
+        "mostFrequentLabel": [
+          {
+            "num": 2,
+            "label": {
+              "label id": 2,
+              "label text": "Negative",
+              "numberOfUses": 22
+            },
+            "percentage": 100.0
+          }
+        ],
+        "labelsPercentages": [
+          {
+            "num": 2,
+            "label": {
+              "label id": 2,
+              "label text": "Negative",
+              "numberOfUses": 22
+            },
+            "percentage": 100.0
+          }
+        ],
+        "entropy": Infinity
+      },
+      {
+        "instanceId": 1,
+        "totalNumberOfLabel": 0,
+        "numberOfUniqueLabelAssignment": 0,
+        "numberOfUniqueUsers": 0,
+        "entropy": 0.0
+      },
+      {
+        "instanceId": 2,
+        "totalNumberOfLabel": 0,
+        "numberOfUniqueLabelAssignment": 0,
+        "numberOfUniqueUsers": 0,
+        "entropy": 0.0
+      },
+      {
+        "instanceId": 3,
+        "totalNumberOfLabel": 0,
+        "numberOfUniqueLabelAssignment": 0,
+        "numberOfUniqueUsers": 0,
+        "entropy": 0.0
+      },
+      {
+        "instanceId": 4,
+        "totalNumberOfLabel": 0,
+        "numberOfUniqueLabelAssignment": 0,
+        "numberOfUniqueUsers": 0,
+        "entropy": 0.0
+      },
+      {
+        "instanceId": 5,
+        "totalNumberOfLabel": 0,
+        "numberOfUniqueLabelAssignment": 0,
+        "numberOfUniqueUsers": 0,
+        "entropy": 0.0
+      }
+    ],
+    [
+      {
+        "instanceId": 1,
+        "totalNumberOfLabel": 5,
+        "numberOfUniqueLabelAssignment": 2,
+        "numberOfUniqueUsers": 2,
+        "mostFrequentLabel": [
+          {
+            "num": 3,
+            "label": {
+              "label id": 1,
+              "label text": "Positive",
+              "numberOfUses": 16
+            },
+            "percentage": 60.0
+          }
+        ],
+        "labelsPercentages": [
+          {
+            "num": 2,
+            "label": {
+              "label id": 2,
+              "label text": "Negative",
+              "numberOfUses": 22
+            },
+            "percentage": 40.0
+          },
+          {
+            "num": 3,
+            "label": {
+              "label id": 1,
+              "label text": "Positive",
+              "numberOfUses": 16
+            },
+            "percentage": 60.0
+          }
+        ],
+        "entropy": 0.9709505944546688
+      },
+      {
+        "instanceId": 2,
+        "totalNumberOfLabel": 2,
+        "numberOfUniqueLabelAssignment": 2,
+        "numberOfUniqueUsers": 2,
+        "mostFrequentLabel": [
+          {
+            "num": 1,
+            "label": {
+              "label id": 2,
+              "label text": "Negative",
+              "numberOfUses": 22
+            },
+            "percentage": 50.0
+          },
+          {
+            "num": 1,
+            "label": {
+              "label id": 1,
+              "label text": "Positive",
+              "numberOfUses": 16
+            },
+            "percentage": 50.0
+          }
+        ],
+        "labelsPercentages": [
+          {
+            "num": 1,
+            "label": {
+              "label id": 2,
+              "label text": "Negative",
+              "numberOfUses": 22
+            },
+            "percentage": 50.0
+          },
+          {
+            "num": 1,
+            "label": {
+              "label id": 1,
+              "label text": "Positive",
+              "numberOfUses": 16
+            },
+            "percentage": 50.0
+          }
+        ],
+        "entropy": 1.0
+      },
+      {
+        "instanceId": 3,
+        "totalNumberOfLabel": 4,
+        "numberOfUniqueLabelAssignment": 2,
+        "numberOfUniqueUsers": 2,
+        "mostFrequentLabel": [
+          {
+            "num": 2,
+            "label": {
+              "label id": 2,
+              "label text": "Negative",
+              "numberOfUses": 22
+            },
+            "percentage": 50.0
+          },
+          {
+            "num": 2,
+            "label": {
+              "label id": 1,
+              "label text": "Positive",
+              "numberOfUses": 16
+            },
+            "percentage": 50.0
+          }
+        ],
+        "labelsPercentages": [
+          {
+            "num": 2,
+            "label": {
+              "label id": 2,
+              "label text": "Negative",
+              "numberOfUses": 22
+            },
+            "percentage": 50.0
+          },
+          {
+            "num": 2,
+            "label": {
+              "label id": 1,
+              "label text": "Positive",
+              "numberOfUses": 16
+            },
+            "percentage": 50.0
+          }
+        ],
+        "entropy": 1.0
+      },
+      {
+        "instanceId": 4,
+        "totalNumberOfLabel": 4,
+        "numberOfUniqueLabelAssignment": 1,
+        "numberOfUniqueUsers": 2,
+        "mostFrequentLabel": [
+          {
+            "num": 4,
+            "label": {
+              "label id": 2,
+              "label text": "Negative",
+              "numberOfUses": 22
+            },
+            "percentage": 100.0
+          }
+        ],
+        "labelsPercentages": [
+          {
+            "num": 4,
+            "label": {
+              "label id": 2,
+              "label text": "Negative",
+              "numberOfUses": 22
+            },
+            "percentage": 100.0
+          }
+        ],
+        "entropy": Infinity
+      },
+      {
+        "instanceId": 5,
+        "totalNumberOfLabel": 4,
+        "numberOfUniqueLabelAssignment": 2,
+        "numberOfUniqueUsers": 2,
+        "mostFrequentLabel": [
+          {
+            "num": 3,
+            "label": {
+              "label id": 1,
+              "label text": "Positive",
+              "numberOfUses": 16
+            },
+            "percentage": 75.0
+          }
+        ],
+        "labelsPercentages": [
+          {
+            "num": 3,
+            "label": {
+              "label id": 1,
+              "label text": "Positive",
+              "numberOfUses": 16
+            },
+            "percentage": 75.0
+          },
+          {
+            "num": 1,
+            "label": {
+              "label id": 2,
+              "label text": "Negative",
+              "numberOfUses": 22
+            },
+            "percentage": 25.0
+          }
+        ],
+        "entropy": 0.8112781244591328
+      },
+      {
+        "instanceId": 6,
+        "totalNumberOfLabel": 4,
+        "numberOfUniqueLabelAssignment": 2,
+        "numberOfUniqueUsers": 2,
+        "mostFrequentLabel": [
+          {
+            "num": 2,
+            "label": {
+              "label id": 1,
+              "label text": "Positive",
+              "numberOfUses": 16
+            },
+            "percentage": 50.0
+          },
+          {
+            "num": 2,
+            "label": {
+              "label id": 2,
+              "label text": "Negative",
+              "numberOfUses": 22
+            },
+            "percentage": 50.0
+          }
+        ],
+        "labelsPercentages": [
+          {
+            "num": 2,
+            "label": {
+              "label id": 1,
+              "label text": "Positive",
+              "numberOfUses": 16
+            },
+            "percentage": 50.0
+          },
+          {
+            "num": 2,
+            "label": {
+              "label id": 2,
+              "label text": "Negative",
+              "numberOfUses": 22
+            },
+            "percentage": 50.0
+          }
+        ],
+        "entropy": 1.0
+      },
+      {
+        "instanceId": 7,
+        "totalNumberOfLabel": 5,
+        "numberOfUniqueLabelAssignment": 2,
+        "numberOfUniqueUsers": 2,
+        "mostFrequentLabel": [
+          {
+            "num": 3,
+            "label": {
+              "label id": 2,
+              "label text": "Negative",
+              "numberOfUses": 22
+            },
+            "percentage": 60.0
+          }
+        ],
+        "labelsPercentages": [
+          {
+            "num": 3,
+            "label": {
+              "label id": 2,
+              "label text": "Negative",
+              "numberOfUses": 22
+            },
+            "percentage": 60.0
+          },
+          {
+            "num": 2,
+            "label": {
+              "label id": 1,
+              "label text": "Positive",
+              "numberOfUses": 16
+            },
+            "percentage": 40.0
+          }
+        ],
+        "entropy": 0.9709505944546688
+      },
+      {
+        "instanceId": 8,
+        "totalNumberOfLabel": 4,
+        "numberOfUniqueLabelAssignment": 2,
+        "numberOfUniqueUsers": 2,
+        "mostFrequentLabel": [
+          {
+            "num": 2,
+            "label": {
+              "label id": 1,
+              "label text": "Positive",
+              "numberOfUses": 16
+            },
+            "percentage": 50.0
+          },
+          {
+            "num": 2,
+            "label": {
+              "label id": 2,
+              "label text": "Negative",
+              "numberOfUses": 22
+            },
+            "percentage": 50.0
+          }
+        ],
+        "labelsPercentages": [
+          {
+            "num": 2,
+            "label": {
+              "label id": 1,
+              "label text": "Positive",
+              "numberOfUses": 16
+            },
+            "percentage": 50.0
+          },
+          {
+            "num": 2,
+            "label": {
+              "label id": 2,
+              "label text": "Negative",
+              "numberOfUses": 22
+            },
+            "percentage": 50.0
+          }
+        ],
+        "entropy": 1.0
+      },
+      {
+        "instanceId": 9,
+        "totalNumberOfLabel": 4,
+        "numberOfUniqueLabelAssignment": 2,
+        "numberOfUniqueUsers": 2,
+        "mostFrequentLabel": [
+          {
+            "num": 3,
+            "label": {
+              "label id": 2,
+              "label text": "Negative",
+              "numberOfUses": 22
+            },
+            "percentage": 75.0
+          }
+        ],
+        "labelsPercentages": [
+          {
+            "num": 3,
+            "label": {
+              "label id": 2,
+              "label text": "Negative",
+              "numberOfUses": 22
+            },
+            "percentage": 75.0
+          },
+          {
+            "num": 1,
+            "label": {
+              "label id": 1,
+              "label text": "Positive",
+              "numberOfUses": 16
+            },
+            "percentage": 25.0
+          }
+        ],
+        "entropy": 0.8112781244591328
+      },
+      {
+        "instanceId": 10,
+        "totalNumberOfLabel": 2,
+        "numberOfUniqueLabelAssignment": 1,
+        "numberOfUniqueUsers": 2,
+        "mostFrequentLabel": [
+          {
+            "num": 2,
+            "label": {
+              "label id": 2,
+              "label text": "Negative",
+              "numberOfUses": 22
+            },
+            "percentage": 100.0
+          }
+        ],
+        "labelsPercentages": [
+          {
+            "num": 2,
+            "label": {
+              "label id": 2,
+              "label text": "Negative",
+              "numberOfUses": 22
+            },
+            "percentage": 100.0
+          }
+        ],
+        "entropy": Infinity
+      },
+      {
+        "instanceId": 1,
+        "totalNumberOfLabel": 0,
+        "numberOfUniqueLabelAssignment": 0,
+        "numberOfUniqueUsers": 0,
+        "entropy": 0.0
+      },
+      {
+        "instanceId": 2,
+        "totalNumberOfLabel": 0,
+        "numberOfUniqueLabelAssignment": 0,
+        "numberOfUniqueUsers": 0,
+        "entropy": 0.0
+      },
+      {
+        "instanceId": 3,
+        "totalNumberOfLabel": 0,
+        "numberOfUniqueLabelAssignment": 0,
+        "numberOfUniqueUsers": 0,
+        "entropy": 0.0
+      },
+      {
+        "instanceId": 4,
+        "totalNumberOfLabel": 0,
+        "numberOfUniqueLabelAssignment": 0,
+        "numberOfUniqueUsers": 0,
+        "entropy": 0.0
+      },
+      {
+        "instanceId": 5,
+        "totalNumberOfLabel": 0,
+        "numberOfUniqueLabelAssignment": 0,
+        "numberOfUniqueUsers": 0,
+        "entropy": 0.0
+      }
+    ]
+  ]
+}
