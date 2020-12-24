@@ -7,13 +7,15 @@ class Instance {
     private String instance;
     private transient ArrayList<Label> labels;
     private transient ArrayList<User_Instance> user_instances;
-    private transient InstancePerformanceMetric userPerformanceMetrics;
+    private transient InstancePerformanceMetric instancePerformanceMetrics;
 
     public Instance(long id, String instance) {
         this.id = (int)id;
         this.instance = instance;
         this.labels = new ArrayList<Label>();
         user_instances = new ArrayList<>();
+        this.instancePerformanceMetrics = new InstancePerformanceMetric(this);
+
     }
 
     public void setId(int id) {
@@ -44,7 +46,7 @@ class Instance {
         return user_instances;
     }
 
-    public InstancePerformanceMetric getUserPerformanceMetrics() {
-        return userPerformanceMetrics;
+    public InstancePerformanceMetric getInstancePerformanceMetrics() {
+        return instancePerformanceMetrics;
     }
 }

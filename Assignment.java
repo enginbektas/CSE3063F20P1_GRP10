@@ -69,7 +69,7 @@ public class Assignment {
 
         user.getUserPerformanceMetrics().update(this, dataset, instance);
         dataset.getDatasetPerformanceMetric().update();
-        instance.getUserPerformanceMetrics().update(user);
+        instance.getInstancePerformanceMetrics().update(user);
 
     }
     public ArrayList<Label> getLabelList() {
