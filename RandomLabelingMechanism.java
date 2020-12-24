@@ -35,7 +35,7 @@ public class RandomLabelingMechanism extends Mechanism{
         Date date = new Date(System.currentTimeMillis());
         String dateString =  formatter.format(date);
         //Labels are assigned. Now creating an assignment object
-        Thread.sleep((long) (Math.random() * 100));
+
         double labelingTimeEnd = System.currentTimeMillis();
         double labelingTime = labelingTimeEnd - labelingTimeStart;
         Assignment assignment = new Assignment(dataset, userList, instance, user, dateString, labelsToUse, labelingTime);
@@ -43,14 +43,15 @@ public class RandomLabelingMechanism extends Mechanism{
         return assignment;
     }
     //returns a list of labels to assign to an instance
-    private ArrayList<Label> labelsToUse(Dataset dataset, Instance instance, int numberOfLabelsToAssign, User user){
+    private ArrayList<Label> labelsToUse(Dataset dataset, Instance instance, int numberOfLabelsToAssign, User user) throws InterruptedException {
         ArrayList<Label> labelsToUse = new ArrayList<Label>();
         for (int i = 0; i < numberOfLabelsToAssign; i++){//Loop for chosing labels to use
             while(true){
                 int k = (int) (Math.random() * (dataset.getLabels().size() - 1));//Get a random int value for choosing label from label list
-                if ( true ){//Checks if instance has that label or labels to use has it
+                if ( true ){ //Checks if instance has that label or labels to use has it
                     labelsToUse.add(dataset.getLabels().get(k));
                     log.write("User " + user.getId() + " labeled instance " + instance.getId() + " by label " + dataset.getLabels().get(k).getId() + ".");
+                    Thread.sleep((long) (Math.random() * 1000));
                     break;
                 }
             }

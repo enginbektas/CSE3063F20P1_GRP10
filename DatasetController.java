@@ -13,9 +13,9 @@ import java.util.Arrays;
 import java.util.List;
 
 public class DatasetController {
-
+    private Log log;
     public DatasetController() {
-
+        this.log = new Log();
     }
 
     public ArrayList<User> userReader(File configJson) {
@@ -211,13 +211,14 @@ public class DatasetController {
 
                 assignments[i] = new Assignment(dataset, userList, instance, user, date, labels, time);
             }
+
            
             ArrayList<Assignment> assignmentList = new ArrayList<>();
             for (int i = 0; i < assignments.length; i++)
                 assignmentList.add(assignments[i]);
 
             storage.setAssigments(assignmentList);
-
+            log.write("Dataset" + storage.getDataset().getId() + "'s previous assignments are restored.");
             for (Assignment assignmentIter : storage.getAssigments()) {
                 assignmentIter.setDataset(dataset); // Set dataset
                 assignmentIter.setUserList(userList); // Set userList
@@ -245,22 +246,6 @@ public class DatasetController {
 
         return (int) currentDatasetId;
     }
-
-    /*
-     * public void assigner(Storage storage, List<User> userList) { for (Instance
-     * instance : storage.getDataset().getInstances()) { for (Assignment assignment
-     * : storage.getAssigments()) { if (instance.getId() ==
-     * assignment.getInstanceId()) { //TODO create a list of labels from assignments
-     * label ids, check them with datasets label ids and reach to instance itself
-     * ArrayList<Label> labels = new ArrayList<>(); for (Integer labelId :
-     * assignment.getLabels()) for (Label label : storage.getDataset().getLabels())
-     * if (labelId == label.getId()) labels.add(label); new
-     * Assignment(storage.getDataset(), userList, instance, assignment.getUser(),
-     * assignment.getDate(), labels); // TODO Assignment(Dataset dataset, List<User>
-     * userList, // Instance instance, User user, String date, List<Label> labels,
-     * Mechanism mechanism) } } } }
-     * 
-     */
 
     public void writeDataset(Storage storage) {
         Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();

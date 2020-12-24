@@ -41,7 +41,7 @@ public class UnitTest {
 
 
         for (User user : currentUserList) {//Loop for every user to label every instance
-            newLog.write("***User id = " + user.getId() + " has logged in.***");//Logging user logins
+            newLog.write("***User " + user.getId() + " has logged in.***");//Logging user logins
 
             ArrayList<Instance> tempInstances = new ArrayList<>();
             ArrayList<Instance> nonLabeledInstances = (ArrayList<Instance>) dataset.getInstances().clone();
@@ -102,7 +102,7 @@ public class UnitTest {
 
                 PerformanceMetrics performanceMetrics = new PerformanceMetrics(datasetPerformanceMetricsList, userPerformanceMetricsList, instancePerformanceMetricList);
                 newLog.editLog();
-                //writer.writeDataset(performanceMetrics, "Outputs//PerformanceMetrics" + ".json", false, false);
+                writer.writeDataset(performanceMetrics, "Outputs//PerformanceMetrics" + ".json", false, false);
 
             } // labeling ends
             newLog.write("***User " + user.getId() + " has logged out.***");
