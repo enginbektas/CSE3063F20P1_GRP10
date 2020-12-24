@@ -69,13 +69,14 @@ public class InstancePerformanceMetric {
             for (j=0;j<labelsPercentages.size();j++){
                 if(labelsPercentages.get(j).getLabel()==instance.getLabels().get(i)) {
                     labelsPercentages.get(j).incNum();
+                    labelsPercentages.get(j).setPercentage(TotalNumberOfLabel);
                     break;
                 }
             }
             if(j==labelsPercentages.size()){
                 tplabel= new PLabel(instance.getLabels().get(i),1);
-                labelsPercentages.add(tplabel);
                 tplabel.setPercentage(TotalNumberOfLabel);
+                labelsPercentages.add(tplabel);
             }
         }
     }
@@ -87,8 +88,9 @@ public class InstancePerformanceMetric {
         mostFrequentLabel.add(labelsPercentages.get(0));
         for (i=1,j=0;i<labelsPercentages.size();i++){
             if(labelsPercentages.get(i).getNum()>mostFrequentLabel.get(j).getNum()){
-                mostFrequentLabel.remove(j);
-                mostFrequentLabel.add(labelsPercentages.get(j));
+                mostFrequentLabel.clear();
+                mostFrequentLabel.add(labelsPercentages.get(i));
+                j=0;
             }
             else if (labelsPercentages.get(i).getNum()== mostFrequentLabel.get(j).getNum()){
                 mostFrequentLabel.add(labelsPercentages.get(i));
