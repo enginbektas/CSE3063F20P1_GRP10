@@ -12,9 +12,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class DatasetController {
+public class Controller {
     private Log log;
-    public DatasetController() {
+    public Controller() {
         this.log = new Log();
     }
 
@@ -217,7 +217,7 @@ public class DatasetController {
                 assignmentList.add(assignments[i]);
 
             storage.setAssigments(assignmentList);
-            log.write("Dataset" + storage.getDataset().getId() + "'s previous assignments are restored.");
+            log.write("Dataset" + storage.getDataset().getId() + "'s previous assignments are read.");
             for (Assignment assignmentIter : storage.getAssigments()) {
                 assignmentIter.setDataset(dataset); // Set dataset
                 assignmentIter.setUserList(userList); // Set userList

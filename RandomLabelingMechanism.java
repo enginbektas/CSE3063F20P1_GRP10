@@ -51,7 +51,7 @@ public class RandomLabelingMechanism extends Mechanism{
                 if ( true ){ //Checks if instance has that label or labels to use has it
                     labelsToUse.add(dataset.getLabels().get(k));
                     log.write("User " + user.getId() + " labeled instance " + instance.getId() + " by label " + dataset.getLabels().get(k).getId() + ".");
-                    Thread.sleep((long) (Math.random() * 1000));
+
                     break;
                 }
             }

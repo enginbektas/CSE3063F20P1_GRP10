@@ -1,7 +1,6 @@
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.List;
 
 public class UnitTest {
     public static void main(String[] args) throws InterruptedException {
@@ -12,13 +11,13 @@ public class UnitTest {
         Log newLog = new Log(); //Creating log
         newLog.editLog();
 
-        DatasetController datasetController = new DatasetController();//Creating controller
+        Controller controller = new Controller();//Creating controller
         ArrayList<Storage> storageList = new ArrayList<>();
-        ArrayList<User> userList = datasetController.userReader(file);
+        ArrayList<User> userList = controller.userReader(file);
 
-        int currentDatasetId = datasetController.getCurrentDatasetId(file);
+        int currentDatasetId = controller.getCurrentDatasetId(file);
 
-        storageList = datasetController.configController(file, userList);
+        storageList = controller.configController(file, userList);
         Storage currentStorage = null;
 
         Writer writer = new Writer();
@@ -71,7 +70,7 @@ public class UnitTest {
                             tempInstance = instance1;
                         }
                     }
-
+                Thread.sleep((long) (Math.random() * 250));
                 Assignment tempAssignment = randomLabelingMechanism.randomMechanism(userList, dataset, tempInstance, user);
                 if (tempAssignment != null){ //returns null if there is no space for any further label
                     newLog.write("*User " + user.getId() + " has labeled instance " + tempInstance.getId() + ".*");//logging
@@ -101,7 +100,6 @@ public class UnitTest {
                 }
 
                 PerformanceMetrics performanceMetrics = new PerformanceMetrics(datasetPerformanceMetricsList, userPerformanceMetricsList, instancePerformanceMetricList);
-                newLog.editLog();
                 writer.writeDataset(performanceMetrics, "Outputs//PerformanceMetrics" + ".json", false, false);
 
             } // labeling ends

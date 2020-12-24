@@ -14,15 +14,12 @@ public class Assignment {
     private int userId;
     @SerializedName("datetime")
     private String date;
-    //private transient Mechanism mechanism;//Which mechanism made this assigment
     private transient ArrayList<User> userList;
     private transient Dataset dataset;
     private transient User user;
     private transient Instance instance;
     private transient ArrayList<Label> labels;
     private double time;
-
-
 
     public Assignment(Dataset dataset, ArrayList<User> userList, Instance instance, User user, String date, ArrayList<Label> labels, double labelingTime){
         this.instanceId = instance.getId();
@@ -129,16 +126,6 @@ public class Assignment {
     public void setClassLabelIds(ArrayList<Integer> classLabelIds) {
         this.classLabelIds = classLabelIds;
     }
-/*
-    public Mechanism getMechanism() {
-        return mechanism;
-    }
-
-    public void setMechanism(Mechanism mechanism) {
-        this.mechanism = mechanism;
-    }
-
- */
 
     public ArrayList<User> getUserList() {
         return userList;

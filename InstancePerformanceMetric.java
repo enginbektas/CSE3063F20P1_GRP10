@@ -114,7 +114,11 @@ public class InstancePerformanceMetric {
         entropy = 0;
         int i=0;
         for (i=0;i<labelsPercentages.size();i++){
-            entropy=entropy+(0-labelsPercentages.get(i).getPercentage()/100.0*Math.log(labelsPercentages.get(i).getPercentage()/100.0)/Math.log(numberOfUniqueLabelAssignment));
+            if (numberOfUniqueLabelAssignment != 1) {
+                entropy = entropy + (0 - labelsPercentages.get(i).getPercentage() / 100.0 * Math.log(labelsPercentages.get(i).getPercentage() / 100.0) / Math.log(numberOfUniqueLabelAssignment));
+            } else {
+                entropy = Double.POSITIVE_INFINITY;
+            }
         }
 
     }
