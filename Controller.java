@@ -29,8 +29,8 @@ public class Controller {
             JSONArray jsonArrayForUsers = (JSONArray) jsonObject.get("users");
             Instance[] instances = new Instance[jsonArrayForUsers.size()];
 
-            for (int i = 0; i < jsonArrayForUsers.size(); i++) { // assigns the given instances in the input to the
-                                                                 // instances array
+            for (int i = 0; i < jsonArrayForUsers.size(); i++) { // assigns the given users in the input to the
+                                                                 // users array
                 JSONObject obj2 = (JSONObject) jsonArrayForUsers.get(i); // declare obj2 to i'th element of JSON
                                                                          // classlabelsarray
                 long userId = (long) obj2.get("user id"); // obj2 is now the element of the array
@@ -41,10 +41,10 @@ public class Controller {
 
 
                 JSONArray jsonArrayForDatasetIds = (JSONArray) obj2.get("dataset ids");
-                ArrayList<Integer> datasetIds = new ArrayList<>(); // set dataset ids to user
-                for (int j = 0; j < jsonArrayForDatasetIds.size(); j++) { // iterate size times
-                    long datasetId = (long) jsonArrayForDatasetIds.get(j); //
-                    datasetIds.add((int) datasetId); //
+                ArrayList<Integer> datasetIds = new ArrayList<>();
+                for (int j = 0; j < jsonArrayForDatasetIds.size(); j++) {
+                    long datasetId = (long) jsonArrayForDatasetIds.get(j);
+                    datasetIds.add((int) datasetId);
                 }
                 users.add(new User((int) userId, userName, userType, datasetIds, consistencyCheckProbability, password));
             }
@@ -56,15 +56,12 @@ public class Controller {
     }
 
     public ArrayList<Storage> configController(File configJson, ArrayList<User> userList) {
-        // iterate through configs datasets, check if they have output, if so read
-        // output with storageReader
-        // hold dataset and assignments and users, call assigner and set assignments to
-        // dataset,
-        // set dataset.getStorage.setDataset, dataset.getStorage.setAssignments,
-        // dataset.getStorage.setUsers
-        // if not read dataset with datasetReader
-        // add the dataset to the list, iterate for the next dataset
-        // return the list of datasets
+        // iterate through configs datasets, check if they have output, if so read output with storageReader
+        // hold dataset and assignments and users, set assignments in the output into newly read datasets
+        // set dataset.getStorage.setDataset, dataset.getStorage.setAssignments, dataset.getStorage.setUsers
+        // if there is no output, read dataset with datasetReader
+        // add the dataset to the storage list, iterate for the next dataset
+        // return the list of storages
         ArrayList<Storage> storageList = new ArrayList<Storage>();
 
         Dataset dataset;
@@ -82,24 +79,21 @@ public class Controller {
                                                                                    // JSON classlabelsarray
                 long datasetId = (long) obj2.get("dataset id"); // obj2 is now the element of the array
                 String path = (String) obj2.get("path");
-                File outputFile = new File("Outputs\\Output" + datasetId + ".json");
-                File inputFile = new File(path);
+                File outputFile = new File("Outputs\\Output" + datasetId + ".json"); //output file path
+                File inputFile = new File(path); //input file path
                 if (outputFile.exists()) {
                     storage = storageReader(outputFile, userList);
                 }
                 else { // if no output, read input
                     dataset = reader(inputFile);
-                    storage.setDataset(dataset);
-
+                    storage.setDataset(dataset); //dataset and assignments are set in storage
                 }
-                for (User user : userList) {
+                for (User user : userList) { //set users in storage
                     if (user.getDatasetIds().contains(storage.getDataset().getId()) && !(storage.getUsers().contains(user))) {
                         storage.getUsers().add(user);
-                        storage.getDataset().getUsers().add(user);
+                        storage.getDataset().getUsers().add(user); //set dataset in storage
                     }
-
                 }
-
                 storageList.add(storage);
             }
         } catch (Exception e) {
@@ -178,7 +172,7 @@ public class Controller {
             // Taking assignments from the file
             JSONArray jsonArrayForAssignments = (JSONArray) jsonObject.get("class label assignments");
             Assignment[] assignments = new Assignment[jsonArrayForAssignments.size()];
-            for (int i = 0; i < jsonArrayForAssignments.size(); i++) { 
+            for (int i = 0; i < jsonArrayForAssignments.size(); i++) { // assignments take place in this loop
                 /* 
                 assigns the given instances in the input to
                   the instances array

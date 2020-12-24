@@ -8,7 +8,8 @@ class Instance {
     private transient ArrayList<Label> labels;
     private transient ArrayList<User_Instance> user_instances;
     private transient InstancePerformanceMetric instancePerformanceMetrics;
-    private Label finalLabel;
+    private transient Label finalLabel;
+    private int finalLabelId;
 
     public Instance(long id, String instance) {
         this.id = (int)id;
@@ -16,6 +17,7 @@ class Instance {
         this.labels = new ArrayList<Label>();
         user_instances = new ArrayList<>();
         this.instancePerformanceMetrics = new InstancePerformanceMetric(this);
+        this.finalLabelId = finalLabel.getId();
     }
 
     public void setId(int id) {

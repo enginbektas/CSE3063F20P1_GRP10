@@ -27,7 +27,6 @@ public class InstancePerformanceMetric {
             userList.add(user);
         }
         setTotalNumberOfLabel();
-        setUniqueLabels();
         setNumberOfUniqueLabelAssignment();
         setNumberOfUniqueUsers();
         setLabelsPercentages();
@@ -43,10 +42,6 @@ public class InstancePerformanceMetric {
 
     public void setTotalNumberOfLabel() {
         totalNumberOfLabel =instance.getLabels().size();
-    }
-
-    public void setUniqueLabels() {
-        ArrayList<Label> tempUniqueLabels = instance.getLabels();
     }
 
     public void setNumberOfUniqueLabelAssignment() {

@@ -8,7 +8,7 @@ import java.util.Date;
 public class Log {
     public Log(){
 
-    }//Constructor
+    }
 
     public void write(String message) {//This methods get an string as an argument then prints console and log.txt
         SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss ");//Formatting Date for log

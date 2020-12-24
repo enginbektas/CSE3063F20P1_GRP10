@@ -35,14 +35,14 @@ public class Assignment {
         this.labels = labels;
         instance.getLabels().addAll(labels);
 
-        if (instance.getUser_instances().size() == 0){ // setting time
+        // setting time
+        if (instance.getUser_instances().size() == 0){
             User_Instance userInstance  = new User_Instance(user, instance, labels);
             instance.getUser_instances().add(userInstance);
             user.getUser_instances().add(userInstance);
             userInstance.setTime(userInstance.getTime() + labelingTime);
         }
         else{
-
             boolean flag = true;
             for (User_Instance userInstance: instance.getUser_instances()) {//if they have intersection
                 if (userInstance.getUser().getId() == user.getId()){
@@ -60,6 +60,7 @@ public class Assignment {
             }
         }
 
+        //updating each metric
         user.getUserPerformanceMetrics().update(this, dataset, instance);
         dataset.getDatasetPerformanceMetric().update();
         instance.getInstancePerformanceMetrics().update(user);
@@ -80,13 +81,14 @@ public class Assignment {
     public void setInstance(Instance instance) {
         this.instanceId = (int)instance.getId();
     }
+
     public void setInstance() {
         for (Instance instance : dataset.getInstances())
             if (instance.getId() == instanceId)
                 this.instance = instance;
     }
 
-    public void setLabels(ArrayList<Label> labels) {//Only gets labels id's
+    public void setLabels(ArrayList<Label> labels) { //Only gets labels id's
         int i = 0;
         for (Label label : labels) {
             classLabelIds.add(labels.get(i).getId());

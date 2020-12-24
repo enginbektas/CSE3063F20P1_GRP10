@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
-public class PerformanceMetrics {
+public class PerformanceMetrics { //this class is for holding all the metrics in one place
+    //and making the writing operation proper
     private ArrayList<DatasetPerformanceMetric> datasetPerformanceMetrics;
     private ArrayList<UserPerformanceMetric> userPerformanceMetrics;
     private ArrayList<ArrayList<InstancePerformanceMetric>> instancePerformanceMetrics;

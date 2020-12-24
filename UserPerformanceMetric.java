@@ -35,7 +35,7 @@ public class UserPerformanceMetric {
     }
 
     public void update(Assignment assignment, Dataset dataset, Instance instance) {
-
+        //update method is called in each assignments constructor
         this.assignments.add(assignment);
 
         if (!instancesLabeled.contains(instance)){
@@ -65,7 +65,6 @@ public class UserPerformanceMetric {
     }
 
     private void calculateDatasetCompletenessPercentage(){
-        //usersCompleteness = new ArrayList<>();
 
         for (int i = 0; i < usersCompleteness.size(); i++) {
             usersCompleteness.get(i).setPercentage(0);
@@ -103,8 +102,9 @@ public class UserPerformanceMetric {
         return consistencyPercentage;
     }
 
-    public void setConsistencyPercentage() {
-
+    //TODO FIX
+    public void setConsistencyPercentage() { /////////////////////
+        int consistentLabelings =0;
         for (Instance instance1 : instancesLabeledMoreThanOnce) {
             ArrayList<Label> reoccuringLabels = new ArrayList<>();
             ArrayList<Label> allLabels = new ArrayList<>();
@@ -112,8 +112,11 @@ public class UserPerformanceMetric {
                 allLabels.addAll(assignment.getLabelList());
                 if (assignment.getInstance().equals(instance1)) {
                     for (Label label : assignment.getLabelList()) {
-                        if (allLabels.contains(label)){
-                            reoccuringLabels.add(label);
+                        for ( Label label1 : instance1.getLabels()) {
+                            if (label == label1) {
+                                consistentLabelings++;
+                            }
+
                         }
                     }
                 }
@@ -121,7 +124,7 @@ public class UserPerformanceMetric {
         }
     }
 
-    private void calculateStd(){
+    private void calculateStd(){ //calculates the standard deviation
 
     double sum = 0.0;
     double standardDeviation = 0.0;
@@ -131,6 +134,7 @@ public class UserPerformanceMetric {
     double[] arr = new double[user.getUser_instances().size()];
     int n = arr.length;
     int j = 0;
+
         for (User_Instance userInstance: user.getUser_instances()) {
             arr[j] = userInstance.getTime();
             j++;
@@ -143,12 +147,9 @@ public class UserPerformanceMetric {
         mean = sum / (n);
 
         for (int i = 0; i < n; i++) {
-
             standardDeviation
                 = standardDeviation + Math.pow((arr[i] - mean), 2);
-
         }
-
         sq = standardDeviation / n;
         res = Math.sqrt(sq);
         this.stdDevOfTimeSpentLabelingInstances = res;
