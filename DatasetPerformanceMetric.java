@@ -2,14 +2,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DatasetPerformanceMetric {
-    private transient Dataset dataset;
+    private transient Dataset dataset;//
     private int datasetId;
-    private ArrayList<Percentage> labelDistributionPercentage;
+    private ArrayList<Percentage> labelDistributionPercentage;//field
     private double completenessPercentage;
-    private ArrayList<Percentage> numberUniqueInstancesForEachLabel;
+    private ArrayList<Percentage> numberUniqueInstancesForEachLabel;//filed
     private int numberOfUsers;
-    private ArrayList<Percentage> usersCompleteness;
-    private ArrayList<Percentage> consistencyPercentageOfUsers;
+    private ArrayList<Percentage> usersCompleteness;//field
+    private ArrayList<Percentage> consistencyPercentageOfUsers;//field
 
     public DatasetPerformanceMetric(Dataset dataset) {
         this.dataset = dataset;

@@ -22,7 +22,7 @@ public class Writer {
     }
     public void writeDataset(Object obj, String outputName, boolean consolePrint, boolean append){
 
-        Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
+        Gson gson = new GsonBuilder().serializeSpecialFloatingPointValues().setPrettyPrinting().disableHtmlEscaping().create();
         String json = gson.toJson(obj);
         StringBuilder sb = new StringBuilder(json);
 
