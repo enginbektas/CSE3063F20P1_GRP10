@@ -9,8 +9,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class Controller {
     private Log log;
@@ -108,7 +106,7 @@ public class Controller {
         return storageList;
     }
 
-    private Dataset reader(File inputJson) {
+    public Dataset reader(File inputJson) {
         Dataset dataset = new Dataset();
         JSONParser parser = new JSONParser(); // create JSON parser
         try {
@@ -244,19 +242,5 @@ public class Controller {
         }
 
         return (int) currentDatasetId;
-    }
-
-    public void writeDataset(Storage storage) {
-        Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
-        String json = gson.toJson(storage);
-        StringBuilder sb = new StringBuilder(json);
-
-        try (FileWriter file = new FileWriter("testOutput.json")) {
-            file.write(sb.toString());
-            file.flush();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 }

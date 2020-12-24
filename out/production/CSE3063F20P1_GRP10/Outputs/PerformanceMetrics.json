@@ -5,11 +5,11 @@
       "labelDistributionPercentage": [
         {
           "name": "Positive",
-          "percentage": 0.42105263157894735
+          "percentage": 0.425
         },
         {
           "name": "Negative",
-          "percentage": 0.5789473684210527
+          "percentage": 0.575
         },
         {
           "name": "Notr",
@@ -20,7 +20,7 @@
       "numberUniqueInstancesForEachLabel": [
         {
           "name": "Positive",
-          "percentage": 8.0
+          "percentage": 10.0
         },
         {
           "name": "Negative",
@@ -28,6 +28,163 @@
         },
         {
           "name": "Notr",
+          "percentage": 0.0
+        }
+      ],
+      "numberOfUsers": 2,
+      "usersCompleteness": [
+        {
+          "name": "RandomLabelingMechanism1",
+          "percentage": 100.0
+        },
+        {
+          "name": "RandomLabelingMechanism2",
+          "percentage": 90.0
+        }
+      ],
+      "consistencyPercentageOfUsers": [
+        {
+          "name": "RandomLabelingMechanism1",
+          "percentage": 0.0
+        },
+        {
+          "name": "RandomLabelingMechanism2",
+          "percentage": 0.0
+        }
+      ]
+    },
+    {
+      "datasetId": 2,
+      "labelDistributionPercentage": [
+        {
+          "name": "bayi ",
+          "percentage": 0.06521739130434782
+        },
+        {
+          "name": "numara ",
+          "percentage": 0.06521739130434782
+        },
+        {
+          "name": "hat ",
+          "percentage": 0.15217391304347827
+        },
+        {
+          "name": "işlem",
+          "percentage": 0.06521739130434782
+        },
+        {
+          "name": "müşteri",
+          "percentage": 0.06521739130434782
+        },
+        {
+          "name": "bilgi ",
+          "percentage": 0.06521739130434782
+        },
+        {
+          "name": "telefon",
+          "percentage": 0.043478260869565216
+        },
+        {
+          "name": "konu ",
+          "percentage": 0.021739130434782608
+        },
+        {
+          "name": "firma ",
+          "percentage": 0.10869565217391304
+        },
+        {
+          "name": "cihaz",
+          "percentage": 0.06521739130434782
+        },
+        {
+          "name": "hat ",
+          "percentage": 0.08695652173913043
+        },
+        {
+          "name": "borç ",
+          "percentage": 0.08695652173913043
+        },
+        {
+          "name": "fatura ",
+          "percentage": 0.043478260869565216
+        },
+        {
+          "name": "taraf",
+          "percentage": 0.043478260869565216
+        },
+        {
+          "name": "borç ",
+          "percentage": 0.021739130434782608
+        },
+        {
+          "name": "paket",
+          "percentage": 0.0
+        }
+      ],
+      "completenessPercentage": 100.0,
+      "numberUniqueInstancesForEachLabel": [
+        {
+          "name": "bayi ",
+          "percentage": 2.0
+        },
+        {
+          "name": "numara ",
+          "percentage": 2.0
+        },
+        {
+          "name": "hat ",
+          "percentage": 4.0
+        },
+        {
+          "name": "işlem",
+          "percentage": 3.0
+        },
+        {
+          "name": "müşteri",
+          "percentage": 3.0
+        },
+        {
+          "name": "bilgi ",
+          "percentage": 2.0
+        },
+        {
+          "name": "telefon",
+          "percentage": 1.0
+        },
+        {
+          "name": "konu ",
+          "percentage": 1.0
+        },
+        {
+          "name": "firma ",
+          "percentage": 4.0
+        },
+        {
+          "name": "cihaz",
+          "percentage": 3.0
+        },
+        {
+          "name": "hat ",
+          "percentage": 2.0
+        },
+        {
+          "name": "borç ",
+          "percentage": 3.0
+        },
+        {
+          "name": "fatura ",
+          "percentage": 2.0
+        },
+        {
+          "name": "taraf",
+          "percentage": 2.0
+        },
+        {
+          "name": "borç ",
+          "percentage": 1.0
+        },
+        {
+          "name": "paket",
           "percentage": 0.0
         }
       ],
@@ -52,13 +209,6 @@
           "percentage": 0.0
         }
       ]
-    },
-    {
-      "datasetId": 2,
-      "completenessPercentage": 0.0,
-      "numberOfUsers": 0,
-      "usersCompleteness": [],
-      "consistencyPercentageOfUsers": []
     }
   ],
   "userPerformanceMetrics": [
@@ -74,16 +224,16 @@
         "consistency check probability": 0.1,
         "password": ""
       },
-      "datasetAssigned": 1,
+      "datasetAssigned": 2,
       "datasetsCompletenessPercentage": [],
-      "numberOfInstancesLabeled": 11,
-      "numberOfUniqueInstancesLabeled": 10,
+      "numberOfInstancesLabeled": 16,
+      "numberOfUniqueInstancesLabeled": 15,
       "consistencyPercentage": {
         "name": "",
         "percentage": 0.0
       },
-      "averageTimeSpentLabeling": 53.09090909090909,
-      "stdDevOfTimeSpentLabelingInstances": 80.78638499153183
+      "averageTimeSpentLabeling": 3.625,
+      "stdDevOfTimeSpentLabelingInstances": 6.392356546862997
     },
     {
       "user": {
@@ -97,16 +247,16 @@
         "consistency check probability": 0.1,
         "password": ""
       },
-      "datasetAssigned": 1,
+      "datasetAssigned": 2,
       "datasetsCompletenessPercentage": [],
-      "numberOfInstancesLabeled": 10,
-      "numberOfUniqueInstancesLabeled": 10,
+      "numberOfInstancesLabeled": 14,
+      "numberOfUniqueInstancesLabeled": 14,
       "consistencyPercentage": {
         "name": "",
         "percentage": 0.0
       },
-      "averageTimeSpentLabeling": 14.3,
-      "stdDevOfTimeSpentLabelingInstances": 12.174152947946729
+      "averageTimeSpentLabeling": 0.42857142857142855,
+      "stdDevOfTimeSpentLabelingInstances": 1.579524599106856
     },
     {
       "user": {
@@ -161,42 +311,165 @@
         "instanceId": 1,
         "totalNumberOfLabel": 5,
         "numberOfUniqueLabelAssignment": 2,
+        "numberOfUniqueUsers": 1,
+        "mostFrequentLabel": [
+          {
+            "num": 4,
+            "label": {
+              "label id": 2,
+              "label text": "Negative",
+              "numberOfUses": 23
+            },
+            "percentage": 80.0
+          }
+        ],
+        "labelsPercentages": [
+          {
+            "num": 4,
+            "label": {
+              "label id": 2,
+              "label text": "Negative",
+              "numberOfUses": 23
+            },
+            "percentage": 80.0
+          },
+          {
+            "num": 1,
+            "label": {
+              "label id": 1,
+              "label text": "Positive",
+              "numberOfUses": 17
+            },
+            "percentage": 20.0
+          }
+        ],
+        "entropy": 0.7219280948873623
+      },
+      {
+        "instanceId": 2,
+        "totalNumberOfLabel": 5,
+        "numberOfUniqueLabelAssignment": 2,
         "numberOfUniqueUsers": 2,
         "mostFrequentLabel": [
           {
             "num": 3,
             "label": {
-              "label id": 1,
-              "label text": "Positive",
-              "numberOfUses": 16
+              "label id": 2,
+              "label text": "Negative",
+              "numberOfUses": 23
             },
             "percentage": 60.0
           }
         ],
         "labelsPercentages": [
           {
-            "num": 2,
+            "num": 3,
             "label": {
               "label id": 2,
               "label text": "Negative",
-              "numberOfUses": 22
+              "numberOfUses": 23
             },
-            "percentage": 40.0
+            "percentage": 60.0
           },
           {
-            "num": 3,
+            "num": 2,
             "label": {
               "label id": 1,
               "label text": "Positive",
-              "numberOfUses": 16
+              "numberOfUses": 17
             },
-            "percentage": 60.0
+            "percentage": 40.0
           }
         ],
         "entropy": 0.9709505944546688
       },
       {
-        "instanceId": 2,
+        "instanceId": 3,
+        "totalNumberOfLabel": 3,
+        "numberOfUniqueLabelAssignment": 2,
+        "numberOfUniqueUsers": 2,
+        "mostFrequentLabel": [
+          {
+            "num": 2,
+            "label": {
+              "label id": 2,
+              "label text": "Negative",
+              "numberOfUses": 23
+            },
+            "percentage": 66.66666666666666
+          }
+        ],
+        "labelsPercentages": [
+          {
+            "num": 1,
+            "label": {
+              "label id": 1,
+              "label text": "Positive",
+              "numberOfUses": 17
+            },
+            "percentage": 33.33333333333333
+          },
+          {
+            "num": 2,
+            "label": {
+              "label id": 2,
+              "label text": "Negative",
+              "numberOfUses": 23
+            },
+            "percentage": 66.66666666666666
+          }
+        ],
+        "entropy": 0.9182958340544898
+      },
+      {
+        "instanceId": 4,
+        "totalNumberOfLabel": 4,
+        "numberOfUniqueLabelAssignment": 2,
+        "numberOfUniqueUsers": 2,
+        "mostFrequentLabel": [
+          {
+            "num": 2,
+            "label": {
+              "label id": 1,
+              "label text": "Positive",
+              "numberOfUses": 17
+            },
+            "percentage": 50.0
+          },
+          {
+            "num": 2,
+            "label": {
+              "label id": 2,
+              "label text": "Negative",
+              "numberOfUses": 23
+            },
+            "percentage": 50.0
+          }
+        ],
+        "labelsPercentages": [
+          {
+            "num": 2,
+            "label": {
+              "label id": 1,
+              "label text": "Positive",
+              "numberOfUses": 17
+            },
+            "percentage": 50.0
+          },
+          {
+            "num": 2,
+            "label": {
+              "label id": 2,
+              "label text": "Negative",
+              "numberOfUses": 23
+            },
+            "percentage": 50.0
+          }
+        ],
+        "entropy": 1.0
+      },
+      {
+        "instanceId": 5,
         "totalNumberOfLabel": 2,
         "numberOfUniqueLabelAssignment": 2,
         "numberOfUniqueUsers": 2,
@@ -206,7 +479,7 @@
             "label": {
               "label id": 2,
               "label text": "Negative",
-              "numberOfUses": 22
+              "numberOfUses": 23
             },
             "percentage": 50.0
           },
@@ -215,7 +488,7 @@
             "label": {
               "label id": 1,
               "label text": "Positive",
-              "numberOfUses": 16
+              "numberOfUses": 17
             },
             "percentage": 50.0
           }
@@ -226,7 +499,7 @@
             "label": {
               "label id": 2,
               "label text": "Negative",
-              "numberOfUses": 22
+              "numberOfUses": 23
             },
             "percentage": 50.0
           },
@@ -235,126 +508,12 @@
             "label": {
               "label id": 1,
               "label text": "Positive",
-              "numberOfUses": 16
+              "numberOfUses": 17
             },
             "percentage": 50.0
           }
         ],
         "entropy": 1.0
-      },
-      {
-        "instanceId": 3,
-        "totalNumberOfLabel": 4,
-        "numberOfUniqueLabelAssignment": 2,
-        "numberOfUniqueUsers": 2,
-        "mostFrequentLabel": [
-          {
-            "num": 2,
-            "label": {
-              "label id": 2,
-              "label text": "Negative",
-              "numberOfUses": 22
-            },
-            "percentage": 50.0
-          },
-          {
-            "num": 2,
-            "label": {
-              "label id": 1,
-              "label text": "Positive",
-              "numberOfUses": 16
-            },
-            "percentage": 50.0
-          }
-        ],
-        "labelsPercentages": [
-          {
-            "num": 2,
-            "label": {
-              "label id": 2,
-              "label text": "Negative",
-              "numberOfUses": 22
-            },
-            "percentage": 50.0
-          },
-          {
-            "num": 2,
-            "label": {
-              "label id": 1,
-              "label text": "Positive",
-              "numberOfUses": 16
-            },
-            "percentage": 50.0
-          }
-        ],
-        "entropy": 1.0
-      },
-      {
-        "instanceId": 4,
-        "totalNumberOfLabel": 4,
-        "numberOfUniqueLabelAssignment": 1,
-        "numberOfUniqueUsers": 2,
-        "mostFrequentLabel": [
-          {
-            "num": 4,
-            "label": {
-              "label id": 2,
-              "label text": "Negative",
-              "numberOfUses": 22
-            },
-            "percentage": 100.0
-          }
-        ],
-        "labelsPercentages": [
-          {
-            "num": 4,
-            "label": {
-              "label id": 2,
-              "label text": "Negative",
-              "numberOfUses": 22
-            },
-            "percentage": 100.0
-          }
-        ],
-        "entropy": Infinity
-      },
-      {
-        "instanceId": 5,
-        "totalNumberOfLabel": 4,
-        "numberOfUniqueLabelAssignment": 2,
-        "numberOfUniqueUsers": 2,
-        "mostFrequentLabel": [
-          {
-            "num": 3,
-            "label": {
-              "label id": 1,
-              "label text": "Positive",
-              "numberOfUses": 16
-            },
-            "percentage": 75.0
-          }
-        ],
-        "labelsPercentages": [
-          {
-            "num": 3,
-            "label": {
-              "label id": 1,
-              "label text": "Positive",
-              "numberOfUses": 16
-            },
-            "percentage": 75.0
-          },
-          {
-            "num": 1,
-            "label": {
-              "label id": 2,
-              "label text": "Negative",
-              "numberOfUses": 22
-            },
-            "percentage": 25.0
-          }
-        ],
-        "entropy": 0.8112781244591328
       },
       {
         "instanceId": 6,
@@ -365,18 +524,18 @@
           {
             "num": 2,
             "label": {
-              "label id": 1,
-              "label text": "Positive",
-              "numberOfUses": 16
+              "label id": 2,
+              "label text": "Negative",
+              "numberOfUses": 23
             },
             "percentage": 50.0
           },
           {
             "num": 2,
             "label": {
-              "label id": 2,
-              "label text": "Negative",
-              "numberOfUses": 22
+              "label id": 1,
+              "label text": "Positive",
+              "numberOfUses": 17
             },
             "percentage": 50.0
           }
@@ -385,18 +544,18 @@
           {
             "num": 2,
             "label": {
-              "label id": 1,
-              "label text": "Positive",
-              "numberOfUses": 16
+              "label id": 2,
+              "label text": "Negative",
+              "numberOfUses": 23
             },
             "percentage": 50.0
           },
           {
             "num": 2,
             "label": {
-              "label id": 2,
-              "label text": "Negative",
-              "numberOfUses": 22
+              "label id": 1,
+              "label text": "Positive",
+              "numberOfUses": 17
             },
             "percentage": 50.0
           }
@@ -405,6 +564,91 @@
       },
       {
         "instanceId": 7,
+        "totalNumberOfLabel": 4,
+        "numberOfUniqueLabelAssignment": 2,
+        "numberOfUniqueUsers": 2,
+        "mostFrequentLabel": [
+          {
+            "num": 2,
+            "label": {
+              "label id": 2,
+              "label text": "Negative",
+              "numberOfUses": 23
+            },
+            "percentage": 50.0
+          },
+          {
+            "num": 2,
+            "label": {
+              "label id": 1,
+              "label text": "Positive",
+              "numberOfUses": 17
+            },
+            "percentage": 50.0
+          }
+        ],
+        "labelsPercentages": [
+          {
+            "num": 2,
+            "label": {
+              "label id": 2,
+              "label text": "Negative",
+              "numberOfUses": 23
+            },
+            "percentage": 50.0
+          },
+          {
+            "num": 2,
+            "label": {
+              "label id": 1,
+              "label text": "Positive",
+              "numberOfUses": 17
+            },
+            "percentage": 50.0
+          }
+        ],
+        "entropy": 1.0
+      },
+      {
+        "instanceId": 8,
+        "totalNumberOfLabel": 3,
+        "numberOfUniqueLabelAssignment": 2,
+        "numberOfUniqueUsers": 2,
+        "mostFrequentLabel": [
+          {
+            "num": 2,
+            "label": {
+              "label id": 1,
+              "label text": "Positive",
+              "numberOfUses": 17
+            },
+            "percentage": 66.66666666666666
+          }
+        ],
+        "labelsPercentages": [
+          {
+            "num": 2,
+            "label": {
+              "label id": 1,
+              "label text": "Positive",
+              "numberOfUses": 17
+            },
+            "percentage": 66.66666666666666
+          },
+          {
+            "num": 1,
+            "label": {
+              "label id": 2,
+              "label text": "Negative",
+              "numberOfUses": 23
+            },
+            "percentage": 33.33333333333333
+          }
+        ],
+        "entropy": 0.9182958340544898
+      },
+      {
+        "instanceId": 9,
         "totalNumberOfLabel": 5,
         "numberOfUniqueLabelAssignment": 2,
         "numberOfUniqueUsers": 2,
@@ -414,7 +658,7 @@
             "label": {
               "label id": 2,
               "label text": "Negative",
-              "numberOfUses": 22
+              "numberOfUses": 23
             },
             "percentage": 60.0
           }
@@ -425,7 +669,7 @@
             "label": {
               "label id": 2,
               "label text": "Negative",
-              "numberOfUses": 22
+              "numberOfUses": 23
             },
             "percentage": 60.0
           },
@@ -434,7 +678,7 @@
             "label": {
               "label id": 1,
               "label text": "Positive",
-              "numberOfUses": 16
+              "numberOfUses": 17
             },
             "percentage": 40.0
           }
@@ -442,153 +686,493 @@
         "entropy": 0.9709505944546688
       },
       {
-        "instanceId": 8,
-        "totalNumberOfLabel": 4,
+        "instanceId": 10,
+        "totalNumberOfLabel": 5,
         "numberOfUniqueLabelAssignment": 2,
         "numberOfUniqueUsers": 2,
         "mostFrequentLabel": [
           {
-            "num": 2,
-            "label": {
-              "label id": 1,
-              "label text": "Positive",
-              "numberOfUses": 16
-            },
-            "percentage": 50.0
-          },
-          {
-            "num": 2,
+            "num": 3,
             "label": {
               "label id": 2,
               "label text": "Negative",
-              "numberOfUses": 22
+              "numberOfUses": 23
             },
-            "percentage": 50.0
+            "percentage": 60.0
           }
         ],
         "labelsPercentages": [
           {
-            "num": 2,
+            "num": 3,
             "label": {
-              "label id": 1,
-              "label text": "Positive",
-              "numberOfUses": 16
+              "label id": 2,
+              "label text": "Negative",
+              "numberOfUses": 23
             },
-            "percentage": 50.0
+            "percentage": 60.0
           },
           {
             "num": 2,
             "label": {
-              "label id": 2,
-              "label text": "Negative",
-              "numberOfUses": 22
+              "label id": 1,
+              "label text": "Positive",
+              "numberOfUses": 17
             },
-            "percentage": 50.0
+            "percentage": 40.0
           }
         ],
-        "entropy": 1.0
+        "entropy": 0.9709505944546688
       },
       {
-        "instanceId": 9,
-        "totalNumberOfLabel": 4,
-        "numberOfUniqueLabelAssignment": 2,
+        "instanceId": 1,
+        "totalNumberOfLabel": 9,
+        "numberOfUniqueLabelAssignment": 8,
+        "numberOfUniqueUsers": 2,
+        "mostFrequentLabel": [
+          {
+            "num": 2,
+            "label": {
+              "label id": 11,
+              "label text": "hat ",
+              "numberOfUses": 4
+            },
+            "percentage": 22.22222222222222
+          }
+        ],
+        "labelsPercentages": [
+          {
+            "num": 1,
+            "label": {
+              "label id": 3,
+              "label text": "hat ",
+              "numberOfUses": 7
+            },
+            "percentage": 11.11111111111111
+          },
+          {
+            "num": 2,
+            "label": {
+              "label id": 11,
+              "label text": "hat ",
+              "numberOfUses": 4
+            },
+            "percentage": 22.22222222222222
+          },
+          {
+            "num": 1,
+            "label": {
+              "label id": 15,
+              "label text": "borç ",
+              "numberOfUses": 1
+            },
+            "percentage": 11.11111111111111
+          },
+          {
+            "num": 1,
+            "label": {
+              "label id": 10,
+              "label text": "cihaz",
+              "numberOfUses": 3
+            },
+            "percentage": 11.11111111111111
+          },
+          {
+            "num": 1,
+            "label": {
+              "label id": 9,
+              "label text": "firma ",
+              "numberOfUses": 5
+            },
+            "percentage": 11.11111111111111
+          },
+          {
+            "num": 1,
+            "label": {
+              "label id": 6,
+              "label text": "bilgi ",
+              "numberOfUses": 3
+            },
+            "percentage": 11.11111111111111
+          },
+          {
+            "num": 1,
+            "label": {
+              "label id": 4,
+              "label text": "işlem",
+              "numberOfUses": 3
+            },
+            "percentage": 11.11111111111111
+          },
+          {
+            "num": 1,
+            "label": {
+              "label id": 2,
+              "label text": "numara ",
+              "numberOfUses": 3
+            },
+            "percentage": 11.11111111111111
+          }
+        ],
+        "entropy": 0.9825675930733637
+      },
+      {
+        "instanceId": 2,
+        "totalNumberOfLabel": 8,
+        "numberOfUniqueLabelAssignment": 6,
+        "numberOfUniqueUsers": 2,
+        "mostFrequentLabel": [
+          {
+            "num": 2,
+            "label": {
+              "label id": 2,
+              "label text": "numara ",
+              "numberOfUses": 3
+            },
+            "percentage": 25.0
+          },
+          {
+            "num": 2,
+            "label": {
+              "label id": 12,
+              "label text": "borç ",
+              "numberOfUses": 4
+            },
+            "percentage": 25.0
+          }
+        ],
+        "labelsPercentages": [
+          {
+            "num": 2,
+            "label": {
+              "label id": 2,
+              "label text": "numara ",
+              "numberOfUses": 3
+            },
+            "percentage": 25.0
+          },
+          {
+            "num": 2,
+            "label": {
+              "label id": 12,
+              "label text": "borç ",
+              "numberOfUses": 4
+            },
+            "percentage": 25.0
+          },
+          {
+            "num": 1,
+            "label": {
+              "label id": 4,
+              "label text": "işlem",
+              "numberOfUses": 3
+            },
+            "percentage": 12.5
+          },
+          {
+            "num": 1,
+            "label": {
+              "label id": 14,
+              "label text": "taraf",
+              "numberOfUses": 2
+            },
+            "percentage": 12.5
+          },
+          {
+            "num": 1,
+            "label": {
+              "label id": 10,
+              "label text": "cihaz",
+              "numberOfUses": 3
+            },
+            "percentage": 12.5
+          },
+          {
+            "num": 1,
+            "label": {
+              "label id": 9,
+              "label text": "firma ",
+              "numberOfUses": 5
+            },
+            "percentage": 12.5
+          }
+        ],
+        "entropy": 0.967132018086354
+      },
+      {
+        "instanceId": 3,
+        "totalNumberOfLabel": 10,
+        "numberOfUniqueLabelAssignment": 7,
+        "numberOfUniqueUsers": 2,
+        "mostFrequentLabel": [
+          {
+            "num": 2,
+            "label": {
+              "label id": 9,
+              "label text": "firma ",
+              "numberOfUses": 5
+            },
+            "percentage": 20.0
+          },
+          {
+            "num": 2,
+            "label": {
+              "label id": 1,
+              "label text": "bayi ",
+              "numberOfUses": 3
+            },
+            "percentage": 20.0
+          },
+          {
+            "num": 2,
+            "label": {
+              "label id": 3,
+              "label text": "hat ",
+              "numberOfUses": 7
+            },
+            "percentage": 20.0
+          }
+        ],
+        "labelsPercentages": [
+          {
+            "num": 2,
+            "label": {
+              "label id": 9,
+              "label text": "firma ",
+              "numberOfUses": 5
+            },
+            "percentage": 20.0
+          },
+          {
+            "num": 2,
+            "label": {
+              "label id": 1,
+              "label text": "bayi ",
+              "numberOfUses": 3
+            },
+            "percentage": 20.0
+          },
+          {
+            "num": 2,
+            "label": {
+              "label id": 3,
+              "label text": "hat ",
+              "numberOfUses": 7
+            },
+            "percentage": 20.0
+          },
+          {
+            "num": 1,
+            "label": {
+              "label id": 12,
+              "label text": "borç ",
+              "numberOfUses": 4
+            },
+            "percentage": 10.0
+          },
+          {
+            "num": 1,
+            "label": {
+              "label id": 5,
+              "label text": "müşteri",
+              "numberOfUses": 3
+            },
+            "percentage": 10.0
+          },
+          {
+            "num": 1,
+            "label": {
+              "label id": 13,
+              "label text": "fatura ",
+              "numberOfUses": 2
+            },
+            "percentage": 10.0
+          },
+          {
+            "num": 1,
+            "label": {
+              "label id": 4,
+              "label text": "işlem",
+              "numberOfUses": 3
+            },
+            "percentage": 10.0
+          }
+        ],
+        "entropy": 0.9695703501901249
+      },
+      {
+        "instanceId": 4,
+        "totalNumberOfLabel": 9,
+        "numberOfUniqueLabelAssignment": 6,
         "numberOfUniqueUsers": 2,
         "mostFrequentLabel": [
           {
             "num": 3,
             "label": {
-              "label id": 2,
-              "label text": "Negative",
-              "numberOfUses": 22
+              "label id": 3,
+              "label text": "hat ",
+              "numberOfUses": 7
             },
-            "percentage": 75.0
+            "percentage": 33.33333333333333
           }
         ],
         "labelsPercentages": [
           {
             "num": 3,
             "label": {
-              "label id": 2,
-              "label text": "Negative",
-              "numberOfUses": 22
+              "label id": 3,
+              "label text": "hat ",
+              "numberOfUses": 7
             },
-            "percentage": 75.0
+            "percentage": 33.33333333333333
           },
           {
             "num": 1,
             "label": {
               "label id": 1,
-              "label text": "Positive",
-              "numberOfUses": 16
+              "label text": "bayi ",
+              "numberOfUses": 3
             },
-            "percentage": 25.0
+            "percentage": 11.11111111111111
+          },
+          {
+            "num": 1,
+            "label": {
+              "label id": 13,
+              "label text": "fatura ",
+              "numberOfUses": 2
+            },
+            "percentage": 11.11111111111111
+          },
+          {
+            "num": 1,
+            "label": {
+              "label id": 5,
+              "label text": "müşteri",
+              "numberOfUses": 3
+            },
+            "percentage": 11.11111111111111
+          },
+          {
+            "num": 1,
+            "label": {
+              "label id": 9,
+              "label text": "firma ",
+              "numberOfUses": 5
+            },
+            "percentage": 11.11111111111111
+          },
+          {
+            "num": 2,
+            "label": {
+              "label id": 6,
+              "label text": "bilgi ",
+              "numberOfUses": 3
+            },
+            "percentage": 22.22222222222222
           }
         ],
-        "entropy": 0.8112781244591328
+        "entropy": 0.9359446974458661
       },
       {
-        "instanceId": 10,
-        "totalNumberOfLabel": 2,
-        "numberOfUniqueLabelAssignment": 1,
+        "instanceId": 5,
+        "totalNumberOfLabel": 10,
+        "numberOfUniqueLabelAssignment": 8,
         "numberOfUniqueUsers": 2,
         "mostFrequentLabel": [
           {
             "num": 2,
             "label": {
-              "label id": 2,
-              "label text": "Negative",
-              "numberOfUses": 22
+              "label id": 11,
+              "label text": "hat ",
+              "numberOfUses": 4
             },
-            "percentage": 100.0
+            "percentage": 20.0
+          },
+          {
+            "num": 2,
+            "label": {
+              "label id": 7,
+              "label text": "telefon",
+              "numberOfUses": 2
+            },
+            "percentage": 20.0
           }
         ],
         "labelsPercentages": [
           {
+            "num": 1,
+            "label": {
+              "label id": 10,
+              "label text": "cihaz",
+              "numberOfUses": 3
+            },
+            "percentage": 10.0
+          },
+          {
             "num": 2,
             "label": {
-              "label id": 2,
-              "label text": "Negative",
-              "numberOfUses": 22
+              "label id": 11,
+              "label text": "hat ",
+              "numberOfUses": 4
             },
-            "percentage": 100.0
+            "percentage": 20.0
+          },
+          {
+            "num": 1,
+            "label": {
+              "label id": 12,
+              "label text": "borç ",
+              "numberOfUses": 4
+            },
+            "percentage": 10.0
+          },
+          {
+            "num": 1,
+            "label": {
+              "label id": 3,
+              "label text": "hat ",
+              "numberOfUses": 7
+            },
+            "percentage": 10.0
+          },
+          {
+            "num": 1,
+            "label": {
+              "label id": 5,
+              "label text": "müşteri",
+              "numberOfUses": 3
+            },
+            "percentage": 10.0
+          },
+          {
+            "num": 2,
+            "label": {
+              "label id": 7,
+              "label text": "telefon",
+              "numberOfUses": 2
+            },
+            "percentage": 20.0
+          },
+          {
+            "num": 1,
+            "label": {
+              "label id": 8,
+              "label text": "konu ",
+              "numberOfUses": 1
+            },
+            "percentage": 10.0
+          },
+          {
+            "num": 1,
+            "label": {
+              "label id": 14,
+              "label text": "taraf",
+              "numberOfUses": 2
+            },
+            "percentage": 10.0
           }
         ],
-        "entropy": Infinity
-      },
-      {
-        "instanceId": 1,
-        "totalNumberOfLabel": 0,
-        "numberOfUniqueLabelAssignment": 0,
-        "numberOfUniqueUsers": 0,
-        "entropy": 0.0
-      },
-      {
-        "instanceId": 2,
-        "totalNumberOfLabel": 0,
-        "numberOfUniqueLabelAssignment": 0,
-        "numberOfUniqueUsers": 0,
-        "entropy": 0.0
-      },
-      {
-        "instanceId": 3,
-        "totalNumberOfLabel": 0,
-        "numberOfUniqueLabelAssignment": 0,
-        "numberOfUniqueUsers": 0,
-        "entropy": 0.0
-      },
-      {
-        "instanceId": 4,
-        "totalNumberOfLabel": 0,
-        "numberOfUniqueLabelAssignment": 0,
-        "numberOfUniqueUsers": 0,
-        "entropy": 0.0
-      },
-      {
-        "instanceId": 5,
-        "totalNumberOfLabel": 0,
-        "numberOfUniqueLabelAssignment": 0,
-        "numberOfUniqueUsers": 0,
-        "entropy": 0.0
+        "entropy": 0.9739760316291208
       }
     ],
     [
@@ -596,42 +1180,165 @@
         "instanceId": 1,
         "totalNumberOfLabel": 5,
         "numberOfUniqueLabelAssignment": 2,
+        "numberOfUniqueUsers": 1,
+        "mostFrequentLabel": [
+          {
+            "num": 4,
+            "label": {
+              "label id": 2,
+              "label text": "Negative",
+              "numberOfUses": 23
+            },
+            "percentage": 80.0
+          }
+        ],
+        "labelsPercentages": [
+          {
+            "num": 4,
+            "label": {
+              "label id": 2,
+              "label text": "Negative",
+              "numberOfUses": 23
+            },
+            "percentage": 80.0
+          },
+          {
+            "num": 1,
+            "label": {
+              "label id": 1,
+              "label text": "Positive",
+              "numberOfUses": 17
+            },
+            "percentage": 20.0
+          }
+        ],
+        "entropy": 0.7219280948873623
+      },
+      {
+        "instanceId": 2,
+        "totalNumberOfLabel": 5,
+        "numberOfUniqueLabelAssignment": 2,
         "numberOfUniqueUsers": 2,
         "mostFrequentLabel": [
           {
             "num": 3,
             "label": {
-              "label id": 1,
-              "label text": "Positive",
-              "numberOfUses": 16
+              "label id": 2,
+              "label text": "Negative",
+              "numberOfUses": 23
             },
             "percentage": 60.0
           }
         ],
         "labelsPercentages": [
           {
-            "num": 2,
+            "num": 3,
             "label": {
               "label id": 2,
               "label text": "Negative",
-              "numberOfUses": 22
+              "numberOfUses": 23
             },
-            "percentage": 40.0
+            "percentage": 60.0
           },
           {
-            "num": 3,
+            "num": 2,
             "label": {
               "label id": 1,
               "label text": "Positive",
-              "numberOfUses": 16
+              "numberOfUses": 17
             },
-            "percentage": 60.0
+            "percentage": 40.0
           }
         ],
         "entropy": 0.9709505944546688
       },
       {
-        "instanceId": 2,
+        "instanceId": 3,
+        "totalNumberOfLabel": 3,
+        "numberOfUniqueLabelAssignment": 2,
+        "numberOfUniqueUsers": 2,
+        "mostFrequentLabel": [
+          {
+            "num": 2,
+            "label": {
+              "label id": 2,
+              "label text": "Negative",
+              "numberOfUses": 23
+            },
+            "percentage": 66.66666666666666
+          }
+        ],
+        "labelsPercentages": [
+          {
+            "num": 1,
+            "label": {
+              "label id": 1,
+              "label text": "Positive",
+              "numberOfUses": 17
+            },
+            "percentage": 33.33333333333333
+          },
+          {
+            "num": 2,
+            "label": {
+              "label id": 2,
+              "label text": "Negative",
+              "numberOfUses": 23
+            },
+            "percentage": 66.66666666666666
+          }
+        ],
+        "entropy": 0.9182958340544898
+      },
+      {
+        "instanceId": 4,
+        "totalNumberOfLabel": 4,
+        "numberOfUniqueLabelAssignment": 2,
+        "numberOfUniqueUsers": 2,
+        "mostFrequentLabel": [
+          {
+            "num": 2,
+            "label": {
+              "label id": 1,
+              "label text": "Positive",
+              "numberOfUses": 17
+            },
+            "percentage": 50.0
+          },
+          {
+            "num": 2,
+            "label": {
+              "label id": 2,
+              "label text": "Negative",
+              "numberOfUses": 23
+            },
+            "percentage": 50.0
+          }
+        ],
+        "labelsPercentages": [
+          {
+            "num": 2,
+            "label": {
+              "label id": 1,
+              "label text": "Positive",
+              "numberOfUses": 17
+            },
+            "percentage": 50.0
+          },
+          {
+            "num": 2,
+            "label": {
+              "label id": 2,
+              "label text": "Negative",
+              "numberOfUses": 23
+            },
+            "percentage": 50.0
+          }
+        ],
+        "entropy": 1.0
+      },
+      {
+        "instanceId": 5,
         "totalNumberOfLabel": 2,
         "numberOfUniqueLabelAssignment": 2,
         "numberOfUniqueUsers": 2,
@@ -641,7 +1348,7 @@
             "label": {
               "label id": 2,
               "label text": "Negative",
-              "numberOfUses": 22
+              "numberOfUses": 23
             },
             "percentage": 50.0
           },
@@ -650,7 +1357,7 @@
             "label": {
               "label id": 1,
               "label text": "Positive",
-              "numberOfUses": 16
+              "numberOfUses": 17
             },
             "percentage": 50.0
           }
@@ -661,7 +1368,7 @@
             "label": {
               "label id": 2,
               "label text": "Negative",
-              "numberOfUses": 22
+              "numberOfUses": 23
             },
             "percentage": 50.0
           },
@@ -670,126 +1377,12 @@
             "label": {
               "label id": 1,
               "label text": "Positive",
-              "numberOfUses": 16
+              "numberOfUses": 17
             },
             "percentage": 50.0
           }
         ],
         "entropy": 1.0
-      },
-      {
-        "instanceId": 3,
-        "totalNumberOfLabel": 4,
-        "numberOfUniqueLabelAssignment": 2,
-        "numberOfUniqueUsers": 2,
-        "mostFrequentLabel": [
-          {
-            "num": 2,
-            "label": {
-              "label id": 2,
-              "label text": "Negative",
-              "numberOfUses": 22
-            },
-            "percentage": 50.0
-          },
-          {
-            "num": 2,
-            "label": {
-              "label id": 1,
-              "label text": "Positive",
-              "numberOfUses": 16
-            },
-            "percentage": 50.0
-          }
-        ],
-        "labelsPercentages": [
-          {
-            "num": 2,
-            "label": {
-              "label id": 2,
-              "label text": "Negative",
-              "numberOfUses": 22
-            },
-            "percentage": 50.0
-          },
-          {
-            "num": 2,
-            "label": {
-              "label id": 1,
-              "label text": "Positive",
-              "numberOfUses": 16
-            },
-            "percentage": 50.0
-          }
-        ],
-        "entropy": 1.0
-      },
-      {
-        "instanceId": 4,
-        "totalNumberOfLabel": 4,
-        "numberOfUniqueLabelAssignment": 1,
-        "numberOfUniqueUsers": 2,
-        "mostFrequentLabel": [
-          {
-            "num": 4,
-            "label": {
-              "label id": 2,
-              "label text": "Negative",
-              "numberOfUses": 22
-            },
-            "percentage": 100.0
-          }
-        ],
-        "labelsPercentages": [
-          {
-            "num": 4,
-            "label": {
-              "label id": 2,
-              "label text": "Negative",
-              "numberOfUses": 22
-            },
-            "percentage": 100.0
-          }
-        ],
-        "entropy": Infinity
-      },
-      {
-        "instanceId": 5,
-        "totalNumberOfLabel": 4,
-        "numberOfUniqueLabelAssignment": 2,
-        "numberOfUniqueUsers": 2,
-        "mostFrequentLabel": [
-          {
-            "num": 3,
-            "label": {
-              "label id": 1,
-              "label text": "Positive",
-              "numberOfUses": 16
-            },
-            "percentage": 75.0
-          }
-        ],
-        "labelsPercentages": [
-          {
-            "num": 3,
-            "label": {
-              "label id": 1,
-              "label text": "Positive",
-              "numberOfUses": 16
-            },
-            "percentage": 75.0
-          },
-          {
-            "num": 1,
-            "label": {
-              "label id": 2,
-              "label text": "Negative",
-              "numberOfUses": 22
-            },
-            "percentage": 25.0
-          }
-        ],
-        "entropy": 0.8112781244591328
       },
       {
         "instanceId": 6,
@@ -800,18 +1393,18 @@
           {
             "num": 2,
             "label": {
-              "label id": 1,
-              "label text": "Positive",
-              "numberOfUses": 16
+              "label id": 2,
+              "label text": "Negative",
+              "numberOfUses": 23
             },
             "percentage": 50.0
           },
           {
             "num": 2,
             "label": {
-              "label id": 2,
-              "label text": "Negative",
-              "numberOfUses": 22
+              "label id": 1,
+              "label text": "Positive",
+              "numberOfUses": 17
             },
             "percentage": 50.0
           }
@@ -820,18 +1413,18 @@
           {
             "num": 2,
             "label": {
-              "label id": 1,
-              "label text": "Positive",
-              "numberOfUses": 16
+              "label id": 2,
+              "label text": "Negative",
+              "numberOfUses": 23
             },
             "percentage": 50.0
           },
           {
             "num": 2,
             "label": {
-              "label id": 2,
-              "label text": "Negative",
-              "numberOfUses": 22
+              "label id": 1,
+              "label text": "Positive",
+              "numberOfUses": 17
             },
             "percentage": 50.0
           }
@@ -840,6 +1433,91 @@
       },
       {
         "instanceId": 7,
+        "totalNumberOfLabel": 4,
+        "numberOfUniqueLabelAssignment": 2,
+        "numberOfUniqueUsers": 2,
+        "mostFrequentLabel": [
+          {
+            "num": 2,
+            "label": {
+              "label id": 2,
+              "label text": "Negative",
+              "numberOfUses": 23
+            },
+            "percentage": 50.0
+          },
+          {
+            "num": 2,
+            "label": {
+              "label id": 1,
+              "label text": "Positive",
+              "numberOfUses": 17
+            },
+            "percentage": 50.0
+          }
+        ],
+        "labelsPercentages": [
+          {
+            "num": 2,
+            "label": {
+              "label id": 2,
+              "label text": "Negative",
+              "numberOfUses": 23
+            },
+            "percentage": 50.0
+          },
+          {
+            "num": 2,
+            "label": {
+              "label id": 1,
+              "label text": "Positive",
+              "numberOfUses": 17
+            },
+            "percentage": 50.0
+          }
+        ],
+        "entropy": 1.0
+      },
+      {
+        "instanceId": 8,
+        "totalNumberOfLabel": 3,
+        "numberOfUniqueLabelAssignment": 2,
+        "numberOfUniqueUsers": 2,
+        "mostFrequentLabel": [
+          {
+            "num": 2,
+            "label": {
+              "label id": 1,
+              "label text": "Positive",
+              "numberOfUses": 17
+            },
+            "percentage": 66.66666666666666
+          }
+        ],
+        "labelsPercentages": [
+          {
+            "num": 2,
+            "label": {
+              "label id": 1,
+              "label text": "Positive",
+              "numberOfUses": 17
+            },
+            "percentage": 66.66666666666666
+          },
+          {
+            "num": 1,
+            "label": {
+              "label id": 2,
+              "label text": "Negative",
+              "numberOfUses": 23
+            },
+            "percentage": 33.33333333333333
+          }
+        ],
+        "entropy": 0.9182958340544898
+      },
+      {
+        "instanceId": 9,
         "totalNumberOfLabel": 5,
         "numberOfUniqueLabelAssignment": 2,
         "numberOfUniqueUsers": 2,
@@ -849,7 +1527,7 @@
             "label": {
               "label id": 2,
               "label text": "Negative",
-              "numberOfUses": 22
+              "numberOfUses": 23
             },
             "percentage": 60.0
           }
@@ -860,7 +1538,7 @@
             "label": {
               "label id": 2,
               "label text": "Negative",
-              "numberOfUses": 22
+              "numberOfUses": 23
             },
             "percentage": 60.0
           },
@@ -869,7 +1547,7 @@
             "label": {
               "label id": 1,
               "label text": "Positive",
-              "numberOfUses": 16
+              "numberOfUses": 17
             },
             "percentage": 40.0
           }
@@ -877,153 +1555,493 @@
         "entropy": 0.9709505944546688
       },
       {
-        "instanceId": 8,
-        "totalNumberOfLabel": 4,
+        "instanceId": 10,
+        "totalNumberOfLabel": 5,
         "numberOfUniqueLabelAssignment": 2,
         "numberOfUniqueUsers": 2,
         "mostFrequentLabel": [
           {
-            "num": 2,
-            "label": {
-              "label id": 1,
-              "label text": "Positive",
-              "numberOfUses": 16
-            },
-            "percentage": 50.0
-          },
-          {
-            "num": 2,
+            "num": 3,
             "label": {
               "label id": 2,
               "label text": "Negative",
-              "numberOfUses": 22
+              "numberOfUses": 23
             },
-            "percentage": 50.0
+            "percentage": 60.0
           }
         ],
         "labelsPercentages": [
           {
-            "num": 2,
+            "num": 3,
             "label": {
-              "label id": 1,
-              "label text": "Positive",
-              "numberOfUses": 16
+              "label id": 2,
+              "label text": "Negative",
+              "numberOfUses": 23
             },
-            "percentage": 50.0
+            "percentage": 60.0
           },
           {
             "num": 2,
             "label": {
-              "label id": 2,
-              "label text": "Negative",
-              "numberOfUses": 22
+              "label id": 1,
+              "label text": "Positive",
+              "numberOfUses": 17
             },
-            "percentage": 50.0
+            "percentage": 40.0
           }
         ],
-        "entropy": 1.0
+        "entropy": 0.9709505944546688
       },
       {
-        "instanceId": 9,
-        "totalNumberOfLabel": 4,
-        "numberOfUniqueLabelAssignment": 2,
+        "instanceId": 1,
+        "totalNumberOfLabel": 9,
+        "numberOfUniqueLabelAssignment": 8,
+        "numberOfUniqueUsers": 2,
+        "mostFrequentLabel": [
+          {
+            "num": 2,
+            "label": {
+              "label id": 11,
+              "label text": "hat ",
+              "numberOfUses": 4
+            },
+            "percentage": 22.22222222222222
+          }
+        ],
+        "labelsPercentages": [
+          {
+            "num": 1,
+            "label": {
+              "label id": 3,
+              "label text": "hat ",
+              "numberOfUses": 7
+            },
+            "percentage": 11.11111111111111
+          },
+          {
+            "num": 2,
+            "label": {
+              "label id": 11,
+              "label text": "hat ",
+              "numberOfUses": 4
+            },
+            "percentage": 22.22222222222222
+          },
+          {
+            "num": 1,
+            "label": {
+              "label id": 15,
+              "label text": "borç ",
+              "numberOfUses": 1
+            },
+            "percentage": 11.11111111111111
+          },
+          {
+            "num": 1,
+            "label": {
+              "label id": 10,
+              "label text": "cihaz",
+              "numberOfUses": 3
+            },
+            "percentage": 11.11111111111111
+          },
+          {
+            "num": 1,
+            "label": {
+              "label id": 9,
+              "label text": "firma ",
+              "numberOfUses": 5
+            },
+            "percentage": 11.11111111111111
+          },
+          {
+            "num": 1,
+            "label": {
+              "label id": 6,
+              "label text": "bilgi ",
+              "numberOfUses": 3
+            },
+            "percentage": 11.11111111111111
+          },
+          {
+            "num": 1,
+            "label": {
+              "label id": 4,
+              "label text": "işlem",
+              "numberOfUses": 3
+            },
+            "percentage": 11.11111111111111
+          },
+          {
+            "num": 1,
+            "label": {
+              "label id": 2,
+              "label text": "numara ",
+              "numberOfUses": 3
+            },
+            "percentage": 11.11111111111111
+          }
+        ],
+        "entropy": 0.9825675930733637
+      },
+      {
+        "instanceId": 2,
+        "totalNumberOfLabel": 8,
+        "numberOfUniqueLabelAssignment": 6,
+        "numberOfUniqueUsers": 2,
+        "mostFrequentLabel": [
+          {
+            "num": 2,
+            "label": {
+              "label id": 2,
+              "label text": "numara ",
+              "numberOfUses": 3
+            },
+            "percentage": 25.0
+          },
+          {
+            "num": 2,
+            "label": {
+              "label id": 12,
+              "label text": "borç ",
+              "numberOfUses": 4
+            },
+            "percentage": 25.0
+          }
+        ],
+        "labelsPercentages": [
+          {
+            "num": 2,
+            "label": {
+              "label id": 2,
+              "label text": "numara ",
+              "numberOfUses": 3
+            },
+            "percentage": 25.0
+          },
+          {
+            "num": 2,
+            "label": {
+              "label id": 12,
+              "label text": "borç ",
+              "numberOfUses": 4
+            },
+            "percentage": 25.0
+          },
+          {
+            "num": 1,
+            "label": {
+              "label id": 4,
+              "label text": "işlem",
+              "numberOfUses": 3
+            },
+            "percentage": 12.5
+          },
+          {
+            "num": 1,
+            "label": {
+              "label id": 14,
+              "label text": "taraf",
+              "numberOfUses": 2
+            },
+            "percentage": 12.5
+          },
+          {
+            "num": 1,
+            "label": {
+              "label id": 10,
+              "label text": "cihaz",
+              "numberOfUses": 3
+            },
+            "percentage": 12.5
+          },
+          {
+            "num": 1,
+            "label": {
+              "label id": 9,
+              "label text": "firma ",
+              "numberOfUses": 5
+            },
+            "percentage": 12.5
+          }
+        ],
+        "entropy": 0.967132018086354
+      },
+      {
+        "instanceId": 3,
+        "totalNumberOfLabel": 10,
+        "numberOfUniqueLabelAssignment": 7,
+        "numberOfUniqueUsers": 2,
+        "mostFrequentLabel": [
+          {
+            "num": 2,
+            "label": {
+              "label id": 9,
+              "label text": "firma ",
+              "numberOfUses": 5
+            },
+            "percentage": 20.0
+          },
+          {
+            "num": 2,
+            "label": {
+              "label id": 1,
+              "label text": "bayi ",
+              "numberOfUses": 3
+            },
+            "percentage": 20.0
+          },
+          {
+            "num": 2,
+            "label": {
+              "label id": 3,
+              "label text": "hat ",
+              "numberOfUses": 7
+            },
+            "percentage": 20.0
+          }
+        ],
+        "labelsPercentages": [
+          {
+            "num": 2,
+            "label": {
+              "label id": 9,
+              "label text": "firma ",
+              "numberOfUses": 5
+            },
+            "percentage": 20.0
+          },
+          {
+            "num": 2,
+            "label": {
+              "label id": 1,
+              "label text": "bayi ",
+              "numberOfUses": 3
+            },
+            "percentage": 20.0
+          },
+          {
+            "num": 2,
+            "label": {
+              "label id": 3,
+              "label text": "hat ",
+              "numberOfUses": 7
+            },
+            "percentage": 20.0
+          },
+          {
+            "num": 1,
+            "label": {
+              "label id": 12,
+              "label text": "borç ",
+              "numberOfUses": 4
+            },
+            "percentage": 10.0
+          },
+          {
+            "num": 1,
+            "label": {
+              "label id": 5,
+              "label text": "müşteri",
+              "numberOfUses": 3
+            },
+            "percentage": 10.0
+          },
+          {
+            "num": 1,
+            "label": {
+              "label id": 13,
+              "label text": "fatura ",
+              "numberOfUses": 2
+            },
+            "percentage": 10.0
+          },
+          {
+            "num": 1,
+            "label": {
+              "label id": 4,
+              "label text": "işlem",
+              "numberOfUses": 3
+            },
+            "percentage": 10.0
+          }
+        ],
+        "entropy": 0.9695703501901249
+      },
+      {
+        "instanceId": 4,
+        "totalNumberOfLabel": 9,
+        "numberOfUniqueLabelAssignment": 6,
         "numberOfUniqueUsers": 2,
         "mostFrequentLabel": [
           {
             "num": 3,
             "label": {
-              "label id": 2,
-              "label text": "Negative",
-              "numberOfUses": 22
+              "label id": 3,
+              "label text": "hat ",
+              "numberOfUses": 7
             },
-            "percentage": 75.0
+            "percentage": 33.33333333333333
           }
         ],
         "labelsPercentages": [
           {
             "num": 3,
             "label": {
-              "label id": 2,
-              "label text": "Negative",
-              "numberOfUses": 22
+              "label id": 3,
+              "label text": "hat ",
+              "numberOfUses": 7
             },
-            "percentage": 75.0
+            "percentage": 33.33333333333333
           },
           {
             "num": 1,
             "label": {
               "label id": 1,
-              "label text": "Positive",
-              "numberOfUses": 16
+              "label text": "bayi ",
+              "numberOfUses": 3
             },
-            "percentage": 25.0
+            "percentage": 11.11111111111111
+          },
+          {
+            "num": 1,
+            "label": {
+              "label id": 13,
+              "label text": "fatura ",
+              "numberOfUses": 2
+            },
+            "percentage": 11.11111111111111
+          },
+          {
+            "num": 1,
+            "label": {
+              "label id": 5,
+              "label text": "müşteri",
+              "numberOfUses": 3
+            },
+            "percentage": 11.11111111111111
+          },
+          {
+            "num": 1,
+            "label": {
+              "label id": 9,
+              "label text": "firma ",
+              "numberOfUses": 5
+            },
+            "percentage": 11.11111111111111
+          },
+          {
+            "num": 2,
+            "label": {
+              "label id": 6,
+              "label text": "bilgi ",
+              "numberOfUses": 3
+            },
+            "percentage": 22.22222222222222
           }
         ],
-        "entropy": 0.8112781244591328
+        "entropy": 0.9359446974458661
       },
       {
-        "instanceId": 10,
-        "totalNumberOfLabel": 2,
-        "numberOfUniqueLabelAssignment": 1,
+        "instanceId": 5,
+        "totalNumberOfLabel": 10,
+        "numberOfUniqueLabelAssignment": 8,
         "numberOfUniqueUsers": 2,
         "mostFrequentLabel": [
           {
             "num": 2,
             "label": {
-              "label id": 2,
-              "label text": "Negative",
-              "numberOfUses": 22
+              "label id": 11,
+              "label text": "hat ",
+              "numberOfUses": 4
             },
-            "percentage": 100.0
+            "percentage": 20.0
+          },
+          {
+            "num": 2,
+            "label": {
+              "label id": 7,
+              "label text": "telefon",
+              "numberOfUses": 2
+            },
+            "percentage": 20.0
           }
         ],
         "labelsPercentages": [
           {
+            "num": 1,
+            "label": {
+              "label id": 10,
+              "label text": "cihaz",
+              "numberOfUses": 3
+            },
+            "percentage": 10.0
+          },
+          {
             "num": 2,
             "label": {
-              "label id": 2,
-              "label text": "Negative",
-              "numberOfUses": 22
+              "label id": 11,
+              "label text": "hat ",
+              "numberOfUses": 4
             },
-            "percentage": 100.0
+            "percentage": 20.0
+          },
+          {
+            "num": 1,
+            "label": {
+              "label id": 12,
+              "label text": "borç ",
+              "numberOfUses": 4
+            },
+            "percentage": 10.0
+          },
+          {
+            "num": 1,
+            "label": {
+              "label id": 3,
+              "label text": "hat ",
+              "numberOfUses": 7
+            },
+            "percentage": 10.0
+          },
+          {
+            "num": 1,
+            "label": {
+              "label id": 5,
+              "label text": "müşteri",
+              "numberOfUses": 3
+            },
+            "percentage": 10.0
+          },
+          {
+            "num": 2,
+            "label": {
+              "label id": 7,
+              "label text": "telefon",
+              "numberOfUses": 2
+            },
+            "percentage": 20.0
+          },
+          {
+            "num": 1,
+            "label": {
+              "label id": 8,
+              "label text": "konu ",
+              "numberOfUses": 1
+            },
+            "percentage": 10.0
+          },
+          {
+            "num": 1,
+            "label": {
+              "label id": 14,
+              "label text": "taraf",
+              "numberOfUses": 2
+            },
+            "percentage": 10.0
           }
         ],
-        "entropy": Infinity
-      },
-      {
-        "instanceId": 1,
-        "totalNumberOfLabel": 0,
-        "numberOfUniqueLabelAssignment": 0,
-        "numberOfUniqueUsers": 0,
-        "entropy": 0.0
-      },
-      {
-        "instanceId": 2,
-        "totalNumberOfLabel": 0,
-        "numberOfUniqueLabelAssignment": 0,
-        "numberOfUniqueUsers": 0,
-        "entropy": 0.0
-      },
-      {
-        "instanceId": 3,
-        "totalNumberOfLabel": 0,
-        "numberOfUniqueLabelAssignment": 0,
-        "numberOfUniqueUsers": 0,
-        "entropy": 0.0
-      },
-      {
-        "instanceId": 4,
-        "totalNumberOfLabel": 0,
-        "numberOfUniqueLabelAssignment": 0,
-        "numberOfUniqueUsers": 0,
-        "entropy": 0.0
-      },
-      {
-        "instanceId": 5,
-        "totalNumberOfLabel": 0,
-        "numberOfUniqueLabelAssignment": 0,
-        "numberOfUniqueUsers": 0,
-        "entropy": 0.0
+        "entropy": 0.9739760316291208
       }
     ]
   ]
