@@ -11,7 +11,7 @@ public class User {
     private String userName;
     @SerializedName("user type")
     private String userType;
-    private transient UserPerformanceMetrics userPerformanceMetrics;
+    private transient UserPerformanceMetric userPerformanceMetrics;
     @SerializedName("dataset ids")
     private ArrayList<Integer> datasetIds;
     @SerializedName("consistency check probability")
@@ -21,7 +21,7 @@ public class User {
     private transient ArrayList<User_Instance> user_instances;
 
     public User(){
-        userPerformanceMetrics = new UserPerformanceMetrics(this);
+        userPerformanceMetrics = new UserPerformanceMetric(this);
     }
 
     public User(int id, String userName, String userType,ArrayList<Integer> datasetIds, double consistencyCheckProbability, String password){
@@ -30,7 +30,7 @@ public class User {
         this.userType=userType;
         this.datasetIds=datasetIds;
         this.consistencyCheckProbability = consistencyCheckProbability;
-        userPerformanceMetrics = new UserPerformanceMetrics(this);
+        userPerformanceMetrics = new UserPerformanceMetric(this);
         user_instances = new ArrayList<>();
         this.password = password;
     }
@@ -59,11 +59,11 @@ public class User {
         this.userType = userType;
     }
 
-    public UserPerformanceMetrics getUserPerformanceMetrics() {
+    public UserPerformanceMetric getUserPerformanceMetrics() {
         return userPerformanceMetrics;
     }
 
-    public void setUserPerformanceMetrics(UserPerformanceMetrics userPerformanceMetrics) {
+    public void setUserPerformanceMetrics(UserPerformanceMetric userPerformanceMetrics) {
         this.userPerformanceMetrics = userPerformanceMetrics;
     }
 

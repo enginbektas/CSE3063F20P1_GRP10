@@ -7,6 +7,7 @@ class Instance {
     private String instance;
     private transient ArrayList<Label> labels;
     private transient ArrayList<User_Instance> user_instances;
+    private transient InstancePerformanceMetric userPerformanceMetrics;
 
     public Instance(long id, String instance) {
         this.id = (int)id;
@@ -41,5 +42,9 @@ class Instance {
 
     public ArrayList<User_Instance> getUser_instances() {
         return user_instances;
+    }
+
+    public InstancePerformanceMetric getUserPerformanceMetrics() {
+        return userPerformanceMetrics;
     }
 }

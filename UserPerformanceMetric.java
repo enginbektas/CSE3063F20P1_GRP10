@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
-public class UserPerformanceMetrics {
+public class UserPerformanceMetric {
     private User user;
     private transient ArrayList<Assignment> assignments;
     private transient ArrayList<Dataset> datasetsAssigned;
@@ -25,7 +25,7 @@ public class UserPerformanceMetrics {
     private double stdDevOfTimeSpentLabelingInstances;
 
 
-    public UserPerformanceMetrics(User user) {
+    public UserPerformanceMetric(User user) {
         
         this.user = user;
         this.assignments = new ArrayList<>();
