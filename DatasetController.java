@@ -212,7 +212,6 @@ public class DatasetController {
                 assignments[i] = new Assignment(dataset, userList, instance, user, date, labels, time);
             }
 
-           
             ArrayList<Assignment> assignmentList = new ArrayList<>();
             for (int i = 0; i < assignments.length; i++)
                 assignmentList.add(assignments[i]);
