@@ -1,14 +1,31 @@
-Dataset1's previous assignments are read. 2020-12-24 at 22:28:03 
-Dataset2's previous assignments are read. 2020-12-24 at 22:28:03 
-***User 1 has logged in.*** 2020-12-24 at 22:28:03 
-User 1 labeled instance 1 by label 5. 2020-12-24 at 22:28:03 
-*User 1 has labeled instance 1.* 2020-12-24 at 22:28:03 
-User 1 labeled instance 2 by label 9. 2020-12-24 at 22:28:03 
-*User 1 has labeled instance 2.* 2020-12-24 at 22:28:03 
-User 1 labeled instance 4 by label 11. 2020-12-24 at 22:28:03 
-*User 1 has labeled instance 4.* 2020-12-24 at 22:28:03 
-***User 1 has logged out.*** 2020-12-24 at 22:28:03 
-***User 2 has logged in.*** 2020-12-24 at 22:28:03 
-User 2 labeled instance 2 by label 15. 2020-12-24 at 22:28:04 
-*User 2 has labeled instance 2.* 2020-12-24 at 22:28:04 
-***User 2 has logged out.*** 2020-12-24 at 22:28:04 
+Dataset1's previous assignments are read. 2020-12-30 at 23:09:27 
+Dataset2's previous assignments are read. 2020-12-30 at 23:09:27 
+***User 1 has logged in.*** 2020-12-30 at 23:09:27 
+User 1 labeled instance 1 by label 1. 2020-12-30 at 23:09:27 
+*User 1 has labeled instance 1.* 2020-12-30 at 23:09:27 
+User 1 labeled instance 2 by label 2. 2020-12-30 at 23:09:28 
+*User 1 has labeled instance 2.* 2020-12-30 at 23:09:28 
+User 1 labeled instance 5 by label 1. 2020-12-30 at 23:09:30 
+User 1 labeled instance 5 by label 1. 2020-12-30 at 23:09:30 
+User 1 labeled instance 5 by label 2. 2020-12-30 at 23:09:30 
+*User 1 has labeled instance 5.* 2020-12-30 at 23:09:30 
+User 1 labeled instance 6 by label 2. 2020-12-30 at 23:09:31 
+User 1 labeled instance 6 by label 2. 2020-12-30 at 23:09:31 
+*User 1 has labeled instance 6.* 2020-12-30 at 23:09:31 
+User 1 labeled instance 7 by label 1. 2020-12-30 at 23:09:31 
+*User 1 has labeled instance 7.* 2020-12-30 at 23:09:31 
+***User 1 has logged out.*** 2020-12-30 at 23:09:32 
+***User 2 has logged in.*** 2020-12-30 at 23:09:32 
+User 2 labeled instance 2 by label 2. 2020-12-30 at 23:09:32 
+*User 2 has labeled instance 2.* 2020-12-30 at 23:09:32 
+User 2 labeled instance 5 by label 2. 2020-12-30 at 23:09:33 
+*User 2 has labeled instance 5.* 2020-12-30 at 23:09:33 
+User 2 labeled instance 6 by label 1. 2020-12-30 at 23:09:33 
+*User 2 has labeled instance 6.* 2020-12-30 at 23:09:33 
+***User 2 has logged out.*** 2020-12-30 at 23:09:34 
+***User 4 has logged in.*** 2020-12-30 at 23:09:34 
+User 4 labeled instance 5 by label 1. 2020-12-30 at 23:09:35 
+*User 4 has labeled instance 5.* 2020-12-30 at 23:09:35 
+User 4 labeled instance 6 by label 1. 2020-12-30 at 23:09:35 
+*User 4 has labeled instance 6.* 2020-12-30 at 23:09:35 
+***User 4 has logged out.*** 2020-12-30 at 23:09:36 

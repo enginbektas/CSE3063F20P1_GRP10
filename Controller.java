@@ -83,7 +83,7 @@ public class Controller {
                 File outputFile = new File("Outputs\\Output" + datasetId + ".json");
                 File inputFile = new File(path);
                 if (outputFile.exists()) {
-                    storage = storageReader(outputFile, userList);
+                    storage = storageReader(inputFile, outputFile, userList);
                 }
                 else { // if no output, read input
                     dataset = reader(inputFile);
@@ -161,7 +161,7 @@ public class Controller {
         return dataset;
     }
 
-    private Storage storageReader(File outputJson, ArrayList<User> userList) {
+    private Storage storageReader(File inputJson, File outputJson, ArrayList<User> userList) {
         Storage storage = new Storage();
         Dataset dataset = new Dataset();
         JSONParser parser = new JSONParser(); // create JSON parser
@@ -171,7 +171,7 @@ public class Controller {
             Object obj = parser.parse(new FileReader(outputJson));
             JSONObject jsonObject = (JSONObject) obj; // assign the parsed version of our file to a JSONObject
             // Taking dataset from the file
-            dataset = reader(outputJson);
+            dataset = reader(inputJson);
             storage.setDataset(dataset);
             // Taking assignments from the file
             JSONArray jsonArrayForAssignments = (JSONArray) jsonObject.get("class label assignments");
