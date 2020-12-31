@@ -78,4 +78,8 @@ public class User {
     public double getConsistencyCheckProbability() {
         return consistencyCheckProbability;
     }
+
+    public String getPassword() {
+        return password;
+    }
 }

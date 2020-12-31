@@ -1,6 +1,7 @@
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class UnitTest {
     public static void main(String[] args) throws InterruptedException {
@@ -40,6 +41,52 @@ public class UnitTest {
 
 
         for (User user : currentUserList) {//Loop for every user to label every instance
+            boolean skipHumanUser = false;
+            while(true){
+                if(user.getUserType().equalsIgnoreCase("Human")){//If user type is human
+                    Scanner sc = new Scanner(System.in);
+                    System.out.println("Enter username:");
+                    String userName = sc.nextLine();
+                    if(userName.equals(user.getUserName())){//If username is true
+                        System.out.println("Enter password:");
+                        String password = sc.nextLine();
+                        if(password.equals(user.getPassword())){//If password is true
+                            skipHumanUser = false;
+                            break;
+                        }
+                        else{
+                            System.out.println("Wrong username/password!");
+                        }
+                    }
+                    else if(userName.equals("")){
+                        System.out.println("Enter password:");
+                        String password = sc.nextLine();
+                        if(password.equals("")){//If username and password is empty skip current user
+                            skipHumanUser = true;
+                            break;
+                        }
+                    }
+                    else{
+                        System.out.println("Wrong username/password");
+                    }
+                }
+                else{
+                    break;
+                }
+            }
+            if(skipHumanUser){
+                continue;
+            }
+
+            //TODO call new mechanism for humans here
+            if(user.getUserType().equalsIgnoreCase("Human")){
+
+            }
+            //TODO call old mechanism for bots here
+            else{
+
+            }
+
             newLog.write("***User " + user.getId() + " has logged in.***");//Logging user logins
 
             ArrayList<Instance> tempInstances = new ArrayList<>();
