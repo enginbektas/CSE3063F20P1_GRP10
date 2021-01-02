@@ -40,119 +40,112 @@ public class UnitTest {
         RandomLabelingMechanism randomLabelingMechanism = new RandomLabelingMechanism("RandomMechanism");//Creating mechanism
 
 
-        for (User user : currentUserList) {//Loop for every user to label every instance
-            boolean skipHumanUser = false;
-            while(true){
-                if(user.getUserType().equalsIgnoreCase("Human")){//If user type is human
-                    Scanner sc = new Scanner(System.in);
-                    System.out.println("Enter username:");
-                    String userName = sc.nextLine();
-                    if(userName.equals(user.getUserName())){//If username is true
-                        System.out.println("Enter password:");
-                        String password = sc.nextLine();
-                        if(password.equals(user.getPassword())){//If password is true
-                            skipHumanUser = false;
-                            break;
-                        }
-                        else{
-                            System.out.println("Wrong username/password!");
-                        }
+        Scanner sc = new Scanner(System.in);
+        while(true){
+                System.out.println("Enter username:");
+                String userName = sc.nextLine();
+                boolean userNameFound = false;
+                String foundPassword = "";
+
+                for(int i = 0; i < userList.size(); i++){
+                    if(userList.get(i).getUserType().equalsIgnoreCase("Human")
+                    && userName.equals((userList.get(i).getUserName()))){
+                        userNameFound = true;
+                        foundPassword = userList.get(i).getPassword();
                     }
-                    else if(userName.equals("")){
-                        System.out.println("Enter password:");
-                        String password = sc.nextLine();
-                        if(password.equals("")){//If username and password is empty skip current user
-                            skipHumanUser = true;
-                            break;
-                        }
+                }
+                if(userNameFound){//If username is true
+                    System.out.println("Enter password:");
+                    String password = sc.nextLine();
+                    if(password.equals(foundPassword)){//If password is true
+                        //TODO call label assignment for human here
+
+
                     }
                     else{
-                        System.out.println("Wrong username/password");
+                        System.out.println("Wrong username/password!");
+                    }
+                }
+                else if(userName.equals("")){
+                    System.out.println("Enter password:");
+                    String password = sc.nextLine();
+                    if(password.equals("")){//If username and password is empty
+                        for (User user : currentUserList) {//Loop for every bot user to label every instance
+
+                            if(user.getUserType().equalsIgnoreCase("Human"))//skip human users
+                                continue;
+
+                            newLog.write("***User " + user.getId() + " has logged in.***");//Logging user logins
+
+                            ArrayList<Instance> tempInstances = new ArrayList<>();
+                            ArrayList<Instance> nonLabeledInstances = (ArrayList<Instance>) dataset.getInstances().clone();
+
+                            if ( tempInstances.size() > 0)
+                                tempInstances.get( (int) (Math.random() * tempInstances.size() ));
+
+                            while (nonLabeledInstances.size() > 0) {//Loop for labeling every instance
+                                double randomNumber = Math.random() * 100;
+                                if ( randomNumber < user.getConsistencyCheckProbability() * 100 && user.getUserPerformanceMetrics().getUniqueInstancesLabeled().size() != 0) {
+                                    tempInstances = (ArrayList<Instance>) user.getUserPerformanceMetrics().getUniqueInstancesLabeled().clone();
+                                } else {
+                                    tempInstances = nonLabeledInstances;
+                                }
+                                Instance tempInstance = null;
+                                if(tempInstances.size() > 0)
+                                    tempInstance = tempInstances.get((int) Math.random() * ( tempInstances.size() - 1));
+
+                                if (nonLabeledInstances.contains(tempInstance)) {
+                                    nonLabeledInstances.remove(tempInstance);
+                                }
+
+                                float labelingTime = 0;
+
+                                for (Instance instance1 : dataset.getInstances()) {
+                                    if (instance1.getId() == tempInstance.getId()) {
+                                        tempInstance = instance1;
+                                    }
+                                }
+                                Thread.sleep((long) (Math.random() * 250));
+                                Assignment tempAssignment = randomLabelingMechanism.randomMechanism(userList, dataset, tempInstance, user);
+                                if (tempAssignment != null){ //returns null if there is no space for any further label
+                                    newLog.write("*User " + user.getId() + " has labeled instance " + tempInstance.getId() + ".*");//logging
+                                    assignments.add(tempAssignment);
+                                    labelingTime += tempAssignment.getTime();
+                                }
+
+                                user.getUserPerformanceMetrics().setTotalTimeSpentLabeling(user.getUserPerformanceMetrics().getTotalTimeSpentLabeling() + labelingTime);
+                                user.getUserPerformanceMetrics().setAverageTimeSpentLabeling();
+
+                                ArrayList<DatasetPerformanceMetric> datasetPerformanceMetricsList = new ArrayList<>();
+                                ArrayList<UserPerformanceMetric> userPerformanceMetricsList = new ArrayList<>();
+                                ArrayList<ArrayList<InstancePerformanceMetric>> instancePerformanceMetricList = new ArrayList<>();
+
+                                ArrayList<InstancePerformanceMetric> instancePerformanceMetricListTemp = new ArrayList<>();
+
+                                for (User user1 : userList) {
+                                    userPerformanceMetricsList.add(user1.getUserPerformanceMetrics());
+                                }
+                                for (Storage storage: storageList) {
+                                    writer.writeDataset(storage, "Outputs//Output" + storage.getDataset().getId() + ".json", false, false);
+                                    datasetPerformanceMetricsList.add(storage.getDataset().getDatasetPerformanceMetric());
+                                    for (Instance instance : storage.getDataset().getInstances()) {
+                                        instancePerformanceMetricListTemp.add(instance.getInstancePerformanceMetrics());
+                                    }
+                                    instancePerformanceMetricList.add(instancePerformanceMetricListTemp);
+                                }
+
+                                PerformanceMetrics performanceMetrics = new PerformanceMetrics(datasetPerformanceMetricsList, userPerformanceMetricsList, instancePerformanceMetricList);
+                                writer.writeDataset(performanceMetrics, "Outputs//PerformanceMetrics" + ".json", false, false);
+
+                            } // labeling ends
+                            newLog.write("***User " + user.getId() + " has logged out.***");
+                        }
                     }
                 }
                 else{
-                    break;
+                    System.out.println("Wrong username/password");
                 }
-            }
-            if(skipHumanUser){
-                continue;
-            }
-
-            //TODO call new mechanism for humans here
-            if(user.getUserType().equalsIgnoreCase("Human")){
-
-            }
-            //TODO call old mechanism for bots here
-            else{
-
-            }
-
-            newLog.write("***User " + user.getId() + " has logged in.***");//Logging user logins
-
-            ArrayList<Instance> tempInstances = new ArrayList<>();
-            ArrayList<Instance> nonLabeledInstances = (ArrayList<Instance>) dataset.getInstances().clone();
-
-            if ( tempInstances.size() > 0)
-            tempInstances.get( (int) (Math.random() * tempInstances.size() ));
-
-            while (nonLabeledInstances.size() > 0) {//Loop for labeling every instance
-                double randomNumber = Math.random() * 100;
-                if ( randomNumber < user.getConsistencyCheckProbability() * 100 && user.getUserPerformanceMetrics().getUniqueInstancesLabeled().size() != 0) {
-                    tempInstances = (ArrayList<Instance>) user.getUserPerformanceMetrics().getUniqueInstancesLabeled().clone();
-                } else {
-                    tempInstances = nonLabeledInstances;
-                }
-                Instance tempInstance = null;
-                if(tempInstances.size() > 0)
-                    tempInstance = tempInstances.get((int) Math.random() * ( tempInstances.size() - 1));
-
-                if (nonLabeledInstances.contains(tempInstance)) {
-                    nonLabeledInstances.remove(tempInstance);
-                }
-
-                float labelingTime = 0;
-
-                    for (Instance instance1 : dataset.getInstances()) {
-                        if (instance1.getId() == tempInstance.getId()) {
-                            tempInstance = instance1;
-                        }
-                    }
-                Thread.sleep((long) (Math.random() * 250));
-                Assignment tempAssignment = randomLabelingMechanism.randomMechanism(userList, dataset, tempInstance, user);
-                if (tempAssignment != null){ //returns null if there is no space for any further label
-                    newLog.write("*User " + user.getId() + " has labeled instance " + tempInstance.getId() + ".*");//logging
-                    assignments.add(tempAssignment);
-                    labelingTime += tempAssignment.getTime();
-                }
-
-                user.getUserPerformanceMetrics().setTotalTimeSpentLabeling(user.getUserPerformanceMetrics().getTotalTimeSpentLabeling() + labelingTime);
-                user.getUserPerformanceMetrics().setAverageTimeSpentLabeling();
-
-                ArrayList<DatasetPerformanceMetric> datasetPerformanceMetricsList = new ArrayList<>();
-                ArrayList<UserPerformanceMetric> userPerformanceMetricsList = new ArrayList<>();
-                ArrayList<ArrayList<InstancePerformanceMetric>> instancePerformanceMetricList = new ArrayList<>();
-
-                ArrayList<InstancePerformanceMetric> instancePerformanceMetricListTemp = new ArrayList<>();
-
-                for (User user1 : userList) {
-                    userPerformanceMetricsList.add(user1.getUserPerformanceMetrics());
-                }
-                for (Storage storage: storageList) {
-                    writer.writeDataset(storage, "Outputs//Output" + storage.getDataset().getId() + ".json", false, false);
-                    datasetPerformanceMetricsList.add(storage.getDataset().getDatasetPerformanceMetric());
-                    for (Instance instance : storage.getDataset().getInstances()) {
-                        instancePerformanceMetricListTemp.add(instance.getInstancePerformanceMetrics());
-                    }
-                    instancePerformanceMetricList.add(instancePerformanceMetricListTemp);
-                }
-
-                PerformanceMetrics performanceMetrics = new PerformanceMetrics(datasetPerformanceMetricsList, userPerformanceMetricsList, instancePerformanceMetricList);
-                writer.writeDataset(performanceMetrics, "Outputs//PerformanceMetrics" + ".json", false, false);
-
-            } // labeling ends
-            newLog.write("***User " + user.getId() + " has logged out.***");
         }
-
     }
 }
 
