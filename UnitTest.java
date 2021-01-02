@@ -36,7 +36,6 @@ public class UnitTest {
         Dataset dataset = currentStorage.getDataset();
         assignments = (ArrayList<Assignment>) currentStorage.getAssigments();
 
-
         RandomLabelingMechanism randomLabelingMechanism = new RandomLabelingMechanism("RandomMechanism");//Creating mechanism
         HumanLabelingMechanism humanLabelingMechanism = new HumanLabelingMechanism("HumanMechanism");
 
@@ -60,16 +59,76 @@ public class UnitTest {
                     System.out.println("Enter password:");
                     String password = sc.nextLine();
                     if(password.equals(foundPassword)){//If password is true
+                        newLog.write("***User " + currentUser.getId() + " has logged in.***");//Logging user logins
                         //TODO call label assignment for human here
+                        //TODO user login log writer
+                        boolean userFlag = true; // checks if hasn't started labeling yet
+                        Instance lastInstance = new Instance(0,"");
+                        int j = 0;
+                        if (currentUser.getUserPerformanceMetrics().getLastInstance().size() != 0) {
+                            for (j = 0; j < dataset.getInstances().size(); j++) {
+                                for (ArrayList<Object> arrayList : currentUser.getUserPerformanceMetrics().getLastInstance()) {
+                                    if (((Dataset) (arrayList.get(0))).getId() == dataset.getId()) {
+                                        lastInstance = (Instance) (arrayList.get(1));
+                                    }
+                                }
+                                if (lastInstance != dataset.getInstances().get(j) && userFlag) {
+                                    break;
+                                }
+                                userFlag = false;
+                            }
+                            for (j = 0; j < dataset.getInstances().size(); j++) {
+                                if (lastInstance == dataset.getInstances().get(j) && userFlag) {
+                                    break;
+                                }
+                            }
+                            if (j == dataset.getInstances().size() - 1) {
+                                j = -1;
+                            }
+                        } else {
+                            j--;
+                        }
+                        ArrayList<Instance> tempInstances = new ArrayList<>();
+                        ArrayList<Instance> nonLabeledInstances = (ArrayList<Instance>) dataset.getInstances().clone();
 
-                        for (Instance instance : dataset.getInstances()) {
+                        if ( tempInstances.size() > 0) {
+                            tempInstances.get((int) (Math.random() * tempInstances.size()));
+                        }
+
+                        for (int i = j+1; i < dataset.getInstances().size(); i++) {
+
+                            double randomNumber = Math.random() * 100;
+                            if ( randomNumber < currentUser.getConsistencyCheckProbability() * 100 && currentUser.getUserPerformanceMetrics().getUniqueInstancesLabeled().size() != 0) {
+                                tempInstances = (ArrayList<Instance>) currentUser.getUserPerformanceMetrics().getUniqueInstancesLabeled().clone();
+                            } else {
+                                tempInstances = nonLabeledInstances;
+                            }
+                            Instance tempInstance = null;
+                            if(tempInstances.size() > 0)
+                                tempInstance = tempInstances.get((int) (Math.random() * (tempInstances.size() - 1)));
+
+                            if (nonLabeledInstances.contains(tempInstance)) {
+                                nonLabeledInstances.remove(tempInstance);
+                            }
+                            for (Instance instance1 : dataset.getInstances()) {
+                                if (instance1.getId() == tempInstance.getId()) {
+                                    tempInstance = instance1;
+                                }
+                            }
+
+                            if (randomNumber <= currentUser.getConsistencyCheckProbability()*100) {
+                                i--;
+                            } else {
+                                tempInstance = dataset.getInstances().get(i);
+                            }
+
 
                             float labelingTime = 0;
 
-                            Assignment tempAssignment = humanLabelingMechanism.humanMechanism(userList, dataset, instance, currentUser);
+                            Assignment tempAssignment = humanLabelingMechanism.humanMechanism(userList, dataset, tempInstance, currentUser);
 
                             labelingTime += tempAssignment.getTime();
-
+                            assignments.add(tempAssignment);
                             
                             currentUser.getUserPerformanceMetrics().setTotalTimeSpentLabeling(currentUser.getUserPerformanceMetrics().getTotalTimeSpentLabeling() + labelingTime);
                             currentUser.getUserPerformanceMetrics().setAverageTimeSpentLabeling();
@@ -95,7 +154,7 @@ public class UnitTest {
                             PerformanceMetrics performanceMetrics = new PerformanceMetrics(datasetPerformanceMetricsList, userPerformanceMetricsList, instancePerformanceMetricList);
                             writer.writeDataset(performanceMetrics, "Outputs//PerformanceMetrics" + ".json", false, false);
                         }
-
+                        newLog.write("***User " + currentUser.getId() + " has logged out.***");
                     }
                     else{
                         System.out.println("Wrong username/password! or Unauthorized Dataset!");
@@ -127,7 +186,7 @@ public class UnitTest {
                                 }
                                 Instance tempInstance = null;
                                 if(tempInstances.size() > 0)
-                                    tempInstance = tempInstances.get((int) Math.random() * ( tempInstances.size() - 1));
+                                    tempInstance = tempInstances.get((int) (Math.random() * (tempInstances.size() - 1)));
 
                                 if (nonLabeledInstances.contains(tempInstance)) {
                                     nonLabeledInstances.remove(tempInstance);

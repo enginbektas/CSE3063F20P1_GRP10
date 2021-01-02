@@ -1,1 +1,23 @@
-User 5 labeled instance 1 by label 1. 2021-01-02 at 15:56:38 
+Dataset1's previous assignments are read. 2021-01-02 at 17:48:34 
+Dataset2's previous assignments are read. 2021-01-02 at 17:48:34 
+***User 3 has logged in.*** 2021-01-02 at 17:48:36 
+User 3 labeled instance 8 by label 1. 2021-01-02 at 17:48:38 
+User 3 labeled instance 4 by label 1. 2021-01-02 at 17:48:40 
+User 3 labeled instance 5 by label 1. 2021-01-02 at 17:48:41 
+User 3 labeled instance 6 by label 1. 2021-01-02 at 17:48:43 
+User 3 labeled instance 3 by label 1. 2021-01-02 at 17:48:44 
+User 3 labeled instance 7 by label 1. 2021-01-02 at 17:48:46 
+User 3 labeled instance 8 by label 1. 2021-01-02 at 17:48:47 
+User 3 labeled instance 2 by label 1. 2021-01-02 at 17:48:48 
+User 3 labeled instance 8 by label 1. 2021-01-02 at 17:48:49 
+User 3 labeled instance 8 by label 1. 2021-01-02 at 17:48:51 
+User 3 labeled instance 9 by label 1. 2021-01-02 at 17:48:52 
+User 3 labeled instance 8 by label 1. 2021-01-02 at 17:48:53 
+User 3 labeled instance 8 by label 1. 2021-01-02 at 17:48:53 
+User 3 labeled instance 3 by label 1. 2021-01-02 at 17:48:54 
+User 3 labeled instance 10 by label 1. 2021-01-02 at 17:48:55 
+***User 3 has logged out.*** 2021-01-02 at 17:48:55 
+***User 3 has logged in.*** 2021-01-02 at 17:48:58 
+User 3 labeled instance 1 by label 1. 2021-01-02 at 17:48:59 
+User 3 labeled instance 4 by label 1. 2021-01-02 at 17:49:00 
+User 3 labeled instance 7 by label 1. 2021-01-02 at 17:49:01 

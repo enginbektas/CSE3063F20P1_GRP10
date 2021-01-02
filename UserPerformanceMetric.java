@@ -17,6 +17,7 @@ public class UserPerformanceMetric {
     private int numberOfUniqueInstancesLabeled;
     private Percentage consistencyPercentage = new Percentage("", 0);
     private transient ArrayList<Percentage> usersCompleteness;
+    private transient ArrayList<ArrayList<Object>> lastInstance;
 
     private transient double totalTimeSpentLabeling; //
 
@@ -35,6 +36,7 @@ public class UserPerformanceMetric {
         this.datasetsCompletenessPercentage = new ArrayList<>();
         this.usersCompleteness = new ArrayList<>();
         this.instancesLabeledMoreThanOnce = new ArrayList<>();
+        this.lastInstance = new ArrayList<>();
 
     }
 
@@ -247,6 +249,9 @@ public class UserPerformanceMetric {
     public void setTotalTimeSpentLabeling(double timeSpent) {
 
             totalTimeSpentLabeling = timeSpent;
+    }
+    public ArrayList<ArrayList<Object>> getLastInstance() {
+        return lastInstance;
     }
 }
 
