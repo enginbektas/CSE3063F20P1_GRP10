@@ -27,7 +27,7 @@ public class NewLabelingMechanism extends Mechanism{
                     index=1;
                 }
                 dataset.getInstance(i).getLabels().add(dataset.getLabel(index));
-                label.add(dataset.getLabel(index));//Instance instance id is labeled by label
+                label.add(dataset.getLabel(index));
                 log.write("Instance " + dataset.getInstance(i).getId() + " is labeled by label "  + dataset.getLabel(index).getText() + ".");
             }
         }
