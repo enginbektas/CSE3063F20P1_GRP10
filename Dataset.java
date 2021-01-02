@@ -8,7 +8,6 @@ public class Dataset {
     private int id;
     @SerializedName("dataset name")
     private String name;
-    private String instanceType;
     @SerializedName("maximum number of labels per instance")
     private int maxNumOfLabelsPerInstance;
     @SerializedName("class labels")
@@ -69,14 +68,6 @@ public class Dataset {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getInstanceType() {
-        return instanceType;
-    }
-
-    public void setInstanceType(String instanceType) {
-        this.instanceType = instanceType;
     }
 
     public int getMaxNumOfLabelsPerInstance() {

@@ -104,6 +104,7 @@ public class UnitTest {
                                 tempInstances = nonLabeledInstances;
                             }
                             Instance tempInstance = null;
+
                             if(tempInstances.size() > 0)
                                 tempInstance = tempInstances.get((int) (Math.random() * (tempInstances.size() - 1)));
 
@@ -111,6 +112,8 @@ public class UnitTest {
                                 nonLabeledInstances.remove(tempInstance);
                             }
                             for (Instance instance1 : dataset.getInstances()) {
+                                if(tempInstance == null)
+                                    break;
                                 if (instance1.getId() == tempInstance.getId()) {
                                     tempInstance = instance1;
                                 }
