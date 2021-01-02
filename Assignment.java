@@ -68,6 +68,18 @@ public class Assignment {
         dataset.getDatasetPerformanceMetric().update();
         instance.getInstancePerformanceMetrics().update(user);
 
+
+        ArrayList<Object> lastInstance = new ArrayList<>();
+        lastInstance.add(dataset);
+        lastInstance.add(instance);
+        for (ArrayList<Object> object : user.getUserPerformanceMetrics().getLastInstance()) {
+            if (object.contains(dataset)) {
+                user.getUserPerformanceMetrics().getLastInstance().remove(object);
+                break;
+            }
+        }
+        user.getUserPerformanceMetrics().getLastInstance().add(lastInstance);
+
     }
     public ArrayList<Label> getLabelList() {
         return this.labels;
