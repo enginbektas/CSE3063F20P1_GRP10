@@ -37,6 +37,7 @@ public class Assignment {
         instance.getLabels().addAll(labels);
 
 
+
         if (instance.getUser_instances().size() == 0){
             User_Instance userInstance  = new User_Instance(user, instance, labels);
             instance.getUser_instances().add(userInstance);
@@ -67,6 +68,18 @@ public class Assignment {
         user.getUserPerformanceMetrics().update(this, dataset, instance);
         dataset.getDatasetPerformanceMetric().update();
         instance.getInstancePerformanceMetrics().update(user);
+
+
+        ArrayList<Object> lastInstance = new ArrayList<>();
+        lastInstance.add(dataset);
+        lastInstance.add(instance);
+        for (ArrayList<Object> object : user.getUserPerformanceMetrics().getLastInstance()) {
+            if (object.contains(dataset)) {
+                user.getUserPerformanceMetrics().getLastInstance().remove(object);
+                break;
+            }
+        }
+        user.getUserPerformanceMetrics().getLastInstance().add(lastInstance);
 
     }
     public ArrayList<Label> getLabelList() {

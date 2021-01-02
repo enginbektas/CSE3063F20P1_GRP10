@@ -24,8 +24,8 @@ public class UnitTest {
 
         ArrayList<Assignment> assignments = new ArrayList<>();
 
-        for (Storage storage: storageList) {
-            if (storage.getDataset().getId() == currentDatasetId){
+        for (Storage storage : storageList) {
+            if (storage.getDataset().getId() == currentDatasetId) {
                 currentStorage = storage;
             }
         }
@@ -45,19 +45,19 @@ public class UnitTest {
             ArrayList<Instance> tempInstances = new ArrayList<>();
             ArrayList<Instance> nonLabeledInstances = (ArrayList<Instance>) dataset.getInstances().clone();
 
-            if ( tempInstances.size() > 0)
-            tempInstances.get( (int) (Math.random() * tempInstances.size() ));
+            if (tempInstances.size() > 0)
+                tempInstances.get((int) (Math.random() * tempInstances.size()));
 
             while (nonLabeledInstances.size() > 0) {//Loop for labeling every instance
                 double randomNumber = Math.random() * 100;
-                if ( randomNumber < user.getConsistencyCheckProbability() * 100 && user.getUserPerformanceMetrics().getUniqueInstancesLabeled().size() != 0) {
+                if (randomNumber < user.getConsistencyCheckProbability() * 100 && user.getUserPerformanceMetrics().getUniqueInstancesLabeled().size() != 0) {
                     tempInstances = (ArrayList<Instance>) user.getUserPerformanceMetrics().getUniqueInstancesLabeled().clone();
                 } else {
                     tempInstances = nonLabeledInstances;
                 }
                 Instance tempInstance = null;
-                if(tempInstances.size() > 0)
-                    tempInstance = tempInstances.get((int) Math.random() * ( tempInstances.size() - 1));
+                if (tempInstances.size() > 0)
+                    tempInstance = tempInstances.get((int) Math.random() * (tempInstances.size() - 1));
 
                 if (nonLabeledInstances.contains(tempInstance)) {
                     nonLabeledInstances.remove(tempInstance);
@@ -65,14 +65,14 @@ public class UnitTest {
 
                 float labelingTime = 0;
 
-                    for (Instance instance1 : dataset.getInstances()) {
-                        if (instance1.getId() == tempInstance.getId()) {
-                            tempInstance = instance1;
-                        }
+                for (Instance instance1 : dataset.getInstances()) {
+                    if (instance1.getId() == tempInstance.getId()) {
+                        tempInstance = instance1;
                     }
+                }
                 Thread.sleep((long) (Math.random() * 250));
                 Assignment tempAssignment = randomLabelingMechanism.randomMechanism(userList, dataset, tempInstance, user);
-                if (tempAssignment != null){ //returns null if there is no space for any further label
+                if (tempAssignment != null) { //returns null if there is no space for any further label
                     newLog.write("*User " + user.getId() + " has labeled instance " + tempInstance.getId() + ".*");//logging
                     assignments.add(tempAssignment);
                     labelingTime += tempAssignment.getTime();
@@ -87,10 +87,11 @@ public class UnitTest {
 
                 ArrayList<InstancePerformanceMetric> instancePerformanceMetricListTemp = new ArrayList<>();
 
+
                 for (User user1 : userList) {
                     userPerformanceMetricsList.add(user1.getUserPerformanceMetrics());
                 }
-                for (Storage storage: storageList) {
+                for (Storage storage : storageList) {
                     writer.writeDataset(storage, "Outputs//Output" + storage.getDataset().getId() + ".json", false, false);
                     datasetPerformanceMetricsList.add(storage.getDataset().getDatasetPerformanceMetric());
                     for (Instance instance : storage.getDataset().getInstances()) {
@@ -101,6 +102,7 @@ public class UnitTest {
 
                 PerformanceMetrics performanceMetrics = new PerformanceMetrics(datasetPerformanceMetricsList, userPerformanceMetricsList, instancePerformanceMetricList);
                 writer.writeDataset(performanceMetrics, "Outputs//PerformanceMetrics" + ".json", false, false);
+
 
             } // labeling ends
             newLog.write("***User " + user.getId() + " has logged out.***");

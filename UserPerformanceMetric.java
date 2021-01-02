@@ -10,6 +10,7 @@ public class UserPerformanceMetric {
     private transient ArrayList<Instance> uniqueInstancesLabeled;
     private transient ArrayList<Dataset> allDatasets;
     private transient ArrayList<Instance> instancesLabeledMoreThanOnce;
+    private transient ArrayList<ArrayList<Object>> lastInstance;
 
     private int datasetAssigned;
     private ArrayList<Percentage> datasetsCompletenessPercentage;
@@ -35,6 +36,7 @@ public class UserPerformanceMetric {
         this.datasetsCompletenessPercentage = new ArrayList<>();
         this.usersCompleteness = new ArrayList<>();
         this.instancesLabeledMoreThanOnce = new ArrayList<>();
+        this.lastInstance = new ArrayList<>();
 
     }
 
@@ -247,6 +249,10 @@ public class UserPerformanceMetric {
     public void setTotalTimeSpentLabeling(double timeSpent) {
 
             totalTimeSpentLabeling = timeSpent;
+    }
+
+    public ArrayList<ArrayList<Object>> getLastInstance() {
+        return lastInstance;
     }
 }
 

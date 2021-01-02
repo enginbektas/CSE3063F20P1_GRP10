@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Controller {
@@ -243,4 +244,26 @@ public class Controller {
 
         return (int) currentDatasetId;
     }
+/*
+    public void setLastInstances(ArrayList<User> userList) {
+        long currentDatasetId = 0;
+        JSONParser parser = new JSONParser(); // create JSON parser
+        try {
+
+
+            Object obj = parser.parse(new FileReader(new File("Outputs//lastInstances")));
+            JSONObject jsonObject = (JSONObject) obj;
+
+            for (User user : userList) {
+                user.getUserPerformanceMetrics().getLastInstance() = jsonObject.get("current dataset id");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return (int) currentDatasetId;
+    }
+
+ */
 }
