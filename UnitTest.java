@@ -38,7 +38,7 @@ public class UnitTest {
 
 
         RandomLabelingMechanism randomLabelingMechanism = new RandomLabelingMechanism("RandomMechanism");//Creating mechanism
-
+        HumanLabelingMechanism humanLabelingMechanism = new HumanLabelingMechanism("HumanMechanism");
 
         Scanner sc = new Scanner(System.in);
         while(true){
@@ -46,12 +46,14 @@ public class UnitTest {
                 String userName = sc.nextLine();
                 boolean userNameFound = false;
                 String foundPassword = "";
+                User currentUser = new User();
 
                 for(int i = 0; i < userList.size(); i++){
                     if(userList.get(i).getUserType().equalsIgnoreCase("Human")
-                    && userName.equals((userList.get(i).getUserName()))){
+                    && userName.equals((userList.get(i).getUserName())) && userList.get(i).getDatasetIds().contains(dataset.getId())){
                         userNameFound = true;
                         foundPassword = userList.get(i).getPassword();
+                        currentUser = userList.get(i);
                     }
                 }
                 if(userNameFound){//If username is true
@@ -60,10 +62,43 @@ public class UnitTest {
                     if(password.equals(foundPassword)){//If password is true
                         //TODO call label assignment for human here
 
+                        for (Instance instance : dataset.getInstances()) {
+
+                            float labelingTime = 0;
+
+                            Assignment tempAssignment = humanLabelingMechanism.humanMechanism(userList, dataset, instance, currentUser);
+
+                            labelingTime += tempAssignment.getTime();
+
+                            
+                            currentUser.getUserPerformanceMetrics().setTotalTimeSpentLabeling(currentUser.getUserPerformanceMetrics().getTotalTimeSpentLabeling() + labelingTime);
+                            currentUser.getUserPerformanceMetrics().setAverageTimeSpentLabeling();
+
+                            ArrayList<DatasetPerformanceMetric> datasetPerformanceMetricsList = new ArrayList<>();
+                            ArrayList<UserPerformanceMetric> userPerformanceMetricsList = new ArrayList<>();
+                            ArrayList<ArrayList<InstancePerformanceMetric>> instancePerformanceMetricList = new ArrayList<>();
+
+                            ArrayList<InstancePerformanceMetric> instancePerformanceMetricListTemp = new ArrayList<>();
+
+                            for (User user1 : userList) {
+                                userPerformanceMetricsList.add(user1.getUserPerformanceMetrics());
+                            }
+                            for (Storage storage: storageList) {
+                                writer.writeDataset(storage, "Outputs//Output" + storage.getDataset().getId() + ".json", false, false);
+                                datasetPerformanceMetricsList.add(storage.getDataset().getDatasetPerformanceMetric());
+                                for (Instance instance1 : storage.getDataset().getInstances()) {
+                                    instancePerformanceMetricListTemp.add(instance1.getInstancePerformanceMetrics());
+                                }
+                                instancePerformanceMetricList.add(instancePerformanceMetricListTemp);
+                            }
+
+                            PerformanceMetrics performanceMetrics = new PerformanceMetrics(datasetPerformanceMetricsList, userPerformanceMetricsList, instancePerformanceMetricList);
+                            writer.writeDataset(performanceMetrics, "Outputs//PerformanceMetrics" + ".json", false, false);
+                        }
 
                     }
                     else{
-                        System.out.println("Wrong username/password!");
+                        System.out.println("Wrong username/password! or Unauthorized Dataset!");
                     }
                 }
                 else if(userName.equals("")){
@@ -97,14 +132,13 @@ public class UnitTest {
                                 if (nonLabeledInstances.contains(tempInstance)) {
                                     nonLabeledInstances.remove(tempInstance);
                                 }
-
-                                float labelingTime = 0;
-
                                 for (Instance instance1 : dataset.getInstances()) {
                                     if (instance1.getId() == tempInstance.getId()) {
                                         tempInstance = instance1;
                                     }
                                 }
+
+                                float labelingTime = 0;
                                 Thread.sleep((long) (Math.random() * 250));
                                 Assignment tempAssignment = randomLabelingMechanism.randomMechanism(userList, dataset, tempInstance, user);
                                 if (tempAssignment != null){ //returns null if there is no space for any further label
@@ -143,7 +177,7 @@ public class UnitTest {
                     }
                 }
                 else{
-                    System.out.println("Wrong username/password");
+                    System.out.println("Wrong username/password or Unauthorized Dataset!");
                 }
         }
     }
