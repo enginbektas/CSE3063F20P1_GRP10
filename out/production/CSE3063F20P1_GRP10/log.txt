@@ -1,31 +1,4 @@
-Dataset1's previous assignments are read. 2021-01-02 at 18:53:30 
-Dataset2's previous assignments are read. 2021-01-02 at 18:53:30 
-***User 5 has logged in.*** 2021-01-02 at 18:53:33 
-User 5 labeled instance 8 by label 1. 2021-01-02 at 18:53:34 
-User 5 labeled instance 9 by label 1. 2021-01-02 at 18:53:34 
-User 5 labeled instance 7 by label 1. 2021-01-02 at 18:53:35 
-User 5 labeled instance 10 by label 1. 2021-01-02 at 18:53:35 
-***User 5 has logged out.*** 2021-01-02 at 18:53:35 
-***User 5 has logged in.*** 2021-01-02 at 18:53:48 
-User 5 labeled instance 5 by label 1. 2021-01-02 at 18:53:49 
-User 5 labeled instance 1 by label 1. 2021-01-02 at 18:53:51 
-User 5 labeled instance 3 by label 1. 2021-01-02 at 18:53:52 
-User 5 labeled instance 3 by label 1. 2021-01-02 at 18:53:52 
-User 5 labeled instance 1 by label 1. 2021-01-02 at 18:53:54 
-User 5 labeled instance 2 by label 1. 2021-01-02 at 18:53:55 
-User 5 labeled instance 1 by label 1. 2021-01-02 at 18:53:55 
-User 5 labeled instance 9 by label 1. 2021-01-02 at 18:53:56 
-User 5 labeled instance 3 by label 1. 2021-01-02 at 18:53:57 
-User 5 labeled instance 4 by label 1. 2021-01-02 at 18:53:58 
-User 5 labeled instance 5 by label 1. 2021-01-02 at 18:53:59 
-User 5 labeled instance 8 by label 1. 2021-01-02 at 18:54:00 
-User 5 labeled instance 6 by label 1. 2021-01-02 at 18:54:00 
-User 5 labeled instance 3 by label 1. 2021-01-02 at 18:54:01 
-User 5 labeled instance 3 by label 1. 2021-01-02 at 18:54:02 
-User 5 labeled instance 7 by label 1. 2021-01-02 at 18:54:02 
-User 5 labeled instance 8 by label 1. 2021-01-02 at 18:54:03 
-User 5 labeled instance 3 by label 1. 2021-01-02 at 18:54:04 
-User 5 labeled instance 9 by label 1. 2021-01-02 at 18:54:04 
-User 5 labeled instance 9 by label 1. 2021-01-02 at 18:54:05 
-User 5 labeled instance 10 by label 1. 2021-01-02 at 18:54:06 
-***User 5 has logged out.*** 2021-01-02 at 18:54:06 
+Dataset1's previous assignments are read. 2021-01-02 at 20:34:01 
+Dataset2's previous assignments are read. 2021-01-02 at 20:34:02 
+***User 3 has logged in.*** 2021-01-02 at 20:34:08 
+***User 3 has logged out.*** 2021-01-02 at 20:34:08 

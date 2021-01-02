@@ -15,7 +15,10 @@ public class HumanLabelingMechanism extends Mechanism{
         this.log = new Log();
     }
     public Assignment humanMechanism(ArrayList<User> userList, Dataset dataset, Instance instance, User user) {
-        System.out.println("You are labeling instance " + instance.getId());
+        System.out.println("You are labeling instance " + instance.getId() + " -> " +instance.getInstance());
+        for (Label label: dataset.getLabels()) {
+            System.out.println(label.getId() + " -> " + label.getText());
+        }
         double labelingTimeStart = System.currentTimeMillis();
         System.out.println("Please enter the number of labels you want to assign");
         Scanner input = new Scanner(System.in);
@@ -25,15 +28,20 @@ public class HumanLabelingMechanism extends Mechanism{
             if (tempInput <= dataset.getMaxNumOfLabelsPerInstance() - instance.getLabels().size()) {
                 labelAmount = tempInput;
                 break;
-            } else {
+            }
+            else if (dataset.getMaxNumOfLabelsPerInstance() - instance.getLabels().size() == 0) {
+                break;
+            }
+            else {
                 System.out.println("You entered a improper value, please try again. Avaliable label number is " + (dataset.getMaxNumOfLabelsPerInstance() - instance.getLabels().size()));
             }
         }
         ArrayList<Label> labelsToUse = new ArrayList<>();
         for (int i = 0; i < labelAmount; i++) {
             System.out.println("Please enter label id that you want to assign");
-            int tempInput = input.nextInt();
+
             while (true) {
+                int tempInput = input.nextInt();
                 if (tempInput <= dataset.getLabels().size()) {
                     int labelId = tempInput;
                     for (Label label : dataset.getLabels()) {
@@ -43,7 +51,9 @@ public class HumanLabelingMechanism extends Mechanism{
                         }
                     }
                     break;
-                } else {
+                }
+
+                else {
                     System.out.println("You entered a improper value, please try again.");
                 }
             }

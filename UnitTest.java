@@ -202,7 +202,16 @@ public class UnitTest {
 
                                 float labelingTime = 0;
                                 Thread.sleep((long) (Math.random() * 250));
-                                Assignment tempAssignment = randomLabelingMechanism.randomMechanism(userList, dataset, tempInstance, user);
+                                Assignment tempAssignment = null;
+                                NewLabelingMechanism nl = new NewLabelingMechanism("NewMechanism");
+                                switch (user.getUserType()){
+                                    case "RandomBot":
+                                        tempAssignment = randomLabelingMechanism.randomMechanism(userList, dataset, tempInstance, user);
+                                        break;
+                                    case "NewMechanism":
+                                        tempAssignment = nl.newMechanismn(userList, dataset, tempInstance, user);
+                                        break;
+                                }
                                 if (tempAssignment != null){ //returns null if there is no space for any further label
                                     newLog.write("*User " + user.getId() + " has labeled instance " + tempInstance.getId() + ".*");//logging
                                     assignments.add(tempAssignment);
