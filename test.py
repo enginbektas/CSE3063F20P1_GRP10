@@ -1,6 +1,7 @@
 import csv
+import pandas
 
-# netten buldum aşağıdkai kodu, row ları vs değiştirmmiz lazım
+# Başlık; netten buldum aşağıdkai kodu, row ları vs değiştirmmiz lazım
 #MALİ:
 #ENGİN;
 # MAHMUT;
@@ -12,6 +13,6 @@ with open('CSE3063_20201123_Mon_zoom_PollReport.csv') as csv_file:
             print(f'Column names are {", ".join(row)}')
             line_count += 1
         else:
-            print(f'\t{row[0]} works in the {row[1]} department, and was born in {row[2]}.')
+            #print(f'\t{row[0]} works in the {row[1]} department, and was born in {row[2]}.')
             line_count += 1
     print(f'Processed {line_count} lines.')
