@@ -11,7 +11,6 @@ df = pandas.read_csv("excel files/CSE3063_20201123_Mon_zoom_PollReport.csv", kee
 # del df['^Unnamed']
 df = df.loc[:, ~df.columns.str.contains('^Unnamed')]
 df.fillna('')
-# df = df.T
 
 for index, row in df.iterrows():
     #TODO  Create an object of 'student'
@@ -28,16 +27,3 @@ for index, row in df.iterrows():
             i += 2
         except IndexError:
             break
-            'var not defined'
-
-
-
-  ##print(row)
-
-print(df.shape)
-
-#print(df(0))
-
-#print(df['#'].to_string())
-
-
