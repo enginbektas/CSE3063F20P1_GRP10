@@ -18,6 +18,7 @@ def read():
     while True:
         try:
             if len(excel_worksheet.cell_value(i, 2)) == 9:
+                #if the values inside the cell has a length of '9' then
                 # print(excel_worksheet.cell_value(i, 2) + " " + excel_worksheet.cell_value(i, 3) + " " + excel_worksheet.cell_value(i, 4), end=' ')
                 # print(i)
                 std = Student(excel_worksheet.cell_value(i, 4), excel_worksheet.cell_value(i, 7),
