@@ -9,7 +9,10 @@ with open("excel files/Answer Key.csv", newline='') as csvfile:
     c = csv.reader(csvfile, delimiter=',', quotechar='"')
     isFirst = True
     for row in c:
+        if row[1] == '':
+            isFirst = True
         if isFirst:
+            print("first!")
             print("pollname is" + row[0]) #row 0 is pollName
             isFirst = False
         else:

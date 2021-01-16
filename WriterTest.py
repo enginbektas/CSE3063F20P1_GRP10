@@ -1,7 +1,10 @@
 import xlsxwriter
 from openpyxl import load_workbook
 
-import pyexcel as p
+# attandance output need student excel
+# quizz output need student excel
+# answer chart output
+# 8 için output. need everything
 
 
 workbook = xlsxwriter.Workbook('testOutput.xlsx')
