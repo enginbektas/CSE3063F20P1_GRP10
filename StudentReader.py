@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 import xlrd
 from Student import Student
-
+std = None
 studentList = []
 # xls = pd.ExcelFile(r"excel files/CES3063_Fall2020_rptSinifListesi.xls") #use r before absolute file path
 # to open a workbook
@@ -20,8 +20,7 @@ def read():
             if len(excel_worksheet.cell_value(i, 2)) == 9:
                 # print(excel_worksheet.cell_value(i, 2) + " " + excel_worksheet.cell_value(i, 3) + " " + excel_worksheet.cell_value(i, 4), end=' ')
                 # print(i)
-                std = Student(excel_worksheet.cell_value(i, 4), excel_worksheet.cell_value(i, 7),
-                              excel_worksheet.cell_value(i, 2))
+                std = Student(excel_worksheet.cell_value(i, 4) + " " + excel_worksheet.cell_value(i, 7), 0)
                 studentList.append(std)
                 # print(studentList[j].get_studentID(), end = ' ')
                 # print(j)
