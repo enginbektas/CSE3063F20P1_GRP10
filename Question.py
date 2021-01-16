@@ -24,11 +24,4 @@ class Question:
         return self._trueChoice
 
     def set_trueChoice(self, choice):
-        self._trueChoice = choice
-
-    def get_numberOfAnswersPerChoice(self):
-        return self._numberOfAnswersPerChoice
-
-    def set_numberOfAnswersPerChoice(self, numberOfAnswersPerChoice):
-        self._numberOfAnswersPerChoice = numberOfAnswersPerChoice
-
+        self.__trueChoice = choice

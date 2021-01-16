@@ -1,15 +1,16 @@
 class StudentAnswers:
-    def __init__(self, student, polls, answers, percentages):
-        self._student = student
-        self._polls = polls
-        self._answers = answers
-        self._percentages = percentages
+    def __init__(self, poll):
+        self.__poll = poll  # poll object
+        self.__questionsAndAnswers = None  # dictionary of questions and answers
+
+    def add_question_and_answers(self, question, answer):
+        self.__questionsAndAnswers[question] = answer
+
+    def get_answer(self, question):
+        return self.__questionAndAnswers[question]
 
     def get_poll(self):
-        return self._poll
+        return self.__poll
 
-    def set_poll(self, poll):
-        self._poll = poll
-
-    def get_percentage(self):
-        return self._percentage
+    def get_questions_and_answers(self):
+        return self.__questionsAndAnswers

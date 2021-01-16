@@ -57,4 +57,75 @@ def createAttendanceOutput(studentList):
     wb.save('CSE3063_Fall2020_rptSinifListesiAttendence.xlsx')
 
 
-createAttandanceOutput()
+def createPollOutput(studentList, poll):
+    if path.exits('excel files/CSE3063_Fall2020_' + poll.get_name() + '.xlsx'):
+        pass
+    else:
+        p.save_book_as(file_name='excel files/CSE3063_Fall2020_rptSinifListesi.xls',
+                       dest_file_name='excel files/CSE3063_Fall2020_' + poll.get_name() + '.xlsx')
+
+    wb = load_workbook('excel files/CSE3063_Fall2020_' + poll.get_name() + '.xlsx')
+    ws = wb.worksheets[0]
+    lenPoll = len(poll.get_questions())
+
+    i = 14
+    columnChr = 78
+    for j in lenPoll:
+        ws[chr(columnChr) + '13'] = "Q" + str(j)
+        j += 1
+        columnChr += 1
+    successChr = columnChr
+    columnChr = 78
+    ws[chr(successChr) + '13'] = "Number of questions"
+    ws[chr(successChr + 1) + '13'] = "Success Percentage"
+
+    for student in studentList:
+        answeredPoll = None
+        for ap in student.get_answered_polls:
+            if poll.get_name() == ap.get_poll().get_name():
+                answeredPoll = ap
+                break
+        count = 0
+        correctAnswer = 0
+        while successChr > columnChr:
+            if answeredPoll.get_answer(poll.get_questions()[count]) == poll.get_questions()[count].get_trueChoice:
+                ws[chr(columnChr) + str(i)] = "1"
+                correctAnswer += 1
+            else:
+                ws[chr(columnChr) + str(i)] = "0"
+            columnChr += 1
+            count += 1
+        ws[chr(successChr) + str(i)] = str(successChr - columnChr)
+        ws[chr(successChr + 1) + str(i)] = str(correctAnswer / (successChr - columnChr) * 100)
+        i += 1
+
+
+def createGlobalOutput(studentList, poll):
+    if path.exits('excel files/CSE33063_Fall2020_glbSinifListesi.xlsx'):
+        pass
+    else:
+        p.save_book_as(file_name='excel files/CSE3063_Fall2020_rptSinifListesi.xls',
+                       dest_file_name='excel files/CSE33063_Fall2020_glbSinifListesi.xlsx')
+    wb = load_workbook('excel files/CSE33063_Fall2020_glbSinifListesi.xlsx')
+    ws = wb.worksheets[0]
+    ws['N13'] = "q1_name"
+    ws['P13'] = "q1_numOfQuestions"
+    ws['R13'] = "q1_successRate"
+
+    i = 14
+    for student in studentList:
+        ws['N' + str(i)] = str(poll.get_name())
+        ws['P' + str(i)] = str(len(poll.get_questions()))
+        ws['Q' + str(i)] = "25" #success
+
+        answeredPoll = None
+        for ap in student.get_answered_polls:
+            if poll.get_name() == ap.get_poll().get_name():
+                answeredPoll = ap
+                break
+
+        for q in poll.get_questions:
+            if answeredPoll.get_answer(q) == q.get_trueChoice:
+                correctAnswer += 1
+
+        i += 1
