@@ -1,12 +1,10 @@
 import xlsxwriter
+from openpyxl import load_workbook
 
-# attandance output need student excel
-# quizz output need student excel
-# answer chart output
-# 8 için output. need everything
+import pyexcel as p
 
 
-workbook = xlsxwriter.Workbook('Output/testOutput.xlsx')
+workbook = xlsxwriter.Workbook('testOutput.xlsx')
 worksheet = workbook.add_worksheet()
 
 worksheet.write(0, 0, 'Name')
@@ -39,3 +37,18 @@ chart2.set_size({'width': 300, 'height': 150})
 worksheet.insert_chart('C2', chart1, {'x_offset': 0, 'y_offset': 0})
 worksheet.insert_chart('H2', chart2, {'x_offset': 0, 'y_offset': 0})
 workbook.close()
+
+
+def createAttandanceOutput():
+    p.save_book_as(file_name='excel files/CSE3063_Fall2020_rptSinifListesi.xls',
+                 dest_file_name='excel files/CSE3063_Fall2020_rptSinifListesi.xlsx')
+
+    wb = load_workbook('excel files/CSE3063_Fall2020_rptSinifListesi.xlsx')
+    ws = wb.worksheets[0]
+
+    ws['N14'] = "Deneme"
+
+    wb.save('CSE3063_Fall2020_rptSinifListesiAttendence.xlsx')
+
+
+createAttandanceOutput()

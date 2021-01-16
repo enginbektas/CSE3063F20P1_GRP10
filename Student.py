@@ -27,8 +27,3 @@ class Student:
 
     def add_polls(self, list):
         self.__polls += list
-
-
-p1 = Student("Enes", "enes", "123")
-
-print(p1.get_studentID())
