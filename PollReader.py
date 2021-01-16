@@ -18,6 +18,7 @@ class PollReader:
     currentStd = None
     currentPoll = None
 
+    tempPoll = Poll(None, None, None)
     for index, row in df.iterrows():
         # TODO find student from student list
         print(index[1] + " " + index[2] + " " + index[
@@ -25,7 +26,7 @@ class PollReader:
 
         stdFlag = False
         for std in studentList:
-            if (std.get_name().upper() == index[1].upper()):
+            if std.get_name().upper() == index[1].upper():
                 currentStd = std
                 # std.add_answered_poll(currentPoll)
                 stdFlag = True

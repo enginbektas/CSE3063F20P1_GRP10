@@ -23,4 +23,4 @@ class Poll:
         self.__questions = questions
 
     def add_question(self, question):
-        self.__questions += question
+        self.__questions.append(question)

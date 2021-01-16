@@ -1,5 +1,8 @@
 import xlsxwriter
 from openpyxl import load_workbook
+import pyexcel as p
+import os.path
+from os import path
 
 # attandance output need student excel
 # quizz output need student excel
@@ -51,8 +54,15 @@ def createAttendanceOutput(studentList):
 
     wb = load_workbook('excel files/CSE3063_Fall2020_att_SinifListesi.xlsx')
     ws = wb.worksheets[0]
-
-    ws['N14'] = "Deneme"
+    i = 14
+    ws['N13'] = "Attendance polls"
+    ws['P13'] = "Attendance rate"
+    ws['R13'] = "Attendance percentage"
+    for student in studentList:
+        ws['N' + str(i)] = str(student.get_totalAttendance())
+        ws['P' + str(i)] = str(student.get_attendance()) + " of " + str(student.get_totalAttendance())
+        ws['Q' + str(i)] = str(student.get_attendance() / student.get_totalAttendance() * 100)
+        i += 1
 
     wb.save('CSE3063_Fall2020_rptSinifListesiAttendence.xlsx')
 

@@ -1,3 +1,6 @@
+import StudentAnswers
+
+
 class Student:
 
     def __init__(self, name, attendance):
@@ -14,8 +17,15 @@ class Student:
     def set_name(self, name):
         self.__name = name
 
-    def update_attendance(self):
-        self.__attendance =+ 1
+    def increment_attendance(self):
+        self.__attendance += 1
 
     def get_attendance(self):
         return self.__attendance
+
+    def add_answered_poll(self, poll):
+        sa = StudentAnswers.StudentAnswers(poll)
+        self.__answeredPolls.append(sa)
+
+    def get_answered_polls(self):
+        return self.__answeredPolls
