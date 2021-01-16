@@ -27,3 +27,15 @@ class Student:
 
     def add_polls(self, list):
         self.__polls += list
+
+    def update_TotalAttendance(self):
+        self.__totalAttendance =+ 1
+
+    def get_totalAttendance(self):
+        return self.__totalAttendance
+
+    def update_attendance(self):
+        self.__attendance =+ 1
+
+    def get_attendance(self):
+        return self.__attendance

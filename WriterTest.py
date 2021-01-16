@@ -42,11 +42,14 @@ worksheet.insert_chart('H2', chart2, {'x_offset': 0, 'y_offset': 0})
 workbook.close()
 
 
-def createAttandanceOutput():
-    p.save_book_as(file_name='excel files/CSE3063_Fall2020_rptSinifListesi.xls',
-                 dest_file_name='excel files/CSE3063_Fall2020_rptSinifListesi.xlsx')
+def createAttendanceOutput(studentList):
+    if path.exits('excel files/CSE3063_Fall2020_att_SinifListesi.xlsx'):
+        pass
+    else:
+        p.save_book_as(file_name='excel files/CES3063_Fall2020_rptSinifListesi.xls',
+                       dest_file_name='excel files/CSE3063_Fall2020_att_SinifListesi.xlsx')
 
-    wb = load_workbook('excel files/CSE3063_Fall2020_rptSinifListesi.xlsx')
+    wb = load_workbook('excel files/CSE3063_Fall2020_att_SinifListesi.xlsx')
     ws = wb.worksheets[0]
 
     ws['N14'] = "Deneme"

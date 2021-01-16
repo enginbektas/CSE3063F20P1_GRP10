@@ -1,11 +1,18 @@
 class Question:
-    def __init__(self, choices, trueChoice, numberOfAnswersPerChoice):
-        self._choices = choices
-        self._trueChoice = trueChoice
-        self._numberOfAnswersPerChoice = numberOfAnswersPerChoice
+    def __init__(self, text, trueChoice, choices, numberOfSelectionsPerChoice):
+        self.__text = text
+        self.__choices = choices
+        self.__trueChoice = trueChoice
+        self.numberOfSelectionsPerChoice = numberOfSelectionsPerChoice
 
-    def get_choices(self):
-        return self._choices
+    def get_numberOfAnswersPerChoice(self, numberOfSelectionsPerChoice):
+        return numberOfSelectionsPerChoice
+
+    def set_numberOfAnswersPerChoice(self,numberOfSelectionsPerChoice):
+        self.numberOfSelectionsPerChoice = numberOfSelectionsPerChoice
+
+    def get_text(self, text):
+        return self.__text
 
     def set_choices(self, choices):
         self._choices = choices
