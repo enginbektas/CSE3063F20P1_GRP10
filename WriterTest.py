@@ -64,7 +64,7 @@ def createAttendanceOutput(studentList):
         ws['Q' + str(i)] = str(student.get_attendance() / student.get_totalAttendance() * 100)
         i += 1
 
-    wb.save('CSE3063_Fall2020_rptSinifListesiAttendence.xlsx')
+    wb.save('CSE3063_Fall2020_att_SinifListesiAttendence.xlsx')
 
 
 def createPollOutput(studentList, poll):
