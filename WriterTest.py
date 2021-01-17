@@ -68,11 +68,11 @@ def create_attendance_output(student_list):
 
 
 def create_poll_output(student_list, poll):
-    if path.exists('excel files/CSE3063_Fall2020_' + poll.get_name() + '.xlsx'):
+    if path.exists('excel files/CSE3063_Fall2020_att_SinifListesiAttendence.xlsx'):
         pass
     else:
-        p.save_book_as(file_name='excel files/CSE3063_Fall2020_rptSinifListesi.xls',
-                       dest_file_name='excel files/CSE3063_Fall2020_' + poll.get_name() + '.xlsx')
+        p.save_book_as(file_name='excel files/CES3063_Fall2020_rptSinifListesi.xls',
+                       dest_file_name='excel files/CSE3063_Fall2020_att_SinifListesioutput.xlsx')
 
     wb = load_workbook('excel files/CSE3063_Fall2020_' + poll.get_name() + '.xlsx')
     ws = wb.worksheets[0]

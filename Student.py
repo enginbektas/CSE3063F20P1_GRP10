@@ -6,6 +6,7 @@ class Student:
         self.__name = name
         self.__attendance = attendance
         self.__answeredPolls = []  # list of StudentAnswers
+        self.__totalAttendance = 0
 
     def myFunc(self):
         print("Hello my name is " + self.__name)
@@ -28,3 +29,9 @@ class Student:
 
     def get_answered_polls(self):
         return self.__answeredPolls
+
+    def increment_total_attendance(self):
+        self.__totalAttendance += 1
+
+    def get_totalAttendance(self):
+        return self.__totalAttendance
