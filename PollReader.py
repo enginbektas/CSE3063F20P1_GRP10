@@ -19,6 +19,7 @@ class PollReader:
     current_student = None
     current_poll = None
 
+
     temp_poll = Poll(None, None, None)
     for index, row in df.iterrows(): #iterates student row
         # TODO find student from student list
@@ -49,9 +50,25 @@ class PollReader:
                 temp_poll.add_question(tempQuestion)
                 qaDict[index[i]] = index[i + 1]  # add element
                 i += 2
-
             except IndexError:
                 break
+        i = 0
+        while True:
+            try:
+                if len(row[i]) == 0:  # Q and A
+                    break
+
+                if "Are you attending this lecture?" in row[i]:  # if attendance
+                    current_student.increment_attendance()
+                    i += 2
+                    continue
+                tempQuestion = Question.Question(row[i], None)
+                temp_poll.add_question(tempQuestion)
+                qaDict[row[i]] = row[i + 1]  # add element
+                i += 2
+            except IndexError:
+                break
+
         for poll in ak_poll_list:  # poll holds iterator of polls in answerkeylist
             for question in poll.get_questions():  # question is one question of iteratorPoll
                 if question not in temp_poll.get_questions():  # if each question in the poll from answerKeyList is contained by the current Poll
