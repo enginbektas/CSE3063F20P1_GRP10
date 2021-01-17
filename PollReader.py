@@ -69,6 +69,10 @@ class PollReader:
                         break
 
                     if "Are you attending this lecture?" in row[i]:  # if attendance
+                        if (attendanceFlag):
+                            attendanceFlag = False
+                            for student in student_list:
+                                student.increment_total_attendance()
                         current_student.increment_attendance()
                         i += 2
                         continue

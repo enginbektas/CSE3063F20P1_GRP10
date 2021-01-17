@@ -46,22 +46,22 @@ workbook.close()
 
 
 def create_attendance_output(student_list):
-    if path.exists('excel files/CSE3063_Fall2020_att_SinifListesi.xlsx'):
+    if path.exists('excel files/CSE3063_Fall2020_att_SinifListesiAttendence.xlsx'):
         pass
     else:
         p.save_book_as(file_name='excel files/CES3063_Fall2020_rptSinifListesi.xls',
-                       dest_file_name='excel files/CSE3063_Fall2020_att_SinifListesi.xlsx')
+                       dest_file_name='excel files/CSE3063_Fall2020_att_SinifListesiAttendence.xlsx')
 
     wb = load_workbook('excel files/CSE3063_Fall2020_att_SinifListesi.xlsx')
     ws = wb.worksheets[0]
     i = 14
-    ws['N13'] = "Attendance polls"
-    ws['P13'] = "Attendance rate"
-    ws['R13'] = "Attendance percentage"
+    ws['L13'] = "Attendance polls"
+    ws['M13'] = "Attendance rate"
+    ws['N13'] = "Attendance percentage"
     for student in student_list:
-        ws['N' + str(i)] = str(student.get_totalAttendance())
-        ws['P' + str(i)] = str(student.get_attendance()) + " of " + str(student.get_totalAttendance())
-        ws['Q' + str(i)] = str(student.get_attendance() / student.get_totalAttendance() * 100)
+        ws['L' + str(i)] = str(student.get_totalAttendance())
+        ws['M' + str(i)] = str(student.get_attendance()) + " of " + str(student.get_totalAttendance())
+        ws['N' + str(i)] = str(student.get_attendance() / student.get_totalAttendance() * 100)
         i += 1
 
     wb.save('CSE3063_Fall2020_att_SinifListesiAttendence.xlsx')
@@ -74,7 +74,7 @@ def create_poll_output(student_list, poll):
         p.save_book_as(file_name='excel files/CES3063_Fall2020_rptSinifListesi.xls',
                        dest_file_name='excel files/CSE3063_Fall2020_att_SinifListesioutput.xlsx')
 
-    wb = load_workbook('excel files/CSE3063_Fall2020_' + poll.get_name() + '.xlsx')
+    wb = load_workbook('excel files/CSE3063_Fall2020_rptSinifListesi.xlsx')
     ws = wb.worksheets[0]
     len_poll = len(poll.get_questions())
 
@@ -98,7 +98,7 @@ def create_poll_output(student_list, poll):
         count = 0
         correct_answer = 0
         while success_chr > column_chr:
-            if answered_poll.get_answer(poll.get_questions()[count]) == poll.get_questions()[count].get_trueChoice:
+            if answered_poll.get_answer(poll.get_questions()[count]) == poll.get_questions()[count].get_trueChoice():
                 ws[chr(column_chr) + str(i)] = "1"
                 correct_answer += 1
             else:
