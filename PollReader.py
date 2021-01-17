@@ -7,16 +7,14 @@ from Poll import Poll
 from StudentAnswers import StudentAnswers
 from Student import Student
 
-
 class PollReader:
-
-    def read_poll(self):
+    def read_poll(self, student_list_param, ak_poll_list_param, path):
 
         # def readPollReport(poll, fileName, studentList):
-        student_list = StudentReader.read()
-        ak_poll_list = AnswerKeyReader().readAnswerKey()
+        student_list = student_list_param
+        ak_poll_list = ak_poll_list_param
 
-        df = pandas.read_csv("excel files/CSE3063_20201123_Mon_zoom_PollReport.csv", keep_default_na=False)
+        df = pandas.read_csv(path, keep_default_na=False)
         df = df.loc[:, ~df.columns.str.contains('^Unnamed')]
         df.fillna('')
         current_student = None
@@ -34,7 +32,7 @@ class PollReader:
                 if std.get_name().upper() == result.upper():
                     current_student = std
                     current_student.set_name(result)
-                    # std.add_answered_poll(currentPoll)
+
                     stdFlag = True
                     break
             i = 4
