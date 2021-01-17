@@ -13,7 +13,7 @@ class PollReader:
     student_list = StudentReader.read()
     ak_poll_list = AnswerKeyReader().readAnswerKey()
 
-    df = pandas.read_csv("excel files/CSE3063_20201123_Mon_zoom_PollReport.csv", keep_default_na=False)
+    df = pandas.read_csv("excel files/CSE3063_20201124_Tue_zoom_PollReport.csv", keep_default_na=False)
     df = df.loc[:, ~df.columns.str.contains('^Unnamed')]
     df.fillna('')
     current_student = None
@@ -22,10 +22,8 @@ class PollReader:
 
     temp_poll = Poll(None, None, None)
     for index, row in df.iterrows(): #iterates student row
-        # TODO find student from student list
-        print(index[1] + " " + index[2] + " " + index[
-            3])  # index1 = name surname, index2 = email, index3 = date, index 4 = q, index 5 = a
 
+        intexlen = len(index)
         stdFlag = False  # stdFlag okunan öğreniyi student_list içinde bulamazsa kod while içine girmiyor.
         for std in student_list:
             if std.get_name().upper() == index[1].upper():
@@ -47,6 +45,7 @@ class PollReader:
                     i += 2
                     continue
                 tempQuestion = Question.Question(index[i], None)
+                print(tempQuestion.get_text())
                 temp_poll.add_question(tempQuestion)
                 qaDict[index[i]] = index[i + 1]  # add element
                 i += 2

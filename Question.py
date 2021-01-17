@@ -3,7 +3,7 @@ class Question:
         self.__text = text
         self.__trueChoice = trueChoice
 
-    def get_text(self, text):
+    def get_text(self):
         return self.__text
 
     def get_trueChoice(self):
