@@ -65,12 +65,17 @@ def create_attendance_output(student_list):
             ws['N' + str(i)] = str(student.get_attendance() / student.get_totalAttendance() * 100)
         else:
             ws['N' + str(i)] = "0"
+        # if i == 204 or i == 209:
+        #     i += 4
+        # if i == 215:
+        #     i += 14
         i += 1
 
     wb.save('CSE3063_Fall2020_att_SinifListesiAttendence.xlsx')
 
 
 def create_poll_output(student_list, poll):
+
     if path.exists('excel files/CSE3063_Fall2020_att_SinifListesioutput.xlsx'):
         pass
     else:
@@ -129,6 +134,11 @@ def create_poll_output(student_list, poll):
         column_chr = 78
         ws[chr(success_chr) + str(i)] = str(success_chr - column_chr)
         ws[chr(success_chr + 1) + str(i)] = str(correct_answer / (success_chr - column_chr) * 100)
+        # if i == 204 or i == 209:
+        #     i += 4
+        # if i == 215:
+        #     i += 14
+
         i += 1
         wb.save('excel files/CSE3063_Fall2020_att_SinifListesioutput.xlsx')
 
@@ -168,5 +178,10 @@ def create_global_output(student_list, poll_list):
                 if answered_poll.get_answer(q) == q.get_trueChoice:
                     correct_answer += 1
             ws[third_column + str(i)] = str(correct_answer / num_of_questions * 100)
+            # if i == 204 or i == 209:
+            #     i += 4
+            # if i == 215:
+            #     i += 14
             i += 1
         column_chr += 3
+    wb.save('excel files/CSE33063_Fall2020_glbSinifListesi.xlsx')
