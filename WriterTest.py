@@ -61,21 +61,23 @@ def create_attendance_output(student_list):
     for student in student_list:
         ws['L' + str(i)] = str(student.get_totalAttendance())
         ws['M' + str(i)] = str(student.get_attendance()) + " of " + str(student.get_totalAttendance())
-        if student.get_totalAttendance() == 0:
+        if student.get_totalAttendance() != 0:
             ws['N' + str(i)] = str(student.get_attendance() / student.get_totalAttendance() * 100)
+        else:
+            ws['N' + str(i)] = "0"
         i += 1
 
     wb.save('CSE3063_Fall2020_att_SinifListesiAttendence.xlsx')
 
 
 def create_poll_output(student_list, poll):
-    if path.exists('excel files/CSE3063_Fall2020_att_SinifListesiAttendence.xlsx'):
+    if path.exists('excel files/CSE3063_Fall2020_att_SinifListesioutput.xlsx'):
         pass
     else:
         p.save_book_as(file_name='excel files/CES3063_Fall2020_rptSinifListesi.xls',
                        dest_file_name='excel files/CSE3063_Fall2020_att_SinifListesioutput.xlsx')
 
-    wb = load_workbook('excel files/CSE3063_Fall2020_rptSinifListesi.xlsx')
+    wb = load_workbook('excel files/CSE3063_Fall2020_att_SinifListesioutput.xlsx')
     ws = wb.worksheets[0]
     len_poll = len(poll.get_questions())
 

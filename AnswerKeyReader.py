@@ -20,7 +20,6 @@ class AnswerKeyReader:
                     pollList.append(poll)  # add created poll to pollList
                     isFirst = False
                 else:
-
                     while True:
                         try:
                             question = Question.Question(row[i], row[i + 1])  # create question object
