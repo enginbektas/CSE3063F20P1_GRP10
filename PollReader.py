@@ -1,18 +1,11 @@
 import re
-
 import pandas
-
 import Question
-import StudentReader
-from AnswerKeyReader import AnswerKeyReader
 from Poll import Poll
-from StudentAnswers import StudentAnswers
-from Student import Student
+
 
 class PollReader:
     def read_poll(self, student_list_param, ak_poll_list_param, path):
-
-        # def readPollReport(poll, fileName, studentList):
         student_list = student_list_param
         ak_poll_list = ak_poll_list_param
 
@@ -26,7 +19,7 @@ class PollReader:
         for index, row in df.iterrows():  # iterates student row
             # TODO find student from student list
             try:
-                print(index[1] + " " + index[2] + " " + index[
+                stdText = (index[1] + " " + index[2] + " " + index[
                     3])  # index1 = name surname, index2 = email, index3 = date, index 4 = q, index 5 = a
             except IndexError:
                 break
@@ -61,16 +54,12 @@ class PollReader:
                     a = re.sub("[^0-9a-zA-Z]+", '', index[i].lower())
                     b = re.sub("[^0-9a-zA-Z]+", '', index[i + 1].lower())
                     qaDict[a] = b  # add element
-                    print("q:" + index[i])
-                    print("a:" + index[i+1])
-                    # print(index[i] + " " + index[i + 1])
                     i += 2
                 except IndexError:
                     break
 
             i = 0
             while True:
-
 
                 try:
                     if len(row[i]) == 0:  # Q and A
@@ -86,12 +75,10 @@ class PollReader:
                         continue
                     tempQuestion = Question.Question(row[i], None)
                     temp_poll.add_question(tempQuestion)
-                    print("giriyo")
 
                     a = re.sub("[^0-9a-zA-Z]+", '', row[i].lower())
                     b = re.sub("[^0-9a-zA-Z]+", '', row[i + 1].lower())
                     qaDict[a] = b  # add element
-                    print(a + " " + b)
                     i += 2
                 except IndexError:
                     break
@@ -101,8 +88,8 @@ class PollReader:
                     ifNotFound = True
                     for question in poll.get_questions():  # question is one question of iteratorPoll
 
-                        if re.sub("[^0-9a-zA-Z]+", '', question.get_text().upper()) == re.sub("[^0-9a-zA-Z]+", '', s.get_text().upper()):
-                        #if question.get_text().upper() == s.get_text().upper():
+                        if re.sub("[^0-9a-zA-Z]+", '', question.get_text().upper()) == re.sub("[^0-9a-zA-Z]+", '',
+                                                                                              s.get_text().upper()):
                             current_poll = poll
                             ifNotFound = False
                             break
@@ -120,5 +107,3 @@ class PollReader:
             if flag:
                 current_student.add_answered_poll(current_poll)
                 current_student.get_answered_polls()[-1].set_question_and_answers(qaDict)  # Question&Answer
-
-    # def readPollReport(poll, 'excel files/CSE3063_20201123_Mon_zoom_PollReport.csv', studentList):

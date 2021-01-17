@@ -6,6 +6,7 @@ import numpy as np
 import Poll
 import Question
 
+
 class AnswerKeyReader:
     def readAnswerKey(self):
         pollList = []
@@ -24,8 +25,8 @@ class AnswerKeyReader:
                 else:
                     while True:
                         try:
-                            a = re.sub("[^0-9a-zA-Z]+",'', row[i].lower())
-                            b = re.sub("[^0-9a-zA-Z]+", '', row[i+1].lower())
+                            a = re.sub("[^0-9a-zA-Z]+", '', row[i].lower())
+                            b = re.sub("[^0-9a-zA-Z]+", '', row[i + 1].lower())
                             question = Question.Question(a, b)  # create question object
                             poll.add_question(question)  # add question to poll object
                             i += 2
