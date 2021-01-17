@@ -1,6 +1,7 @@
-from xlsxwriter import Workbook
+from pandas.tests.io.excel.test_xlsxwriter import xlsxwriter
 from openpyxl import load_workbook
 import pyexcel as p
+import pytest
 
 from os import path
 
@@ -10,90 +11,115 @@ from os import path
 # 8 için output. need everything
 
 
-workbook = Workbook('testOutput.xlsx')
-worksheet = workbook.add_worksheet()
+def create_statistics(student_list, poll):
+    workbook = xlsxwriter.Workbook('output files/' + poll.get_name() + 'Statistics.xlsx')
+    worksheet = workbook.add_worksheet()
 
-worksheet.write(0, 0, 'Name')
-worksheet.write(0, 1, 'Sayı')
+    i = 0
+    for question in poll.get_questions():
+        print(i)
+        worksheet.write(i, 0, question.get_text())
+        answersDictionary = None
+        for student in student_list:
+            if len(student.get_answered_polls()) == 0:
+                continue
+            saToWork = {}
+            for sa in student.get_answered_polls():
+                if sa.get_poll().get_name() == poll.get_name():
+                    saToWork = sa
 
-worksheet.write(1, 0, 'Mali')
-worksheet.write(1, 1, 12)
+            try:
+                answersDictionary[saToWork.get_answer(question)] += 1
+            except:
+                if answersDictionary is None:
+                    answersDictionary = dict.fromkeys(range(0), [])
+                    answersDictionary[saToWork.get_answer(question)] = 1
+                else:
+                    try:
+                        answersDictionary[saToWork.get_answer(question)] = 1
+                    except KeyError:
+                        continue
+                continue
+        i += 1
+        startIndex = i
+        for key in answersDictionary:
+            worksheet.write(i, 0, key)
+            an = answersDictionary[key]
+            worksheet.write(i, 1, an)
+            i += 1
 
-worksheet.write(2, 0, 'İkinci')
-worksheet.write(2, 1, 5)
-
-chart1 = workbook.add_chart({'type': 'pie'})
-chart2 = workbook.add_chart({'type': 'column'})
-chart1.add_series({
-    'name': 'pie adam',
-    'categories': ['Sheet1', 1, 0, 3, 0],
-    'values': ['Sheet1', 1, 1, 3, 1],
-})
-chart2.add_series({
-    'name': 'column çocuk',
-    'categories': ['Sheet1', 1, 0, 3, 0],
-    'values': ['Sheet1', 1, 1, 3, 1],
-})
-chart1.set_title({'name': 'isimmmmm'})
-chart2.set_title({'name': 'isimmmmmmmm'})
-chart1.set_style(10)
-chart2.set_style(10)
-chart1.set_size({'width': 300, 'height': 150})
-chart2.set_size({'width': 300, 'height': 150})
-worksheet.insert_chart('C2', chart1, {'x_offset': 0, 'y_offset': 0})
-worksheet.insert_chart('H2', chart2, {'x_offset': 0, 'y_offset': 0})
-workbook.close()
+        chart1 = workbook.add_chart({'type': 'pie'})
+        chart2 = workbook.add_chart({'type': 'column'})
+        chart1.add_series({
+            'name': 'Pie Chart',
+            'categories': ['Sheet1', startIndex, 0, i, 0],
+            'values': ['Sheet1', startIndex, 1, i, 1],
+        })
+        chart2.add_series({
+            'name': 'Column Chart',
+            'categories': ['Sheet1', startIndex, 0, i, 0],
+            'values': ['Sheet1', startIndex, 1, i, 1],
+        })
+        chart1.set_style(10)
+        chart2.set_style(10)
+        chart1.set_size({'width': 500, 'height': 250})
+        chart2.set_size({'width': 500, 'height': 250})
+        worksheet.insert_chart('C' + str(startIndex + 1), chart1, {'x_offset': 0, 'y_offset': 0})
+        worksheet.insert_chart('K' + str(startIndex + 1), chart2, {'x_offset': 0, 'y_offset': 0})
+        i += 10
+    workbook.close()
 
 
 def create_attendance_output(student_list):
-    if path.exists('excel files/CSE3063_Fall2020_att_SinifListesiAttendence.xlsx'):
+    if path.exists('output files/CSE3063_Fall2020_Attendance_List.xlsx'):
         pass
     else:
         p.save_book_as(file_name='excel files/CES3063_Fall2020_rptSinifListesi.xls',
-                       dest_file_name='excel files/CSE3063_Fall2020_att_SinifListesiAttendence.xlsx')
+                       dest_file_name='output files/CSE3063_Fall2020_Attendance_List.xlsx')
 
-    wb = load_workbook('excel files/CSE3063_Fall2020_att_SinifListesiAttendence.xlsx')
+    wb = load_workbook('output files/CSE3063_Fall2020_Attendance_List.xlsx')
     ws = wb.worksheets[0]
     i = 14
     ws['L13'] = "Attendance polls"
     ws['M13'] = "Attendance rate"
     ws['N13'] = "Attendance percentage"
     for student in student_list:
-        ws['L' + str(i)] = str(student.get_totalAttendance())
+        ws['L' + str(i)] = str(student.get_attendance())
         ws['M' + str(i)] = str(student.get_attendance()) + " of " + str(student.get_totalAttendance())
         if student.get_totalAttendance() != 0:
             ws['N' + str(i)] = str(student.get_attendance() / student.get_totalAttendance() * 100)
         else:
             ws['N' + str(i)] = "0"
-        # if i == 204 or i == 209:
-        #     i += 4
-        # if i == 215:
-        #     i += 14
-        i += 1
 
-    wb.save('CSE3063_Fall2020_att_SinifListesiAttendence.xlsx')
+        if i == 204 or i == 209:
+            i += 5
+        elif i == 215:
+            i += 15
+        else:
+            i += 1
+        print(i)
+    wb.save('output files/CSE3063_Fall2020_Attendance_List.xlsx')
 
 
 def create_poll_output(student_list, poll):
-
-    if path.exists('excel files/CSE3063_Fall2020_att_SinifListesioutput.xlsx'):
+    if path.exists('output files/' + poll.get_name() + '.xlsx'):
         pass
     else:
         p.save_book_as(file_name='excel files/CES3063_Fall2020_rptSinifListesi.xls',
-                       dest_file_name='excel files/CSE3063_Fall2020_att_SinifListesioutput.xlsx')
+                       dest_file_name='output files/' + poll.get_name() + '.xlsx')
 
-    wb = load_workbook('excel files/CSE3063_Fall2020_att_SinifListesioutput.xlsx')
+    wb = load_workbook('output files/' + poll.get_name() + '.xlsx')
     ws = wb.worksheets[0]
     len_poll = len(poll.get_questions())
 
     i = 14
-    column_chr = 78
+    column_chr = 76
     for j in range(1, len_poll + 1):
         ws[chr(column_chr) + '13'] = "Q" + str(j)
         j += 1
         column_chr += 1
     success_chr = column_chr
-    column_chr = 78
+    column_chr = 76
     ws[chr(success_chr) + '13'] = "Number of questions"
     ws[chr(success_chr + 1) + '13'] = "Success Percentage"
     count2 = 0
@@ -121,7 +147,8 @@ def create_poll_output(student_list, poll):
                     if answered_poll is None:
                         break
 
-                    if answered_poll.get_answer(poll.get_questions()[count]) == poll.get_questions()[count].get_trueChoice():
+                    if answered_poll.get_answer(poll.get_questions()[count]) == poll.get_questions()[
+                        count].get_trueChoice():
 
                         ws[chr(column_chr) + str(i)] = "1"
                         correct_answer += 1
@@ -131,24 +158,28 @@ def create_poll_output(student_list, poll):
                     count += 1
                 except KeyError:
                     break
-        column_chr = 78
+        column_chr = 76
         ws[chr(success_chr) + str(i)] = str(success_chr - column_chr)
         ws[chr(success_chr + 1) + str(i)] = str(correct_answer / (success_chr - column_chr) * 100)
-        # if i == 204 or i == 209:
-        #     i += 4
-        # if i == 215:
-        #     i += 14
+        if i == 209:
+            i += 5
+        elif i == 204:
+            i += 5
+        elif i == 215:
+            i += 15
+        else:
+            i += 1
 
-        i += 1
-        wb.save('excel files/CSE3063_Fall2020_att_SinifListesioutput.xlsx')
+    wb.save('output files/' + poll.get_name() + '.xlsx')
+
 
 def create_global_output(student_list, poll_list):
-    if path.exists('excel files/CSE33063_Fall2020_glbSinifListesi.xlsx'):
+    if path.exists('output files/CSE33063_Fall2020_Global_Output.xlsx'):
         pass
     else:
         p.save_book_as(file_name='excel files/CSE3063_Fall2020_rptSinifListesi.xls',
-                       dest_file_name='excel files/CSE33063_Fall2020_glbSinifListesi.xlsx')
-    wb = load_workbook('excel files/CSE33063_Fall2020_glbSinifListesi.xlsx')
+                       dest_file_name='output files/CSE33063_Fall2020_Global_Output.xlsx')
+    wb = load_workbook('output files/CSE33063_Fall2020_Global_Output.xlsx')
     ws = wb.worksheets[0]
     column_chr = 78
 
@@ -178,10 +209,13 @@ def create_global_output(student_list, poll_list):
                 if answered_poll.get_answer(q) == q.get_trueChoice:
                     correct_answer += 1
             ws[third_column + str(i)] = str(correct_answer / num_of_questions * 100)
-            # if i == 204 or i == 209:
-            #     i += 4
-            # if i == 215:
-            #     i += 14
-            i += 1
+            if i == 209:
+                i += 5
+            elif i == 204:
+                i += 5
+            elif i == 215:
+                i += 15
+            else:
+                i += 1
         column_chr += 3
-    wb.save('excel files/CSE33063_Fall2020_glbSinifListesi.xlsx')
+    wb.save('output files/CSE33063_Fall2020_Global_Output.xlsx')
