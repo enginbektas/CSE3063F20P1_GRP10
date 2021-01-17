@@ -1,9 +1,8 @@
 from pandas.tests.io.excel.test_xlsxwriter import xlsxwriter
 from openpyxl import load_workbook
 import pyexcel as p
-
+import napkin
 from os import path
-
 
 def create_statistics(student_list, poll):
     if len(poll.get_questions()) == 0:
