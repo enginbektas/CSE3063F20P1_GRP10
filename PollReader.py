@@ -21,7 +21,7 @@ class PollReader:
         df.fillna('')
         current_student = None
         current_poll = None
-
+        attendanceFlag = True;
         temp_poll = Poll(None, None, None)
         for index, row in df.iterrows():  # iterates student row
             # TODO find student from student list
@@ -49,23 +49,30 @@ class PollReader:
                         break
 
                     if "Are you attending this lecture?" in index[i]:  # if attendance
+                        if (attendanceFlag):
+                            attendanceFlag = False
+                            for student in student_list:
+                                student.increment_total_attendance()
                         current_student.increment_attendance()
                         i += 2
                         continue
                     tempQuestion = Question.Question(index[i], None)
                     temp_poll.add_question(tempQuestion)
                     qaDict[index[i]] = index[i + 1]  # add element
-                    print(index[i] + " " + index[i + 1])
+                    # print(index[i] + " " + index[i + 1])
                     i += 2
                 except IndexError:
                     break
-            i = 0
             while True:
                 try:
                     if len(row[i]) == 0:  # Q and A
                         break
 
                     if "Are you attending this lecture?" in row[i]:  # if attendance
+                        if (attendanceFlag):
+                            attendanceFlag = False
+                            for student in student_list:
+                                student.increment_total_attendance()
                         current_student.increment_attendance()
                         i += 2
                         continue

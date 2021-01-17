@@ -3,6 +3,7 @@ from AnswerKeyReader import AnswerKeyReader
 from PollReader import PollReader
 import os
 import re
+import WriterTest
 
 class main:
     studentListPath = path = 'excel files/CES3063_Fall2020_rptSinifListesi.xls'
@@ -18,7 +19,10 @@ class main:
     for filename in os.listdir(directory):
         if filename.endswith('PollReport.csv'):
             pollReader.read_poll(student_list, poll_list, 'excel files/' + filename) # all students and polls are updated
-            # TODO Call functions for 7a and 7b
+
 
     # TODO Call functions for 6 and 8
+    # TODO Call functions for 7a and 7b for every poll
+    #WriterTest.create_poll_output(student_list, poll_list[0])
+    #WriterTest.create_attendance_output(student_list) #6 output
     print(re.sub("[^0-9a-zA-Z]+",'',"s^  asd:".upper()))

@@ -7,6 +7,7 @@ import Question
 class AnswerKeyReader:
     def readAnswerKey(self):
         pollList = []
+        i = 0
         with open("excel files/Answer Key.csv", newline='') as csvfile:
             c = csv.reader(csvfile, delimiter=',', quotechar='"')
             isFirst = True
