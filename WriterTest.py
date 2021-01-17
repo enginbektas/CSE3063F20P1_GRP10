@@ -91,7 +91,7 @@ def create_poll_output(student_list, poll):
 
     for student in student_list:
         answered_poll = None
-        for ap in student.get_answered_polls:
+        for ap in student.get_answered_polls():
             if poll.get_name() == ap.get_poll().get_name():
                 answered_poll = ap
                 break
