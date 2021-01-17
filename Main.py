@@ -2,12 +2,23 @@ import StudentReader
 from AnswerKeyReader import AnswerKeyReader
 from PollReader import PollReader
 import os
-
+import re
 
 class main:
-    student_list = StudentReader.read()  # Get student list
+    studentListPath = path = 'excel files/CES3063_Fall2020_rptSinifListesi.xls'
+    pollListPath = 'excel files/CSE3063_20201123_Mon_zoom_PollReport.csv'
+    directory = 'excel files'
+    pollReader = PollReader()
     poll_list = AnswerKeyReader().readAnswerKey()  # get poll list from answer key
-    pollReader = PollReader()  # initialize PollReader
+
     # TODO Loop through current directory
-    path = "excel files/CSE3063_20201123_Mon_zoom_PollReport.csv"
-    pollReader.read_poll(student_list, poll_list, path)  # Poll reader updates students and polls in lists
+
+    student_list = StudentReader.read(studentListPath)  # create student list
+
+    for filename in os.listdir(directory):
+        if filename.endswith('PollReport.csv'):
+            pollReader.read_poll(student_list, poll_list, 'excel files/' + filename) # all students and polls are updated
+            # TODO Call functions for 7a and 7b
+
+    # TODO Call functions for 6 and 8
+    print(re.sub("[^0-9a-zA-Z]+",'',"s^  asd:".upper()))

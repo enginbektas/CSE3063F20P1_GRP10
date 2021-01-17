@@ -19,6 +19,12 @@ class AnswerKeyReader:
                     pollList.append(poll)  # add created poll to pollList
                     isFirst = False
                 else:
-                    question = Question.Question(row[0], row[1])  # create question object
-                    poll.add_question(question)  # add question to poll object
+
+                    while True:
+                        try:
+                            question = Question.Question(row[i], row[i + 1])  # create question object
+                            poll.add_question(question)  # add question to poll object
+                            i += 2
+                        except IndexError:
+                            break
         return pollList

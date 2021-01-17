@@ -1,3 +1,5 @@
+import re
+
 import pandas
 
 import Question
@@ -23,9 +25,11 @@ class PollReader:
         temp_poll = Poll(None, None, None)
         for index, row in df.iterrows():  # iterates student row
             # TODO find student from student list
-            print(index[1] + " " + index[2] + " " + index[
-                3])  # index1 = name surname, index2 = email, index3 = date, index 4 = q, index 5 = a
-
+            try:
+                print(index[1] + " " + index[2] + " " + index[
+                    3])  # index1 = name surname, index2 = email, index3 = date, index 4 = q, index 5 = a
+            except IndexError:
+                break
             stdFlag = False  # stdFlag okunan öğreniyi student_list içinde bulamazsa kod while içine girmiyor.
             for std in student_list:
                 result = ''.join([i for i in index[1] if not i.isdigit()])
@@ -51,6 +55,7 @@ class PollReader:
                     tempQuestion = Question.Question(index[i], None)
                     temp_poll.add_question(tempQuestion)
                     qaDict[index[i]] = index[i + 1]  # add element
+                    print(index[i] + " " + index[i + 1])
                     i += 2
                 except IndexError:
                     break
@@ -67,19 +72,26 @@ class PollReader:
                     tempQuestion = Question.Question(row[i], None)
                     temp_poll.add_question(tempQuestion)
                     qaDict[row[i]] = row[i + 1]  # add element
+                    print(row[i] + " " + row[i + 1])
                     i += 2
                 except IndexError:
                     break
 
             for poll in ak_poll_list:  # poll holds iterator of polls in answerkeylist
-                for question in poll.get_questions():  # question is one question of iteratorPoll
-                    if question not in temp_poll.get_questions():  # if each question in the poll from answerKeyList is contained by the current Poll
+                for s in temp_poll.get_questions():
+                    ifNotFound = True
+                    for question in poll.get_questions():  # question is one question of iteratorPoll
+                        if re.sub("[^0-9a-zA-Z]+", '', question.get_text().upper()) == re.sub("[^0-9a-zA-Z]+", '', s.get_text().upper()):
+                            current_poll = poll
+                            ifNotFound = False
+                            break
+
+                    if ifNotFound:
                         current_poll = None
                         break
-                    else:
-                        current_poll = poll
-                        continue
-                break
+
+                if current_poll is not None:
+                    break
             current_student.add_answered_poll(current_poll)
             current_student.get_answered_polls()[-1].set_question_and_answers(qaDict)  # Question&Answer
 
