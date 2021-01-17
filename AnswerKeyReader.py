@@ -1,4 +1,6 @@
 import csv
+import re
+
 import pandas
 import numpy as np
 import Poll
@@ -22,7 +24,9 @@ class AnswerKeyReader:
                 else:
                     while True:
                         try:
-                            question = Question.Question(row[i], row[i + 1])  # create question object
+                            a = re.sub("[^0-9a-zA-Z]+",'', row[i].lower())
+                            b = re.sub("[^0-9a-zA-Z]+", '', row[i+1].lower())
+                            question = Question.Question(a, b)  # create question object
                             poll.add_question(question)  # add question to poll object
                             i += 2
                         except IndexError:

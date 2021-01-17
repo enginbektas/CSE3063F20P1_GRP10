@@ -33,7 +33,7 @@ class PollReader:
             stdFlag = False  # stdFlag okunan öğreniyi student_list içinde bulamazsa kod while içine girmiyor.
             for std in student_list:
                 result = ''.join([i for i in index[1] if not i.isdigit()])
-                if std.get_name().upper() == result.upper():
+                if std.get_name().lower() == result.lower():
                     current_student = std
                     current_student.set_name(result)
 
@@ -58,7 +58,9 @@ class PollReader:
                         continue
                     tempQuestion = Question.Question(index[i], None)
                     temp_poll.add_question(tempQuestion)
-                    qaDict[index[i]] = index[i + 1]  # add element
+                    a = re.sub("[^0-9a-zA-Z]+", '', index[i].lower())
+                    b = re.sub("[^0-9a-zA-Z]+", '', index[i + 1].lower())
+                    qaDict[a] = b  # add element
                     print("q:" + index[i])
                     print("a:" + index[i+1])
                     # print(index[i] + " " + index[i + 1])
@@ -80,6 +82,8 @@ class PollReader:
                         continue
                     tempQuestion = Question.Question(row[i], None)
                     temp_poll.add_question(tempQuestion)
+                    a = re.sub("[^0-9a-zA-Z]+", '', row[i].lower())
+                    b = re.sub("[^0-9a-zA-Z]+", '', row[i + 1].lower())
                     qaDict[row[i]] = row[i + 1]  # add element
                     print(row[i] + " " + row[i + 1])
                     i += 2
