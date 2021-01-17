@@ -59,6 +59,8 @@ class PollReader:
                     tempQuestion = Question.Question(index[i], None)
                     temp_poll.add_question(tempQuestion)
                     qaDict[index[i]] = index[i + 1]  # add element
+                    print("q:" + index[i])
+                    print("a:" + index[i+1])
                     # print(index[i] + " " + index[i + 1])
                     i += 2
                 except IndexError:

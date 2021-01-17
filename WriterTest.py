@@ -1,4 +1,4 @@
-import xlsxwriter
+from xlsxwriter import Workbook
 from openpyxl import load_workbook
 import pyexcel as p
 
@@ -10,7 +10,7 @@ from os import path
 # 8 için output. need everything
 
 
-workbook = xlsxwriter.Workbook('testOutput.xlsx')
+workbook = Workbook('testOutput.xlsx')
 worksheet = workbook.add_worksheet()
 
 worksheet.write(0, 0, 'Name')
