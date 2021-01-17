@@ -30,8 +30,10 @@ class PollReader:
 
             stdFlag = False  # stdFlag okunan öğreniyi student_list içinde bulamazsa kod while içine girmiyor.
             for std in student_list:
-                if std.get_name().upper() == index[1].upper():
+                result = ''.join([i for i in index[1] if not i.isdigit()])
+                if std.get_name().upper() == result.upper():
                     current_student = std
+                    current_student.set_name(result)
                     # std.add_answered_poll(currentPoll)
                     stdFlag = True
                     break
