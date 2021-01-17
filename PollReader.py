@@ -67,7 +67,11 @@ class PollReader:
                     i += 2
                 except IndexError:
                     break
+
+            i = 0
             while True:
+
+
                 try:
                     if len(row[i]) == 0:  # Q and A
                         break
@@ -82,10 +86,12 @@ class PollReader:
                         continue
                     tempQuestion = Question.Question(row[i], None)
                     temp_poll.add_question(tempQuestion)
+                    print("giriyo")
+
                     a = re.sub("[^0-9a-zA-Z]+", '', row[i].lower())
                     b = re.sub("[^0-9a-zA-Z]+", '', row[i + 1].lower())
-                    qaDict[row[i]] = row[i + 1]  # add element
-                    print(row[i] + " " + row[i + 1])
+                    qaDict[a] = b  # add element
+                    print(a + " " + b)
                     i += 2
                 except IndexError:
                     break
@@ -94,7 +100,9 @@ class PollReader:
                 for s in temp_poll.get_questions():
                     ifNotFound = True
                     for question in poll.get_questions():  # question is one question of iteratorPoll
+
                         if re.sub("[^0-9a-zA-Z]+", '', question.get_text().upper()) == re.sub("[^0-9a-zA-Z]+", '', s.get_text().upper()):
+                        #if question.get_text().upper() == s.get_text().upper():
                             current_poll = poll
                             ifNotFound = False
                             break
@@ -105,7 +113,12 @@ class PollReader:
 
                 if current_poll is not None:
                     break
-            current_student.add_answered_poll(current_poll)
-            current_student.get_answered_polls()[-1].set_question_and_answers(qaDict)  # Question&Answer
+            flag = True
+            for iter1 in current_student.get_answered_polls():
+                if iter1.get_poll().get_name() == current_poll.get_name():
+                    flag = False
+            if flag:
+                current_student.add_answered_poll(current_poll)
+                current_student.get_answered_polls()[-1].set_question_and_answers(qaDict)  # Question&Answer
 
     # def readPollReport(poll, 'excel files/CSE3063_20201123_Mon_zoom_PollReport.csv', studentList):

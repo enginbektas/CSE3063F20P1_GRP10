@@ -91,27 +91,46 @@ def create_poll_output(student_list, poll):
     column_chr = 78
     ws[chr(success_chr) + '13'] = "Number of questions"
     ws[chr(success_chr + 1) + '13'] = "Success Percentage"
-
+    count2 = 0
     for student in student_list:
+        count2 += 1
+        print(student.get_name())
         answered_poll = None
-        for ap in student.get_answered_polls():
-            if poll.get_name() == ap.get_poll().get_name():
-                answered_poll = ap
-                break
         count = 0
         correct_answer = 0
-        while success_chr > column_chr:
-            if answered_poll.get_answer(poll.get_questions()[count]) == poll.get_questions()[count].get_trueChoice():
-                ws[chr(column_chr) + str(i)] = "1"
-                correct_answer += 1
-            else:
+        if student.get_answered_polls() is None or len(student.get_answered_polls()) == 0:
+            while success_chr > column_chr:
                 ws[chr(column_chr) + str(i)] = "0"
-            column_chr += 1
-            count += 1
+                column_chr += 1
+                count += 1
+        else:
+            for ap in student.get_answered_polls():
+                if ap.get_poll() is None:
+                    break
+                if poll.get_name() == ap.get_poll().get_name():
+                    answered_poll = ap
+                    break
+
+            while success_chr > column_chr:
+                try:
+                    if answered_poll is None:
+                        break
+
+                    if answered_poll.get_answer(poll.get_questions()[count]) == poll.get_questions()[count].get_trueChoice():
+
+                        ws[chr(column_chr) + str(i)] = "1"
+                        correct_answer += 1
+                    else:
+                        ws[chr(column_chr) + str(i)] = "0"
+                    column_chr += 1
+                    count += 1
+                except KeyError:
+                    break
+        column_chr = 78
         ws[chr(success_chr) + str(i)] = str(success_chr - column_chr)
         ws[chr(success_chr + 1) + str(i)] = str(correct_answer / (success_chr - column_chr) * 100)
         i += 1
-
+        wb.save('excel files/CSE3063_Fall2020_att_SinifListesioutput.xlsx')
 
 def create_global_output(student_list, poll_list):
     if path.exists('excel files/CSE33063_Fall2020_glbSinifListesi.xlsx'):

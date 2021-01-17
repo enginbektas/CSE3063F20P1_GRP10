@@ -19,7 +19,7 @@ class main:
     for filename in os.listdir(directory):
         if filename.endswith('PollReport.csv'):
             pollReader.read_poll(student_list, poll_list, 'excel files/' + filename) # all students and polls are updated
-
+    print("sd")
 
     # TODO Call functions for 6 and 8
     # TODO Call functions for 7a and 7b for every poll
