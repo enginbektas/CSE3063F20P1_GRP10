@@ -2,11 +2,10 @@ import StudentAnswers
 
 
 class Student:
-
     def __init__(self, name, attendance):
         self.__name = name
         self.__attendance = attendance
-        self.__answeredPolls = None  # list of StudentAnswers
+        self.__answeredPolls = []  # list of StudentAnswers
 
     def myFunc(self):
         print("Hello my name is " + self.__name)
