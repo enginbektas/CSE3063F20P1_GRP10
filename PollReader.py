@@ -5,6 +5,7 @@ from fuzzywuzzy import fuzz
 from Poll import Poll
 
 
+
 class PollReader:
     def read_poll(self, student_list_param, ak_poll_list_param, path):
         student_list = student_list_param
@@ -27,7 +28,17 @@ class PollReader:
             stdFlag = False  # stdFlag okunan öğreniyi student_list içinde bulamazsa kod while içine girmiyor.
             for std in student_list:
                 result = ''.join([i for i in index[1] if not i.isdigit()])
-                if std.get_name().lower() == result.lower():
+                result = result.lower()
+                result = re.sub("ı", "i", result)
+                result = re.sub("ü", "u", result)
+                result = re.sub("ö", "o", result)
+                result = re.sub("ç", "c", result)
+                result = re.sub("ş", "s", result)
+                result = re.sub("ğ", "g", result)
+
+
+                #if std.get_name().lower() == result.lower():
+                if fuzz.partial_ratio(std.get_name(), result) > 75:
                     current_student = std
                     current_student.set_name(result)
 
@@ -43,7 +54,7 @@ class PollReader:
                         break
 
                     if "Are you attending this lecture?" in index[i]:  # if attendance
-                        if (attendanceFlag):
+                        if attendanceFlag:
                             attendanceFlag = False
                             for student in student_list:
                                 student.increment_total_attendance()
@@ -67,7 +78,7 @@ class PollReader:
                         break
 
                     if "Are you attending this lecture?" in row[i]:  # if attendance
-                        if (attendanceFlag):
+                        if attendanceFlag:
                             attendanceFlag = False
                             for student in student_list:
                                 student.increment_total_attendance()

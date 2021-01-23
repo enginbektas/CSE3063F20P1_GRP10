@@ -16,6 +16,7 @@ class main:
 
     for filename in os.listdir(directory):
         if filename.endswith('PollReport.csv'):
+            print("s")
             pollReader.read_poll(student_list, poll_list,
                                  'excel files/' + filename)  # all students and polls are updated
 
