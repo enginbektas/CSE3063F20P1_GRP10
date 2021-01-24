@@ -1,4 +1,5 @@
 class Question:
+
     def __init__(self, text, trueChoice):
         self.__text = text
         self.__trueChoice = trueChoice

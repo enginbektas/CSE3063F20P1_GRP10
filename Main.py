@@ -3,7 +3,7 @@ from AnswerKeyReader import AnswerKeyReader
 from PollReader import PollReader
 import os
 import re
-import WriterTest
+import Writer
 
 class main:
     studentListPath = path = 'excel files/CES3063_Fall2020_rptSinifListesi.xls'
@@ -23,7 +23,7 @@ class main:
 
     # TODO Call functions for 6 and 8
     # TODO Call functions for 7a and 7b for every poll
-    WriterTest.create_statistics(student_list, poll_list[0]) #7-b output
+    Writer.create_statistics(student_list, poll_list[0]) #7-b output
     #WriterTest.create_poll_output(student_list, poll_list[0]) #7-a output
     #WriterTest.create_attendance_output(student_list) #6 output
     print(re.sub("[^0-9a-zA-Z]+",'',"s^  asd:".upper()))
