@@ -58,7 +58,6 @@ class PollReader:
                         if attendanceFlag:
                             attendanceFlag = False
                             for student in student_list:
-
                                 student.increment_total_attendance()
                         current_student.increment_attendance()
                         i += 2
